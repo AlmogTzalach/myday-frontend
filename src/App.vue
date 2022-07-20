@@ -1,11 +1,5 @@
-
 <template>
-  <RouterView />
+	<router-view />
 </template>
 
-<script>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
-<style>
-</style>
+<script></script>
