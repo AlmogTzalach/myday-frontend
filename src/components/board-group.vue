@@ -1,7 +1,7 @@
 <template>
 	<h4>{{ group.title }}</h4>
 	<div v-for="task in group.tasks" :key="task.id">
-		<task-preview :task="task" />
+		<task-preview class="task-preview" :task="task" />
 	</div>
 </template>
 

@@ -1,14 +1,21 @@
 <template>
-	<main-nav></main-nav>
-	<board-header></board-header>
-	<board-filter></board-filter>
-	<div v-for="group in currBoard.groups" :key="group.id">
-		<board-group :group="group" />
-	</div>
+	<section class="app-container grid">
+		<main-nav></main-nav>
+		<boards-nav></boards-nav>
+
+		<div>
+			<board-header></board-header>
+			<board-filter></board-filter>
+			<div v-for="group in currBoard.groups" :key="group.id">
+				<board-group :group="group" />
+			</div>
+		</div>
+	</section>
 </template>
 
 <script>
 	import mainNav from '@/components/main-nav.vue'
+	import boardsNav from '@/components/boards-nav.vue'
 	import boardHeader from '@/components/board-header.vue'
 	import boardFilter from '@/components/board-filter.vue'
 	import boardGroup from '@/components/board-group.vue'
@@ -36,6 +43,7 @@
 			boardFilter,
 			boardGroup,
 			taskDetails,
+			boardsNav,
 		},
 	}
 </script>

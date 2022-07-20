@@ -2,12 +2,10 @@
 	box-sizing: border-box;
 }
 
-html {
-	font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
 	margin: 0;
+	color: $text-black;
+	font-family: roboto, sans-serif;
 }
 
 h1,
@@ -16,8 +14,9 @@ h3,
 h4,
 h5,
 h6 {
-	font-weight: 500;
+	// font-weight: 500;
 	margin: 0 0 1rem;
+	font-family: roboto-bold, sans-serif;
 }
 
 img {
@@ -30,5 +29,4 @@ p {
 
 a {
 	text-decoration: none;
-	color: $g-clr5;
 }
