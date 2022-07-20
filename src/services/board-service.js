@@ -1,7 +1,8 @@
-import { storageService } from './storage-service'
-import { boardData } from './board'
+import { storageService } from "./storage-service"
+import utilService from "./util-service"
+import { boardData } from "./board"
 
-const BOARD_KEY = 'boardDB'
+const BOARD_KEY = "boardDB"
 
 _createBoards()
 
@@ -14,7 +15,7 @@ export const boardService = {
 	getById,
 	remove,
 	save,
-	getEmptyToy,
+	getEmptyTask,
 }
 
 async function query() {
@@ -44,15 +45,18 @@ async function save(board) {
 	//   }
 }
 
-function getEmptyToy() {
+function getEmptyTask() {
 	return {
-		_id: '',
-		name: '',
-		price: '',
-		labels: [],
-		createdAt: '',
-		inStock: true,
-		img: '',
+		id: "t103",
+		title: "New Task",
+		statusId: "",
+		priorityId: "",
+		people: [],
+		date: 1590999817436,
+		checkbox: true,
+		txt: "",
+		link: "",
+		comments: [],
 	}
 }
 

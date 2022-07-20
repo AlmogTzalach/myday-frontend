@@ -15,7 +15,7 @@
 		align-items: center;
 
 		input {
-			@include inlineInput;
+			@include inlineInput(em(22px));
 		}
 
 		.btns {
