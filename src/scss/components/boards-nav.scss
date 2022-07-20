@@ -2,9 +2,9 @@
 	background-color: #f6f7fb;
 	height: 98.5vh;
 	border-inline-end: 1px solid #d0d4e4;
-	flex-direction: row;
 
 	.workspace-details {
+		flex-direction: column;
 		margin: rem(12px) rem(16px) rem(18px) rem(16px);
 
 		div {
@@ -14,6 +14,11 @@
 		button {
 			padding: rem(6px);
 			display: flex;
+			justify-content: space-between;
+			background-color: #f6f7fb;
+			border-radius: $btnRadius;
+			border: 1px solid $text-black;
+			font-size: rem(14px);
 		}
 	}
 }
