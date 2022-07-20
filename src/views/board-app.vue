@@ -3,7 +3,7 @@
 		<main-nav></main-nav>
 		<boards-nav></boards-nav>
 
-		<div>
+		<section class="board-container">
 			<board-header :board="currBoard" />
 
 			<div class="flex board-actions">
@@ -14,41 +14,41 @@
 			<div v-for="group in currBoard.groups" :key="group.id">
 				<board-group :group="group" />
 			</div>
-		</div>
+		</section>
 	</section>
 </template>
 
 <script>
-import mainNav from "@/components/main-nav.vue"
-import boardsNav from "@/components/boards-nav.vue"
-import boardHeader from "@/components/board-header.vue"
-import boardFilter from "@/components/board-filter.vue"
-import boardGroup from "@/components/board-group.vue"
-import taskDetails from "@/components/task-details.vue"
+	import mainNav from '@/components/main-nav.vue'
+	import boardsNav from '@/components/boards-nav.vue'
+	import boardHeader from '@/components/board-header.vue'
+	import boardFilter from '@/components/board-filter.vue'
+	import boardGroup from '@/components/board-group.vue'
+	import taskDetails from '@/components/task-details.vue'
 
-export default {
-	name: "board-app",
+	export default {
+		name: 'board-app',
 
-	data() {
-		return {}
-	},
-
-	computed: {
-		boards() {
-			return this.$store.getters.boards
+		data() {
+			return {}
 		},
-		currBoard() {
-			return this.boards[0]
-		},
-	},
 
-	components: {
-		mainNav,
-		boardHeader,
-		boardFilter,
-		boardGroup,
-		taskDetails,
-		boardsNav,
-	},
-}
+		computed: {
+			boards() {
+				return this.$store.getters.boards
+			},
+			currBoard() {
+				return this.boards[0]
+			},
+		},
+
+		components: {
+			mainNav,
+			boardHeader,
+			boardFilter,
+			boardGroup,
+			taskDetails,
+			boardsNav,
+		},
+	}
 </script>
