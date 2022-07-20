@@ -19,7 +19,7 @@
 		</div>
 
 		<div v-for="task in group.tasks" :key="task.id">
-			<task-preview :task="task" />
+			<task-preview :task="task" :currGroup="group.id" />
 		</div>
 	</section>
 </template>

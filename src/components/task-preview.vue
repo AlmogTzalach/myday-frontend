@@ -1,8 +1,9 @@
 <template>
 	<div class="task-preview task-row grid">
 		<div class="task-name name-cell grid">
-			<p>{{ task.title }}</p>
-			<span>+</span>
+			<input type="text" v-model="currTask.title" @input="onTitleUpdate" />
+			<!-- <p>{{ task.title }}</p> -->
+			<span @click="onDelete">delete</span>
 		</div>
 		<div class="task-data grid">
 			<p>{{ task.statusId }}</p>
@@ -23,6 +24,34 @@
 
 		props: {
 			task: Object,
+			currGroup: String,
+		},
+
+		data() {
+			return {
+				currTask: null,
+			}
+		},
+
+		methods: {
+			onDelete() {
+				this.$store.dispatch({
+					type: 'removeTask',
+					groupId: this.currGroup,
+					taskId: this.task.id,
+				})
+			},
+			onTitleUpdate() {
+				this.$store.dispatch({
+					type: 'updateTask',
+					groupId: this.currGroup,
+					newTask: JSON.parse(JSON.stringify(this.currTask)),
+				})
+			},
+		},
+
+		created() {
+			this.currTask = JSON.parse(JSON.stringify(this.task))
 		},
 	}
 </script>
