@@ -1,7 +1,14 @@
 <template>
 	<div>side nav</div>
+	<boards-nav></boards-nav>
 </template>
 
 <script>
-	export default {}
+	import boardsNav from './boards-nav.vue'
+
+	export default {
+		components: {
+			boardsNav,
+		},
+	}
 </script>

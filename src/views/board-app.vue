@@ -8,9 +8,9 @@
 <script>
 	import mainNav from '@/components/main-nav.vue'
 	import boardHeader from '@/components/board-header.vue'
-	import boardFilter from '../components/board-filter.vue'
-	import boardGroup from '../components/board-group.vue'
-	import taskDetails from '../components/task-details.vue'
+	import boardFilter from '@/components/board-filter.vue'
+	import boardGroup from '@/components/board-group.vue'
+	import taskDetails from '@/components/task-details.vue'
 
 	export default {
 		name: 'board-app',
