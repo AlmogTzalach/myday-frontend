@@ -7,18 +7,22 @@
 				<p>{{ open }}</p>
 			</button>
 		</div>
+
+		<div class="boards-list">
+			<button>board</button>
+		</div>
 	</section>
 </template>
 
 <script>
 export default {
-	name: "boards-nav",
+	name: 'boards-nav',
 	data() {
 		return {}
 	},
 	computed: {
 		open() {
-			return ">"
+			return '>'
 		},
 	},
 }

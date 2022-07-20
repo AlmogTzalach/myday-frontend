@@ -1,24 +1,34 @@
 .boards-nav {
+	padding: rem(12px) rem(16px);
 	background-color: #f6f7fb;
 	height: 98.5vh;
 	border-inline-end: 1px solid #d0d4e4;
 
 	.workspace-details {
 		flex-direction: column;
-		margin: rem(12px) rem(16px) rem(18px) rem(16px);
-
 		div {
-			padding-bottom: rem(4px);
+			padding-bottom: rem(5px);
 		}
 
 		button {
-			padding: rem(6px);
+			padding: rem(5px);
 			display: flex;
 			justify-content: space-between;
 			background-color: #f6f7fb;
 			border-radius: $btnRadius;
 			border: 1px solid $text-black;
 			font-size: rem(14px);
+			font-weight: 700;
+			color: $text-black;
+			// margin-bottom: ;
 		}
+	}
+	.boards-list {
+		// background-color: aqua;
+		padding-top: rem(14px);
+		border-top: 1px solid rgb(145, 143, 143);
+
+		display: flex;
+		align-items: center;
 	}
 }

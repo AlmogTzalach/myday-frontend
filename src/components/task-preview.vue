@@ -5,7 +5,6 @@
 				type="text"
 				v-model="currTask.title"
 				@input="onTitleUpdate"
-				focus
 			/>
 			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
