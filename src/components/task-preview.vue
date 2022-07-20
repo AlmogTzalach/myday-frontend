@@ -1,18 +1,13 @@
 <template>
 	<div class="task-preview task-row grid">
 		<div class="task-name name-cell grid">
-			<input
-				type="text"
-				v-model="currTask.title"
-				@input="onTitleUpdate"
-				focus
-			/>
+			<input type="text" v-model="currTask.title" @input="onTitleUpdate" focus />
 			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
 		</div>
 		<div class="task-data grid">
-			<p>{{ task.statusId }}</p>
-			<p>{{ task.priorityId }}</p>
+			<component :is="'statusCmp'" :statusId="task.statusId"></component>
+			<component :is="'priorityCmp'" :priorityId="task.priorityId"></component>
 			<p>People</p>
 			<p>{{ task.date }}</p>
 			<p>{{ task.checkbox }}</p>
@@ -24,6 +19,9 @@
 </template>
 
 <script>
+import statusCmp from './task-attributes/status-cmp.vue'
+import priorityCmp from './task-attributes/priority-cmp.vue'
+
 export default {
 	name: 'taskPreview',
 
@@ -58,5 +56,10 @@ export default {
 	created() {
 		this.currTask = JSON.parse(JSON.stringify(this.task))
 	},
+
+	components: {
+		statusCmp,
+		priorityCmp
+	}
 }
 </script>

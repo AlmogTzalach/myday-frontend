@@ -151,7 +151,7 @@ const boards = [
 						id: 't103',
 						title: 'Im in group 2 right?',
 						statusId: 'l103',
-						priorityId: 'l103',
+						priorityId: 'p103',
 						people: [
 							{
 								_id: 'u102',

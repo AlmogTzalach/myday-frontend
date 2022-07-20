@@ -1,6 +1,6 @@
 <template>
-    <section class="attr-container">
-        <div class="label" :style="{ 'background-color': labelColor }">
+    <section class="attr-container" :style="{ 'background-color': status.color }">
+        <div class="label">
             <p>{{ status.title }}</p>
         </div>
     </section>
@@ -9,16 +9,20 @@
 <script>
 export default {
     name: "statusCmp",
-    prop: {
+
+    props: {
         statusId: String,
     },
+
     data() {
         return {}
     },
-    computed: {
-        labelColor() {
 
-        }
+    computed: {
+        status() {
+            const statusLabels = this.$store.getters.status
+            return statusLabels.find(label => label.id === this.statusId)
+        },
     },
 }
 </script>
