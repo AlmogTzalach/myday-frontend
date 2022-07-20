@@ -1,7 +1,10 @@
 .board-filter {
-    margin-bottom: 1.5em;
-    
-    .el-input {
-        max-width: 250px;
-    }
+	// margin-bottom: 1.5em;
+
+	// .el-input {
+	// 	max-width: 250px;
+	// }
+	.btn {
+		@include mainBtn;
+	}
 }

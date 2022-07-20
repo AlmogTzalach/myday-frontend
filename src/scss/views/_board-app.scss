@@ -1,6 +1,12 @@
 .app-container {
-	.board-actions {
-		// background-color: lavender;
-		// padding: 1rem;
+	.main-actions-container {
+		justify-content: flex-start;
+		align-items: center;
+		padding: 1rem;
+		background-color: lightblue;
+
+		.add-task-btn {
+			@include mainBtn;
+		}
 	}
 }

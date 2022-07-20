@@ -1,9 +1,9 @@
 <template>
 	<section class="board-filter">
-		<button>Search</button>
-		<button>Person</button>
-		<button>Filter</button>
-		<button>Sort</button>
+		<button class="btn">Search</button>
+		<button class="btn">Person</button>
+		<button class="btn">Filter</button>
+		<button class="btn">Sort</button>
 	</section>
 </template>
 

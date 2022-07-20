@@ -6,8 +6,8 @@
 		<div>
 			<board-header :board="currBoard" />
 
-			<div class="flex board-actions">
-				<button>New Task</button>
+			<div class="flex main-actions-container">
+				<button class="btn add-task-btn">New Task</button>
 				<board-filter></board-filter>
 			</div>
 
