@@ -1,8 +1,8 @@
-import { storageService } from "./storage-service"
-import utilService from "./util-service"
-import { boardData } from "./board"
+import { storageService } from './storage-service'
+import utilService from './util-service'
+import { boardData } from './board'
 
-const BOARD_KEY = "boardDB"
+const BOARD_KEY = 'boardDB'
 
 _createBoards()
 
@@ -47,15 +47,15 @@ async function save(board) {
 
 function getEmptyTask() {
 	return {
-		id: "t103",
-		title: "New Task",
-		statusId: "",
-		priorityId: "",
+		id: 't103',
+		title: 'New Task',
+		statusId: 'l101',
+		priorityId: 'p101',
 		people: [],
 		date: 1590999817436,
 		checkbox: true,
-		txt: "",
-		link: "",
+		txt: '',
+		link: '',
 		comments: [],
 	}
 }
