@@ -43,11 +43,12 @@
 	}
 }
 
-@mixin inlineInput() {
+@mixin inlineInput($fontSize: 1em) {
 	padding: 0.5rem 0.3rem;
 	border-radius: rem(5px);
 	border: 1px solid white;
-	font-size: rem(22px);
+	// font-size: rem(22px);
+	font-size: $fontSize;
 	letter-spacing: -0.2px;
 	width: fit-content;
 
