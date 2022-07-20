@@ -1,6 +1,8 @@
-import { storageService } from "./storage-service"
-import { boardData } from "./board"
-const BOARD_KEY = "boardDB"
+import { storageService } from './storage-service'
+import { boardData } from './board'
+
+const BOARD_KEY = 'boardDB'
+
 _createBoards()
 
 //BACKEND
@@ -44,20 +46,20 @@ async function save(board) {
 
 function getEmptyToy() {
 	return {
-		_id: "",
-		name: "",
-		price: "",
+		_id: '',
+		name: '',
+		price: '',
 		labels: [],
-		createdAt: "",
+		createdAt: '',
 		inStock: true,
-		img: "",
+		img: '',
 	}
 }
 
 function _createBoards() {
 	let boards = JSON.parse(localStorage.getItem(BOARD_KEY))
 	if (!boards || !boards.length) {
-		boards = boardData.users
+		boards = boardData.boards
 		localStorage.setItem(BOARD_KEY, JSON.stringify(boards))
 	}
 	return boards

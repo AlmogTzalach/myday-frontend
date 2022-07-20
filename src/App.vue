@@ -2,4 +2,10 @@
 	<router-view />
 </template>
 
-<script></script>
+<script>
+	export default {
+		created() {
+			this.$store.dispatch({ type: 'loadBoards' })
+		},
+	}
+</script>

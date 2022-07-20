@@ -2,7 +2,9 @@
 	<main-nav></main-nav>
 	<board-header></board-header>
 	<board-filter></board-filter>
-	<board-group></board-group>
+	<div v-for="group in currBoard.groups" :key="group.id">
+		<board-group :group="group" />
+	</div>
 </template>
 
 <script>
@@ -14,6 +16,20 @@
 
 	export default {
 		name: 'board-app',
+
+		data() {
+			return {}
+		},
+
+		computed: {
+			boards() {
+				return this.$store.getters.boards
+			},
+			currBoard() {
+				return this.boards[0]
+			},
+		},
+
 		components: {
 			mainNav,
 			boardHeader,
