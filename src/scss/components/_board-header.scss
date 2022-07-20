@@ -15,20 +15,7 @@
 		align-items: center;
 
 		input {
-			padding: 0.5rem 0.3rem;
-			border-radius: rem(5px);
-			border: 1px solid white;
-			font-size: rem(22px);
-			letter-spacing: -0.2px;
-
-			&:hover {
-				border: 1px solid $divider-clr;
-			}
-
-			&:focus {
-				border: 1px solid $primary-action-clr;
-				outline: none;
-			}
+			@include inlineInput;
 		}
 
 		.btns {
