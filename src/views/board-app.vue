@@ -8,7 +8,9 @@
 
 			<div class="flex main-actions-container">
 				<div class="add-btns">
-					<button class="btn1 add-task-btn">New Task</button>
+					<button class="btn1 add-task-btn" @click="addTask">
+						New Task
+					</button>
 					<button class="btn2 add-task-btn">></button>
 				</div>
 
@@ -36,7 +38,11 @@ export default {
 	data() {
 		return {}
 	},
-
+	methods: {
+		addTask() {
+			// this.$store.addTask({ type: "addTask" })
+		},
+	},
 	computed: {
 		boards() {
 			return this.$store.getters.boards

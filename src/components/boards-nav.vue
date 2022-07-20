@@ -1,9 +1,10 @@
 <template>
 	<section class="boards-nav">
-		<div class="workspace-details">
+		<div class="workspace-details flex">
 			<div>Workspace</div>
 			<button>
-				Main workspace <span>{{ open }}</span>
+				Main workspace
+				<p>{{ open }}</p>
 			</button>
 		</div>
 	</section>
