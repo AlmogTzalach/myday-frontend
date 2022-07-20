@@ -6,6 +6,7 @@ body {
 	margin: 0;
 	color: $text-black;
 	font-family: roboto, sans-serif;
+	font-size: 0.875em;
 }
 
 h1,
@@ -14,8 +15,7 @@ h3,
 h4,
 h5,
 h6 {
-	// font-weight: 500;
-	margin: 0 0 1rem;
+	margin: 0;
 	font-family: roboto-bold, sans-serif;
 }
 
@@ -24,7 +24,7 @@ img {
 }
 
 p {
-	margin: 0 0 1em;
+	margin: 0;
 }
 
 a {
