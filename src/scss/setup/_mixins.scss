@@ -49,6 +49,7 @@
 	border: 1px solid white;
 	font-size: rem(22px);
 	letter-spacing: -0.2px;
+	width: fit-content;
 
 	&:hover {
 		border: 1px solid $divider-clr;
@@ -57,5 +58,19 @@
 	&:focus {
 		border: 1px solid $primary-action-clr;
 		outline: none;
+	}
+}
+
+@mixin addBtn() {
+	border-right: 1px solid $dark-blue;
+	background-color: $primary-action-clr;
+	color: white;
+	border: none;
+	transition: $trns;
+	padding: 4px 8px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $dark-blue;
 	}
 }

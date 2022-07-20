@@ -1,0 +1,19 @@
+.boards-nav {
+	background-color: #f6f7fb;
+	height: 98.5vh;
+	border-inline-end: 1px solid #d0d4e4;
+	flex-direction: row;
+
+	.workspace-details {
+		margin: rem(12px) rem(16px) rem(18px) rem(16px);
+
+		div {
+			padding-bottom: rem(4px);
+		}
+
+		button {
+			padding: rem(6px);
+			display: flex;
+		}
+	}
+}

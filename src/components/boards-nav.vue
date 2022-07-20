@@ -1,17 +1,24 @@
 <template>
 	<section class="boards-nav">
-		<div>side nav</div>
+		<div class="workspace-details">
+			<div>Workspace</div>
+			<button>
+				Main workspace <span>{{ open }}</span>
+			</button>
+		</div>
 	</section>
 </template>
 
 <script>
-	export default {}
+export default {
+	name: "boards-nav",
+	data() {
+		return {}
+	},
+	computed: {
+		open() {
+			return ">"
+		},
+	},
+}
 </script>
-
-<style>
-	.boards-nav {
-		background-color: #f6f7fb;
-		height: 98.5vh;
-		border-inline-end: 1px solid #d0d4e4;
-	}
-</style>

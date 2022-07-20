@@ -1,19 +1,20 @@
 //SETUP
-@import './setup/functions';
-@import './setup/mixins';
-@import './setup/typography';
-@import './setup/variables';
+@import "./setup/functions";
+@import "./setup/mixins";
+@import "./setup/typography";
+@import "./setup/variables";
 
 //BASICS
-@import './basics/base';
-@import './basics/helpers';
-@import './basics/layout';
+@import "./basics/base";
+@import "./basics/helpers";
+@import "./basics/layout";
+@import "./components/boards-nav";
 
 //VIEWS
-@import './views/board-app';
+@import "./views/board-app";
 
 //COMPONENETS
-@import './components/board-filter';
-@import './components/board-header';
-@import './components/task-preview';
-@import './components/board-group';
+@import "./components/board-filter";
+@import "./components/board-header";
+@import "./components/task-preview";
+@import "./components/board-group";

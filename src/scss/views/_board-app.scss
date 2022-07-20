@@ -2,11 +2,23 @@
 	.main-actions-container {
 		justify-content: flex-start;
 		align-items: center;
-		padding: 1rem;
-		background-color: lightblue;
+		padding: rem(16px) 0;
+		margin-bottom: rem(18px);
+		.add-btns {
+			margin-inline-end: rem(14px);
+			.add-task-btn {
+				@include addBtn;
+			}
 
-		.add-task-btn {
-			@include mainBtn;
+			.btn1 {
+				border-start-start-radius: $btnRadius;
+				border-bottom-left-radius: $btnRadius;
+			}
+
+			.btn2 {
+				border-end-end-radius: $btnRadius;
+				border-top-right-radius: $btnRadius;
+			}
 		}
 	}
 }
