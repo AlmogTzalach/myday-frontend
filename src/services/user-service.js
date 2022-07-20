@@ -1,12 +1,12 @@
 import { storageService } from "./storage-service"
+import { boardData } from "./board"
 const LOGGED_KEY = "loggedinUser"
-const USER_KEY = "user"
-_createUsers()
-const gUsers = []
+const USER_KEY = "userDB"
+const gUsers = _createUsers()
 
-// BACKEND
+// BACKENDF
 // import { httpService } from "./http-service"
-const ENDPOINT = "auth"
+// const ENDPOINT = "auth"
 
 export const userService = {
 	login,
@@ -48,8 +48,8 @@ function _saveLocalUser(user) {
 function _createUsers() {
 	let users = JSON.parse(localStorage.getItem(USER_KEY))
 	if (!users || !users.length) {
-		users = _getUsers()
+		users = boardData.users
 		localStorage.setItem(USER_KEY, JSON.stringify(users))
 	}
-	gUsers = users
+	return users
 }
