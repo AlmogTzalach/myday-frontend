@@ -1,8 +1,9 @@
 .task-preview {
-	.name-cell {
-	}
-
 	.task-name > * {
 		padding-inline-end: 30px;
+	}
+
+	input {
+		@include inlineInput;
 	}
 }
