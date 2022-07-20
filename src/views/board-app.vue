@@ -25,22 +25,22 @@
 </template>
 
 <script>
-import mainNav from "@/components/main-nav.vue"
-import boardsNav from "@/components/boards-nav.vue"
-import boardHeader from "@/components/board-header.vue"
-import boardFilter from "@/components/board-filter.vue"
-import boardGroup from "@/components/board-group.vue"
-import taskDetails from "@/components/task-details.vue"
+import mainNav from '@/components/main-nav.vue'
+import boardsNav from '@/components/boards-nav.vue'
+import boardHeader from '@/components/board-header.vue'
+import boardFilter from '@/components/board-filter.vue'
+import boardGroup from '@/components/board-group.vue'
+import taskDetails from '@/components/task-details.vue'
 
 export default {
-	name: "board-app",
+	name: 'board-app',
 
 	data() {
 		return {}
 	},
 	methods: {
 		addTask() {
-			// this.$store.addTask({ type: "addTask" })
+			this.$store.dispatch({ type: 'addTask' })
 		},
 	},
 	computed: {

@@ -1,7 +1,12 @@
 <template>
 	<div class="task-preview task-row grid">
 		<div class="task-name name-cell grid">
-			<input type="text" v-model="currTask.title" @input="onTitleUpdate" />
+			<input
+				type="text"
+				v-model="currTask.title"
+				@input="onTitleUpdate"
+				focus
+			/>
 			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
 		</div>
@@ -19,39 +24,39 @@
 </template>
 
 <script>
-	export default {
-		name: 'taskPreview',
+export default {
+	name: 'taskPreview',
 
-		props: {
-			task: Object,
-			currGroup: String,
-		},
+	props: {
+		task: Object,
+		currGroup: String,
+	},
 
-		data() {
-			return {
-				currTask: null,
-			}
-		},
+	data() {
+		return {
+			currTask: null,
+		}
+	},
 
-		methods: {
-			onDelete() {
-				this.$store.dispatch({
-					type: 'removeTask',
-					groupId: this.currGroup,
-					taskId: this.task.id,
-				})
-			},
-			onTitleUpdate() {
-				this.$store.dispatch({
-					type: 'updateTask',
-					groupId: this.currGroup,
-					newTask: JSON.parse(JSON.stringify(this.currTask)),
-				})
-			},
+	methods: {
+		onDelete() {
+			this.$store.dispatch({
+				type: 'removeTask',
+				groupId: this.currGroup,
+				taskId: this.task.id,
+			})
 		},
+		onTitleUpdate() {
+			this.$store.dispatch({
+				type: 'updateTask',
+				groupId: this.currGroup,
+				newTask: JSON.parse(JSON.stringify(this.currTask)),
+			})
+		},
+	},
 
-		created() {
-			this.currTask = JSON.parse(JSON.stringify(this.task))
-		},
-	}
+	created() {
+		this.currTask = JSON.parse(JSON.stringify(this.task))
+	},
+}
 </script>
