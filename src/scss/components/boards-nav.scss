@@ -1,5 +1,5 @@
 .boards-nav {
-	padding: rem(12px) rem(16px);
+	padding: rem(18px) rem(14px);
 	background-color: #f6f7fb;
 	height: 98.5vh;
 	border-inline-end: 1px solid #d0d4e4;
@@ -7,13 +7,13 @@
 
 	.workspace-details {
 		flex-direction: column;
-		padding-bottom: rem(14px);
+		padding-bottom: rem(16px);
 		div {
-			padding-bottom: rem(5px);
+			padding-bottom: rem(10px);
 		}
 
 		button {
-			padding: rem(5px);
+			padding: rem(8px);
 			display: flex;
 			justify-content: space-between;
 			background-color: #f6f7fb;
@@ -21,12 +21,11 @@
 			border: 1px solid $text-black;
 			font-size: rem(14px);
 			font-weight: 700;
-			// margin-bottom: ;
 		}
 	}
 	.boards-list {
 		padding-top: rem(14px);
-		border-top: 1px solid rgb(145, 143, 143);
+		border-top: 1px solid #d0d4e4;
 
 		display: flex;
 		align-items: center;

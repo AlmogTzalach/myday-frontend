@@ -3,9 +3,6 @@
 		<div class="board-actions flex">
 			<div class="title-input flex">
 				<h1 contenteditable @input="updateBoard">{{ board.title }}</h1>
-				<!-- <input type="text" v-model="board.title" contenteditable /> -->
-				<!-- <button>star</button>
-				<button>info</button> -->
 			</div>
 			<div class="btns flex">
 				<button @click="addMember()" class="btn add-member-btn">
@@ -17,7 +14,11 @@
 		<div class="board-vue flex">
 			<div class="btn-container">
 				<button @click="setTableVue" class="btn vue-btn">
+					<el-icon :size="size" :color="color"
+						><HomeFilled
+					/></el-icon>
 					Main Table
+					<button></button>
 				</button>
 				<div></div>
 			</div>

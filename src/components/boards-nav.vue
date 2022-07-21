@@ -4,7 +4,7 @@
 			<div>Workspace</div>
 			<button>
 				Main workspace
-				<p>{{ open }}</p>
+				<!-- <p>{{ open }}</p> -->
 			</button>
 		</div>
 		<div class="boards-list">

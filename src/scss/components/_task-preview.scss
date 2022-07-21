@@ -11,6 +11,9 @@
 			padding: 2px 4px;
 			cursor: text;
 			height: auto;
+			&:focus {
+				background-color: white;
+			}
 		}
 	}
 }

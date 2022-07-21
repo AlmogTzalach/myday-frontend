@@ -6,8 +6,6 @@
 					{{ currTask.title }}
 				</p>
 			</div>
-			<!-- <input type="text" v-model="currTask.title" @input="onTitleUpdate" /> -->
-			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
 		</div>
 		<div class="task-data grid">

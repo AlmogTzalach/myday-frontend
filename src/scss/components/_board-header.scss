@@ -3,7 +3,6 @@
 
 	.board-actions {
 		justify-content: space-between;
-		margin-bottom: rem(8px);
 		align-items: center;
 
 		.title-input {
@@ -28,9 +27,10 @@
 			color: lightgray;
 		}
 		.btn-container {
+			margin-inline-start: rem(2px);
 			.btn {
 				@include mainBtn;
-				padding: rem(6px) rem(22px);
+				padding: rem(5px) rem(10.5px);
 				box-shadow: inset 0 0 white;
 				margin-bottom: 2px;
 				font-weight: 500;
@@ -38,6 +38,10 @@
 			div {
 				height: 2px;
 				background-color: $primary-action-clr;
+			}
+			.el-icon {
+				height: 1.5em;
+				width: 1.5em;
 			}
 		}
 

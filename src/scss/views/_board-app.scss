@@ -10,9 +10,17 @@
 				@include addBtn;
 			}
 
+			.btn1,
+			.btn2 {
+				padding: rem(6px);
+				padding-inline-end: rem(9px);
+			}
+
 			.btn1 {
 				border-start-start-radius: $btnRadius;
 				border-bottom-left-radius: $btnRadius;
+				border-right: 1px solid rgb(0, 96, 185);
+				margin-inline-start: rem(4px);
 			}
 
 			.btn2 {
