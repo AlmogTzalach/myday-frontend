@@ -12,8 +12,15 @@
 			<span>Person</span>
 		</button>
 
-		<button class="btn">Filter</button>
-		<button class="btn">Sort</button>
+		<button class="btn">
+			<el-icon><Filter /></el-icon>
+			<span> Filter </span>
+		</button>
+
+		<button class="btn">
+			&#8645;
+			<span> Sort </span>
+		</button>
 	</section>
 </template>
 

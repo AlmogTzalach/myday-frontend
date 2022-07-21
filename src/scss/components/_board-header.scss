@@ -30,7 +30,7 @@
 			margin-inline-start: rem(2px);
 			.btn {
 				@include mainBtn;
-				padding: rem(5px) rem(10.5px);
+				padding: rem(5px) rem(15px) rem(5px) rem(10.5px);
 				box-shadow: inset 0 0 white;
 				margin-bottom: 2px;
 				font-weight: 500;
