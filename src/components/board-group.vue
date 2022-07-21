@@ -3,7 +3,7 @@
 		<h4 class="group-title">{{ group.title }}</h4>
 
 		<div class="group-table">
-			<!-- table hedaer -->
+			<!-- table header -->
 			<div class="group-header-row task-row grid">
 				<div class="task-name task-title">
 					<p>Task</p>

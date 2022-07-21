@@ -1,7 +1,8 @@
 <template>
     <section class="attr-container">
         <div v-for="user in people" :key="user.id">
-            <img class="avatar" :src="user.imgUrl" :title="user.fullName">
+            <!-- <img class="avatar" :src="user.imgUrl" :title="user.fullName"> -->
+            <el-avatar :size="30" :src="user.imgUrl" :fit="'fill'" :title="user.fullName"/>
         </div>
     </section>
 </template>
@@ -23,19 +24,5 @@ export default {
 }
 </script>
  <style>
- .avatar {
-     position: relative;
-     display: inline-block;
-     /* margin-top: 20px; */
-     width: 30px;
-     height: 30px;
-     border-radius: 50%;
- }
- 
- .avatar[title]:hover::after {
-     content: attr(title);
-     position: absolute;
-     top: -100%;
-     left: 0;
- }
+
  </style>

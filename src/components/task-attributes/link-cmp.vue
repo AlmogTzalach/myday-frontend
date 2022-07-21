@@ -1,6 +1,6 @@
 <template>
     <section class="attr-container">
-         <el-link type="primary" :href="this.link"></el-link>
+         <el-link type="primary" :href="this.link">{{this.link}}</el-link>
     </section>
 </template>
 
@@ -14,7 +14,6 @@ export default {
 
     data() {
         return {
-            linkInput: this.link,
         }
     },
 
