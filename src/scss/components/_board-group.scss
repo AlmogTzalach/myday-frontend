@@ -74,7 +74,10 @@
 
 		.add-task-input {
 			@include inlineInput;
-			// height: 20px;
+		}
+
+		&:hover {
+			background-color: $row-hover-clr;
 		}
 	}
 
