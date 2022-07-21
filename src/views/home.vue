@@ -5,8 +5,7 @@
 			<h1>Myday</h1>
 		</div>
 		<nav class="homepage-nav">
-			<router-link to="/board/1000">Login</router-link>
-			<button>Get Started</button>
+			<router-link to="/board/1000"><button class="get-started-btn flex">Get started <img src="../assets/icons/arrow-right.svg"></button></router-link>
 		</nav>
 	</header>
 
