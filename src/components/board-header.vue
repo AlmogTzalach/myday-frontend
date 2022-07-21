@@ -14,9 +14,7 @@
 		<div class="board-vue flex">
 			<div class="btn-container">
 				<button @click="setTableVue" class="btn vue-btn">
-					<el-icon :size="size" :color="color"
-						><HomeFilled
-					/></el-icon>
+					<el-icon><HomeFilled /></el-icon>
 					Main Table
 					<button></button>
 				</button>
