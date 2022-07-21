@@ -35,13 +35,26 @@
 		data() {
 			return {}
 		},
+
 		methods: {
 			addTask() {
 				this.$store.dispatch({ type: 'addTask' })
 			},
 		},
-		currBoard() {
-			return this.$store.getters.currBoard
+
+		computed: {
+			currBoard() {
+				return this.$store.getters.currBoard
+			},
+		},
+
+		watch: {
+			'$route.params.boardId': {
+				handler(boardId) {
+					console.log(boardId)
+				},
+				immediate: true,
+			},
 		},
 
 		components: {
