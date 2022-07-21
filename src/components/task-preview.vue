@@ -1,13 +1,11 @@
 <template>
 	<div class="task-preview task-row grid">
 		<div class="task-name name-cell grid">
-			<p contenteditable @input="onTitleUpdate" class="task-title">
-				{{ currTask.title }}
-			</p>
-			<!-- <div class="edit-title">
-				<div>
-				</div>
-			</div> -->
+			<div class="edit-title">
+				<p contenteditable @input="onTitleUpdate" class="task-title">
+					{{ currTask.title }}
+				</p>
+			</div>
 			<!-- <input type="text" v-model="currTask.title" @input="onTitleUpdate" /> -->
 			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
@@ -20,7 +18,10 @@
 			></component>
 			<component :is="'peopleCmp'" :people="task.people"></component>
 			<component :is="'dateCmp'" :date="task.date"></component>
-			<component :is="'checkboxCmp'" :checkbox="task.checkbox"></component>
+			<component
+				:is="'checkboxCmp'"
+				:checkbox="task.checkbox"
+			></component>
 			<!-- <p>{{ task.checkbox }}</p> -->
 			<p>{{ task.link }}</p>
 			<p class="long-text">{{ task.txt }}</p>
@@ -77,7 +78,7 @@ export default {
 		priorityCmp,
 		peopleCmp,
 		dateCmp,
-		checkboxCmp
+		checkboxCmp,
 	},
 }
 </script>

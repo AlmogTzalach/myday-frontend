@@ -3,14 +3,14 @@
 		padding-inline-end: 30px;
 	}
 
-	.task-title {
-		flex-grow: 1;
-		@include inlineInput;
-		padding: 2px 4px;
-		cursor: text;
-		height: auto;
-	}
 	.edit-title {
 		flex-grow: 1;
+		.task-title {
+			flex-grow: 1;
+			@include inlineInput;
+			padding: 2px 4px;
+			cursor: text;
+			height: auto;
+		}
 	}
 }
