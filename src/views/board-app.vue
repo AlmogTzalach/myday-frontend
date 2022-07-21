@@ -49,7 +49,6 @@
 				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
 			},
 		},
-
 		computed: {
 			currBoard() {
 				return this.$store.getters.currBoard
