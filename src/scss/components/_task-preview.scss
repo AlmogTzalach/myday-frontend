@@ -3,7 +3,7 @@
 		padding-inline-end: 30px;
 	}
 
-	input {
+	.task-title {
 		@include inlineInput;
 		padding: 2px 4px;
 	}

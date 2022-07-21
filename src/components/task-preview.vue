@@ -1,13 +1,20 @@
 <template>
 	<div class="task-preview task-row grid">
 		<div class="task-name name-cell grid">
-			<input type="text" v-model="currTask.title" @input="onTitleUpdate" />
+			<p contenteditable @input="onTitleUpdate" class="task-title">
+				{{ currTask.title }}
+			</p>
+
+			<!-- <input type="text" v-model="currTask.title" @input="onTitleUpdate" /> -->
 			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
 		</div>
 		<div class="task-data grid">
 			<component :is="'statusCmp'" :statusId="task.statusId"></component>
-			<component :is="'priorityCmp'" :priorityId="task.priorityId"></component>
+			<component
+				:is="'priorityCmp'"
+				:priorityId="task.priorityId"
+			></component>
 			<component :is="'peopleCmp'" :people="task.people"></component>
 			<component :is="'dateCmp'" :date="task.date"></component>
 			<!-- <p>People</p> -->
@@ -48,7 +55,8 @@ export default {
 				taskId: this.task.id,
 			})
 		},
-		onTitleUpdate() {
+		onTitleUpdate(e) {
+			this.currTask.title = e.target.innerText
 			this.$store.dispatch({
 				type: 'updateTask',
 				groupId: this.currGroup,
@@ -65,7 +73,7 @@ export default {
 		statusCmp,
 		priorityCmp,
 		peopleCmp,
-		dateCmp
+		dateCmp,
 	},
 }
 </script>
