@@ -51,6 +51,7 @@
 	font-size: $fontSize;
 	letter-spacing: -0.2px;
 	width: fit-content;
+	display: inline-block;
 
 	&:hover {
 		border: 1px solid $divider-clr;

@@ -27,8 +27,18 @@
 
 			<!-- table footer -->
 			<div class="group-footer">
-				<div class="add-task-line">
-					<p contenteditable placeholder="+Add Task" @focus="onAddTask">+Add Task</p>
+				<div class="add-task-line grid">
+					<span
+						contenteditable
+						class="add-task-input"
+						@focus="onTaskFocus"
+						@blur="onTaskBlur"
+						@keyup.enter="onAddTask"
+					>
+						+Add Task
+					</span>
+
+					<div></div>
 				</div>
 				<div class="task-summary"></div>
 			</div>
@@ -47,10 +57,21 @@
 		},
 
 		methods: {
-			onAddTask(el) {
-				console.log(el.target)
+			onTaskFocus(el) {
 				el.target.placeholder = '+Add Task'
 				el.target.innerText = ''
+			},
+			onTaskBlur(el) {
+				el.target.innerText = '+Add Task'
+			},
+			onAddTask(el) {
+				const name = el.target.innerText
+				el.target.blur()
+				if (!name) {
+					this.onTaskBlur(el)
+					return
+				}
+				console.log(name)
 			},
 		},
 
