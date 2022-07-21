@@ -21,7 +21,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-inline-end: rem(10px);
+		margin-inline-end: rem(16px);
 		@include mainBtn;
 		padding: 0.5rem 0.3rem;
 
@@ -31,7 +31,7 @@
 	}
 
 	button {
-		margin-inline-end: rem(10px);
+		margin-inline-end: rem(16px);
 		display: flex;
 		align-items: center;
 		@include mainBtn;

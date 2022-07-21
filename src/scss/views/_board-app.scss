@@ -35,7 +35,9 @@
 	}
 
 	.board-container {
+		min-width: 50vw;
 		// overflow: auto;
-		// overflow-x: scroll;
+		// overflow-x: auto;
+		// overflow-x: visible;
 	}
 }
