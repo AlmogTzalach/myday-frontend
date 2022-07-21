@@ -16,6 +16,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
+	font-weight: 500;
 	font-family: roboto-bold, sans-serif;
 }
 
@@ -25,10 +26,12 @@ img {
 
 input {
 	color: $text-black;
+	font-family: roboto, sans-serif;
 }
 
 button {
 	color: $text-black;
+	font-family: roboto, sans-serif;
 	font-size: 1em;
 }
 
