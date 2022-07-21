@@ -15,7 +15,7 @@
 				<board-filter></board-filter>
 			</div>
 			<div v-for="group in currBoard.groups" :key="group.id">
-				<board-group :group="group" />
+				<board-group :group="group" @taskMoved="onTaskMoved"/>
 			</div>
 		</section>
 	</section>
@@ -41,6 +41,9 @@
 				const firstGroupId = this.currBoard.groups[0].id
 				this.$store.dispatch({ type: 'addTask', groupId: firstGroupId, name: 'New Task' })
 			},
+			onTaskMoved() {
+				this.$store.dispatch({type:'saveBoard', board: this.currBoard})
+			}
 		},
 		computed: {
 			currBoard() {
