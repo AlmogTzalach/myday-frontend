@@ -22,34 +22,20 @@
 </template>
 
 <script>
-import statusCmp from './task-attributes/status-cmp.vue'
-import priorityCmp from './task-attributes/priority-cmp.vue'
-import peopleCmp from './task-attributes/people-cmp.vue'
-import dateCmp from './task-attributes/date-cmp.vue'
-import checkboxCmp from './task-attributes/checkbox-cmp.vue'
+	import statusCmp from './task-attributes/status-cmp.vue'
+	import priorityCmp from './task-attributes/priority-cmp.vue'
+	import peopleCmp from './task-attributes/people-cmp.vue'
+	import dateCmp from './task-attributes/date-cmp.vue'
+	import checkboxCmp from './task-attributes/checkbox-cmp.vue'
 
-export default {
-	name: 'taskPreview',
+	export default {
+		name: 'taskPreview',
 
-	props: {
-		task: Object,
-		currGroup: String,
-	},
-
-	data() {
-		return {
-			currTask: null,
-		}
-	},
-
-	methods: {
-		onDelete() {
-			this.$store.dispatch({
-				type: 'removeTask',
-				groupId: this.currGroup,
-				taskId: this.task.id,
-			})
+		props: {
+			task: Object,
+			currGroup: String,
 		},
+<<<<<<< HEAD
 		onTaskUpdate() {
 			this.$store.dispatch({
 				type: 'updateTask',
@@ -66,17 +52,43 @@ export default {
 			this.onTaskUpdate()
 		}
 	},
+=======
 
-	created() {
-		this.currTask = JSON.parse(JSON.stringify(this.task))
-	},
+		data() {
+			return {
+				currTask: null,
+			}
+		},
+>>>>>>> 0b9a081eee08ad096487493cce4b560bd38ead7c
 
-	components: {
-		statusCmp,
-		priorityCmp,
-		peopleCmp,
-		dateCmp,
-		checkboxCmp,
-	},
-}
+		methods: {
+			onDelete() {
+				this.$store.dispatch({
+					type: 'removeTask',
+					groupId: this.currGroup,
+					taskId: this.task.id,
+				})
+			},
+			onTitleUpdate(el) {
+				this.currTask.title = el.target.innerText
+				this.$store.dispatch({
+					type: 'updateTask',
+					groupId: this.currGroup,
+					newTask: JSON.parse(JSON.stringify(this.currTask)),
+				})
+			},
+		},
+
+		created() {
+			this.currTask = JSON.parse(JSON.stringify(this.task))
+		},
+
+		components: {
+			statusCmp,
+			priorityCmp,
+			peopleCmp,
+			dateCmp,
+			checkboxCmp,
+		},
+	}
 </script>

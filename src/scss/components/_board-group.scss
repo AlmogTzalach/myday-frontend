@@ -1,19 +1,26 @@
 .board-group {
 	margin-bottom: 2em;
 
+	.group-table {
+		border-inline-start: 6px solid lightseagreen;
+		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+
 	.group-title {
 		font-size: 1.2857em;
 		margin-bottom: 0.3888em;
 		line-height: 1.5;
 	}
 
-	.group-header-row {
+	.group-header-row,
+	.add-task-line {
 		border-top: 1px solid $divider-clr;
-		border-top-left-radius: 6px;
+		line-height: 2.5714;
+		color: $text-group-header;
 
 		.task-title {
 			justify-content: center;
-			border-top-left-radius: 6px;
 		}
 	}
 
@@ -21,17 +28,6 @@
 		grid-template-columns: 360px 1fr;
 		border-bottom: 1px solid $divider-clr;
 		grid-auto-flow: column;
-		line-height: 2.5714;
-
-		&:first-child:hover {
-			cursor: pointer;
-			background-color: $row-hover-clr;
-			box-shadow: 4px 3px 6px -3px $box-shadow-clr;
-		}
-
-		.task-title {
-			line-height: 1;
-		}
 
 		.task-name,
 		.task-data > * {
@@ -42,7 +38,6 @@
 
 		.task-name {
 			padding-inline-start: 35px;
-			border-inline-start: 6px solid lightseagreen;
 		}
 
 		.task-data {
@@ -62,5 +57,10 @@
 				padding-inline: 0.5714em;
 			}
 		}
+	}
+
+	.add-task-line {
+		padding-inline-start: 35px;
+		border-bottom: 1px solid $divider-clr;
 	}
 }
