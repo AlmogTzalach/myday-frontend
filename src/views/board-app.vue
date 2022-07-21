@@ -8,61 +8,70 @@
 
 			<div class="flex main-actions-container">
 				<div class="add-btns">
-					<button class="btn1 add-task-btn" @click="addTask">New Task</button>
+					<button class="btn1 add-task-btn" @click="addTask">
+						New Task
+					</button>
 					<button class="btn2 add-task-btn">></button>
 				</div>
 
 				<board-filter></board-filter>
 			</div>
-			<div v-for="group in currBoard.groups" :key="group.id">
-				<board-group :group="group" />
+
+			<div class="group-list">
+				<div v-for="group in currBoard.groups" :key="group.id">
+					<board-group :group="group" />
+				</div>
 			</div>
 		</section>
 	</section>
 </template>
 
 <script>
-	import mainNav from '@/components/main-nav.vue'
-	import boardsNav from '@/components/boards-nav.vue'
-	import boardHeader from '@/components/board-header.vue'
-	import boardFilter from '@/components/board-filter.vue'
-	import boardGroup from '@/components/board-group.vue'
-	import taskDetails from '@/components/task-details.vue'
+import mainNav from '@/components/main-nav.vue'
+import boardsNav from '@/components/boards-nav.vue'
+import boardHeader from '@/components/board-header.vue'
+import boardFilter from '@/components/board-filter.vue'
+import boardGroup from '@/components/board-group.vue'
+import taskDetails from '@/components/task-details.vue'
 
-	export default {
-		name: 'board-app',
+export default {
+	name: 'board-app',
 
-		data() {
-			return {}
+	data() {
+		return {}
+	},
+
+	methods: {
+		addTask() {
+			const firstGroupId = this.currBoard.groups[0].id
+			this.$store.dispatch({
+				type: 'addTask',
+				groupId: firstGroupId,
+				name: 'New Task',
+			})
 		},
-
-		methods: {
-			addTask() {
-				const firstGroupId = this.currBoard.groups[0].id
-				this.$store.dispatch({ type: 'addTask', groupId: firstGroupId, name: 'New Task' })
+	},
+	computed: {
+		currBoard() {
+			return this.$store.getters.currBoard
+		},
+	},
+	watch: {
+		'$route.params.boardId': {
+			handler(boardId) {
+				console.log(boardId)
 			},
+			immediate: true,
 		},
-		computed: {
-			currBoard() {
-				return this.$store.getters.currBoard
-			},
-		},
-		watch: {
-			'$route.params.boardId': {
-				handler(boardId) {
-					console.log(boardId)
-				},
-				immediate: true,
-			},
-		},
+	},
 
-		components: {
-			mainNav,
-			boardHeader,
-			boardFilter,
-			boardGroup,
-			taskDetails,
-			boardsNav,
-		},
-	}
+	components: {
+		mainNav,
+		boardHeader,
+		boardFilter,
+		boardGroup,
+		taskDetails,
+		boardsNav,
+	},
+}
 </script>

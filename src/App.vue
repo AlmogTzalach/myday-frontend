@@ -3,9 +3,9 @@
 </template>
 
 <script>
-	export default {
-		created() {
-			this.$store.dispatch({ type: 'loadBoards' })
-		},
-	}
+export default {
+	created() {
+		this.$store.dispatch({ type: 'loadBoards' })
+	},
+}
 </script>

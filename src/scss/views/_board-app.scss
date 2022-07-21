@@ -29,4 +29,9 @@
 			}
 		}
 	}
+
+	.board-container {
+		// overflow: auto;
+		overflow-x: scroll;
+	}
 }
