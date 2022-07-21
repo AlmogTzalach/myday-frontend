@@ -16,9 +16,6 @@
 
 		<div class="board-vue flex">
 			<div class="btn-container">
-				<!-- <el-icon :size="size" :color="color">
-					<Edit />
-				</el-icon> -->
 				<button @click="setTableVue" class="btn vue-btn">
 					Main Table
 				</button>
