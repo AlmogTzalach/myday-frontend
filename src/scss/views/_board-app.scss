@@ -5,17 +5,14 @@
 		padding: rem(12px) 0;
 		margin-bottom: rem(20px);
 		.add-btns {
+			display: flex;
 			margin-inline-end: rem(16px);
 			.add-task-btn {
 				@include addBtn;
 			}
 
-			.btn1,
-			.btn2 {
-				padding: rem(6px);
-			}
-
 			.btn1 {
+				padding: rem(7px);
 				border-start-start-radius: $btnRadius;
 				border-bottom-left-radius: $btnRadius;
 				border-right: 1px solid rgb(0, 96, 185);
@@ -24,13 +21,15 @@
 			}
 
 			.btn2 {
-				padding-inline-end: rem(11px);
+				padding: rem(3px);
 				border-end-end-radius: $btnRadius;
 				border-top-right-radius: $btnRadius;
 
-				// img{
-				// 	filter: $;
-				// }
+				img {
+					filter: $svgWhite;
+					width: 20px;
+					height: 20px;
+				}
 			}
 		}
 	}
