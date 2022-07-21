@@ -53,8 +53,13 @@ export default {
 }
 
 .hero {
-	background-color: rgb(27, 31, 60);
+	background-image: linear-gradient(to bottom,rgb(27, 31, 60),rgb(42, 48, 94) );
 	color: white;
+	height: 500px;
+}
+
+.hero>* {
+	margin-bottom: 3em;
 }
 
 .features-promo {
