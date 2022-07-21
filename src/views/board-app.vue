@@ -1,7 +1,7 @@
 <template>
 	<section class="app-container grid">
 		<main-nav></main-nav>
-		<boards-nav></boards-nav>
+		<boards-nav :boards="boards"></boards-nav>
 
 		<section class="board-container">
 			<board-header :board="currBoard" />
@@ -16,7 +16,6 @@
 
 				<board-filter></board-filter>
 			</div>
-
 			<div v-for="group in currBoard.groups" :key="group.id">
 				<board-group :group="group" />
 			</div>
@@ -48,7 +47,7 @@ export default {
 			return this.$store.getters.boards
 		},
 		currBoard() {
-			return this.boards[0]
+			return this.$store.getters.currBoard
 		},
 	},
 
