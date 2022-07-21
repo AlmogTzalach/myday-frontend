@@ -1,6 +1,6 @@
 <template>
     <section class="attr-container">
-        <el-checkbox v-model="checkboxInput"  />
+        <el-checkbox v-model="checkboxInput" size="large"  />
     </section>
 </template>
 

@@ -20,9 +20,8 @@
 			></component>
 			<component :is="'peopleCmp'" :people="task.people"></component>
 			<component :is="'dateCmp'" :date="task.date"></component>
-			<!-- <p>People</p> -->
-			<!-- <p>{{ task.date }}</p> -->
-			<p>{{ task.checkbox }}</p>
+			<component :is="'checkboxCmp'" :checkbox="task.checkbox"></component>
+			<!-- <p>{{ task.checkbox }}</p> -->
 			<p>{{ task.link }}</p>
 			<p class="long-text">{{ task.txt }}</p>
 			<p class="empty-data"></p>
@@ -35,6 +34,7 @@ import statusCmp from './task-attributes/status-cmp.vue'
 import priorityCmp from './task-attributes/priority-cmp.vue'
 import peopleCmp from './task-attributes/people-cmp.vue'
 import dateCmp from './task-attributes/date-cmp.vue'
+import checkboxCmp from './task-attributes/checkbox-cmp.vue'
 
 export default {
 	name: 'taskPreview',
@@ -77,6 +77,7 @@ export default {
 		priorityCmp,
 		peopleCmp,
 		dateCmp,
+		checkboxCmp
 	},
 }
 </script>
