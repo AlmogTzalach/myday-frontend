@@ -46,7 +46,7 @@
 @mixin inlineInput($fontSize: 1em) {
 	padding: 0.5rem 0.3rem;
 	border-radius: 4px;
-	border: none;
+	border: 1px solid transparent;
 	font-size: $fontSize;
 	letter-spacing: -0.2px;
 	width: fit-content;
