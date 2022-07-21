@@ -16,7 +16,6 @@
 				<button @click="setTableVue" class="btn vue-btn">
 					<el-icon><HomeFilled /></el-icon>
 					Main Table
-					<button></button>
 				</button>
 				<div></div>
 			</div>

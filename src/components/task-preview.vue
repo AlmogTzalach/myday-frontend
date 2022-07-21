@@ -15,8 +15,7 @@
 			<component :is="'dateCmp'" :date="task.date"></component>
 			<component :is="'checkboxCmp'" :checkbox="task.checkbox" @onToggleCheckbox="toggleCheckbox"></component>
 			<component :is="'linkCmp'" :link="task.link"></component>
-			<!-- <p>{{ task.link }}</p> -->
-			<p class="long-text">{{ task.txt }}</p>
+			<component :is="'txtCmp'" :txt="task.txt"></component>
 			<p class="empty-data"></p>
 		</div>
 	</div>
@@ -29,7 +28,7 @@ import peopleCmp from './task-attributes/people-cmp.vue'
 import dateCmp from './task-attributes/date-cmp.vue'
 import checkboxCmp from './task-attributes/checkbox-cmp.vue'
 import linkCmp from './task-attributes/link-cmp.vue'
-
+import txtCmp from './task-attributes/txt-cmp.vue'
 export default {
 	name: 'taskPreview',
 
@@ -79,7 +78,8 @@ export default {
 		peopleCmp,
 		dateCmp,
 		checkboxCmp,
-		linkCmp
+		linkCmp,
+		txtCmp
 	},
 }
 </script>
