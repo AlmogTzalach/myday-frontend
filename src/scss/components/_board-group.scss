@@ -4,6 +4,7 @@
 	.group-table {
 		border-inline-start: 6px solid lightseagreen;
 		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
 	}
 
 	.group-title {
@@ -12,9 +13,11 @@
 		line-height: 1.5;
 	}
 
-	.group-header-row {
+	.group-header-row,
+	.add-task-line {
 		border-top: 1px solid $divider-clr;
 		line-height: 2.5714;
+		color: $text-group-header;
 
 		.task-title {
 			justify-content: center;
@@ -54,5 +57,10 @@
 				padding-inline: 0.5714em;
 			}
 		}
+	}
+
+	.add-task-line {
+		padding-inline-start: 35px;
+		border-bottom: 1px solid $divider-clr;
 	}
 }

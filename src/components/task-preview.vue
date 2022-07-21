@@ -53,8 +53,8 @@
 					taskId: this.task.id,
 				})
 			},
-			onTitleUpdate(e) {
-				this.currTask.title = e.target.innerText
+			onTitleUpdate(el) {
+				this.currTask.title = el.target.innerText
 				this.$store.dispatch({
 					type: 'updateTask',
 					groupId: this.currGroup,
