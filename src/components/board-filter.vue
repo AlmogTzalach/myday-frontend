@@ -8,14 +8,16 @@
 		</div>
 
 		<button class="btn person-btn">
-			<img src="../assets/icons/person-round.svg" alt="" />
+			<!-- <img src="../assets/icons/person-round.svg" alt="" /> -->
+			<el-icon><User /></el-icon>
 			<span>Person</span>
 		</button>
 
 		<!-- <button class="btn"> -->
 		<button>
 			<div class="btn1 flex">
-				<img src="../assets/icons/filter.svg" alt="" />
+				<el-icon><Filter /></el-icon>
+				<!-- <img src="../assets/icons/filter.svg" alt="" /> -->
 				<span> Filter </span>
 			</div>
 
