@@ -15,7 +15,7 @@
 				<board-filter></board-filter>
 			</div>
 			<div v-for="group in currBoard.groups" :key="group.id">
-				<board-group :group="group" @taskMoved="onTaskMoved"/>
+				<board-group :group="group" @taskMoved="onTaskMoved" />
 			</div>
 		</section>
 	</section>
@@ -41,15 +41,21 @@
 				const firstGroupId = this.currBoard.groups[0].id
 				this.$store.dispatch({ type: 'addTask', groupId: firstGroupId, name: 'New Task' })
 			},
-			onTaskMoved() {
-				this.$store.dispatch({type:'saveBoard', board: this.currBoard})
-			}
+			onTaskMoved(newGroup) {
+				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
+				let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
+				boardCopy.groups.splice(idx, 1, newGroup)
+
+				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+			},
 		},
+
 		computed: {
 			currBoard() {
 				return this.$store.getters.currBoard
 			},
 		},
+
 		watch: {
 			'$route.params.boardId': {
 				handler(boardId) {
