@@ -35,28 +35,32 @@
 		data() {
 			return {}
 		},
-
 		methods: {
 			addTask() {
 				this.$store.dispatch({ type: 'addTask' })
 			},
-		},
 
-		computed: {
-			currBoard() {
-				return this.$store.getters.currBoard
-			},
-		},
-
-		watch: {
-			'$route.params.boardId': {
-				handler(boardId) {
-					console.log(boardId)
+			methods: {
+				addTask() {
+					this.$store.dispatch({ type: 'addTask' })
 				},
-				immediate: true,
+			},
+
+			computed: {
+				currBoard() {
+					return this.$store.getters.currBoard
+				},
+			},
+
+			watch: {
+				'$route.params.boardId': {
+					handler(boardId) {
+						console.log(boardId)
+					},
+					immediate: true,
+				},
 			},
 		},
-
 		components: {
 			mainNav,
 			boardHeader,
