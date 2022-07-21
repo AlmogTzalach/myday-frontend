@@ -12,7 +12,9 @@
 					<button class="btn1 add-task-btn" @click="addTask">
 						New Task
 					</button>
-					<button class="btn2 add-task-btn">></button>
+					<button class="btn2 add-task-btn">
+						<img src="../assets/icons/down.svg" alt="" />
+					</button>
 				</div>
 
 				<board-filter></board-filter>
