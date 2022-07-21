@@ -1,0 +1,16 @@
+.main-nav {
+	background-color: #292f4c;
+	flex-direction: column;
+	align-items: center;
+	// justify-content: center;
+	.logo-svg {
+		margin: rem(10px) 0;
+	}
+	img {
+		width: 25px;
+		margin-bottom: rem(5px);
+
+		&:hover {
+		}
+	}
+}

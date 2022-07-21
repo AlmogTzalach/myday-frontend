@@ -2,13 +2,16 @@
 	<section class="app-container grid">
 		<main-nav></main-nav>
 		<boards-nav :boards="boards"></boards-nav>
+		<!-- {{ currBoard }} -->
 
 		<section class="board-container">
 			<board-header :board="currBoard" />
 
 			<div class="flex main-actions-container">
 				<div class="add-btns">
-					<button class="btn1 add-task-btn" @click="addTask">New Task</button>
+					<button class="btn1 add-task-btn" @click="addTask">
+						New Task
+					</button>
 					<button class="btn2 add-task-btn">></button>
 				</div>
 
@@ -39,11 +42,18 @@
 		methods: {
 			addTask() {
 				const firstGroupId = this.currBoard.groups[0].id
-				this.$store.dispatch({ type: 'addTask', groupId: firstGroupId, name: 'New Task' })
+				this.$store.dispatch({
+					type: 'addTask',
+					groupId: firstGroupId,
+					name: 'New Task',
+				})
 			},
+
 			onTaskMoved(newGroup) {
 				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-				let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
+				let idx = boardCopy.groups.findIndex(
+					(group) => group.id === newGroup.id
+				)
 				boardCopy.groups.splice(idx, 1, newGroup)
 
 				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
