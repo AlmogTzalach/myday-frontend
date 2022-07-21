@@ -6,7 +6,11 @@
 		margin-bottom: rem(8px);
 		align-items: center;
 
-		input {
+		.title-input {
+			flex-grow: 1;
+		}
+
+		h1 {
 			@include inlineInput(em(22px));
 		}
 

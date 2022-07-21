@@ -43,13 +43,11 @@ export default {
 			this.$store.dispatch({ type: 'addTask' })
 		},
 	},
-
 	computed: {
 		currBoard() {
 			return this.$store.getters.currBoard
 		},
 	},
-
 	watch: {
 		'$route.params.boardId': {
 			handler(boardId) {
