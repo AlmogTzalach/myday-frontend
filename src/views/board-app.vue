@@ -48,19 +48,18 @@ export default {
 				name: 'New Task',
 			})
 		},
+
 		onTaskMoved(newGroup) {
 			const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-			let idx = boardCopy.groups.findIndex(
-				(group) => group.id === newGroup.id
-			)
+			let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
 			boardCopy.groups.splice(idx, 1, newGroup)
 
 			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
 		},
 	},
+
 	computed: {
 		currBoard() {
-			console.log(this.$store.getters.currBoard, 'curr')
 			return this.$store.getters.currBoard
 		},
 	},
