@@ -12,16 +12,10 @@
 		</div>
 		<div class="task-data grid">
 			<component :is="'statusCmp'" :statusId="task.statusId"></component>
-			<component
-				:is="'priorityCmp'"
-				:priorityId="task.priorityId"
-			></component>
+			<component :is="'priorityCmp'" :priorityId="task.priorityId"></component>
 			<component :is="'peopleCmp'" :people="task.people"></component>
 			<component :is="'dateCmp'" :date="task.date"></component>
-			<component
-				:is="'checkboxCmp'"
-				:checkbox="task.checkbox"
-			></component>
+			<component :is="'checkboxCmp'" :checkbox="task.checkbox"></component>
 			<!-- <p>{{ task.checkbox }}</p> -->
 			<p>{{ task.link }}</p>
 			<p class="long-text">{{ task.txt }}</p>
@@ -31,54 +25,54 @@
 </template>
 
 <script>
-import statusCmp from './task-attributes/status-cmp.vue'
-import priorityCmp from './task-attributes/priority-cmp.vue'
-import peopleCmp from './task-attributes/people-cmp.vue'
-import dateCmp from './task-attributes/date-cmp.vue'
-import checkboxCmp from './task-attributes/checkbox-cmp.vue'
+	import statusCmp from './task-attributes/status-cmp.vue'
+	import priorityCmp from './task-attributes/priority-cmp.vue'
+	import peopleCmp from './task-attributes/people-cmp.vue'
+	import dateCmp from './task-attributes/date-cmp.vue'
+	import checkboxCmp from './task-attributes/checkbox-cmp.vue'
 
-export default {
-	name: 'taskPreview',
+	export default {
+		name: 'taskPreview',
 
-	props: {
-		task: Object,
-		currGroup: String,
-	},
-
-	data() {
-		return {
-			currTask: null,
-		}
-	},
-
-	methods: {
-		onDelete() {
-			this.$store.dispatch({
-				type: 'removeTask',
-				groupId: this.currGroup,
-				taskId: this.task.id,
-			})
+		props: {
+			task: Object,
+			currGroup: String,
 		},
-		onTitleUpdate(e) {
-			this.currTask.title = e.target.innerText
-			this.$store.dispatch({
-				type: 'updateTask',
-				groupId: this.currGroup,
-				newTask: JSON.parse(JSON.stringify(this.currTask)),
-			})
+
+		data() {
+			return {
+				currTask: null,
+			}
 		},
-	},
 
-	created() {
-		this.currTask = JSON.parse(JSON.stringify(this.task))
-	},
+		methods: {
+			onDelete() {
+				this.$store.dispatch({
+					type: 'removeTask',
+					groupId: this.currGroup,
+					taskId: this.task.id,
+				})
+			},
+			onTitleUpdate(e) {
+				this.currTask.title = e.target.innerText
+				this.$store.dispatch({
+					type: 'updateTask',
+					groupId: this.currGroup,
+					newTask: JSON.parse(JSON.stringify(this.currTask)),
+				})
+			},
+		},
 
-	components: {
-		statusCmp,
-		priorityCmp,
-		peopleCmp,
-		dateCmp,
-		checkboxCmp,
-	},
-}
+		created() {
+			this.currTask = JSON.parse(JSON.stringify(this.task))
+		},
+
+		components: {
+			statusCmp,
+			priorityCmp,
+			peopleCmp,
+			dateCmp,
+			checkboxCmp,
+		},
+	}
 </script>

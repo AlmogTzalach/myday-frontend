@@ -14,11 +14,9 @@
 
 	.group-header-row {
 		border-top: 1px solid $divider-clr;
-		// border-top-left-radius: 6px;
 
 		.task-title {
 			justify-content: center;
-			// border-top-left-radius: 6px;
 		}
 	}
 
@@ -28,11 +26,11 @@
 		grid-auto-flow: column;
 		line-height: 2.5714;
 
-		&:first-child:hover {
-			cursor: pointer;
-			background-color: $row-hover-clr;
-			box-shadow: 4px 3px 6px -3px $box-shadow-clr;
-		}
+		// &:first-of-type:hover {
+		// 	cursor: pointer;
+		// 	background-color: $row-hover-clr;
+		// 	box-shadow: 4px 3px 6px -3px $box-shadow-clr;
+		// }
 
 		.task-title {
 			line-height: 1;
@@ -47,7 +45,6 @@
 
 		.task-name {
 			padding-inline-start: 35px;
-			// border-inline-start: 6px solid lightseagreen;
 		}
 
 		.task-data {
