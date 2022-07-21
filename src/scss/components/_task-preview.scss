@@ -4,6 +4,7 @@
 	}
 
 	.task-title {
+		flex-grow: 1;
 		@include inlineInput;
 		padding: 2px 4px;
 		cursor: text;
