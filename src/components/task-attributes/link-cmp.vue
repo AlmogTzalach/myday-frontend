@@ -1,24 +1,25 @@
 <template>
     <section class="attr-container">
-        <el-date-picker v-model="dateInput" type="date" placeholder="Pick a day"/>
+         <el-link type="primary" :href="this.link"></el-link>
     </section>
 </template>
 
 <script>
 export default {
-    name: 'dateCmp',
+    name: 'linkCmp',
 
     props: {
-        date: Number,
+        link: String,
     },
 
     data() {
         return {
-            dateInput: this.date,
+            linkInput: this.link,
         }
     },
 
     computed: {
+
     },
 }
 </script>
