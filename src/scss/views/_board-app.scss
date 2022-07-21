@@ -1,5 +1,5 @@
 .app-container {
-	overflow: hidden;
+	// overflow: hidden;
 	.main-actions-container {
 		justify-content: flex-start;
 		align-items: center;
@@ -38,7 +38,7 @@
 	.board-container {
 		// min-width: 50vw;
 		// overflow: auto;
-		overflow-x: auto;
+		// overflow-x: auto;
 		// overflow-x: visible;
 	}
 }
