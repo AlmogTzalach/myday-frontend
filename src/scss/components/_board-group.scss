@@ -1,6 +1,11 @@
 .board-group {
 	margin-bottom: 2em;
 
+	.group-table {
+		border-inline-start: 6px solid lightseagreen;
+		border-top-left-radius: 6px;
+	}
+
 	.group-title {
 		font-size: 1.2857em;
 		margin-bottom: 0.3888em;
@@ -9,11 +14,11 @@
 
 	.group-header-row {
 		border-top: 1px solid $divider-clr;
-		border-top-left-radius: 6px;
+		// border-top-left-radius: 6px;
 
 		.task-title {
 			justify-content: center;
-			border-top-left-radius: 6px;
+			// border-top-left-radius: 6px;
 		}
 	}
 
@@ -42,7 +47,7 @@
 
 		.task-name {
 			padding-inline-start: 35px;
-			border-inline-start: 6px solid lightseagreen;
+			// border-inline-start: 6px solid lightseagreen;
 		}
 
 		.task-data {
