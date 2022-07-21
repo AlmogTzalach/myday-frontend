@@ -22,7 +22,11 @@
 
 			<!-- table content -->
 			<draggable :list="currGroup.tasks" @end="onTaskMoved">
-				<div v-for="task in currGroup.tasks" :key="task.id" @drop="onTaskMoved">
+				<div
+					v-for="task in currGroup.tasks"
+					:key="task.id"
+					@drop="onTaskMoved"
+				>
 					<task-preview :task="task" :currGroup="group.id" />
 				</div>
 			</draggable>
@@ -30,19 +34,25 @@
 			<!-- table footer -->
 			<div class="group-footer">
 				<div class="add-task-line grid">
-					<span
+					<p
 						contenteditable
 						class="add-task-input"
 						@focus="onTaskFocus"
 						@blur="onTaskBlur"
 						@keyup.enter="onAddTask"
 					>
-						+Add Task
-					</span>
+						+ Add Task
+					</p>
 
 					<div></div>
 				</div>
-				<div class="task-summary"></div>
+			</div>
+		</div>
+		<div class="task-summary grid">
+			<div class="empty-cell"></div>
+			<div class="task-data grid">
+				<div v-for="index in 7"></div>
+				<div></div>
 			</div>
 		</div>
 	</section>
@@ -69,11 +79,11 @@
 
 		methods: {
 			onTaskFocus(el) {
-				el.target.placeholder = '+Add Task'
+				el.target.placeholder = '+ Add Task'
 				el.target.innerText = ''
 			},
 			onTaskBlur(el) {
-				el.target.innerText = '+Add Task'
+				el.target.innerText = '+ Add Task'
 			},
 			onAddTask(el) {
 				const name = el.target.innerText

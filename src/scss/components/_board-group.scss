@@ -1,11 +1,7 @@
 .board-group {
 	margin-bottom: 2em;
-
-	.group-table {
-		border-inline-start: 6px solid lightseagreen;
-		border-top-left-radius: 6px;
-		border-bottom-left-radius: 6px;
-	}
+	margin-inline-start: 5px;
+	margin-inline-end: 8px;
 
 	.group-title {
 		font-size: 1.2857em;
@@ -13,10 +9,16 @@
 		line-height: 1.5;
 	}
 
+	.group-table {
+		border-inline-start: 6px solid lightseagreen;
+		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
+	}
+
 	.group-header-row,
 	.add-task-line {
 		border-top: 1px solid $divider-clr;
-		line-height: 2.5714;
+		height: 37px;
 		color: $text-group-header;
 
 		.task-title {
@@ -24,16 +26,21 @@
 		}
 	}
 
-	.task-row {
+	.task-row,
+	.task-summary {
 		grid-template-columns: 360px 1fr;
 		border-bottom: 1px solid $divider-clr;
 		grid-auto-flow: column;
+		height: 37px;
 
 		.task-name,
 		.task-data > * {
 			display: flex;
 			align-items: center;
-			border-inline-end: 1px solid $divider-clr;
+
+			&:not(:last-child) {
+				border-inline-end: 1px solid $divider-clr;
+			}
 		}
 
 		.task-name {
@@ -63,11 +70,25 @@
 		grid-template-columns: 300px 1fr;
 		padding-inline-start: 35px;
 		border-bottom: 1px solid $divider-clr;
+		border-top: none;
 
 		.add-task-input {
 			@include inlineInput;
-			// display: inline-block;
-			line-height: 1;
+			// height: 20px;
+		}
+	}
+
+	.task-summary {
+		margin-inline-start: 6px;
+		border-bottom: none;
+
+		.empty-cell {
+			border-inline-end: 1px solid $divider-clr;
+		}
+
+		.task-data {
+			border-bottom: 1px solid $divider-clr;
+			border-bottom-left-radius: 6px;
 		}
 	}
 }
