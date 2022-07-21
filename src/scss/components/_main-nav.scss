@@ -7,10 +7,18 @@
 		margin: rem(10px) 0;
 	}
 	img {
-		width: 25px;
+		width: 40px;
 		margin-bottom: rem(5px);
 		fill: white;
 		filter: $svgWhite;
+		transition: $trns;
+		padding: rem(7px);
+		border-radius: rem(7px);
+		margin-bottom: rem(8px);
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.6);
+		}
 	}
 
 	.nav-btns {
