@@ -2,6 +2,7 @@
 	<section class="app-container grid">
 		<main-nav></main-nav>
 		<boards-nav :boards="boards"></boards-nav>
+		<!-- {{ currBoard }} -->
 
 		<section class="board-container">
 			<board-header :board="currBoard" />
@@ -47,41 +48,31 @@ export default {
 				name: 'New Task',
 			})
 		},
+		onTaskMoved(newGroup) {
+			const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
+			let idx = boardCopy.groups.findIndex(
+				(group) => group.id === newGroup.id
+			)
+			boardCopy.groups.splice(idx, 1, newGroup)
 
-		methods: {
-			addTask() {
-				const firstGroupId = this.currBoard.groups[0].id
-				this.$store.dispatch({
-					type: 'addTask',
-					groupId: firstGroupId,
-					name: 'New Task',
-				})
-			},
-			onTaskMoved(newGroup) {
-				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-				let idx = boardCopy.groups.findIndex(
-					(group) => group.id === newGroup.id
-				)
-				boardCopy.groups.splice(idx, 1, newGroup)
-
-				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
-			},
+			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
 		},
-		computed: {
-			currBoard() {
-				return this.$store.getters.currBoard
-			},
+	},
+	computed: {
+		currBoard() {
+			console.log(this.$store.getters.currBoard, 'curr')
+			return this.$store.getters.currBoard
 		},
+	},
 
-		watch: {
-			'$route.params.boardId': {
-				handler(boardId) {
-					console.log(boardId)
-				},
-				immediate: true,
+	watch: {
+		'$route.params.boardId': {
+			handler(boardId) {
+				console.log(boardId)
 			},
 			immediate: true,
 		},
+		immediate: true,
 	},
 
 	components: {
