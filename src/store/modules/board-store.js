@@ -57,17 +57,19 @@ export default {
 			commit({ type: 'setBoards', boards })
 		},
 
-		async removeTask({ commit }, { groupId, taskId }) {
-			// await boardService.removeTask(currBoard._id, groupId, taskId)
+		async removeTask({ commit, state }, { groupId, taskId }) {
 			commit({ type: 'removeTask', groupId, taskId })
+			await boardService.save(state.currBoard)
 		},
-		async updateTask({ commit }, { groupId, newTask }) {
+		async updateTask({ commit, state }, { groupId, newTask }) {
 			commit({ type: 'updateTask', groupId, newTask })
+			await boardService.save(state.currBoard)
 		},
-		async addTask({ commit }, { groupId, name, addToEnd = false }) {
+		async addTask({ commit, state }, { groupId, name, addToEnd = false }) {
 			const newTask = boardService.getEmptyTask()
 			newTask.title = name
 			commit({ type: 'addTask', newTask, groupId, addToEnd })
+			await boardService.save(state.currBoard)
 		},
 	},
 }
