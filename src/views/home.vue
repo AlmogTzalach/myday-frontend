@@ -10,7 +10,11 @@
 		</nav>
 	</header>
 
-	<div class="hero flex column align-center">
+	<div class="hero text-center">
+		<div class="stars-group-1"></div>
+		<div class="stars-group-2"></div>
+		<div class="stars-group-3"></div>
+		<div class="stars-group-4"></div>
 		<h1>Project management made delightfully simple</h1>
 		<h3>All your task management needs met in one app</h3>
 		<div class="features-promo-container flex space-around">
@@ -32,7 +36,9 @@
 		</div>
 	</div>
 
+
 </template>
+	
 
 <script>
 export default {
@@ -41,28 +47,4 @@ export default {
 </script>
 
 <style>
-.homepage-header {
-	padding: 1em;
-	margin-bottom: 1.5em;
-}
-
-.feature-promo {
-	border: 1px solid rgba(255,255,255,0.3);
-	border-radius: 8px;
-	padding: 1.5em;
-}
-
-.hero {
-	background-image: linear-gradient(to bottom,rgb(27, 31, 60),rgb(42, 48, 94) );
-	color: white;
-	height: 500px;
-}
-
-.hero>* {
-	margin-bottom: 3em;
-}
-
-.features-promo {
-	width: 100%;
-}
 </style>

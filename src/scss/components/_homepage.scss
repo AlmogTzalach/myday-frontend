@@ -1,0 +1,85 @@
+.homepage-header {
+	padding: 1em;
+	margin-bottom: 1.5em;
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+}
+
+.hero {
+	background-image: linear-gradient(to bottom, rgb(27, 31, 60), rgb(42, 48, 94));
+	color: white;
+	height: 100vh;
+
+	& > * {
+		margin-bottom: 3em;
+	}
+
+	&.features-promo {
+		width: 100%;
+	}
+
+	.features-promo-container {
+		& .feature-promo {
+			color: white;
+			border: 1px solid rgba(255, 255, 255, 0.3);
+			border-radius: 8px;
+			padding: 1.5em;
+		}
+	}
+}
+
+@function generate-random-stars($screen-width, $color, $density) {
+	$h-shadow: random($screen-width);
+	$v-shadow: random($screen-width);
+
+	$stars: '#{$h-shadow}px #{$v-shadow}px #{$color}';
+	@for $i from 2 through $density {
+		$h-shadow: random($screen-width);
+		$v-shadow: random($screen-width);
+
+		$stars: '#{$stars}, #{$h-shadow}px #{$v-shadow}px #{$color}';
+	}
+	@return unquote($stars);
+}
+
+@mixin stars-content($screen-width, $color, $density, $speed, $delay) {
+	width: 2px;
+	height: 2px;
+	border-radius: 50%;
+	opacity: 0;
+	box-shadow: generate-random-stars($screen-width, $color, $density);
+	animation-name: glowing-stars;
+	animation-duration: $speed + s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+	animation-timing-function: linear;
+	animation-delay: $delay + s;
+}
+
+//Change colors for multi-colors star groups
+
+.stars-group-1 {
+	@include stars-content(1800, #fff, 50, 1.5, 0);
+}
+.stars-group-2 {
+	@include stars-content(1800, #fff, 50, 1.5, 0.2);
+}
+.stars-group-3 {
+	@include stars-content(1800, #fff, 50, 1.5, 0.4);
+}
+.stars-group-4 {
+	@include stars-content(1800, #fff, 50, 1.5, 0.6);
+}
+
+@keyframes glowing-stars {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
+	}
+}
