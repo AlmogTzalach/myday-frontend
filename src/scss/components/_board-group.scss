@@ -29,6 +29,10 @@
 			box-shadow: 4px 3px 6px -3px $box-shadow-clr;
 		}
 
+		.task-title {
+			line-height: 1;
+		}
+
 		.task-name,
 		.task-data > * {
 			display: flex;
