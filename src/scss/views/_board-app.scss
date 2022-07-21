@@ -2,10 +2,10 @@
 	.main-actions-container {
 		justify-content: flex-start;
 		align-items: center;
-		padding: rem(16px) 0;
+		padding: rem(14px) 0;
 		margin-bottom: rem(18px);
 		.add-btns {
-			margin-inline-end: rem(14px);
+			margin-inline-end: rem(16px);
 			.add-task-btn {
 				@include addBtn;
 			}

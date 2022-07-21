@@ -60,7 +60,14 @@
 	}
 
 	.add-task-line {
+		grid-template-columns: 300px 1fr;
 		padding-inline-start: 35px;
 		border-bottom: 1px solid $divider-clr;
+
+		.add-task-input {
+			@include inlineInput;
+			// display: inline-block;
+			line-height: 1;
+		}
 	}
 }

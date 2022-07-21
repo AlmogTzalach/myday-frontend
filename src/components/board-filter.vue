@@ -1,7 +1,17 @@
 <template>
 	<section class="board-filter">
-		<button class="btn">Search</button>
-		<button class="btn">Person</button>
+		<div class="search-filter-container">
+			<button class="btn search-btn" contenteditable>
+				<el-icon><Search /></el-icon>
+				<span>Search</span>
+			</button>
+		</div>
+
+		<button class="btn person-btn">
+			<el-icon><User /></el-icon>
+			<span>Person</span>
+		</button>
+
 		<button class="btn">Filter</button>
 		<button class="btn">Sort</button>
 	</section>

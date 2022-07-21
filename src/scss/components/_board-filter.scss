@@ -1,8 +1,23 @@
 .board-filter {
-	.btn {
-		margin-inline-end: rem(6px);
+	display: flex;
+	// width: 100%;
+
+	.search-btn {
+		// @include inlineInput;
+		// &:hover {
+		// 	border: none;
+		// }
+		.el-icon {
+			margin-right: rem(5px);
+		}
+
+		span {
+			margin-inline-end: rem(7px);
+		}
 	}
 	.btn {
+		margin-inline-end: rem(20px);
 		@include mainBtn;
+		padding: 0.5rem 0.3rem;
 	}
 }
