@@ -1,6 +1,6 @@
 <template>
 	<section class="main-nav flex">
-		<div class="nav-btn">
+		<div class="nav-btns">
 			<button class="logo-svg">logo</button>
 			<button>work</button>
 			<img src="../assets/icons/notifications.svg" alt="" />
@@ -9,7 +9,11 @@
 			<img src="../assets/icons/favorites.svg" alt="" />
 		</div>
 
-		<div></div>
+		<div class="nav-btns">
+			<img src="../assets/icons/invit-members.svg" alt="" />
+			<img src="../assets/icons/search.svg" alt="" />
+			<img src="../assets/icons/help.svg" alt="" />
+		</div>
 	</section>
 </template>
 

@@ -35,7 +35,6 @@ async function remove(boardId) {
 }
 
 async function save(board) {
-	console.log(board)
 	if (board._id) return storageService.put(BOARD_KEY, board)
 	return storageService.post(BOARD_KEY, board)
 
