@@ -13,6 +13,7 @@
 			<img src="../assets/icons/invit-members.svg" alt="" />
 			<img src="../assets/icons/search.svg" alt="" />
 			<img src="../assets/icons/help.svg" alt="" />
+			<div class="user-img"></div>
 		</div>
 	</section>
 </template>

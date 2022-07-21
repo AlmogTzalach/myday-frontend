@@ -64,6 +64,9 @@ export default {
 		currBoard() {
 			return this.$store.getters.currBoard
 		},
+		boards() {
+			return this.$store.getters.boards
+		},
 	},
 
 	watch: {
