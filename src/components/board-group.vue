@@ -71,7 +71,12 @@
 					this.onTaskBlur(el)
 					return
 				}
-				console.log(name)
+				this.$store.dispatch({
+					type: 'addTask',
+					name,
+					groupId: this.group.id,
+					addToEnd: true,
+				})
 			},
 		},
 

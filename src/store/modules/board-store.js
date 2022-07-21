@@ -14,9 +14,7 @@ export default {
 			return currBoard
 		},
 		task({ currBoard }, { groupId, taskId }) {
-			const currGroup = currBoard.groups.find(
-				(group) => group.id === groupId
-			)
+			const currGroup = currBoard.groups.find((group) => group.id === groupId)
 			return currGroup.tasks.find((task) => task.id === taskId)
 		},
 		status({ currBoard }) {
@@ -35,21 +33,18 @@ export default {
 			state.currBoard = currBoard
 		},
 		removeTask(state, { groupId, taskId }) {
-			const group = state.currBoard.groups.find(
-				(group) => group.id === groupId
-			)
+			const group = state.currBoard.groups.find((group) => group.id === groupId)
 			const idx = group.tasks.findIndex((task) => task.id === taskId)
 			group.tasks.splice(idx, 1)
 		},
 		updateTask(state, { groupId, newTask }) {
-			const group = state.currBoard.groups.find(
-				(group) => group.id === groupId
-			)
+			const group = state.currBoard.groups.find((group) => group.id === groupId)
 			let idx = group.tasks.findIndex((task) => task.id === newTask.id)
 			group.tasks.splice(idx, 1, newTask)
 		},
-		addTask(state, { newTask }) {
-			state.currBoard.groups[0].tasks.unshift(newTask)
+		addTask(state, { newTask, groupId, addToEnd }) {
+			const group = state.currBoard.groups.find((group) => group.id === groupId)
+			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
 		},
 		setBoard(state, { boardId }) {
 			const board = state.boards.find((board) => board._id === boardId)
@@ -69,9 +64,10 @@ export default {
 		async updateTask({ commit }, { groupId, newTask }) {
 			commit({ type: 'updateTask', groupId, newTask })
 		},
-		async addTask({ commit }) {
+		async addTask({ commit }, { groupId, name, addToEnd = false }) {
 			const newTask = boardService.getEmptyTask()
-			commit({ type: 'addTask', newTask })
+			newTask.title = name
+			commit({ type: 'addTask', newTask, groupId, addToEnd })
 		},
 	},
 }
