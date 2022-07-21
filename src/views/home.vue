@@ -5,7 +5,9 @@
 			<h1>Myday</h1>
 		</div>
 		<nav class="homepage-nav">
-			<router-link to="/board/1000"><button class="get-started-btn">Get started <img src="@/assets/"></button></router-link>
+			<router-link to="/board/1000"
+				><button class="get-started-btn">Get started</button></router-link
+			>
 		</nav>
 	</header>
 
@@ -34,10 +36,7 @@
 			</div>
 		</div>
 	</div>
-
-
 </template>
-	
 
 <script>
 export default {
@@ -45,5 +44,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>
