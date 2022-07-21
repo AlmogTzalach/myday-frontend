@@ -4,7 +4,10 @@
 			<p contenteditable @input="onTitleUpdate" class="task-title">
 				{{ currTask.title }}
 			</p>
-
+			<!-- <div class="edit-title">
+				<div>
+				</div>
+			</div> -->
 			<!-- <input type="text" v-model="currTask.title" @input="onTitleUpdate" /> -->
 			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
