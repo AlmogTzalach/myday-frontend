@@ -82,12 +82,9 @@
 		margin-inline-start: 6px;
 		border-bottom: none;
 
-		.empty-cell {
-			border-inline-end: 1px solid $divider-clr;
-		}
-
 		.task-data {
 			border-bottom: 1px solid $divider-clr;
+			border-inline-start: 1px solid $divider-clr;
 			border-bottom-left-radius: 6px;
 		}
 	}
