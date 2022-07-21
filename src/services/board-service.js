@@ -47,7 +47,7 @@ async function save(board) {
 
 function getEmptyTask() {
 	return {
-		id: 't103',
+		id: utilService._makeId(5),
 		title: 'New Task',
 		statusId: 'l101',
 		priorityId: 'p101',
