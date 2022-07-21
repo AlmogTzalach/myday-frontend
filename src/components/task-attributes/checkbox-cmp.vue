@@ -1,24 +1,25 @@
 <template>
     <section class="attr-container">
-        <el-date-picker v-model="dateInput" type="date" placeholder="Pick a day"/>
+        <el-checkbox v-model="checkboxInput"  />
     </section>
 </template>
 
 <script>
 export default {
-    name: 'dateCmp',
+    name: 'checkboxCmp',
 
     props: {
-        date: Number,
+        checkbox: Boolean,
     },
 
     data() {
         return {
-            dateInput: this.date,
+            checkboxInput: this.checkbox,
         }
     },
 
     computed: {
+
     },
 }
 </script>
