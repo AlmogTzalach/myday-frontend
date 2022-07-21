@@ -6,23 +6,14 @@
 					{{ currTask.title }}
 				</p>
 			</div>
-			<!-- <input type="text" v-model="currTask.title" @input="onTitleUpdate" /> -->
-			<!-- <p>{{ task.title }}</p> -->
 			<span @click="onDelete">delete</span>
 		</div>
 		<div class="task-data grid">
 			<component :is="'statusCmp'" :statusId="task.statusId"></component>
-			<component
-				:is="'priorityCmp'"
-				:priorityId="task.priorityId"
-			></component>
+			<component :is="'priorityCmp'" :priorityId="task.priorityId"></component>
 			<component :is="'peopleCmp'" :people="task.people"></component>
 			<component :is="'dateCmp'" :date="task.date"></component>
-			<component
-				:is="'checkboxCmp'"
-				:checkbox="task.checkbox"
-			></component>
-			<!-- <p>{{ task.checkbox }}</p> -->
+			<component :is="'checkboxCmp'" :checkbox="task.checkbox" @onToggleCheckbox="toggleCheckbox"></component>
 			<p>{{ task.link }}</p>
 			<p class="long-text">{{ task.txt }}</p>
 			<p class="empty-data"></p>
@@ -59,14 +50,21 @@ export default {
 				taskId: this.task.id,
 			})
 		},
-		onTitleUpdate(e) {
-			this.currTask.title = e.target.innerText
+		onTaskUpdate() {
 			this.$store.dispatch({
 				type: 'updateTask',
 				groupId: this.currGroup,
 				newTask: JSON.parse(JSON.stringify(this.currTask)),
 			})
 		},
+		onTitleUpdate(el) {
+			this.currTask.title = el.target.innerText
+			this.onTaskUpdate()
+		},
+		toggleCheckbox() {
+			this.currTask.checkbox = !this.currTask.checkbox
+			this.onTaskUpdate()
+		}
 	},
 
 	created() {

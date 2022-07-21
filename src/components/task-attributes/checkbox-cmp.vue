@@ -1,6 +1,6 @@
 <template>
-    <section class="attr-container">
-        <el-checkbox v-model="checkboxInput" size="large"  />
+    <section class="attr-container" @click="toggleCheckbox">
+        <el-icon class="check" v-if="checkbox"><Check /></el-icon>
     </section>
 </template>
 
@@ -14,12 +14,20 @@ export default {
 
     data() {
         return {
-            checkboxInput: this.checkbox,
         }
     },
 
-    computed: {
-
+    methods: {
+        toggleCheckbox() {
+            this.$emit('onToggleCheckbox')
+        }
     },
 }
 </script>
+<style>
+.el-icon.check {
+    color: rgb(0, 202, 114);
+    font-size: 1.5em;
+}
+
+</style>
