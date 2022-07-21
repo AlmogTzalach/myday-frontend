@@ -21,9 +21,11 @@
 			</div>
 
 			<!-- table content -->
-			<div v-for="task in group.tasks" :key="task.id">
-				<task-preview :task="task" :currGroup="group.id" />
-			</div>
+			<draggable :list="currGroup.tasks" @end="onTaskMoved">
+				<div v-for="task in currGroup.tasks" :key="task.id" @drop="onTaskMoved">
+					<task-preview :task="task" :currGroup="group.id" />
+				</div>
+			</draggable>
 
 			<!-- table footer -->
 			<div class="group-footer">
@@ -48,6 +50,7 @@
 
 <script>
 	import taskPreview from './task-preview.vue'
+	import { VueDraggableNext } from 'vue-draggable-next'
 
 	export default {
 		name: 'boardGroup',
@@ -55,6 +58,14 @@
 		props: {
 			group: Object,
 		},
+
+		data() {
+			return {
+				currGroup: {},
+			}
+		},
+
+		computed: {},
 
 		methods: {
 			onTaskFocus(el) {
@@ -78,10 +89,26 @@
 					addToEnd: true,
 				})
 			},
+			onTaskMoved() {
+				this.$emit('taskMoved', this.currGroup)
+			},
+		},
+
+		created() {},
+
+		watch: {
+			group: {
+				handler() {
+					this.currGroup = JSON.parse(JSON.stringify(this.group))
+				},
+				immediate: true,
+				deep: true,
+			},
 		},
 
 		components: {
 			taskPreview,
+			draggable: VueDraggableNext,
 		},
 	}
 </script>
