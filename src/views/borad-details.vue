@@ -10,7 +10,7 @@
 				</button>
 			</div>
 
-			<board-filter></board-filter>
+			<board-filter @setFilter="setFilter" />
 		</div>
 
 		<div class="groups-container">
@@ -22,56 +22,54 @@
 </template>
 
 <script>
-	import { boardService } from '../services/board-service'
-	import boardHeader from '@/components/board-header.vue'
-	import boardFilter from '@/components/board-filter.vue'
-	import boardGroup from '@/components/board-group.vue'
+import { boardService } from '../services/board-service'
+import boardHeader from '@/components/board-header.vue'
+import boardFilter from '@/components/board-filter.vue'
+import boardGroup from '@/components/board-group.vue'
 
-	export default {
-		name: 'board-detais',
-		data() {
-			return {
-				currBoard: null,
-			}
+export default {
+	name: 'board-detais',
+	data() {
+		return {
+			currBoard: null,
+		}
+	},
+	// async created() {
+	// 	const { boardId } = this.$route.params
+	// 	const board = await boardService.getById(boardId)
+	// 	this.currBoard = board
+	// },
+	methods: {
+		addTask() {
+			const firstGroupId = this.currBoard.groups[0].id
+			this.$store.dispatch({
+				type: 'addTask',
+				groupId: firstGroupId,
+				name: 'New Task',
+			})
 		},
-		// async created() {
-		// 	const { boardId } = this.$route.params
-		// 	const board = await boardService.getById(boardId)
-		// 	this.currBoard = board
-		// },
-		methods: {
-			addTask() {
-				const firstGroupId = this.currBoard.groups[0].id
-				this.$store.dispatch({
-					type: 'addTask',
-					groupId: firstGroupId,
-					name: 'New Task',
-				})
-			},
 
-			onTaskMoved(newGroup) {
-				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-				let idx = boardCopy.groups.findIndex(
-					(group) => group.id === newGroup.id
-				)
-				boardCopy.groups.splice(idx, 1, newGroup)
+		onTaskMoved(newGroup) {
+			const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
+			let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
+			boardCopy.groups.splice(idx, 1, newGroup)
 
-				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+		},
+	},
+	watch: {
+		'$route.params.boardId': {
+			async handler(boardId) {
+				const board = await boardService.getById(boardId)
+				this.currBoard = board
 			},
+			immediate: true,
 		},
-		watch: {
-			'$route.params.boardId': {
-				async handler(boardId) {
-					const board = await boardService.getById(boardId)
-					this.currBoard = board
-				},
-				immediate: true,
-			},
-		},
-		components: {
-			boardHeader,
-			boardFilter,
-			boardGroup,
-		},
-	}
+	},
+	components: {
+		boardHeader,
+		boardFilter,
+		boardGroup,
+	},
+}
 </script>
