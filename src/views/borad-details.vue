@@ -20,6 +20,7 @@
 		</div>
 	</section>
 </template>
+
 <script>
 import { boardService } from '../services/board-service'
 import boardHeader from '@/components/board-header.vue'
@@ -54,9 +55,6 @@ export default {
 			boardCopy.groups.splice(idx, 1, newGroup)
 
 			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
-		},
-		setFilter(filter) {
-			this.$store.commit({ type: 'setGroupsFilter', filter })
 		},
 	},
 	watch: {

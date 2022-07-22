@@ -1,6 +1,9 @@
 <template>
 	<section class="board-group">
-		<h4 class="group-title">{{ group.title }}</h4>
+		<div class="group-title">
+			<img src="../assets/icons/down.svg" alt="" />
+			<h4>{{ group.title }}</h4>
+		</div>
 
 		<div class="group-table">
 			<!-- table header -->
