@@ -7,7 +7,7 @@
                 </div>
             </section>
         </template>
-        <label-picker :labels="this.statusLabels"></label-picker>
+        <label-picker :labels="this.statusLabels" @labelPicked="changeStatus"></label-picker>
     </el-popover>
 </template>
 
@@ -23,6 +23,12 @@ export default {
 
     data() {
         return {}
+    },
+
+    methods: {
+        changeStatus(statusId) {
+            console.log(statusId)
+        }
     },
 
     computed: {
