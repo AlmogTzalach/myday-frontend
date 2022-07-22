@@ -33,10 +33,10 @@ export default {
 .el-date-editor {
     opacity: 0;
     position: absolute;
+    z-index: 100;
 }
 
 .date-display {
     position: absolute;
-    z-index: 100;
 }
 </style>
