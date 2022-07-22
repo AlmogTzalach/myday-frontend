@@ -3,7 +3,13 @@
 		<div class="search-filter-container">
 			<button class="btn search-btn" contenteditable>
 				<img src="../assets/icons/search.svg" alt="" />
-				<span>Search</span>
+				<!-- <span placeholder="Search"></span> -->
+				<input
+					type="text"
+					v-model="filter.txt"
+					placeholder="Search"
+					@input="setFilterBy"
+				/>
 			</button>
 		</div>
 
@@ -35,5 +41,19 @@
 </template>
 
 <script>
-export default {}
+export default {
+	name: 'boardFilter',
+	data() {
+		return {
+			filter: {
+				txt: '',
+			},
+		}
+	},
+	methods: {
+		setFilterBy() {
+			this.$emit('setFilter', this.filter)
+		},
+	},
+}
 </script>

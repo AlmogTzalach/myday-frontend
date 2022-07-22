@@ -5,18 +5,24 @@
 	// width: 100%;
 
 	.search-btn {
-		// @include inlineInput;
-		// &:hover {
-		// 	border: none;
+		background-color: initial;
+		// &:focus {
+		// 	background-color: aqua;
 		// }
+		input {
+			border: none;
+			outline: none;
+			background-color: inherit;
+
+			&:focus {
+				background-color: white;
+			}
+		}
 		.el-icon {
 			margin-right: rem(5px);
 		}
-
-		span {
-			margin-inline-end: rem(7px);
-		}
 	}
+
 	.btn {
 		display: flex;
 		justify-content: center;

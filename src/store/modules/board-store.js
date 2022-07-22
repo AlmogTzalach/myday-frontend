@@ -47,6 +47,9 @@ export default {
 		setBoardFilter(state, { filter }) {
 			state.boardsFilter = filter
 		},
+		setGroupsFilter(state, { filter }) {
+			state.groupFilter = filter
+		},
 		removeTask(state, { groupId, taskId }) {
 			const group = state.currBoard.groups.find(
 				(group) => group.id === groupId
