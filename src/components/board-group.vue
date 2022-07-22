@@ -1,11 +1,11 @@
 <template>
 	<section class="board-group">
-		<div class="group-title">
-			<img src="../assets/icons/down.svg" alt="" />
+		<div class="group-title" :style="{ color: group.style.color }">
+			<el-icon><ArrowDownBold /></el-icon>
 			<h4>{{ group.title }}</h4>
 		</div>
 
-		<div class="group-table">
+		<div class="group-table" :style="{ 'border-color': group.style.color }">
 			<!-- table header -->
 			<div class="group-header-row task-row grid">
 				<div class="task-name task-title">

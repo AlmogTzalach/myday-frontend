@@ -5,12 +5,11 @@
 
 	.group-title {
 		display: flex;
-		img {
-			display: inline;
-			width: 20px;
-			margin-bottom: 6px;
-			margin-inline-start: 8px;
-			margin-inline-end: 10px;
+		.el-icon {
+			// display: inline;
+			padding-top: 13px;
+			margin-inline-start: 13px;
+			margin-inline-end: 11px;
 		}
 
 		h4 {
