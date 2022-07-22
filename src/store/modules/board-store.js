@@ -38,9 +38,13 @@ export default {
 			state.boards = boards
 			state.currBoard = boards[0]
 		},
-		setBoard(state, { currBoard }) {
-			state.currBoard = currBoard
+		setBoard(state, { boardId }) {
+			const board = state.boards.find((board) => board._id === boardId)
+			state.currBoard = board
 		},
+		// setBoard(state, { currBoard }) {
+		// 	state.currBoard = currBoard
+		// },
 		setBoardFilter(state, { filter }) {
 			state.boardsFilter = filter
 		},
@@ -64,9 +68,11 @@ export default {
 			)
 			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
 		},
-		setBoard(state, { boardId }) {
-			const board = state.boards.find((board) => board._id === boardId)
-			state.currBoard = board
+		addGroup(state, { newGroup, addToEnd }) {
+			console.log('gg')
+			// if (addToEnd) {
+			// 	state.currBoard.groups.push(newGroup)
+			// }
 		},
 		saveBoard(state, { newBoard }) {
 			let board = state.boards.find((board) => board._id === newBoard._id)
@@ -93,11 +99,16 @@ export default {
 			commit({ type: 'addTask', newTask, groupId, addToEnd })
 			await boardService.save(state.currBoard)
 		},
+		async addGroup({ state, commit }, { addToEnd }) {
+			const newGroup = boardService.getEmptyGroup()
+			commit({ type: 'addGroup', newGroup, addToEnd })
+			await boardService.save(state.currBoard)
+		},
 		async saveBoard({ commit }, { newBoard }) {
-			const boardToAdd = !newBoard ? boardService.getEmptyBoard() : newBoard
+			// const boardToAdd = !newBoard ? boardService.getEmptyBoard() : newBoard
 
-			commit({ type: 'saveBoard', boardToAdd })
-			await boardService.save(boardToAdd)
+			commit({ type: 'saveBoard', newBoard })
+			await boardService.save(newBoard)
 		},
 	},
 }

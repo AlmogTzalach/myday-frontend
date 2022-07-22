@@ -2,10 +2,7 @@
 	<section class="boards-nav">
 		<div class="workspace-details flex">
 			<div>Workspace</div>
-			<button>
-				Main workspace
-				<!-- <p>{{ open }}</p> -->
-			</button>
+			<button>Main workspace</button>
 		</div>
 		<div class="workspace-add flex">
 			<button class="btn" @click="addBoard()">
@@ -51,13 +48,15 @@ export default {
 	methods: {
 		goToBoard(boardId) {
 			this.$router.push(`/board/${boardId}`)
+			this.$store.commit({ type: 'setBoard', boardId })
 			// this.$store.commit({ type: 'setBoard', boardId })
 		},
 		setFilter() {
 			this.$emit('setFilter', this.filter)
 		},
 		addBoard() {
-			this.$emit('saveBoard')
+			console.log('Add board')
+			// this.$emit('saveBoard')
 		},
 	},
 	computed: {},

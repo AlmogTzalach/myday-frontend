@@ -1,0 +1,19 @@
+.groups-container {
+	padding-inline-start: rem(31px);
+	padding-bottom: rem(40px);
+	overflow-x: auto;
+
+	.btn {
+		@include mainBtn;
+		border: 1px solid rgb(195 198 212);
+		padding: rem(6px) rem(10px);
+		color: $gray-txt;
+
+		img {
+			width: 25px;
+			padding-inline-end: rem(8px);
+			filter: invert(41%) sepia(7%) saturate(197%) hue-rotate(201deg)
+				brightness(91%) contrast(88%);
+		}
+	}
+}

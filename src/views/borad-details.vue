@@ -21,7 +21,10 @@
 					@taskMoved="onTaskMoved"
 				/>
 			</div>
-			<button class="btn addBtn" @click="addGroup">+ Add new group</button>
+			<button class="btn addBtn flex" @click="addGroup">
+				<img src="../assets/icons/add.svg" alt="" />
+				<span>Add new group</span>
+			</button>
 		</div>
 	</section>
 </template>
@@ -68,7 +71,7 @@ export default {
 			this.groupFilter = filter
 		},
 		addGroup() {
-			console.log('gg')
+			this.$store.dispatch({ type: 'addGroup', addToEnd: true })
 		},
 	},
 	watch: {
