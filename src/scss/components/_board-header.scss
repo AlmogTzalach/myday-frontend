@@ -1,5 +1,6 @@
 .board-header {
-	padding-top: rem(9px);
+	padding-top: rem(15px);
+	padding-inline-start: rem(30px);
 
 	.board-actions {
 		justify-content: space-between;
@@ -11,6 +12,7 @@
 
 		h1 {
 			@include inlineInput(em(32px));
+			padding: 0 rem(4px);
 		}
 
 		.btns {
@@ -21,6 +23,7 @@
 	}
 
 	.board-vue {
+		margin-top: rem(8px);
 		align-items: baseline;
 		border-bottom: lightgray 1px solid;
 		span {

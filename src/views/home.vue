@@ -5,10 +5,14 @@
 			<h1>Myday</h1>
 		</div>
 		<nav class="homepage-nav">
-			<router-link to="/board/1000"
-				><button class="get-started-btn flex">
+			<!-- <router-link to="/board/1000"
+				><button @click="getStarted()" class="get-started-btn flex">
 					Get started <img src="../assets/icons/arrow-right.svg" /></button
-			></router-link>
+			></router-link> -->
+
+			<button @click="getStarted()" class="get-started-btn flex">
+				Get started <img src="../assets/icons/arrow-right.svg" />
+			</button>
 		</nav>
 	</header>
 
@@ -42,6 +46,12 @@
 <script>
 export default {
 	name: 'home',
+	methods: {
+		getStarted() {
+			const boardId = this.$store.getters.boards[0]._id
+			this.$router.push(`/board/${boardId}`)
+		},
+	},
 }
 </script>
 

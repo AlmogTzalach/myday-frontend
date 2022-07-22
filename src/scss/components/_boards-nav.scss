@@ -1,5 +1,5 @@
 .boards-nav {
-	padding: rem(18px) rem(14px);
+	padding: rem(14px) rem(14px);
 	background-color: #f6f7fb;
 	min-height: 100vh;
 	border-inline-end: 1px solid #d0d4e4;
@@ -7,9 +7,9 @@
 
 	.workspace-details {
 		flex-direction: column;
-		padding-bottom: rem(16px);
+		padding-bottom: rem(14px);
 		div {
-			padding-bottom: rem(10px);
+			padding-bottom: rem(9px);
 		}
 
 		button {
@@ -23,18 +23,56 @@
 			font-weight: 700;
 		}
 	}
-	.boards-list {
-		padding-top: rem(14px);
-		border-top: 1px solid #d0d4e4;
 
-		display: flex;
-		align-items: center;
+	.workspace-add {
+		flex-direction: column;
+		padding-bottom: rem(16px);
+
+		.btn {
+			// text-align: start;
+			// display: flex;
+			// justify-content: left;
+			// align-items: center;
+		}
+		.search-btn {
+			// @include inlineInput;
+
+			input {
+				background-color: #f6f7fb;
+				border: none;
+				outline: none;
+			}
+		}
+	}
+
+	.boards-list {
+		padding-top: rem(20px);
+		border-top: 1px solid #d0d4e4;
 		flex-direction: column;
 
 		.btn {
-			@include mainBtn($bgclr: #f6f7fb);
-			width: 100%;
-			text-align: start;
+			// width: 100%;
+			// text-align: start;
+		}
+	}
+
+	img {
+		width: 18px;
+		filter: invert(16%) sepia(6%) saturate(715%) hue-rotate(193deg)
+			brightness(99%) contrast(88%);
+	}
+	.btn {
+		text-align: start;
+		display: flex;
+		justify-content: left;
+		align-items: center;
+
+		@include mainBtn($bgclr: #f6f7fb);
+		// border: none;
+
+		padding: rem(5px) rem(5px);
+		span {
+			margin-inline-start: rem(7px);
 		}
 	}
 }

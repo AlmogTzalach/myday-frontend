@@ -7,13 +7,29 @@
 				<!-- <p>{{ open }}</p> -->
 			</button>
 		</div>
-		<div class="boards-list">
+		<div class="workspace-add flex">
+			<button class="btn">
+				<el-icon><Plus /></el-icon>
+				<span>Add</span>
+			</button>
+			<button class="btn search-btn">
+				<img src="../assets/icons/search.svg" alt="" />
+				<input
+					type="text"
+					v-model="filter.txt"
+					placeholder="Search"
+					@input="setFilter"
+				/>
+			</button>
+		</div>
+		<div class="boards-list flex">
 			<button
 				v-for="board in boards"
 				class="btn"
-				@click="setBoard(board._id)"
+				@click="goToBoard(board._id)"
 			>
-				{{ board.title }}
+				<img src="../assets/icons/board.svg" alt="" />
+				<span>{{ board.title }}</span>
 			</button>
 		</div>
 	</section>
@@ -26,17 +42,21 @@ export default {
 		boards: Array,
 	},
 	data() {
-		return {}
+		return {
+			filter: {
+				txt: '',
+			},
+		}
 	},
 	methods: {
-		setBoard(boardId) {
-			this.$store.commit({ type: 'setBoard', boardId })
+		goToBoard(boardId) {
+			this.$router.push(`/board/${boardId}`)
+			// this.$store.commit({ type: 'setBoard', boardId })
+		},
+		setFilter() {
+			this.$emit('setFilter', this.filter)
 		},
 	},
-	computed: {
-		open() {
-			return '>'
-		},
-	},
+	computed: {},
 }
 </script>

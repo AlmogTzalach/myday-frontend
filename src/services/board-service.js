@@ -24,7 +24,7 @@ async function query() {
 }
 
 async function getById(boardId) {
-	return storageService.get(TOY_KEY, boardId)
+	return storageService.get(BOARD_KEY, boardId)
 	// const board = await httpService.get(`${ENDPOINT}/${boardId}`)
 	// return board
 }

@@ -5,10 +5,22 @@ export default {
 	state: {
 		boards: [],
 		currBoard: null,
+		boardsFilter: {
+			txt: '',
+		},
+		groupFilter: {
+			txt: '',
+		},
 	},
 	getters: {
 		boards({ boards }) {
 			return boards
+		},
+		boardsToDisply({ boards, boardsFilter }) {
+			const { txt } = boardsFilter
+			const regexTxt = new RegExp(txt, 'i')
+			let filteredBoards = boards.filter((board) => regexTxt.test(board.title))
+			return filteredBoards
 		},
 		currBoard({ currBoard }) {
 			return currBoard
@@ -29,21 +41,30 @@ export default {
 			state.boards = boards
 			state.currBoard = boards[0]
 		},
-		// setBoard(state, { currBoard }) {
-		// 	state.currBoard = currBoard
-		// },
+		setBoard(state, { currBoard }) {
+			state.currBoard = currBoard
+		},
+		setBoardFilter(state, { filter }) {
+			state.boardsFilter = filter
+		},
 		removeTask(state, { groupId, taskId }) {
-			const group = state.currBoard.groups.find((group) => group.id === groupId)
+			const group = state.currBoard.groups.find(
+				(group) => group.id === groupId
+			)
 			const idx = group.tasks.findIndex((task) => task.id === taskId)
 			group.tasks.splice(idx, 1)
 		},
 		updateTask(state, { groupId, newTask }) {
-			const group = state.currBoard.groups.find((group) => group.id === groupId)
+			const group = state.currBoard.groups.find(
+				(group) => group.id === groupId
+			)
 			let idx = group.tasks.findIndex((task) => task.id === newTask.id)
 			group.tasks.splice(idx, 1, newTask)
 		},
 		addTask(state, { newTask, groupId, addToEnd }) {
-			const group = state.currBoard.groups.find((group) => group.id === groupId)
+			const group = state.currBoard.groups.find(
+				(group) => group.id === groupId
+			)
 			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
 		},
 		setBoard(state, { boardId }) {

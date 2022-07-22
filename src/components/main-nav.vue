@@ -1,7 +1,7 @@
 <template>
 	<section class="main-nav flex">
 		<div class="nav-btns">
-			<button class="logo-svg">logo</button>
+			<button class="logo-svg" @click="goToHome()">logo</button>
 			<button>work</button>
 			<img src="../assets/icons/notifications.svg" alt="" />
 			<img src="../assets/icons/inbox.svg" alt="" />
@@ -19,5 +19,15 @@
 </template>
 
 <script>
-export default {}
+export default {
+	name: 'main-nav',
+	data() {
+		return {}
+	},
+	methods: {
+		goToHome() {
+			this.$router.push('/')
+		},
+	},
+}
 </script>
