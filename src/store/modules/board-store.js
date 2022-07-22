@@ -66,10 +66,10 @@ export default {
 			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
 		},
 		addGroup(state, { newGroup, addToEnd }) {
-			console.log('gg')
-			// if (addToEnd) {
-			// 	state.currBoard.groups.push(newGroup)
-			// }
+			// console.log('gg')
+			if (addToEnd) {
+				state.currBoard.groups.push(newGroup)
+			}
 		},
 		saveBoard(state, { newBoard }) {
 			// const boardCopy = JSON.parse(JSON.stringify(newBoard))
@@ -102,7 +102,8 @@ export default {
 		async addGroup({ state, commit }, { addToEnd }) {
 			const newGroup = boardService.getEmptyGroup()
 			newGroup.style.color = boardService.getRandomGroupClr()
-			console.log(newGroup)
+			commit({ type: 'addGroup', newGroup, addToEnd })
+			await boardService.save(state.currBoard)
 		},
 		async saveBoard({ commit }, { newBoard }) {
 			// const boardToAdd = !newBoard ? boardService.getEmptyBoard() : newBoard
