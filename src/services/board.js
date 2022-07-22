@@ -8,7 +8,15 @@ const boards = [
 			fullName: 'Stan Smith',
 			imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
 		},
-		cmpsOrder: ['status', 'person', 'date'],
+		cmpsOrder: [
+			'people',
+			'status',
+			'priority',
+			'date',
+			'checkbox',
+			'link',
+			'text',
+		],
 		possibleGroupColors: [
 			'#037f4c',
 			'#00c875',

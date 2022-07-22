@@ -25,6 +25,10 @@
 		border-bottom-left-radius: 6px;
 	}
 
+	.group-header-row {
+		text-transform: capitalize;
+	}
+
 	.group-header-row,
 	.add-task-line {
 		border-top: 1px solid $divider-clr;

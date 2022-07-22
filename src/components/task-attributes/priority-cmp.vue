@@ -18,7 +18,7 @@ export default {
     name: "priorityCmp",
 
     props: {
-        priorityId: String,
+        task: Object,
     },
 
     data() {
@@ -26,6 +26,10 @@ export default {
     },
 
     computed: {
+        priorityId() {
+            const { priorityId } = this.task
+            return priorityId
+        },
         priority() {
             const priorityLabels = this.$store.getters.priorities
             return priorityLabels.find(label => label.id === this.priorityId)

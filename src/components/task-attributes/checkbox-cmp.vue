@@ -9,12 +9,19 @@ export default {
     name: 'checkboxCmp',
 
     props: {
-        checkbox: Boolean,
+        task: Object,
     },
 
     data() {
         return {
         }
+    },
+
+    computed:{
+        checkbox() {
+            const {checkbox} = this.task
+            return checkbox
+        } 
     },
 
     methods: {

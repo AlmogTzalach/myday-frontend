@@ -1,7 +1,9 @@
 <template>
 	<section class="board-group">
 		<div class="group-title" :style="{ color: group.style.color }">
-			<el-icon><ArrowDownBold /></el-icon>
+			<el-icon>
+				<ArrowDownBold />
+			</el-icon>
 			<h4>{{ group.title }}</h4>
 		</div>
 
@@ -12,24 +14,14 @@
 					<p>Task</p>
 				</div>
 				<div class="task-data grid">
-					<p>Status</p>
-					<p>Priority</p>
-					<p>People</p>
-					<p>Date</p>
-					<p>Checkbox</p>
-					<p>Link</p>
-					<p>Text</p>
+					<p v-for="title in cmpsOrder" :key="title">{{ title }}</p>
 					<p class="empty-data"></p>
 				</div>
 			</div>
 
 			<!-- table content -->
 			<draggable :list="currGroup.tasks" @end="onTaskMoved">
-				<div
-					v-for="task in currGroup.tasks"
-					:key="task.id"
-					@drop="onTaskMoved"
-				>
+				<div v-for="task in currGroup.tasks" :key="task.id" @drop="onTaskMoved">
 					<task-preview :task="task" :currGroup="group.id" />
 				</div>
 			</draggable>
@@ -37,13 +29,8 @@
 			<!-- table footer -->
 			<div class="group-footer">
 				<div class="add-task-line grid">
-					<p
-						contenteditable
-						class="add-task-input"
-						@focus="onTaskFocus"
-						@blur="onTaskBlur"
-						@keyup.enter="onAddTask"
-					>
+					<p contenteditable class="add-task-input" @focus="onTaskFocus" @blur="onTaskBlur"
+						@keyup.enter="onAddTask">
 						+ Add Task
 					</p>
 
@@ -79,7 +66,11 @@ export default {
 		}
 	},
 
-	computed: {},
+	computed: {
+		cmpsOrder() {
+			return this.$store.getters.cmpsOrder
+		}
+	},
 
 	methods: {
 		onTaskFocus(el) {
@@ -106,10 +97,10 @@ export default {
 		onTaskMoved() {
 			this.$emit('taskMoved', this.currGroup)
 		},
-		groupToDisply() {},
+		groupToDisply() { },
 	},
 
-	created() {},
+	created() { },
 
 	watch: {
 		group: {

@@ -18,7 +18,7 @@ export default {
     name: "statusCmp",
 
     props: {
-        statusId: String,
+        task: Object,
     },
 
     data() {
@@ -32,6 +32,10 @@ export default {
     },
 
     computed: {
+        statusId(){
+            const {statusId} = this.task
+            return statusId
+        },
         status() {
             const statusLabels = this.$store.getters.status
             return statusLabels.find(label => label.id === this.statusId)

@@ -1,6 +1,6 @@
 <template>
     <section class="attr-container">
-         <el-link type="primary" :href="this.link">{{this.link}}</el-link>
+        <el-link type="primary" :href="this.link">{{ this.link }}</el-link>
     </section>
 </template>
 
@@ -9,7 +9,7 @@ export default {
     name: 'linkCmp',
 
     props: {
-        link: String,
+        task: Object,
     },
 
     data() {
@@ -18,7 +18,10 @@ export default {
     },
 
     computed: {
-
+        link() {
+            const { link } = this.task
+            return link
+        }
     },
 }
 </script>
