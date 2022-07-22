@@ -13,7 +13,7 @@ export default {
 		boards({ boards }) {
 			return boards
 		},
-		boardsToDisply({ boards, boardsFilter }) {
+		boardsToDisplay({ boards, boardsFilter }) {
 			const { txt } = boardsFilter
 			const regexTxt = new RegExp(txt, 'i')
 			let filteredBoards = boards.filter((board) => regexTxt.test(board.title))
@@ -42,9 +42,6 @@ export default {
 			const board = state.boards.find((board) => board._id === boardId)
 			state.currBoard = board
 		},
-		// setBoard(state, { currBoard }) {
-		// 	state.currBoard = currBoard
-		// },
 		setBoardFilter(state, { filter }) {
 			state.boardsFilter = filter
 		},
@@ -75,7 +72,10 @@ export default {
 			// }
 		},
 		saveBoard(state, { newBoard }) {
-			let board = state.boards.find((board) => board._id === newBoard._id)
+			// const boardCopy = JSON.parse(JSON.stringify(newBoard))
+			// state.boards.splice(idx, 1, boardCopy)
+			// state.currBoard = boardCopy
+			let board = state.boards.findIndex((board) => board._id === newBoard._id)
 			board = newBoard
 		},
 	},
@@ -84,7 +84,6 @@ export default {
 			const boards = await boardService.query()
 			commit({ type: 'setBoards', boards })
 		},
-
 		async removeTask({ commit, state }, { groupId, taskId }) {
 			commit({ type: 'removeTask', groupId, taskId })
 			await boardService.save(state.currBoard)
