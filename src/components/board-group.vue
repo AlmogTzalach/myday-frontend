@@ -3,7 +3,7 @@
 		<div class="group-title" :style="{ color: group.style.color }">
 			<el-icon><ArrowDownBold /></el-icon>
 			<div>
-				<h4 contenteditable>{{ group.title }}</h4>
+				<h4 contenteditable @input="updateGroupTitle">{{ group.title }}</h4>
 			</div>
 		</div>
 
@@ -107,6 +107,12 @@ export default {
 			this.$emit('taskMoved', this.currGroup)
 		},
 		groupToDisply() {},
+		updateGroupTitle(el) {
+			const title = el.target.innerText
+			let group = JSON.parse(JSON.stringify(this.group))
+			group.title = title
+			this.$emit('updateGroup', group)
+		},
 	},
 
 	created() {},

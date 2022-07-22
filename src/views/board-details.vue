@@ -19,6 +19,7 @@
 					:group="group"
 					:filter="groupFilter"
 					@taskMoved="onTaskMoved"
+					@updateGroup="updateGroup"
 				/>
 			</div>
 			<button class="btn addBtn flex" @click="addGroup">
@@ -72,6 +73,9 @@ export default {
 		},
 		addGroup() {
 			this.$store.dispatch({ type: 'addGroup', addToEnd: true })
+		},
+		updateGroup(group) {
+			this.$store.dispatch({ type: 'updateGroup', group })
 		},
 	},
 	watch: {
