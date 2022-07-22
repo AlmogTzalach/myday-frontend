@@ -35,7 +35,7 @@
 	import boardGroup from '@/components/board-group.vue'
 
 	export default {
-		name: 'board-detais',
+		name: 'board-details',
 		data() {
 			return {
 				groupFilter: {
