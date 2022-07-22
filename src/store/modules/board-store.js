@@ -8,9 +8,6 @@ export default {
 		boardsFilter: {
 			txt: '',
 		},
-		groupFilter: {
-			txt: '',
-		},
 	},
 	getters: {
 		boards({ boards }) {
@@ -46,9 +43,6 @@ export default {
 		},
 		setBoardFilter(state, { filter }) {
 			state.boardsFilter = filter
-		},
-		setGroupsFilter(state, { filter }) {
-			state.groupFilter = filter
 		},
 		removeTask(state, { groupId, taskId }) {
 			const group = state.currBoard.groups.find(
@@ -100,8 +94,10 @@ export default {
 			await boardService.save(state.currBoard)
 		},
 		async saveBoard({ commit }, { newBoard }) {
-			commit({ type: 'saveBoard', newBoard })
-			await boardService.save(newBoard)
+			const boardToAdd = !newBoard ? boardService.getEmptyBoard() : newBoard
+
+			commit({ type: 'saveBoard', boardToAdd })
+			await boardService.save(boardToAdd)
 		},
 	},
 }

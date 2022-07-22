@@ -15,8 +15,13 @@
 
 		<div class="groups-container">
 			<div v-for="group in currBoard.groups" :key="group.id">
-				<board-group :group="group" @taskMoved="onTaskMoved" />
+				<board-group
+					:group="group"
+					:filter="groupFilter"
+					@taskMoved="onTaskMoved"
+				/>
 			</div>
+			<button class="btn addBtn" @click="addGroup">+ Add new group</button>
 		</div>
 	</section>
 </template>
@@ -32,6 +37,9 @@ export default {
 	data() {
 		return {
 			currBoard: null,
+			groupFilter: {
+				txt: '',
+			},
 		}
 	},
 	// async created() {
@@ -55,6 +63,12 @@ export default {
 			boardCopy.groups.splice(idx, 1, newGroup)
 
 			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+		},
+		setFilter(filter) {
+			this.groupFilter = filter
+		},
+		addGroup() {
+			console.log('gg')
 		},
 	},
 	watch: {

@@ -8,7 +8,7 @@
 			</button>
 		</div>
 		<div class="workspace-add flex">
-			<button class="btn">
+			<button class="btn" @click="addBoard()">
 				<el-icon><Plus /></el-icon>
 				<span>Add</span>
 			</button>
@@ -55,6 +55,9 @@ export default {
 		},
 		setFilter() {
 			this.$emit('setFilter', this.filter)
+		},
+		addBoard() {
+			this.$emit('saveBoard')
 		},
 	},
 	computed: {},

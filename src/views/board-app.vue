@@ -1,7 +1,7 @@
 <template>
 	<section class="app-container grid">
 		<main-nav />
-		<boards-nav :boards="boards" @setFilter="setFilter" />
+		<boards-nav :boards="boards" @setFilter="setFilter" @saveBoard="saveBoard" />
 		<borad-details />
 		<!-- <section class="board-container">
 			<board-header :board="currBoard" />
@@ -52,6 +52,10 @@ export default {
 		setFilter(filter) {
 			filter = JSON.parse(JSON.stringify(filter))
 			this.$store.commit({ type: 'setBoardFilter', filter })
+		},
+		saveBoard() {
+			console.log('hh')
+			this.$store.dispatch({ type: 'saveBoard' })
 		},
 		// addTask() {
 		// 	const firstGroupId = this.currBoard.groups[0].id

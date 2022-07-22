@@ -16,6 +16,7 @@ export const boardService = {
 	remove,
 	save,
 	getEmptyTask,
+	getEmptyGroup,
 }
 
 async function query() {
@@ -43,6 +44,14 @@ async function save(board) {
 	//   } else {
 	//     return await httpService.post(ENDPOINT, board);
 	//   }
+}
+
+function getEmptyGroup() {
+	return {
+		id: utilService._makeId(),
+		title: 'New Group',
+		tasks: [],
+	}
 }
 
 function getEmptyTask() {

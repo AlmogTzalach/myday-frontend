@@ -62,66 +62,68 @@
 </template>
 
 <script>
-	import taskPreview from './task-preview.vue'
-	import { VueDraggableNext } from 'vue-draggable-next'
+import taskPreview from './task-preview.vue'
+import { VueDraggableNext } from 'vue-draggable-next'
 
-	export default {
-		name: 'boardGroup',
+export default {
+	name: 'boardGroup',
 
-		props: {
-			group: Object,
+	props: {
+		group: Object,
+		filter: Object,
+	},
+
+	data() {
+		return {
+			currGroup: {},
+		}
+	},
+
+	computed: {},
+
+	methods: {
+		onTaskFocus(el) {
+			el.target.placeholder = '+ Add Task'
+			el.target.innerText = ''
 		},
-
-		data() {
-			return {
-				currGroup: {},
+		onTaskBlur(el) {
+			el.target.innerText = '+ Add Task'
+		},
+		onAddTask(el) {
+			const name = el.target.innerText
+			el.target.blur()
+			if (!name) {
+				this.onTaskBlur(el)
+				return
 			}
+			this.$store.dispatch({
+				type: 'addTask',
+				name,
+				groupId: this.group.id,
+				addToEnd: true,
+			})
 		},
-
-		computed: {},
-
-		methods: {
-			onTaskFocus(el) {
-				el.target.placeholder = '+ Add Task'
-				el.target.innerText = ''
-			},
-			onTaskBlur(el) {
-				el.target.innerText = '+ Add Task'
-			},
-			onAddTask(el) {
-				const name = el.target.innerText
-				el.target.blur()
-				if (!name) {
-					this.onTaskBlur(el)
-					return
-				}
-				this.$store.dispatch({
-					type: 'addTask',
-					name,
-					groupId: this.group.id,
-					addToEnd: true,
-				})
-			},
-			onTaskMoved() {
-				this.$emit('taskMoved', this.currGroup)
-			},
+		onTaskMoved() {
+			this.$emit('taskMoved', this.currGroup)
 		},
+		groupToDisply() {},
+	},
 
-		created() {},
+	created() {},
 
-		watch: {
-			group: {
-				handler() {
-					this.currGroup = JSON.parse(JSON.stringify(this.group))
-				},
-				immediate: true,
-				deep: true,
+	watch: {
+		group: {
+			handler() {
+				this.currGroup = JSON.parse(JSON.stringify(this.group))
 			},
+			immediate: true,
+			deep: true,
 		},
+	},
 
-		components: {
-			taskPreview,
-			draggable: VueDraggableNext,
-		},
-	}
+	components: {
+		taskPreview,
+		draggable: VueDraggableNext,
+	},
+}
 </script>
