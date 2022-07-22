@@ -12,10 +12,15 @@
 			margin-inline-end: 11px;
 		}
 
-		h4 {
-			font-size: 1.2857em;
-			margin-bottom: 0.3888em;
-			line-height: 1.5;
+		div {
+			width: 500px;
+			h4 {
+				@include inlineInput;
+				padding: 0 rem(3px);
+				font-size: 1.2857em;
+				margin-bottom: 0.3888em;
+				line-height: 1.5;
+			}
 		}
 	}
 

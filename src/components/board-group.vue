@@ -2,7 +2,9 @@
 	<section class="board-group">
 		<div class="group-title" :style="{ color: group.style.color }">
 			<el-icon><ArrowDownBold /></el-icon>
-			<h4>{{ group.title }}</h4>
+			<div>
+				<h4 contenteditable>{{ group.title }}</h4>
+			</div>
 		</div>
 
 		<div class="group-table" :style="{ 'border-color': group.style.color }">

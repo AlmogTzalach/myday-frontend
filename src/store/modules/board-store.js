@@ -69,6 +69,8 @@ export default {
 			// console.log('gg')
 			if (addToEnd) {
 				state.currBoard.groups.push(newGroup)
+			} else {
+				state.currBoard.groups.unshift(newGroup)
 			}
 		},
 		saveBoard(state, { newBoard }) {
