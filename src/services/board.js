@@ -91,6 +91,9 @@ const boards = [
 			{
 				id: 'g101',
 				title: 'Calendar',
+				style: {
+					color: '#0086c0',
+				},
 				tasks: [
 					{
 						id: 't101',
@@ -201,6 +204,9 @@ const boards = [
 			},
 			{
 				id: 'g102',
+				style: {
+					color: '#ff642e',
+				},
 				title: 'Tasks',
 				tasks: [
 					{
@@ -399,6 +405,9 @@ const boards = [
 			{
 				id: 'g101',
 				title: 'Day1',
+				style: {
+					color: '#0086c0',
+				},
 				tasks: [
 					{
 						id: 't101',
@@ -467,6 +476,9 @@ const boards = [
 			},
 			{
 				id: 'g102',
+				style: {
+					color: '#037f4c',
+				},
 				title: 'Day2',
 				tasks: [
 					{
