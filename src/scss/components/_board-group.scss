@@ -4,9 +4,20 @@
 	margin-inline-end: 8px;
 
 	.group-title {
-		font-size: 1.2857em;
-		margin-bottom: 0.3888em;
-		line-height: 1.5;
+		display: flex;
+		img {
+			display: inline;
+			width: 20px;
+			margin-bottom: 6px;
+			margin-inline-start: 8px;
+			margin-inline-end: 10px;
+		}
+
+		h4 {
+			font-size: 1.2857em;
+			margin-bottom: 0.3888em;
+			line-height: 1.5;
+		}
 	}
 
 	.group-table {
