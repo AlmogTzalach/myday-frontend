@@ -17,20 +17,6 @@ const boards = [
 			'link',
 			'text',
 		],
-		possibleGroupColors: [
-			'#037f4c',
-			'#00c875',
-			'#cab641',
-			'#ffcb00',
-			'#784bd1',
-			'#a25ddc',
-			'#0086c0',
-			'#579bfc',
-			'#66ccff',
-			'#bb3354',
-			'#ff158a',
-			'#ff642e',
-		],
 		groupsOrder: ['g101', 'g102', 'g103'],
 		labels: {
 			status: [
