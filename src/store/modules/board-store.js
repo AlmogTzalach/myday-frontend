@@ -87,6 +87,7 @@ export default {
 
 		async removeTask({ commit, state }, { groupId, taskId }) {
 			commit({ type: 'removeTask', groupId, taskId })
+			console.log(state.currBoard)
 			await boardService.save(state.currBoard)
 		},
 		async updateTask({ commit, state }, { groupId, newTask }) {
@@ -101,8 +102,8 @@ export default {
 		},
 		async addGroup({ state, commit }, { addToEnd }) {
 			const newGroup = boardService.getEmptyGroup()
-			commit({ type: 'addGroup', newGroup, addToEnd })
-			await boardService.save(state.currBoard)
+			newGroup.style.color = boardService.getRandomGroupClr()
+			console.log(newGroup)
 		},
 		async saveBoard({ commit }, { newBoard }) {
 			// const boardToAdd = !newBoard ? boardService.getEmptyBoard() : newBoard

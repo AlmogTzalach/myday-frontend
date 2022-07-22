@@ -3,6 +3,20 @@ import utilService from './util-service'
 import { boardData } from './board'
 
 const BOARD_KEY = 'boardDB'
+const groupsClrs = [
+	'#037f4c',
+	'#00c875',
+	'#cab641',
+	'#ffcb00',
+	'#784bd1',
+	'#a25ddc',
+	'#0086c0',
+	'#579bfc',
+	'#66ccff',
+	'#bb3354',
+	'#ff158a',
+	'#ff642e',
+]
 
 _createBoards()
 
@@ -17,6 +31,7 @@ export const boardService = {
 	save,
 	getEmptyTask,
 	getEmptyGroup,
+	getRandomGroupClr,
 }
 
 async function query() {
@@ -50,6 +65,9 @@ function getEmptyGroup() {
 	return {
 		id: utilService._makeId(),
 		title: 'New Group',
+		style: {
+			color: '#0086c0',
+		},
 		tasks: [],
 	}
 }
@@ -76,4 +94,10 @@ function _createBoards() {
 		localStorage.setItem(BOARD_KEY, JSON.stringify(boards))
 	}
 	return boards
+}
+
+function getRandomGroupClr() {
+	const num = utilService.getRandomIntInclusive(0, groupsClrs.length - 1)
+	const groupClr = groupsClrs[num]
+	return groupClr
 }
