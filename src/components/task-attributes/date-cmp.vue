@@ -11,7 +11,7 @@ export default {
     name: 'dateCmp',
 
     props: {
-        date: Number,
+        task: Object,
     },
 
     data() {
@@ -25,6 +25,10 @@ export default {
             const date = new Date(this.dateInput)
             return date.toLocaleString('default', { day: 'numeric', month: 'short', year: '2-digit' })
         },
+    },
+    created() {
+        const {date} = this.task
+        this.dateInput = date
     },
 }
 </script>

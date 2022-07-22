@@ -9,13 +9,14 @@
 			<span @click="onDelete">delete</span>
 		</div>
 		<div class="task-data grid">
-			<component :is="'statusCmp'" :statusId="task.statusId"></component>
+			<component v-for="cmp in cmpsOrder" :is="cmp + 'Cmp'" :key="cmp" :task="currTask"></component>
+			<!-- <component :is="'statusCmp'" :statusId="task.statusId"></component>
 			<component :is="'priorityCmp'" :priorityId="task.priorityId"></component>
 			<component :is="'peopleCmp'" :people="task.people"></component>
 			<component :is="'dateCmp'" :date="task.date"></component>
 			<component :is="'checkboxCmp'" :checkbox="task.checkbox" @onToggleCheckbox="toggleCheckbox"></component>
 			<component :is="'linkCmp'" :link="task.link"></component>
-			<component :is="'txtCmp'" :txt="task.txt"></component>
+			<component :is="'txtCmp'" :txt="task.txt"></component> -->
 			<p class="empty-data"></p>
 		</div>
 	</div>
@@ -28,7 +29,7 @@ import peopleCmp from './task-attributes/people-cmp.vue'
 import dateCmp from './task-attributes/date-cmp.vue'
 import checkboxCmp from './task-attributes/checkbox-cmp.vue'
 import linkCmp from './task-attributes/link-cmp.vue'
-import txtCmp from './task-attributes/txt-cmp.vue'
+import textCmp from './task-attributes/text-cmp.vue'
 export default {
 	name: 'taskPreview',
 
@@ -40,6 +41,12 @@ export default {
 	data() {
 		return {
 			currTask: null,
+		}
+	},
+
+	computed: {
+		cmpsOrder() {
+			return this.$store.getters.cmpsOrder 
 		}
 	},
 
@@ -79,7 +86,7 @@ export default {
 		dateCmp,
 		checkboxCmp,
 		linkCmp,
-		txtCmp
+		textCmp
 	},
 }
 </script>

@@ -14,13 +14,7 @@
 					<p>Task</p>
 				</div>
 				<div class="task-data grid">
-					<p>Status</p>
-					<p>Priority</p>
-					<p>People</p>
-					<p>Date</p>
-					<p>Checkbox</p>
-					<p>Link</p>
-					<p>Text</p>
+					<p v-for="title in cmpsOrder" :key="title">{{ title }}</p>
 					<p class="empty-data"></p>
 				</div>
 			</div>
@@ -81,7 +75,11 @@ export default {
 		}
 	},
 
-	computed: {},
+	computed: {
+		cmpsOrder() {
+			return this.$store.getters.cmpsOrder
+		},
+	},
 
 	methods: {
 		onTaskFocus(el) {

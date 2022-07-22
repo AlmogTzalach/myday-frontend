@@ -1,15 +1,15 @@
 <template>
     <section class="attr-container">
-         <p class="long-text">{{txt}}</p>
+        <p class="long-text">{{ txt }}</p>
     </section>
 </template>
 
 <script>
 export default {
-    name: 'txtCmp',
+    name: 'textCmp',
 
     props: {
-        txt: String,
+        task: Object,
     },
 
     data() {
@@ -18,7 +18,10 @@ export default {
     },
 
     computed: {
-
+        txt() {
+            const { txt } = this.task
+            return txt
+        }
     },
 }
 </script>

@@ -12,7 +12,7 @@ export default {
     name: "peopleCmp",
 
     props: {
-        people: Array,
+        task: Object,
     },
 
     data() {
@@ -20,6 +20,10 @@ export default {
     },
 
     computed: {
+        people() {
+            const {people} = this.task
+            return people
+        }
     },
 }
 </script>
