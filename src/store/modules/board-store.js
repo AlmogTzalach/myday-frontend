@@ -69,17 +69,19 @@ export default {
 			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
 		},
 		addGroup(state, { newGroup, addToEnd }) {
-			// console.log('gg')
 			if (addToEnd) {
 				state.currBoard.groups.push(newGroup)
 			} else {
 				state.currBoard.groups.unshift(newGroup)
 			}
 		},
+		deleteGroup(state, { groupId }) {
+			const idx = state.currBoard.groups.findIndex(
+				(group) => group.id === groupId
+			)
+			state.currBoard.groups.splice(idx, 1)
+		},
 		saveBoard(state, { newBoard }) {
-			// const boardCopy = JSON.parse(JSON.stringify(newBoard))
-			// state.boards.splice(idx, 1, boardCopy)
-			// state.currBoard = boardCopy
 			let board = state.boards.findIndex((board) => board._id === newBoard._id)
 			board = newBoard
 		},
@@ -91,7 +93,6 @@ export default {
 		},
 		async removeTask({ commit, state }, { groupId, taskId }) {
 			commit({ type: 'removeTask', groupId, taskId })
-			console.log(state.currBoard)
 			await boardService.save(state.currBoard)
 		},
 		async updateTask({ commit, state }, { groupId, newTask }) {
@@ -110,16 +111,15 @@ export default {
 			commit({ type: 'addGroup', newGroup, addToEnd })
 			await boardService.save(state.currBoard)
 		},
-		async updateGroup({ state, commit }, { group }) {
-			console.log(group)
-
-			// commit({type:updaeGroup})
-		},
 		async saveBoard({ commit }, { newBoard }) {
 			// const boardToAdd = !newBoard ? boardService.getEmptyBoard() : newBoard
 
 			commit({ type: 'saveBoard', newBoard })
 			await boardService.save(newBoard)
+		},
+		async deleteGroup({ state, commit }, { groupId }) {
+			commit({ type: 'deleteGroup', groupId })
+			await boardService.save(state.currBoard)
 		},
 	},
 }

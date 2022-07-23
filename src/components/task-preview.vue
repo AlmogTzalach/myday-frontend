@@ -88,8 +88,8 @@
 					newTask: JSON.parse(JSON.stringify(this.currTask)),
 				})
 			},
-			onTitleUpdate(el) {
-				this.currTask.title = el.target.innerText
+			onTitleUpdate(ev) {
+				this.currTask.title = ev.target.innerText
 				this.onTaskUpdate()
 			},
 			updateData(newTask) {
