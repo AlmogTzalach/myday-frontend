@@ -40,12 +40,13 @@
 				</div>
 			</div>
 		</div>
-		<div class="task-summary grid">
+		<div class="task-summary-row grid">
 			<div class="empty-cell"></div>
 			<div class="task-data grid">
-				<div v-for="title in cmpsOrder" :key="title">
+				<div v-for="title in cmpsOrder" :key="title" class="summary-data">
 					<component v-if="title === 'checkbox'" :is="'checkboxSummary'" :group="currGroup"></component>
 					<component v-else-if="title === 'status'" :is="'statusSummary'" :group="currGroup"></component>
+					<component v-else-if="title === 'priority'" :is="'prioritySummary'" :group="currGroup"></component>
 				</div>
 				<div></div>
 			</div>
@@ -58,6 +59,7 @@ import taskPreview from './task-preview.vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 import checkboxSummary from './task-summary/checkbox-summary.vue'
 import statusSummary from './task-summary/status-summary.vue'
+import prioritySummary from './task-summary/priority-summary.vue'
 
 export default {
 	name: 'boardGroup',
@@ -129,7 +131,8 @@ export default {
 		taskPreview,
 		draggable: VueDraggableNext,
 		checkboxSummary,
-		statusSummary
+		statusSummary,
+		prioritySummary
 	},
 }
 </script>

@@ -1,5 +1,9 @@
 <template>
-        <div v-for="status in statusMap">{{ status }}</div>
+    <div class="status-sum-container flex">
+        <div class="status-sum" v-for="(statusCount, statusId) in statusMap" :key="statusId"
+            :style="statusClr(statusId, statusCount)">
+        </div>
+    </div>
 </template>
 <script>
 
@@ -21,11 +25,28 @@ export default {
         statusTypes() {
             return this.$store.getters.status
         },
-        // bgClr(statusId) {
-        //     return this.statusTypes.find()
-        // }
-    }
+    },
+    methods: {
+        statusClr(statusId, statusCount) {
+            return {
+                'background-color': this.statusTypes.find(status => status.id === statusId).color,
+                'flex-grow': statusCount
+            }
+        },
+    },
 }
 </script>
 <style>
+.status-sum-container {
+    height: 100%;
+    padding: 6px 8px
+}
+
+.status-sum {
+    transition: 0.5s;
+}
+
+.status-sum:hover {
+    transform: scaleY(115%);
+}
 </style>

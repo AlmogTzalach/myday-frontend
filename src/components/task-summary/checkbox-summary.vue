@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="checkbox-summary flex justify-center align-center">
         <p>{{ doneTasks }} / {{ totalTasks }}</p>
     </div>
 </template>
@@ -21,4 +21,7 @@ export default {
 }
 </script>
 <style>
+.checkbox-summary{
+    height: 100%;
+}
 </style>
