@@ -2,10 +2,27 @@
 	position: relative;
 
 	.task-menu-btn {
-		display: none;
-		width: 20px;
+		opacity: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 46px;
+		height: 36px;
 		position: absolute;
-		transform: translate(-36px, 7px);
+		transform: translate(-46px, -1px);
+
+		img {
+			width: 20px;
+			border-radius: 4px;
+
+			&:hover {
+				background-color: #d0d4e4;
+			}
+		}
+
+		&:hover {
+			opacity: 1;
+		}
 	}
 
 	&:hover {
@@ -14,7 +31,7 @@
 		box-shadow: 4px 3px 6px -3px $box-shadow-clr;
 
 		.task-menu-btn {
-			display: block;
+			opacity: 1;
 		}
 	}
 
