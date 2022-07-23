@@ -84,6 +84,7 @@ export default {
 		saveBoard(state, { newBoard }) {
 			let board = state.boards.findIndex((board) => board._id === newBoard._id)
 			board = newBoard
+			state.currBoard = newBoard
 		},
 	},
 	actions: {
