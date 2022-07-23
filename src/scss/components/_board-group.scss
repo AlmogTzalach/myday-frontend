@@ -5,6 +5,7 @@
 
 	.group-title {
 		display: flex;
+		position: relative;
 		.el-icon {
 			// display: inline;
 			padding-top: 13px;
@@ -12,7 +13,32 @@
 			margin-inline-end: 11px;
 		}
 
-		div {
+		.group-menu-btn {
+			opacity: 0;
+			cursor: pointer;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 46px;
+			height: 36px;
+			position: absolute;
+			transform: translate(-39px, -4px);
+
+			img {
+				width: 20px;
+				border-radius: 4px;
+
+				&:hover {
+					background-color: #d0d4e4;
+				}
+			}
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+
+		.header-wrapper {
 			width: 500px;
 			h4 {
 				@include inlineInput;
@@ -21,6 +47,10 @@
 				margin-bottom: 0.3888em;
 				line-height: 1.5;
 			}
+		}
+
+		&:hover .group-menu-btn {
+			opacity: 1;
 		}
 	}
 
@@ -61,7 +91,7 @@
 				border-inline-end: 1px solid $divider-clr;
 			}
 		}
-		.summary-data{
+		.summary-data {
 			display: block;
 		}
 
@@ -111,6 +141,26 @@
 			border-bottom: 1px solid $divider-clr;
 			border-inline-start: 1px solid $divider-clr;
 			border-bottom-left-radius: 6px;
+		}
+	}
+}
+
+.group-popover {
+	color: $text-black;
+	.group-popover-line {
+		display: flex;
+		align-items: center;
+		padding: 6px;
+		border-radius: 4px;
+		cursor: pointer;
+
+		img {
+			width: 16px;
+			margin-inline-end: 8px;
+		}
+
+		&:hover {
+			background-color: $button-hover-clr;
 		}
 	}
 }

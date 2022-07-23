@@ -330,7 +330,15 @@ const boards = [
 			fullName: 'bill',
 			imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
 		},
-		cmpsOrder: ['status', 'person', 'date'],
+		cmpsOrder: [
+			'people',
+			'status',
+			'priority',
+			'date',
+			'checkbox',
+			'link',
+			'text',
+		],
 		groupsOrder: ['g101', 'g102', 'g103'],
 		labels: {
 			status: [
@@ -397,7 +405,7 @@ const boards = [
 		],
 		groups: [
 			{
-				id: 'g101',
+				id: 'g103',
 				title: 'Day1',
 				style: {
 					color: '#0086c0',
@@ -469,7 +477,7 @@ const boards = [
 				],
 			},
 			{
-				id: 'g102',
+				id: 'g104',
 				style: {
 					color: '#037f4c',
 				},
