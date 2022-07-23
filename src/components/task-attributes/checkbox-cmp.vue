@@ -26,7 +26,9 @@ export default {
 
     methods: {
         toggleCheckbox() {
-            this.$emit('onToggleCheckbox')
+            const newTask = JSON.parse(JSON.stringify(this.task))
+            newTask.checkbox = !newTask.checkbox
+            this.$emit('dataChanged', newTask)
         }
     },
 }

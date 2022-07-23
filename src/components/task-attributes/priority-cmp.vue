@@ -1,13 +1,13 @@
 <template>
-    <el-popover placement="bottom" :width="200" trigger="click" @show="logEv">
+    <el-popover :placement="modalPlacement" :width="200" trigger="click" @show="changePlacement">
         <template #reference>
-            <section class="attr-container" :style="{ 'background-color': priority.color }">
+            <section class="attr-container" :style="{ 'background-color': priority.color }" @click="visible = true">
                 <div class="label">
                     <p>{{ priority.title }}</p>
                 </div>
             </section>
         </template>
-        <label-picker :labels="this.priorityLabels"></label-picker>
+        <label-picker :labels="this.priorityLabels" @labelPicked="changePriority"></label-picker>
     </el-popover>
 </template>
 
@@ -22,7 +22,9 @@ export default {
     },
 
     data() {
-        return {}
+        return {
+            modalPlacement: 'bottom'
+        }
     },
 
     computed: {
@@ -36,12 +38,20 @@ export default {
         },
         priorityLabels() {
             return this.$store.getters.priorities
-        }
+        },
     },
     methods: {
-        logEv(ev) {
-            console.log(ev);
+        changePlacement(ev) {
+            const vpH = window.innerHeight
+            this.modalPlacement = ev.clientY > (vpH / 2) ? 'top' : 'bottom'
+        },
+        changePriority(priorityId) {
+            console.log('here');
+            const newTask = JSON.parse(JSON.stringify(this.task))
+            newTask.priorityId = priorityId
+            this.$emit('dataChanged', newTask)
         }
+
     },
 
     components: {

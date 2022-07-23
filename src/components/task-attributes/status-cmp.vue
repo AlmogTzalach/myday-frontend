@@ -1,5 +1,5 @@
 <template>
-    <el-popover placement="bottom" :width="200" trigger="click">
+    <el-popover :placement="modalPlacement" :width="200" trigger="click" @show="changePlacement">
         <template #reference>
             <section class="attr-container" :style="{ 'background-color': status.color }">
                 <div class="label">
@@ -22,12 +22,20 @@ export default {
     },
 
     data() {
-        return {}
+        return {
+            modalPlacement: 'bottom'
+        }
     },
 
     methods: {
+        changePlacement(ev) {
+            const vpH = window.innerHeight
+            this.modalPlacement = ev.clientY > (vpH / 2) ? 'top' : 'bottom'
+        },
         changeStatus(statusId) {
-            console.log(statusId)
+            const newTask = JSON.parse(JSON.stringify(this.task))
+            newTask.statusId = statusId
+            this.$emit('dataChanged', newTask)
         }
     },
 

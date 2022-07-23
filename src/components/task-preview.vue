@@ -9,7 +9,7 @@
 			<span @click="onDelete">delete</span>
 		</div>
 		<div class="task-data grid">
-			<component v-for="cmp in cmpsOrder" :is="cmp + 'Cmp'" :key="cmp" :task="currTask"></component>
+			<component v-for="cmp in cmpsOrder" :is="cmp + 'Cmp'" :key="cmp" :task="currTask" @dataChanged="updateData"></component>
 			<!-- <component :is="'statusCmp'" :statusId="task.statusId"></component>
 			<component :is="'priorityCmp'" :priorityId="task.priorityId"></component>
 			<component :is="'peopleCmp'" :people="task.people"></component>
@@ -69,8 +69,8 @@ export default {
 			this.currTask.title = el.target.innerText
 			this.onTaskUpdate()
 		},
-		toggleCheckbox() {
-			this.currTask.checkbox = !this.currTask.checkbox
+		updateData(newTask) {
+			this.currTask = newTask
 			this.onTaskUpdate()
 		}
 	},
