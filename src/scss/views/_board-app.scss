@@ -57,3 +57,23 @@
 		// max-width: fit-content;
 	}
 }
+
+.add-group-popover {
+	color: $text-black;
+	.add-group-popover-line {
+		display: flex;
+		align-items: center;
+		padding: 6px;
+		border-radius: 4px;
+		cursor: pointer;
+
+		img {
+			width: 16px;
+			margin-inline-end: 8px;
+		}
+
+		&:hover {
+			background-color: $button-hover-clr;
+		}
+	}
+}

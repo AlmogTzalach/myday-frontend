@@ -5,9 +5,27 @@
 		<div class="flex main-actions-container">
 			<div class="add-btns">
 				<button class="btn1 add-task-btn" @click="addTask">New Task</button>
-				<button class="btn2 add-task-btn">
-					<img src="../assets/icons/down.svg" alt="" />
-				</button>
+
+				<el-popover
+					placement="bottom-start"
+					:width="220"
+					trigger="click"
+					:show-arrow="false"
+					:hide-after="0"
+					:offset="0"
+				>
+					<template #reference>
+						<button class="btn2 add-task-btn">
+							<img src="../assets/icons/down.svg" alt="" />
+						</button>
+					</template>
+					<div class="add-group-popover">
+						<div class="add-group-popover-line" @click="addGroup(false)">
+							<img src="../assets/icons/group.svg" />
+							<span>New group of Tasks</span>
+						</div>
+					</div>
+				</el-popover>
 			</div>
 
 			<board-filter @setFilter="setFilter" />
@@ -23,7 +41,7 @@
 					@deleteGroup="deleteGroup"
 				/>
 			</div>
-			<button class="btn addBtn flex" @click="addGroup">
+			<button class="btn addBtn flex" @click="addGroup(true)">
 				<img src="../assets/icons/add.svg" alt="" />
 				<span>Add new group</span>
 			</button>
@@ -71,8 +89,8 @@
 			setFilter(filter) {
 				this.groupFilter = filter
 			},
-			addGroup() {
-				this.$store.dispatch({ type: 'addGroup', addToEnd: true })
+			addGroup(addToEnd) {
+				this.$store.dispatch({ type: 'addGroup', addToEnd })
 			},
 			updateGroup(newGroup) {
 				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
