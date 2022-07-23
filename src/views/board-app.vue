@@ -10,7 +10,6 @@
 	import mainNav from '@/components/main-nav.vue'
 	import boardsNav from '@/components/boards-nav.vue'
 	import boardDetails from './board-details.vue'
-	import taskDetails from '@/components/task-details.vue'
 
 	export default {
 		name: 'board-app',
@@ -40,7 +39,6 @@
 			mainNav,
 			boardsNav,
 			boardDetails,
-			taskDetails,
 		},
 	}
 </script>

@@ -1,4 +1,5 @@
 <template>
+	<task-details :visible="isChatShown"></task-details>
 	<section class="task-preview">
 		<el-popover
 			placement="bottom-start"
@@ -27,7 +28,7 @@
 						{{ currTask.title }}
 					</p>
 				</div>
-				<div class="conversation-img">
+				<div class="conversation-img" @click="onTaskChat">
 					<img src="../assets/icons/add-update.svg" alt="conversation" />
 				</div>
 			</div>
@@ -53,6 +54,8 @@
 	import checkboxCmp from './task-attributes/checkbox-cmp.vue'
 	import linkCmp from './task-attributes/link-cmp.vue'
 	import textCmp from './task-attributes/text-cmp.vue'
+	import taskDetails from '@/components/task-details.vue'
+
 	export default {
 		name: 'taskPreview',
 
@@ -64,6 +67,7 @@
 		data() {
 			return {
 				currTask: null,
+				isChatShown: false
 			}
 		},
 
@@ -74,6 +78,9 @@
 		},
 
 		methods: {
+			onTaskChat(){
+				this.isChatShown = !this.isChatShown
+			},
 			onDelete() {
 				this.$store.dispatch({
 					type: 'removeTask',
@@ -103,6 +110,7 @@
 		},
 
 		components: {
+			taskDetails,
 			statusCmp,
 			priorityCmp,
 			peopleCmp,
