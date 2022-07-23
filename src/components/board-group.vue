@@ -1,7 +1,9 @@
 <template>
 	<section class="board-group">
 		<div class="group-title" :style="{ color: group.style.color }">
-			<el-icon><ArrowDownBold /></el-icon>
+			<el-icon>
+				<ArrowDownBold />
+			</el-icon>
 			<div>
 				<h4 contenteditable @input="updateGroupTitle">{{ group.title }}</h4>
 			</div>
@@ -21,11 +23,7 @@
 
 			<!-- table content -->
 			<draggable :list="currGroup.tasks" @end="onTaskMoved">
-				<div
-					v-for="task in currGroup.tasks"
-					:key="task.id"
-					@drop="onTaskMoved"
-				>
+				<div v-for="task in currGroup.tasks" :key="task.id" @drop="onTaskMoved">
 					<task-preview :task="task" :currGroup="group.id" />
 				</div>
 			</draggable>
@@ -33,13 +31,8 @@
 			<!-- table footer -->
 			<div class="group-footer">
 				<div class="add-task-line grid">
-					<p
-						contenteditable
-						class="add-task-input"
-						@focus="onTaskFocus"
-						@blur="onTaskBlur"
-						@keyup.enter="onAddTask"
-					>
+					<p contenteditable class="add-task-input" @focus="onTaskFocus" @blur="onTaskBlur"
+						@keyup.enter="onAddTask">
 						+ Add Task
 					</p>
 
@@ -50,7 +43,10 @@
 		<div class="task-summary grid">
 			<div class="empty-cell"></div>
 			<div class="task-data grid">
-				<div v-for="index in 7"></div>
+				<div v-for="title in cmpsOrder" :key="title">
+					<component v-if="title === 'checkbox'" :is="'checkboxSummary'" :group="currGroup"></component>
+					<component v-else-if="title === 'status'" :is="'statusSummary'" :group="currGroup"></component>
+				</div>
 				<div></div>
 			</div>
 		</div>
@@ -60,6 +56,8 @@
 <script>
 import taskPreview from './task-preview.vue'
 import { VueDraggableNext } from 'vue-draggable-next'
+import checkboxSummary from './task-summary/checkbox-summary.vue'
+import statusSummary from './task-summary/status-summary.vue'
 
 export default {
 	name: 'boardGroup',
@@ -106,7 +104,7 @@ export default {
 		onTaskMoved() {
 			this.$emit('taskMoved', this.currGroup)
 		},
-		groupToDisply() {},
+		groupToDisply() { },
 		updateGroupTitle(el) {
 			const title = el.target.innerText
 			let group = JSON.parse(JSON.stringify(this.group))
@@ -115,7 +113,7 @@ export default {
 		},
 	},
 
-	created() {},
+	created() { },
 
 	watch: {
 		group: {
@@ -130,6 +128,8 @@ export default {
 	components: {
 		taskPreview,
 		draggable: VueDraggableNext,
+		checkboxSummary,
+		statusSummary
 	},
 }
 </script>
