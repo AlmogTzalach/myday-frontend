@@ -1,4 +1,13 @@
+.label p {
+	color: white;
+}
 
-.label p{
-    color: white;
+//PEOPLE CMP
+.empty-avatar {
+	width: 35px;
+	filter: $svg-grey;
+}
+
+.avatar {
+	border: 2px solid #f5f6f8;
 }

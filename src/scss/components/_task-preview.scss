@@ -24,6 +24,15 @@
 			opacity: 1;
 		}
 	}
+	.conversation-img {
+		img {
+			filter: $svg-grey;
+
+			&:hover {
+				filter: $svg-blue;
+			}
+		}
+	}
 
 	&:hover {
 		cursor: pointer;
