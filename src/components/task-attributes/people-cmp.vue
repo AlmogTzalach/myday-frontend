@@ -1,9 +1,8 @@
 <template>
     <section class="attr-container">
-        <div v-for="user in people" :key="user.id" class="flex align-center">
-            <!-- <img class="avatar" :src="user.imgUrl" :title="user.fullName"> -->
-            <el-avatar :size="30" :src="user.imgUrl" :fit="'fill'" :title="user.fullName" />
-        </div>
+                <div v-for="person in people" :key="person.id" class="flex align-center">
+                    <el-avatar :size="30" :src="person.imgUrl" :fit="'fill'" :title="person.fullName" />
+                </div>
     </section>
 </template>
 
@@ -16,16 +15,33 @@ export default {
     },
 
     data() {
-        return {}
+        return {
+            modalPlacement: 'bottom'
+        }
+    },
+
+    methods: {
+        changePlacement(ev) {
+            const vpH = window.innerHeight
+            this.modalPlacement = ev.clientY > (vpH / 2) ? 'top' : 'bottom'
+        },
     },
 
     computed: {
         people() {
-            const {people} = this.task
+            const { people } = this.task
             return people
+        },
+        users() {
+            return this.$store.getters.users
         }
     },
 }
 </script>
  <style>
+ .avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+ }
  </style>

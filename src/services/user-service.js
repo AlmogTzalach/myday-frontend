@@ -1,20 +1,28 @@
-import { storageService } from "./storage-service"
-import { boardData } from "./board"
-const LOGGED_KEY = "loggedinUser"
-const USER_KEY = "userDB"
+import { storageService } from './storage-service'
+import { boardData } from './board'
+const LOGGED_KEY = 'loggedinUser'
+const USER_KEY = 'userDB'
 const gUsers = _createUsers()
 
-// BACKENDF
+// BACKEND
 // import { httpService } from "./http-service"
 // const ENDPOINT = "auth"
 
 export const userService = {
+	query,
 	login,
 	logout,
 	signUp,
 	getLoggedinUser,
 	getById,
 }
+
+async function query() {
+	return storageService.query(USER_KEY)
+	//   const user = await httpService.post(`${ENDPOINT}/login`, credentials);
+	//   return _saveLocalUser(user);
+}
+
 async function login(credentials) {
 	//   const user = await httpService.post(`${ENDPOINT}/login`, credentials);
 	//   return _saveLocalUser(user);
@@ -31,7 +39,7 @@ async function signUp(signupInfo) {
 }
 
 async function getById(userId) {
-	const user = await storageService.get("user", userId)
+	const user = await storageService.get('user', userId)
 	return user
 }
 

@@ -5,4 +5,20 @@ export default {
 		users: [],
 		loggedUser: null,
 	},
+	mutations: {
+		setUsers(state, { users }) {
+			state.users = users
+		},
+	},
+	getters: {
+		users({ users }) {
+			return users
+		},
+	},
+	actions: {
+		async loadUsers({ commit }) {
+			const users = await userService.query()
+			commit({ type: 'setUsers', users })
+		},
+	},
 }

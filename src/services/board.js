@@ -77,7 +77,7 @@ const boards = [
 			},
 			{
 				_id: 'u102',
-				fullName: 'Jane Doe',
+				fullName: 'Roy Boy',
 				imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 			},
 		],
@@ -102,7 +102,7 @@ const boards = [
 							},
 							{
 								_id: 'u102',
-								fullName: 'Jane Doe',
+								fullName: 'Roy Boy',
 								imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 							},
 						],
@@ -117,7 +117,7 @@ const boards = [
 								createdAt: 1590999817436,
 								byMember: {
 									_id: 'u102',
-									fullName: 'Jane Doe',
+									fullName: 'Roy Boy',
 									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 								},
 							},
@@ -160,7 +160,7 @@ const boards = [
 						people: [
 							{
 								_id: 'u102',
-								fullName: 'Jane Doe',
+								fullName: 'Roy Boy',
 								imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 							},
 						],
@@ -211,7 +211,7 @@ const boards = [
 						people: [
 							{
 								_id: 'u102',
-								fullName: 'Jane Doe',
+								fullName: 'Roy Boy',
 								imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 							},
 						],
@@ -226,7 +226,7 @@ const boards = [
 								createdAt: 1590999817436,
 								byMember: {
 									_id: 'u102',
-									fullName: 'Jane Doe',
+									fullName: 'Roy Boy',
 									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 								},
 							},
@@ -285,7 +285,7 @@ const boards = [
 							},
 							{
 								_id: 'u102',
-								fullName: 'Jane Doe',
+								fullName: 'Roy Boy',
 								imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 							},
 						],
@@ -314,7 +314,7 @@ const boards = [
 				createdAt: 154514,
 				byMember: {
 					_id: 'u102',
-					fullName: 'Jane Doe',
+					fullName: 'Roy Boy',
 					imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 				},
 				taskTitle: 'Add home page',
@@ -399,7 +399,7 @@ const boards = [
 			},
 			{
 				_id: 'u102',
-				fullName: 'Jane Doe',
+				fullName: 'Roy Boy',
 				imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 			},
 		],
@@ -453,7 +453,7 @@ const boards = [
 							},
 							{
 								_id: 'u102',
-								fullName: 'Jane Doe',
+								fullName: 'Roy Boy',
 								imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 							},
 						],
@@ -468,7 +468,7 @@ const boards = [
 								createdAt: 1590999817436,
 								byMember: {
 									_id: 'u102',
-									fullName: 'Jane Doe',
+									fullName: 'Roy Boy',
 									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 								},
 							},
@@ -491,7 +491,7 @@ const boards = [
 						people: [
 							{
 								_id: 'u102',
-								fullName: 'Jane Doe',
+								fullName: 'Roy Boy',
 								imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 							},
 						],
@@ -506,7 +506,7 @@ const boards = [
 								createdAt: 1590999817436,
 								byMember: {
 									_id: 'u102',
-									fullName: 'Jane Doe',
+									fullName: 'Roy Boy',
 									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 								},
 							},
@@ -541,7 +541,7 @@ const boards = [
 				createdAt: 154514,
 				byMember: {
 					_id: 'u102',
-					fullName: 'Jane Doe',
+					fullName: 'Roy Boy',
 					imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 				},
 				taskTitle: 'Add home page',
@@ -572,10 +572,10 @@ const users = [
 	},
 	{
 		_id: 'u102',
-		fullName: 'Jane Doe',
+		fullName: 'Roy Boy',
 		userName: 'janedoe@jmail.com',
 		password: 'janeIsQueen',
-		imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+		imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 		tasks: [
 			{
 				boardId: 'm101',
