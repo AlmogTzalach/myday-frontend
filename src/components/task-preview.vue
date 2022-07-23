@@ -1,8 +1,25 @@
 <template>
 	<section class="task-preview">
-		<div class="task-menu-btn">
-			<img src="../assets/icons/menu.svg" alt="menu" />
-		</div>
+		<el-popover
+			placement="bottom-start"
+			:width="264"
+			trigger="click"
+			:show-arrow="false"
+			:hide-after="0"
+			:offset="0"
+		>
+			<template #reference>
+				<div class="task-menu-btn">
+					<img src="../assets/icons/menu.svg" alt="menu" />
+				</div>
+			</template>
+			<div class="task-popover">
+				<div class="task-popover-line" @click="onDelete">
+					<img src="../assets/icons/delete.svg" />
+					<span>Delete</span>
+				</div>
+			</div>
+		</el-popover>
 		<div class="task-row grid">
 			<div class="task-name name-cell grid">
 				<div class="edit-title">
@@ -22,13 +39,6 @@
 					:task="currTask"
 					@dataChanged="updateData"
 				></component>
-				<!-- <component :is="'statusCmp'" :statusId="task.statusId"></component>
-			<component :is="'priorityCmp'" :priorityId="task.priorityId"></component>
-			<component :is="'peopleCmp'" :people="task.people"></component>
-			<component :is="'dateCmp'" :date="task.date"></component>
-			<component :is="'checkboxCmp'" :checkbox="task.checkbox" @onToggleCheckbox="toggleCheckbox"></component>
-			<component :is="'linkCmp'" :link="task.link"></component>
-			<component :is="'txtCmp'" :txt="task.txt"></component> -->
 				<p class="empty-data"></p>
 			</div>
 		</div>
