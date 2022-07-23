@@ -27,7 +27,16 @@
 			</el-icon>
 
 			<div class="header-wrapper">
-				<h4 contenteditable @input="updateGroupTitle">{{ group.title }}</h4>
+				<el-tooltip
+					effect="dark"
+					content="Click to edit"
+					placement="top"
+					class="el-title"
+				>
+					<h4 contenteditable @input="updateGroupTitle">
+						{{ group.title }}
+					</h4>
+				</el-tooltip>
 			</div>
 		</div>
 
@@ -35,7 +44,14 @@
 			<!-- table header -->
 			<div class="group-header-row task-row grid">
 				<div class="task-name task-title">
-					<p>Task</p>
+					<el-tooltip
+						effect="dark"
+						content="this title cannot be edited"
+						placement="top"
+						class="el-title"
+					>
+						<p>Task</p>
+					</el-tooltip>
 				</div>
 				<div class="task-data grid">
 					<p v-for="title in cmpsOrder" :key="title">{{ title }}</p>
@@ -98,87 +114,87 @@
 </template>
 
 <script>
-	import taskPreview from './task-preview.vue'
-	import { VueDraggableNext } from 'vue-draggable-next'
-	import checkboxSummary from './task-summary/checkbox-summary.vue'
-	import statusSummary from './task-summary/status-summary.vue'
-	import prioritySummary from './task-summary/priority-summary.vue'
+import taskPreview from './task-preview.vue'
+import { VueDraggableNext } from 'vue-draggable-next'
+import checkboxSummary from './task-summary/checkbox-summary.vue'
+import statusSummary from './task-summary/status-summary.vue'
+import prioritySummary from './task-summary/priority-summary.vue'
 
-	export default {
-		name: 'boardGroup',
+export default {
+	name: 'boardGroup',
 
-		props: {
-			group: Object,
-			filter: Object,
+	props: {
+		group: Object,
+		filter: Object,
+	},
+
+	data() {
+		return {
+			currGroup: {},
+		}
+	},
+
+	computed: {
+		cmpsOrder() {
+			return this.$store.getters.cmpsOrder
 		},
+	},
 
-		data() {
-			return {
-				currGroup: {},
+	methods: {
+		onTaskFocus(ev) {
+			ev.target.placeholder = '+ Add Task'
+			ev.target.innerText = ''
+		},
+		onTaskBlur(ev) {
+			ev.target.innerText = '+ Add Task'
+		},
+		onAddTask(ev) {
+			ev.preventDefault()
+			const name = ev.target.innerText
+			ev.target.blur()
+			if (!name) {
+				this.onTaskBlur(ev)
+				return
 			}
+			this.$store.dispatch({
+				type: 'addTask',
+				name,
+				groupId: this.group.id,
+				addToEnd: true,
+			})
 		},
-
-		computed: {
-			cmpsOrder() {
-				return this.$store.getters.cmpsOrder
-			},
+		onTaskMoved() {
+			this.$emit('taskMoved', this.currGroup)
 		},
-
-		methods: {
-			onTaskFocus(ev) {
-				ev.target.placeholder = '+ Add Task'
-				ev.target.innerText = ''
-			},
-			onTaskBlur(ev) {
-				ev.target.innerText = '+ Add Task'
-			},
-			onAddTask(ev) {
-				ev.preventDefault()
-				const name = ev.target.innerText
-				ev.target.blur()
-				if (!name) {
-					this.onTaskBlur(ev)
-					return
-				}
-				this.$store.dispatch({
-					type: 'addTask',
-					name,
-					groupId: this.group.id,
-					addToEnd: true,
-				})
-			},
-			onTaskMoved() {
-				this.$emit('taskMoved', this.currGroup)
-			},
-			updateGroupTitle(ev) {
-				const title = ev.target.innerText
-				const group = JSON.parse(JSON.stringify(this.currGroup))
-				group.title = title
-				this.$emit('updateGroup', group)
-			},
-			deleteGroup() {
-				this.$emit('deleteGroup', this.currGroup.id)
-			},
+		updateGroupTitle(ev) {
+			const title = ev.target.innerText
+			const group = JSON.parse(JSON.stringify(this.currGroup))
+			group.title = title
+			this.$emit('updateGroup', group)
 		},
+		deleteGroup() {
+			this.$emit('deleteGroup', this.currGroup.id)
+		},
+	},
 
-		created() {},
+	created() {},
 
-		watch: {
-			group: {
-				handler() {
-					this.currGroup = JSON.parse(JSON.stringify(this.group))
-				},
-				immediate: true,
-				deep: true,
+	watch: {
+		group: {
+			handler() {
+				this.currGroup = JSON.parse(JSON.stringify(this.group))
 			},
+			immediate: true,
+			deep: true,
 		},
+	},
 
-		components: {
-			taskPreview,
-			draggable: VueDraggableNext,
-			checkboxSummary,
-			statusSummary,
-			prioritySummary,
-		},
-	}
+	components: {
+		taskPreview,
+		draggable: VueDraggableNext,
+		checkboxSummary,
+		statusSummary,
+		prioritySummary,
+	},
+}
 </script>

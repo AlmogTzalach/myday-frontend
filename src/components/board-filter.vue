@@ -13,30 +13,49 @@
 			</button>
 		</div>
 
-		<button class="btn person-btn">
-			<!-- <img src="../assets/icons/person-round.svg" alt="" /> -->
-			<el-icon><User /></el-icon>
-			<span>Person</span>
-		</button>
+		<el-tooltip
+			effect="dark"
+			content="Filter by person"
+			placement="top"
+			class="el-title"
+		>
+			<button class="btn person-btn">
+				<!-- <img src="../assets/icons/person-round.svg" alt="" /> -->
+				<el-icon><User /></el-icon>
+				<span>Person</span>
+			</button>
+		</el-tooltip>
 
-		<!-- <button class="btn"> -->
-		<button>
-			<div class="btn1 flex">
-				<el-icon><Filter /></el-icon>
-				<!-- <img src="../assets/icons/filter.svg" alt="" /> -->
-				<span> Filter </span>
-			</div>
+		<el-tooltip
+			effect="dark"
+			content="Filter by anything"
+			placement="top"
+			class="el-title"
+		>
+			<button>
+				<div class="btn1 flex">
+					<el-icon><Filter /></el-icon>
+					<!-- <img src="../assets/icons/filter.svg" alt="" /> -->
+					<span> Filter </span>
+				</div>
 
-			<div class="btn2">
-				<img src="../assets/icons/down.svg" alt="" />
-			</div>
-		</button>
-		<!-- </button> -->
+				<div class="btn2">
+					<img src="../assets/icons/down.svg" alt="" />
+				</div>
+			</button>
+		</el-tooltip>
 
-		<button class="btn">
-			&#8645;
-			<span> Sort </span>
-		</button>
+		<el-tooltip
+			effect="dark"
+			content="Sort by any column"
+			placement="top"
+			class="el-title"
+		>
+			<button class="btn">
+				&#8645;
+				<span> Sort </span>
+			</button>
+		</el-tooltip>
 	</section>
 </template>
 

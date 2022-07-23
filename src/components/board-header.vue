@@ -2,7 +2,14 @@
 	<header class="board-header">
 		<div class="board-actions flex">
 			<div class="title-input flex">
-				<h1 contenteditable @input="updateBoard">{{ board.title }}</h1>
+				<el-tooltip
+					effect="dark"
+					content="Click to edit"
+					placement="bottom"
+					class="el-title"
+				>
+					<h1 contenteditable @input="updateBoard">{{ board.title }}</h1>
+				</el-tooltip>
 			</div>
 			<div class="btns flex">
 				<button @click="addMember()" class="btn add-member-btn">
