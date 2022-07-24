@@ -5,7 +5,7 @@
 
 	.group-title {
 		display: flex;
-		position: relative;
+		// position: relative;
 		.el-icon {
 			// display: inline;
 			padding-top: 13px;
@@ -120,7 +120,7 @@
 
 	.add-task-line {
 		grid-template-columns: 300px 1fr;
-		padding-inline-start: 35px;
+		padding-inline-start: em(28px);
 		border-bottom: 1px solid $divider-clr;
 		border-top: none;
 
