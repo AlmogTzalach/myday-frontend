@@ -1,4 +1,5 @@
 .boards-nav {
+	z-index: 200;
 	padding: rem(14px) rem(14px);
 	background-color: #f6f7fb;
 	min-height: 100vh;
@@ -93,7 +94,7 @@
 	background-color: white;
 	border: 1px solid #d0d4e4;
 	border-radius: 20px;
-	position:absolute;
+	position: absolute;
 	z-index: 200;
 	right: -14px;
 	transition: 0.3s;

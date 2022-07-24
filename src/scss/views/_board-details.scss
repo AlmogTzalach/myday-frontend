@@ -1,19 +1,17 @@
 .board-header-filter {
 	background-color: white;
-	// background-color: aquamarine;
 	position: sticky;
 	top: 0;
 	width: 100%;
 	left: 0;
-	// right: 0;
 	z-index: 100;
 }
 
 .groups-container {
-	// background-color: lightgray;
 	padding-inline-start: rem(31px);
 	padding-bottom: rem(40px);
-	overflow-x: auto;
+	// height: 100%;
+	min-width: 1734px;
 
 	.btn {
 		@include mainBtn;
@@ -27,21 +25,5 @@
 			filter: invert(41%) sepia(7%) saturate(197%) hue-rotate(201deg)
 				brightness(91%) contrast(88%);
 		}
-	}
-}
-
-.board-group {
-	position: sticky;
-	// background-color: lightcyan;
-	.group-title {
-		// background-color: lavender;
-		position: sticky;
-		top: 0;
-		// right: 0;
-		// background-color: lightblue;
-		// 	background-color: lightgray;
-		// position: sticky;
-		// 	top: 0;
-		// 	z-index: 10;
 	}
 }

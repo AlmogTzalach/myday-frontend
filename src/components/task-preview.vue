@@ -23,6 +23,7 @@
 		</el-popover>
 		<div class="task-row grid">
 			<div class="task-name name-cell grid">
+				<div class="side-border"></div>
 				<div class="edit-title">
 					<p contenteditable @input="onTitleUpdate" class="task-title">
 						{{ currTask.title }}

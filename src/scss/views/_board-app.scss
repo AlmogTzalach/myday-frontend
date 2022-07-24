@@ -4,7 +4,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		padding: rem(12px) 0;
-		padding-inline-start: rem(30px);
+		padding-inline-start: rem(32px);
 		margin-bottom: rem(20px);
 		.add-btns {
 			display: flex;
@@ -44,11 +44,10 @@
 		position: relative;
 		// contain: layout;
 
-		.groups-container {
-			// height: 1340px;
-			min-width: 1734px;
-			// position: absolute;
-		}
+		// .groups-container {
+		// 	height: 100%;
+		// 	min-width: 1734px;
+		// }
 	}
 }
 

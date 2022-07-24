@@ -2,10 +2,15 @@
 	margin-bottom: 2em;
 	margin-inline-start: 5px;
 	margin-inline-end: 8px;
+	height: 100%;
 
 	.group-title {
 		display: flex;
-		// position: relative;
+		position: sticky;
+		top: 0;
+		left: 0;
+		background-color: white;
+		z-index: 50;
 		.el-icon {
 			// display: inline;
 			padding-top: 13px;
@@ -58,10 +63,17 @@
 		border-inline-start: 6px solid lightseagreen;
 		border-top-left-radius: 6px;
 		border-bottom-left-radius: 6px;
+
+		height: 100%;
 	}
 
 	.group-header-row {
 		text-transform: capitalize;
+		background-color: lightblue;
+
+		// position: sticky;
+		// top: 0;
+		// align-self: flex-start;
 	}
 
 	.group-header-row,
@@ -101,6 +113,9 @@
 
 		.task-data {
 			position: relative;
+			// position: sticky;
+
+			// top: 0%;
 			grid-auto-flow: column;
 			grid-auto-columns: 160px;
 
