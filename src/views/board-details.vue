@@ -1,34 +1,41 @@
 <template>
 	<section class="board-container" v-if="currBoard">
-		<board-header :board="currBoard" />
+		<div class="board-header-filter">
+			<board-header :board="currBoard" />
 
-		<div class="flex main-actions-container">
-			<div class="add-btns">
-				<button class="btn1 add-task-btn" @click="addTask">New Task</button>
+			<div class="flex main-actions-container">
+				<div class="add-btns">
+					<button class="btn1 add-task-btn" @click="addTask">
+						New Task
+					</button>
 
-				<el-popover
-					placement="bottom-start"
-					:width="220"
-					trigger="click"
-					:show-arrow="false"
-					:hide-after="0"
-					:offset="0"
-				>
-					<template #reference>
-						<button class="btn2 add-task-btn">
-							<img src="../assets/icons/down.svg" alt="" />
-						</button>
-					</template>
-					<div class="add-group-popover">
-						<div class="add-group-popover-line" @click="addGroup(false)">
-							<img src="../assets/icons/group.svg" />
-							<span>New group of Tasks</span>
+					<el-popover
+						placement="bottom-start"
+						:width="220"
+						trigger="click"
+						:show-arrow="false"
+						:hide-after="0"
+						:offset="0"
+					>
+						<template #reference>
+							<button class="btn2 add-task-btn">
+								<img src="../assets/icons/down.svg" alt="" />
+							</button>
+						</template>
+						<div class="add-group-popover">
+							<div
+								class="add-group-popover-line"
+								@click="addGroup(false)"
+							>
+								<img src="../assets/icons/group.svg" />
+								<span>New group of Tasks</span>
+							</div>
 						</div>
-					</div>
-				</el-popover>
-			</div>
+					</el-popover>
+				</div>
 
-			<board-filter @setFilter="setFilter" />
+				<board-filter @setFilter="setFilter" />
+			</div>
 		</div>
 
 		<div class="groups-container">
@@ -53,10 +60,10 @@
 </template>
 
 <script>
-	import boardHeader from '@/components/board-header.vue'
-	import boardFilter from '@/components/board-filter.vue'
-	import boardGroup from '@/components/board-group.vue'
-	import { VueDraggableNext } from 'vue-draggable-next'
+		import boardHeader from '@/components/board-header.vue'
+		import boardFilter from '@/components/board-filter.vue'
+		import boardGroup from '@/components/board-group.vue'
+		import { VueDraggableNext } from 'vue-draggable-next'
 
 	export default {
 		name: 'board-detais',
@@ -98,9 +105,7 @@
 			},
 			updateGroup(newGroup) {
 				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-				let idx = boardCopy.groups.findIndex(
-					(group) => group.id === newGroup.id
-				)
+				let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
 				boardCopy.groups.splice(idx, 1, newGroup)
 
 				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
@@ -116,12 +121,11 @@
 				},
 				immediate: true,
 			},
-		},
-		components: {
-			boardHeader,
-			boardFilter,
-			boardGroup,
-			draggable: VueDraggableNext,
-		},
-	}
+			components: {
+				boardHeader,
+				boardFilter,
+				boardGroup,
+				draggable: VueDraggableNext,
+			},
+		}
 </script>

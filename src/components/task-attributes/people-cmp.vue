@@ -4,8 +4,6 @@
             <template #reference>
                 <div class="flex align-center">
                     <div class="avatar-container" v-if="people.length" v-for="person in people" :key="person.id">
-                        <!-- <el-avatar class="avatar" :size="30" :src="person.imgUrl" :fit="'fill'"
-                            :title="person.fullName" /> -->
                         <img class="avatar" :src="person.imgUrl" :title="person.fullName">
                     </div>
                     <div v-else>
@@ -13,9 +11,8 @@
                     </div>
                 </div>
             </template>
-            <div class="avatar-container">
+            <div class="avatar-modal-container">
                 <div v-for="user in users" :key="user.id" class="flex align-center">
-                    <!-- <el-avatar :size="30" :src="user.imgUrl" :fit="'fill'" :title="user.fullName" /> -->
                     <img class="avatar" :src="user.imgUrl" :title="user.fullName">
                     <span>{{ user.fullName }}</span>
                 </div>
