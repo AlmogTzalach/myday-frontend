@@ -23,6 +23,7 @@
 			<button
 				v-for="board in boards"
 				class="btn"
+				:class="{ active: boardId === board._id }"
 				@click="goToBoard(board._id)"
 			>
 				<img src="../assets/icons/board.svg" alt="" />
@@ -43,6 +44,7 @@ export default {
 			filter: {
 				txt: '',
 			},
+			boardId: null,
 		}
 	},
 	methods: {
@@ -59,6 +61,14 @@ export default {
 			// this.$emit('saveBoard')
 		},
 	},
-	computed: {},
+	watch: {
+		'$route.params.boardId': {
+			handler(boardId) {
+				this.boardId = boardId
+				console.log(boardId)
+			},
+			immediate: true,
+		},
+	},
 }
 </script>
