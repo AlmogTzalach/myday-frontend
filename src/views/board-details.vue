@@ -60,10 +60,10 @@
 </template>
 
 <script>
-		import boardHeader from '@/components/board-header.vue'
-		import boardFilter from '@/components/board-filter.vue'
-		import boardGroup from '@/components/board-group.vue'
-		import { VueDraggableNext } from 'vue-draggable-next'
+	import boardHeader from '@/components/board-header.vue'
+	import boardFilter from '@/components/board-filter.vue'
+	import boardGroup from '@/components/board-group.vue'
+	import { VueDraggableNext } from 'vue-draggable-next'
 
 	export default {
 		name: 'board-detais',
@@ -105,7 +105,9 @@
 			},
 			updateGroup(newGroup) {
 				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-				let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
+				let idx = boardCopy.groups.findIndex(
+					(group) => group.id === newGroup.id
+				)
 				boardCopy.groups.splice(idx, 1, newGroup)
 
 				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
@@ -121,11 +123,12 @@
 				},
 				immediate: true,
 			},
-			components: {
-				boardHeader,
-				boardFilter,
-				boardGroup,
-				draggable: VueDraggableNext,
-			},
-		}
+		},
+		components: {
+			boardHeader,
+			boardFilter,
+			boardGroup,
+			draggable: VueDraggableNext,
+		},
+	}
 </script>
