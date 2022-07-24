@@ -4,17 +4,19 @@
 	align-items: center;
 	justify-content: space-between;
 
-	img {
-		width: 40px;
-		margin-bottom: rem(5px);
-		fill: white;
-		transition: $trns;
-		padding: rem(7px);
-		border-radius: rem(7px);
-		margin-bottom: rem(8px);
+	.nav-btns {
+		img:not(.user-img) {
+			width: 40px;
+			margin-bottom: rem(5px);
+			fill: white;
+			transition: $trns;
+			padding: rem(7px);
+			border-radius: rem(7px);
+			margin-bottom: rem(8px);
 
-		&:hover {
-			background-color: rgba(255, 255, 255, 0.6);
+			&:hover {
+				background-color: rgba(255, 255, 255, 0.6);
+			}
 		}
 	}
 
@@ -24,8 +26,21 @@
 		width: 45px;
 	}
 
-	img:not(.logo-svg) {
+	img:not(.logo-svg, .user-img) {
 		filter: $svgWhite;
+	}
+
+	.user-img {
+		border-radius: 50%;
+		background-color: white;
+		width: 40px;
+		margin-bottom: 20px;
+		border: 2px solid white;
+		transition: $trns;
+
+		// &:hover {
+		// 	width: 30px;
+		// }
 	}
 
 	.nav-btns {
