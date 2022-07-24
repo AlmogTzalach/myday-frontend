@@ -1,34 +1,32 @@
 <template>
 	<section class="boards-nav">
-		<div class="workspace-details flex">
-			<div>Workspace</div>
-			<button>Main workspace</button>
+		<div class="board-toggle-container" @click="toggleBoardsNav">
+			<img class="toggle-boards-nav" src="../assets/icons/arrow-left.svg">
 		</div>
-		<div class="workspace-add flex">
-			<button class="btn" @click="addBoard()">
-				<el-icon><Plus /></el-icon>
-				<span>Add</span>
-			</button>
-			<button class="btn search-btn">
-				<img src="../assets/icons/search.svg" alt="" />
-				<input
-					type="text"
-					v-model="filter.txt"
-					placeholder="Search"
-					@input="setFilter"
-				/>
-			</button>
-		</div>
-		<div class="boards-list flex">
-			<button
-				v-for="board in boards"
-				class="btn"
-				:class="{ active: boardId === board._id }"
-				@click="goToBoard(board._id)"
-			>
-				<img src="../assets/icons/board.svg" alt="" />
-				<span>{{ board.title }}</span>
-			</button>
+		<div class="nav-content">
+			<div class="workspace-details flex">
+				<div>Workspace</div>
+				<button>Main workspace</button>
+			</div>
+			<div class="workspace-add flex">
+				<button class="btn" @click="addBoard()">
+					<el-icon>
+						<Plus />
+					</el-icon>
+					<span>Add</span>
+				</button>
+				<button class="btn search-btn">
+					<img src="../assets/icons/search.svg" alt="" />
+					<input type="text" v-model="filter.txt" placeholder="Search" @input="setFilter" />
+				</button>
+			</div>
+			<div class="boards-list flex">
+				<button v-for="board in boards" class="btn" :class="{ active: boardId === board._id }"
+					@click="goToBoard(board._id)">
+					<img src="../assets/icons/board.svg" alt="" />
+					<span>{{ board.title }}</span>
+				</button>
+			</div>
 		</div>
 	</section>
 </template>
@@ -45,9 +43,18 @@ export default {
 				txt: '',
 			},
 			boardId: null,
+			navOpen: false
 		}
 	},
+
+	computed: {
+
+	},
+
 	methods: {
+		toggleBoardsNav() {
+			document.body.classList.toggle('side-bar-open')
+		},
 		goToBoard(boardId) {
 			this.$router.push(`/board/${boardId}`)
 			this.$store.commit({ type: 'setBoard', boardId })
