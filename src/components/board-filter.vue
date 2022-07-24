@@ -1,17 +1,17 @@
 <template>
 	<section class="board-filter">
-		<div class="search-filter-container">
-			<button class="btn search-btn" contenteditable>
-				<img src="../assets/icons/search.svg" alt="" />
-				<!-- <span placeholder="Search"></span> -->
-				<input
-					type="text"
-					v-model="filter.txt"
-					placeholder="Search"
-					@input="setFilterBy"
-				/>
-			</button>
-		</div>
+		<!-- <div class="search-filter-container"> -->
+		<button class="search-btn" contenteditable>
+			<img src="../assets/icons/search.svg" alt="" />
+			<!-- <span placeholder="Search">Search</span> -->
+			<input
+				type="text"
+				v-model="filter.txt"
+				placeholder="Search"
+				@input="setFilterBy"
+			/>
+		</button>
+		<!-- </div> -->
 
 		<el-tooltip
 			effect="dark"
@@ -20,8 +20,8 @@
 			class="el-title"
 		>
 			<button class="btn person-btn">
-				<!-- <img src="../assets/icons/person-round.svg" alt="" /> -->
-				<el-icon><User /></el-icon>
+				<img src="../assets/icons/person-round.svg" alt="" />
+				<!-- <el-icon><User /></el-icon> -->
 				<span>Person</span>
 			</button>
 		</el-tooltip>
@@ -34,8 +34,8 @@
 		>
 			<button>
 				<div class="btn1 flex">
-					<el-icon><Filter /></el-icon>
-					<!-- <img src="../assets/icons/filter.svg" alt="" /> -->
+					<!-- <el-icon><Filter /></el-icon> -->
+					<img src="../assets/icons/filter.svg" alt="" />
 					<span> Filter </span>
 				</div>
 
@@ -51,8 +51,8 @@
 			placement="top"
 			class="el-title"
 		>
-			<button class="btn">
-				&#8645;
+			<button class="btn sort-btn">
+				<div>&#8645;</div>
 				<span> Sort </span>
 			</button>
 		</el-tooltip>
