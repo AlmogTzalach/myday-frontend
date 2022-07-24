@@ -21,13 +21,16 @@ export default {
 </script>
 <style >
 .labels-container {
-    padding: 20px;
+    padding-block: 10px;
 }
 
 .labels-container .label {
     cursor: pointer;
     width: 160px;
     height: 36px;
+}
+
+.labels-container .label:not(:last-child) {
     margin-bottom: 10px;
 }
 </style>
