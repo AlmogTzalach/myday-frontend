@@ -60,19 +60,19 @@
 </template>
 
 <script>
-export default {
-	name: 'boardFilter',
-	data() {
-		return {
-			filter: {
-				txt: '',
-			},
-		}
-	},
-	methods: {
-		setFilterBy() {
-			this.$emit('setFilter', this.filter)
+	export default {
+		name: 'boardFilter',
+		data() {
+			return {
+				filter: {
+					txt: '',
+				},
+			}
 		},
-	},
-}
+		methods: {
+			setFilterBy() {
+				this.$emit('setFilter', this.filter)
+			},
+		},
+	}
 </script>

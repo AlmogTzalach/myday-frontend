@@ -39,22 +39,22 @@
 		</div>
 
 		<div class="groups-container">
-			<draggable :list="currBoard.groups" @end="">
+			<draggable :list="currBoard.groups" @end="onGroupMove">
 				<div v-for="group in currBoard.groups" :key="group.id">
 					<board-group
-						:group="group"
+						:group="JSON.parse(JSON.stringify(group))"
 						:filter="groupFilter"
 						draggable=".group-title"
-						@taskMoved="updateGroup"
+						@taskMoved="onTaskMoved"
 						@updateGroup="updateGroup"
 						@deleteGroup="deleteGroup"
 					/>
 				</div>
-				<button class="btn addBtn flex" @click="addGroup(true)">
-					<img src="../assets/icons/add.svg" alt="" />
-					<span>Add new group</span>
-				</button>
 			</draggable>
+			<button class="btn addBtn flex" @click="addGroup(true)">
+				<img src="../assets/icons/add.svg" alt="" />
+				<span>Add new group</span>
+			</button>
 		</div>
 	</section>
 </template>
@@ -77,7 +77,8 @@
 
 		computed: {
 			currBoard() {
-				return this.$store.getters.currBoard
+				const currBoard = this.$store.getters.currBoard
+				return JSON.parse(JSON.stringify(currBoard))
 			},
 		},
 
@@ -90,13 +91,18 @@
 					name: 'New Task',
 				})
 			},
-			// onTaskMoved(newGroup) {
-			// 	const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-			// 	let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
-			// 	boardCopy.groups.splice(idx, 1, newGroup)
+			onTaskMoved(fromId, toId, oldIndex, newIndex) {
+				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
 
-			// 	this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
-			// },
+				const oldGroup = boardCopy.groups.find(
+					(group) => group.id === fromId
+				)
+				const newGroup = boardCopy.groups.find((group) => group.id === toId)
+				const movedTask = oldGroup.tasks.splice(oldIndex, 1)[0]
+				newGroup.tasks.splice(newIndex, 0, movedTask)
+
+				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+			},
 			setFilter(filter) {
 				this.groupFilter = filter
 			},
@@ -114,6 +120,9 @@
 			},
 			deleteGroup(groupId) {
 				this.$store.dispatch({ type: 'deleteGroup', groupId })
+			},
+			onGroupMove() {
+				this.$store.dispatch({ type: 'saveBoard', newBoard: this.currBoard })
 			},
 		},
 		watch: {

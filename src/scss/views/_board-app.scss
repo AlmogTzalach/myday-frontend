@@ -23,7 +23,7 @@
 			}
 
 			.btn2 {
-				padding: rem(3px);
+				// padding: rem(3px);
 				border-end-end-radius: $btnRadius;
 				border-top-right-radius: $btnRadius;
 
@@ -31,6 +31,7 @@
 					filter: $svgWhite;
 					width: 20px;
 					height: 20px;
+					transform: translateY(2.5px);
 				}
 			}
 		}

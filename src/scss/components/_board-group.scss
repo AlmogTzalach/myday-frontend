@@ -135,7 +135,7 @@
 
 	.add-task-line {
 		grid-template-columns: 300px 1fr;
-		padding-inline-start: 35px;
+		padding-inline-start: em(28px);
 		border-bottom: 1px solid $divider-clr;
 		border-top: none;
 
