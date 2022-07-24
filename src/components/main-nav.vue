@@ -60,7 +60,7 @@
 		<div class="nav-btns">
 			<el-tooltip
 				effect="dark"
-				content="Invit-members"
+				content="Invite members"
 				placement="right"
 				class="el-title"
 			>

@@ -4,7 +4,7 @@
 		justify-content: flex-start;
 		align-items: center;
 		padding: rem(12px) 0;
-		// padding-inline-start: rem(30px);
+		padding-inline-start: rem(30px);
 		margin-bottom: rem(20px);
 		.add-btns {
 			display: flex;
@@ -39,7 +39,7 @@
 	.board-container {
 		height: 100vh;
 
-		// padding: 0;
+		padding: 0;
 		overflow: auto;
 		position: relative;
 		// contain: layout;
