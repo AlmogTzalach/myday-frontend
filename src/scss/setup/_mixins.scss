@@ -76,3 +76,9 @@
 		background-color: $dark-blue;
 	}
 }
+
+@mixin avatar($size: 30px) {
+	width: $size;
+	height: $size;
+	border-radius: 50%;
+}

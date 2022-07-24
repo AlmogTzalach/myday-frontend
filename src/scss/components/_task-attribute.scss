@@ -8,6 +8,13 @@
 	filter: $svg-grey;
 }
 
-.avatar {
-	border: 2px solid #f5f6f8;
+.avatar-container {
+	&:not(:first-child) {
+		transform: translateX(-30%);
+	}
+	
+	.avatar {
+		border: 2px solid #f5f6f8;
+		@include avatar;
+	}
 }
