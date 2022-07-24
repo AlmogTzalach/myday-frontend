@@ -60,7 +60,12 @@
 			</div>
 
 			<!-- table content -->
-			<draggable :list="currGroup.tasks" @end="onTaskMoved">
+			<draggable
+				:list="currGroup.tasks"
+				@start="onStart"
+				@end="onTaskMoved"
+				group="tasks"
+			>
 				<div
 					v-for="task in currGroup.tasks"
 					:key="task.id"
@@ -114,87 +119,93 @@
 </template>
 
 <script>
-import taskPreview from './task-preview.vue'
-import { VueDraggableNext } from 'vue-draggable-next'
-import checkboxSummary from './task-summary/checkbox-summary.vue'
-import statusSummary from './task-summary/status-summary.vue'
-import prioritySummary from './task-summary/priority-summary.vue'
+	import taskPreview from './task-preview.vue'
+	import { VueDraggableNext } from 'vue-draggable-next'
+	import checkboxSummary from './task-summary/checkbox-summary.vue'
+	import statusSummary from './task-summary/status-summary.vue'
+	import prioritySummary from './task-summary/priority-summary.vue'
 
-export default {
-	name: 'boardGroup',
+	export default {
+		name: 'boardGroup',
 
-	props: {
-		group: Object,
-		filter: Object,
-	},
-
-	data() {
-		return {
-			currGroup: {},
-		}
-	},
-
-	computed: {
-		cmpsOrder() {
-			return this.$store.getters.cmpsOrder
+		props: {
+			group: Object,
+			filter: Object,
 		},
-	},
 
-	methods: {
-		onTaskFocus(ev) {
-			ev.target.placeholder = '+ Add Task'
-			ev.target.innerText = ''
-		},
-		onTaskBlur(ev) {
-			ev.target.innerText = '+ Add Task'
-		},
-		onAddTask(ev) {
-			ev.preventDefault()
-			const name = ev.target.innerText
-			ev.target.blur()
-			if (!name) {
-				this.onTaskBlur(ev)
-				return
+		data() {
+			return {
+				currGroup: {},
 			}
-			this.$store.dispatch({
-				type: 'addTask',
-				name,
-				groupId: this.group.id,
-				addToEnd: true,
-			})
 		},
-		onTaskMoved() {
-			this.$emit('taskMoved', this.currGroup)
-		},
-		updateGroupTitle(ev) {
-			const title = ev.target.innerText
-			const group = JSON.parse(JSON.stringify(this.currGroup))
-			group.title = title
-			this.$emit('updateGroup', group)
-		},
-		deleteGroup() {
-			this.$emit('deleteGroup', this.currGroup.id)
-		},
-	},
 
-	created() {},
-
-	watch: {
-		group: {
-			handler() {
-				this.currGroup = JSON.parse(JSON.stringify(this.group))
+		computed: {
+			cmpsOrder() {
+				return this.$store.getters.cmpsOrder
 			},
-			immediate: true,
-			deep: true,
 		},
-	},
 
-	components: {
-		taskPreview,
-		draggable: VueDraggableNext,
-		checkboxSummary,
-		statusSummary,
-		prioritySummary,
-	},
-}
+		methods: {
+			onTaskFocus(ev) {
+				ev.target.placeholder = '+ Add Task'
+				ev.target.innerText = ''
+			},
+			onTaskBlur(ev) {
+				ev.target.innerText = '+ Add Task'
+			},
+			onAddTask(ev) {
+				ev.preventDefault()
+				const name = ev.target.innerText
+				ev.target.blur()
+				if (!name) {
+					this.onTaskBlur(ev)
+					return
+				}
+				this.$store.dispatch({
+					type: 'addTask',
+					name,
+					groupId: this.group.id,
+					addToEnd: true,
+				})
+			},
+			onStart(ev) {
+				console.log('start:', ev)
+				console.log(this.currGroup)
+			},
+			onTaskMoved(ev) {
+				console.log('end:', ev)
+				console.log(this.currGroup)
+				this.$emit('taskMoved', this.currGroup)
+			},
+			updateGroupTitle(ev) {
+				const title = ev.target.innerText
+				const group = JSON.parse(JSON.stringify(this.currGroup))
+				group.title = title
+				this.$emit('updateGroup', group)
+			},
+			deleteGroup() {
+				this.$emit('deleteGroup', this.currGroup.id)
+			},
+		},
+
+		created() {},
+
+		watch: {
+			group: {
+				handler() {
+					this.currGroup = JSON.parse(JSON.stringify(this.group))
+				},
+				immediate: true,
+				deep: true,
+			},
+		},
+
+		components: {
+			taskPreview,
+			draggable: VueDraggableNext,
+			checkboxSummary,
+			statusSummary,
+			prioritySummary,
+		},
+	}
 </script>

@@ -32,19 +32,22 @@
 		</div>
 
 		<div class="groups-container">
-			<div v-for="group in currBoard.groups" :key="group.id">
-				<board-group
-					:group="group"
-					:filter="groupFilter"
-					@taskMoved="updateGroup"
-					@updateGroup="updateGroup"
-					@deleteGroup="deleteGroup"
-				/>
-			</div>
-			<button class="btn addBtn flex" @click="addGroup(true)">
-				<img src="../assets/icons/add.svg" alt="" />
-				<span>Add new group</span>
-			</button>
+			<draggable :list="currBoard.groups" @end="">
+				<div v-for="group in currBoard.groups" :key="group.id">
+					<board-group
+						:group="group"
+						:filter="groupFilter"
+						draggable=".group-title"
+						@taskMoved="updateGroup"
+						@updateGroup="updateGroup"
+						@deleteGroup="deleteGroup"
+					/>
+				</div>
+				<button class="btn addBtn flex" @click="addGroup(true)">
+					<img src="../assets/icons/add.svg" alt="" />
+					<span>Add new group</span>
+				</button>
+			</draggable>
 		</div>
 	</section>
 </template>
@@ -53,6 +56,7 @@
 	import boardHeader from '@/components/board-header.vue'
 	import boardFilter from '@/components/board-filter.vue'
 	import boardGroup from '@/components/board-group.vue'
+	import { VueDraggableNext } from 'vue-draggable-next'
 
 	export default {
 		name: 'board-detais',
@@ -117,6 +121,7 @@
 			boardHeader,
 			boardFilter,
 			boardGroup,
+			draggable: VueDraggableNext,
 		},
 	}
 </script>
