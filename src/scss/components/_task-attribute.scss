@@ -16,5 +16,16 @@
 	.avatar {
 		border: 2px solid #f5f6f8;
 		@include avatar;
+		cursor: pointer;
+
+	}
+}
+
+.avatar-modal-container {
+	.avatar {
+		cursor: pointer;
+		border: 2px solid #f5f6f8;
+		@include avatar;
+		margin-inline-end: em(12px);
 	}
 }
