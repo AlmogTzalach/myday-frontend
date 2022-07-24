@@ -1,11 +1,10 @@
 .app-container {
 	// overflow: hidden;
-	// overflow-x: hidden;
 	.main-actions-container {
 		justify-content: flex-start;
 		align-items: center;
 		padding: rem(12px) 0;
-		padding-inline-start: rem(30px);
+		// padding-inline-start: rem(30px);
 		margin-bottom: rem(20px);
 		.add-btns {
 			display: flex;
@@ -38,23 +37,18 @@
 	}
 
 	.board-container {
-		padding: 0;
-		// overflow: scroll;
-		// overflow-y: auto;
-		// max-height: 98vh;
+		height: 100vh;
 
-		// max-width: 80vw;
-		// overflow: auto;
+		// padding: 0;
+		overflow: auto;
+		position: relative;
+		// contain: layout;
 
-		// min-width: 50vw;
-		// overflow: auto;
-		// overflow-x: auto;
-		// overflow-x: visible;
-
-		// overflow-y: auto;
-		// max-height: 75vh;
-		// overflow-x: auto;
-		// max-width: fit-content;
+		.groups-container {
+			// height: 1340px;
+			min-width: 1734px;
+			// position: absolute;
+		}
 	}
 }
 
@@ -76,4 +70,20 @@
 			background-color: $button-hover-clr;
 		}
 	}
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: rgb(255 255 255);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgb(178 178 178);
 }

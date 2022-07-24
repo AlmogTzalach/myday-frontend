@@ -1,7 +1,7 @@
 <template>
 	<section class="main-nav flex">
 		<div class="nav-btns">
-			<el-tooltip
+			<!-- <el-tooltip
 				effect="dark"
 				content="Home page"
 				placement="right"
@@ -17,7 +17,7 @@
 				class="el-title"
 			>
 				<button>work</button>
-			</el-tooltip>
+			</el-tooltip> -->
 
 			<el-tooltip
 				effect="dark"
