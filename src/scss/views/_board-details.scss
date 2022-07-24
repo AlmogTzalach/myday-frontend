@@ -3,10 +3,14 @@
 	// background-color: aquamarine;
 	position: sticky;
 	top: 0;
+	width: 100%;
+	left: 0;
+	// right: 0;
 	z-index: 100;
 }
 
 .groups-container {
+	// background-color: lightgray;
 	padding-inline-start: rem(31px);
 	padding-bottom: rem(40px);
 	overflow-x: auto;
@@ -27,10 +31,17 @@
 }
 
 .board-group {
+	position: sticky;
+	// background-color: lightcyan;
 	.group-title {
-		// background-color: lightgray;
+		// background-color: lavender;
 		position: sticky;
 		top: 0;
-		z-index: 10;
+		// right: 0;
+		// background-color: lightblue;
+		// 	background-color: lightgray;
+		// position: sticky;
+		// 	top: 0;
+		// 	z-index: 10;
 	}
 }
