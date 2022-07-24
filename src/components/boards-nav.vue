@@ -65,7 +65,6 @@ export default {
 		'$route.params.boardId': {
 			handler(boardId) {
 				this.boardId = boardId
-				console.log(boardId)
 			},
 			immediate: true,
 		},

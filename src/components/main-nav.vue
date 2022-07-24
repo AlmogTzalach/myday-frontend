@@ -8,7 +8,11 @@
 				class="el-title"
 			>
 				<!-- <button class="logo-svg" @click="goToHome()">logo</button> -->
-				<img class="logo-svg" src="../assets/myday-logo.svg" @click="goToHome()">
+				<img
+					class="logo-svg"
+					src="../assets/myday-logo.svg"
+					@click="goToHome()"
+				/>
 			</el-tooltip>
 
 			<!-- <el-tooltip
@@ -84,7 +88,11 @@
 			>
 				<img src="../assets/icons/help.svg" alt="" />
 			</el-tooltip>
-			<div class="user-img"></div>
+			<img
+				class="user-img"
+				src="https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png"
+				alt=""
+			/>
 		</div>
 	</section>
 </template>

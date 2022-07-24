@@ -124,8 +124,17 @@
 		border-bottom: 1px solid $divider-clr;
 		border-top: none;
 
-		.add-task-input {
+		display: flex;
+		align-items: center;
+		p {
+			// margin-inline-start: 35px;
 			@include inlineInput;
+			padding: rem(2px) rem(4px);
+			width: 320px;
+
+			&:focus {
+				width: 320px;
+			}
 		}
 
 		&:hover {
