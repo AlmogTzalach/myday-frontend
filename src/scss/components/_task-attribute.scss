@@ -8,6 +8,12 @@
 	filter: $svg-grey;
 }
 
+.avatar-container,.empty-avatar{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 .avatar-container {
 	&:not(:first-child) {
 		transform: translateX(-30%);
