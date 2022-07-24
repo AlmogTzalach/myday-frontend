@@ -61,17 +61,13 @@
 
 			<!-- table content -->
 			<draggable
-				:list="currGroup.tasks"
-				@start="onStart"
-				@end="onTaskMoved"
+				:list="group.tasks"
 				group="tasks"
+				@end="onTaskMoved"
+				:data-groupid="group.id"
 			>
-				<div
-					v-for="task in currGroup.tasks"
-					:key="task.id"
-					@drop="onTaskMoved"
-				>
-					<task-preview :task="task" :currGroup="group.id" />
+				<div v-for="task in group.tasks" :key="task.id">
+					<task-preview :task="task" :groupId="group.id" />
 				</div>
 			</draggable>
 
@@ -99,17 +95,17 @@
 					<component
 						v-if="title === 'checkbox'"
 						:is="'checkboxSummary'"
-						:group="currGroup"
+						:group="group"
 					></component>
 					<component
 						v-else-if="title === 'status'"
 						:is="'statusSummary'"
-						:group="currGroup"
+						:group="group"
 					></component>
 					<component
 						v-else-if="title === 'priority'"
 						:is="'prioritySummary'"
-						:group="currGroup"
+						:group="group"
 					></component>
 				</div>
 				<div></div>
@@ -135,7 +131,7 @@
 
 		data() {
 			return {
-				currGroup: {},
+				// 	currGroup: {},
 			}
 		},
 
@@ -168,37 +164,35 @@
 					addToEnd: true,
 				})
 			},
-			onStart(ev) {
-				console.log('start:', ev)
-				console.log(this.currGroup)
-			},
 			onTaskMoved(ev) {
-				console.log('end:', ev)
-				console.log(this.currGroup)
-				this.$emit('taskMoved', this.currGroup)
+				const fromId = ev.from.dataset.groupid
+				const toId = ev.to.dataset.groupid
+				this.$emit('taskMoved', fromId, toId, ev.oldIndex, ev.newIndex)
 			},
 			updateGroupTitle(ev) {
 				const title = ev.target.innerText
-				const group = JSON.parse(JSON.stringify(this.currGroup))
-				group.title = title
-				this.$emit('updateGroup', group)
+				// const group = JSON.parse(JSON.stringify(this.currGroup))
+				this.group.title = title
+				this.$emit('updateGroup', this.group)
 			},
 			deleteGroup() {
-				this.$emit('deleteGroup', this.currGroup.id)
+				this.$emit('deleteGroup', this.group.id)
 			},
 		},
 
-		created() {},
+		// created() {
+		// 	this.currGroup = JSON.parse(JSON.stringify(this.group))
+		// },
 
-		watch: {
-			group: {
-				handler() {
-					this.currGroup = JSON.parse(JSON.stringify(this.group))
-				},
-				immediate: true,
-				deep: true,
-			},
-		},
+		// watch: {
+		// 	group: {
+		// 		handler() {
+		// 			this.currGroup = JSON.parse(JSON.stringify(this.group))
+		// 		},
+		// 		immediate: true,
+		// 		deep: true,
+		// 	},
+		// },
 
 		components: {
 			taskPreview,
