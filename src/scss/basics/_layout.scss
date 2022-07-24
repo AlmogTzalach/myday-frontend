@@ -1,7 +1,12 @@
 .app-container {
 	grid-template-columns: 66px 254px 1fr;
+
+	body.side-bar-open & {
+		grid-template-columns: 66px 29px 1fr;
+		.nav-content {
+			display: none;
+		}
+	}
+
 }
 
-.board-container {
-	padding-inline-start: 2.6em;
-}
