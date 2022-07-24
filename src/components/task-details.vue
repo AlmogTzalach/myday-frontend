@@ -11,9 +11,9 @@
 </template>
 
 <script>
-export default {
-	props:{
-		visible: Boolean
+	export default {
+		props: {
+			visible: Boolean,
+		},
 	}
-}
 </script>
