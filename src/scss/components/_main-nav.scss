@@ -24,7 +24,7 @@
 		width: 45px;
 	}
 
-	img:not(:first-child) {
+	img:not(.logo-svg) {
 		filter: $svgWhite;
 	}
 
