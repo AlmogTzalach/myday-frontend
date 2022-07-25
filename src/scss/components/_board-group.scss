@@ -66,6 +66,10 @@
 		text-transform: capitalize;
 		.task-data {
 			border-top: 1px solid $divider-clr;
+
+			p:last-child {
+				border-inline-end: 1px solid $divider-clr;
+			}
 		}
 	}
 

@@ -63,10 +63,17 @@
 						</p>
 					</el-tooltip>
 				</div>
-				<div class="task-data grid">
+
+				<!-- <div class="task-data grid"> -->
+				<draggable
+					:list="cmpsOrder"
+					class="task-data grid"
+					@end="cmpOrderChanged"
+				>
 					<p v-for="title in cmpsOrder" :key="title">{{ title }}</p>
-					<p class="empty-data"></p>
-				</div>
+				</draggable>
+				<!-- </div> -->
+				<!-- <p class="empty-data"></p> -->
 			</div>
 
 			<!-- table content -->
@@ -102,7 +109,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- :style="{ 'background-color': group.style.addTaskColor }" -->
 					<div class="add-task-empty-data"></div>
 				</div>
 			</div>
@@ -157,7 +163,8 @@
 
 		computed: {
 			cmpsOrder() {
-				return this.$store.getters.cmpsOrder
+				const cmpsOrder = this.$store.getters.cmpsOrder
+				return JSON.parse(JSON.stringify(cmpsOrder))
 			},
 			indicatorStyle() {
 				return {
@@ -204,21 +211,10 @@
 			deleteGroup() {
 				this.$emit('deleteGroup', this.group.id)
 			},
+			cmpOrderChanged() {
+				this.$emit('cmpOrderChanged', this.cmpsOrder)
+			},
 		},
-
-		// created() {
-		// 	this.currGroup = JSON.parse(JSON.stringify(this.group))
-		// },
-
-		// watch: {
-		// 	group: {
-		// 		handler() {
-		// 			this.currGroup = JSON.parse(JSON.stringify(this.group))
-		// 		},
-		// 		immediate: true,
-		// 		deep: true,
-		// 	},
-		// },
 
 		components: {
 			taskPreview,
@@ -240,9 +236,5 @@
 
 	.add-task-input:focus .side-border-bottom {
 		background-color: var(--indicatorHover);
-	}
-
-	.add-task-input:focus .task-summary-row {
-		background-color: red;
 	}
 </style>

@@ -49,6 +49,8 @@
 		.groups-container {
 			.addBtn {
 				margin-inline-start: 32px;
+				position: sticky;
+				left: 32px;
 			}
 		}
 	}
@@ -63,9 +65,10 @@
 		border-radius: 4px;
 		cursor: pointer;
 
-		img {
-			width: 16px;
-			margin-inline-end: 8px;
+		.new-group-upper::before {
+			content: '\f44f';
+			font-family: monday-icons;
+			margin-inline-end: 9px;
 		}
 
 		&:hover {
