@@ -147,11 +147,7 @@
 		},
 
 		data() {
-			return {
-				style: {
-					'--addTaksHoverColor': this.group.style.addTaskColor,
-				},
-			}
+			return {}
 		},
 
 		computed: {
@@ -228,3 +224,20 @@
 		},
 	}
 </script>
+
+<style>
+	.side-border-bottom {
+		background-color: var(--indicator);
+	}
+	.add-task-line:hover .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
+
+	.add-task-input:focus .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
+
+	.add-task-input:focus .task-summary-row {
+		background-color: red;
+	}
+</style>
