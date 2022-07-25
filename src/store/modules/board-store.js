@@ -1,5 +1,5 @@
 import { boardService } from '../../services/board-service'
-// import { socketService } from '../../services/socket.service'
+import { socketService } from '@/services/socket-service'
 // import { boardService } from '../../services/board-async-service'
 
 export default {
@@ -38,8 +38,8 @@ export default {
 		},
 		statusInUse({ currBoard }) {
 			const statusInUse = []
-			currBoard.groups.forEach(group => {
-				group.tasks.forEach(task => {
+			currBoard.groups.forEach((group) => {
+				group.tasks.forEach((task) => {
 					if (!statusInUse.includes(task.statusId))
 						statusInUse.push(task.statusId)
 				})
@@ -48,8 +48,8 @@ export default {
 		},
 		priorityInUse({ currBoard }) {
 			const priorityInUse = []
-			currBoard.groups.forEach(group => {
-				group.tasks.forEach(task => {
+			currBoard.groups.forEach((group) => {
+				group.tasks.forEach((task) => {
 					if (!priorityInUse.includes(task.priorityId))
 						priorityInUse.push(task.priorityId)
 				})
@@ -97,12 +97,12 @@ export default {
 		},
 		removeStatusLabel(state, { labelId }) {
 			const labels = state.currBoard.labels.status
-			const idx = labels.findIndex(label => labelId === label.id)
+			const idx = labels.findIndex((label) => labelId === label.id)
 			labels.splice(idx, 1)
 		},
 		removePriorityLabel(state, { labelId }) {
 			const labels = state.currBoard.labels.priority
-			const idx = labels.findIndex(label => labelId === label.id)
+			const idx = labels.findIndex((label) => labelId === label.id)
 			labels.splice(idx, 1)
 		},
 		addTask(state, { newTask, groupId, addToEnd }) {
