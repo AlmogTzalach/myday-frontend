@@ -2,6 +2,7 @@
 	<section class="board-group">
 		<div class="group-title-container">
 			<div class="group-title" :style="{ color: group.style.color }">
+				<div class="empty-left"></div>
 				<el-popover
 					placement="bottom-start"
 					:width="264"
@@ -83,17 +84,23 @@
 			<!-- table footer -->
 			<div class="group-footer">
 				<div class="add-task-line grid">
-					<p
-						contenteditable
-						class="add-task-input"
-						@focus="onTaskFocus"
-						@blur="onTaskBlur"
-						@keyup.enter="onAddTask"
-					>
-						+ Add Task
-					</p>
-
-					<div></div>
+					<div class="empty-left"></div>
+					<div
+						class="side-border side-border-bottom"
+						:style="{ 'background-color': group.style.addTaskColor }"
+					></div>
+					<div class="add-task-wrapper flex align-center">
+						<div
+							contenteditable
+							class="add-task-input"
+							@focus="onTaskFocus"
+							@blur="onTaskBlur"
+							@keyup.enter="onAddTask"
+						>
+							+ Add Task
+						</div>
+					</div>
+					<div class="add-task-empty-data"></div>
 				</div>
 			</div>
 		</div>

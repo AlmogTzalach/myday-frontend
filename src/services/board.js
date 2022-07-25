@@ -87,6 +87,7 @@ const boards = [
 				title: 'Calendar',
 				style: {
 					color: '#0086c0',
+					addTaskColor: '#7ec2df',
 				},
 				tasks: [
 					{
@@ -200,6 +201,7 @@ const boards = [
 				id: 'g102',
 				style: {
 					color: '#ff642e',
+					addTaskColor: '#ffb095',
 				},
 				title: 'Tasks',
 				tasks: [
@@ -301,6 +303,7 @@ const boards = [
 				id: 'g103',
 				style: {
 					color: '#ffcb00',
+					addTaskColor: '#ffe47e',
 				},
 				title: 'Bugs',
 				tasks: [
@@ -504,6 +507,7 @@ const boards = [
 				title: 'Day1',
 				style: {
 					color: '#0086c0',
+					addTaskColor: '#7ec2df',
 				},
 				tasks: [
 					{
@@ -575,6 +579,7 @@ const boards = [
 				id: 'g111',
 				style: {
 					color: '#037f4c',
+					addTaskColor: '#80bea4',
 				},
 				title: 'Day2',
 				tasks: [

@@ -5,17 +5,17 @@
 	// height: 100%;
 
 	.group-title {
-		display: flex;
+		display: grid;
+		grid-template-columns: 32px 35px 500px 1fr;
 		position: sticky;
-		top: 0;
+		// top: 0;
 		left: 0;
 		background-color: white;
 		z-index: 50;
 		.el-icon {
 			// display: inline;
-			padding-top: 13px;
+			padding-top: 16px;
 			margin-inline-start: 13px;
-			margin-inline-end: 11px;
 		}
 
 		.group-menu-btn {
@@ -27,7 +27,7 @@
 			width: 46px;
 			height: 36px;
 			position: absolute;
-			transform: translate(-39px, -4px);
+			transform: translate(-7px, -1px);
 
 			img {
 				width: 20px;
@@ -109,10 +109,7 @@
 	.task-row,
 	.task-summary-row {
 		grid-template-columns: 360px 1fr;
-		// border-bottom: 1px solid $divider-clr;
-		grid-auto-flow: column;
-		// height: 37px;
-		// height: 100%;
+		// grid-auto-flow: column;
 
 		.task-name,
 		.task-data > * {
@@ -130,15 +127,10 @@
 		.task-name {
 			display: grid;
 			grid-template-columns: 32px 6px 1fr;
+			background-color: white;
 
-			// padding-inline-start: 35px;
 			position: sticky;
 			left: 0;
-			// border-inline-start: 6px solid lightseagreen;
-			// border-bottom: 1px solid $divider-clr;
-			// outline: $divider-clr 1px solid;
-			// opacity: 0.9;
-			background-color: white;
 			z-index: 10;
 
 			.task-title-wrapper {
@@ -169,28 +161,19 @@
 			}
 
 			.long-text {
-				// display: block;
-				// position: relative;
-				// top: 50%;
-				// transform: translateY(-50%);
 				padding-inline: 0.5714em;
 			}
 		}
 	}
 
 	.add-task-line {
-		grid-template-columns: 300px 1fr;
-		padding-inline-start: em(28px);
+		grid-template-columns: 32px 6px 300px 1fr;
 		border-top: none;
-		border-bottom: 1px solid $divider-clr;
-		// border-left: 6px solid red;
 
-		display: flex;
-		align-items: center;
-		p {
-			// margin-inline-start: 35px;
+		.add-task-input {
 			@include inlineInput;
 			padding: rem(2px) rem(4px);
+			margin-inline-start: 23px;
 			width: 320px;
 
 			&:focus {
@@ -199,15 +182,23 @@
 		}
 
 		&:hover {
-			// border: 1px solid $divider-clr;
 			background-color: $row-hover-clr;
+		}
+
+		.add-task-empty-data,
+		.add-task-wrapper {
+			height: 100%;
+			border-bottom: 1px solid $divider-clr;
+		}
+
+		.side-border-bottom {
+			height: 100%;
+			border-bottom-left-radius: 6px;
+			background-color: red;
 		}
 	}
 
 	.task-summary-row {
-		margin-inline-start: 6px;
-		border-bottom: none;
-
 		.task-data {
 			border-bottom: 1px solid $divider-clr;
 			border-inline-start: 1px solid $divider-clr;
