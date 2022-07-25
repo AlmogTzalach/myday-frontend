@@ -64,6 +64,12 @@ export default {
 		updatePriorityLabels(state, { labels }) {
 			state.currBoard.labels.priority = labels
 		},
+		addStatusLabel(state, { emptyLabel }) {
+			state.currBoard.labels.status.push(emptyLabel)
+		},
+		addPriorityLabel(state, { emptyLabel }) {
+			state.currBoard.labels.priority.push(emptyLabel)
+		},
 		addTask(state, { newTask, groupId, addToEnd }) {
 			const group = state.currBoard.groups.find(group => group.id === groupId)
 			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
@@ -88,6 +94,16 @@ export default {
 		},
 	},
 	actions: {
+		async addStatusLabel({ commit, state }) {
+			const emptyLabel = boardService.getEmptyLabel()
+			commit({ type: 'addStatusLabel', emptyLabel })
+			await boardService.save(state.currBoard)
+		},
+		async addPriorityLabel({ commit, state }) {
+			const emptyLabel = boardService.getEmptyLabel()
+			commit({ type: 'addPriorityLabel', emptyLabel })
+			await boardService.save(state.currBoard)
+		},
 		async updateStatusLabels({ commit, state }, { labels }) {
 			commit({ type: 'updateStatusLabels', labels })
 			await boardService.save(state.currBoard)

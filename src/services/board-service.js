@@ -46,6 +46,7 @@ export const boardService = {
 	getEmptyTask,
 	getEmptyGroup,
 	getRandomGroupClr,
+	getEmptyLabel,
 }
 
 async function query() {
@@ -98,6 +99,14 @@ function getEmptyTask() {
 		txt: '',
 		link: '',
 		comments: [],
+	}
+}
+
+function getEmptyLabel() {
+	return {
+		id: utilService._makeId(5),
+		title: '',
+		color: '#676879',
 	}
 }
 

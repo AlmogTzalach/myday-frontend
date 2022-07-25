@@ -36,7 +36,8 @@
 			<div class="task-data grid">
 				<component v-for="cmp in cmpsOrder" :is="cmp + 'Cmp'" :key="cmp" :task="currTask"
 					@dataChanged="updateData" @statusLabelsEdited="updateStatusLabels"
-					@priorityLabelsEdited="updatePriorityLabels">
+					@priorityLabelsEdited="updatePriorityLabels"
+					@addStatusLabel="addStatusLabel" @addPriorityLabel="addPriorityLabel">
 				</component>
 				<p class="empty-data"></p>
 			</div>
@@ -106,7 +107,14 @@ export default {
 		},
 		updatePriorityLabels(labels) {
 			this.$store.dispatch({ type: 'updatePriorityLabels', labels })
+		},
+		addStatusLabel(){
+			this.$store.dispatch({ type: 'addStatusLabel' })
+		},
+		addPriorityLabel(){
+			this.$store.dispatch({ type: 'addPriorityLabel' })
 		}
+
 	},
 
 	created() {
