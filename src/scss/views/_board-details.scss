@@ -7,6 +7,13 @@
 	z-index: 100;
 }
 
+.group-title-container {
+	position: sticky;
+	width: 0;
+	left: 0;
+	background-color: white;
+}
+
 .groups-container {
 	// padding-inline-start: rem(31px);
 	padding-bottom: rem(40px);
@@ -26,11 +33,4 @@
 				brightness(91%) contrast(88%);
 		}
 	}
-}
-
-.group-title-container {
-	height: 100%;
-	background-color: lightblue;
-	position: sticky;
-	top: 170px;
 }

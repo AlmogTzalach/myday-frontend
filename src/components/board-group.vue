@@ -84,29 +84,34 @@
 			<!-- table footer -->
 			<div class="group-footer">
 				<div class="add-task-line grid">
-					<div class="empty-left"></div>
-					<!-- :style="{ 'background-color': group.style.addTaskColor }" -->
-					<div
-						class="side-border side-border-bottom"
-						:style="indicatorStyle"
-					></div>
-					<div class="add-task-wrapper flex align-center">
+					<div class="add-task-start grid">
+						<div class="empty-left"></div>
 						<div
-							contenteditable
-							class="add-task-input"
-							@focus="onTaskFocus"
-							@blur="onTaskBlur"
-							@keyup.enter="onAddTask"
-						>
-							+ Add Task
+							class="side-border side-border-bottom"
+							:style="indicatorStyle"
+						></div>
+						<div class="add-task-wrapper flex align-center">
+							<div
+								contenteditable
+								class="add-task-input"
+								@focus="onTaskFocus"
+								@blur="onTaskBlur"
+								@keyup.enter="onAddTask"
+							>
+								+ Add Task
+							</div>
 						</div>
 					</div>
+					<!-- :style="{ 'background-color': group.style.addTaskColor }" -->
 					<div class="add-task-empty-data"></div>
 				</div>
 			</div>
 		</div>
 		<div class="task-summary-row grid">
-			<div class="empty-cell"></div>
+			<div class="empty-cell grid">
+				<div></div>
+				<div class="scroll-border"></div>
+			</div>
 			<div class="task-data grid">
 				<div v-for="title in cmpsOrder" :key="title" class="summary-data">
 					<component
