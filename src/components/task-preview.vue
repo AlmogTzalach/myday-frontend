@@ -60,6 +60,8 @@
 					@priorityLabelsEdited="updatePriorityLabels"
 					@addStatusLabel="addStatusLabel"
 					@addPriorityLabel="addPriorityLabel"
+					@removePriorityLabel="removePriorityLabel"
+					@removeStatusLabel="removeStatusLabel"
 				>
 				</component>
 				<p class="empty-data"></p>
@@ -136,6 +138,12 @@
 			},
 			addPriorityLabel() {
 				this.$store.dispatch({ type: 'addPriorityLabel' })
+			},
+			removeStatusLabel(labelId) {
+				this.$store.dispatch({ type: 'removeStatusLabel', labelId })
+			},
+			removePriorityLabel(labelId) {
+				this.$store.dispatch({ type: 'removePriorityLabel', labelId })
 			},
 		},
 
