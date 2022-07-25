@@ -5,18 +5,20 @@
             <p>{{ label.title }}</p>
         </div>
         <div v-else class="edit-label-container" v-for="label in labels" :key="label.color">
-            <el-input :value="label.title">
+            <el-input v-model="label.title" @input="onLabelsEdited">
                 <template #prefix>
                     <div class="color-display" :style="{ 'background-color': label.color }">
-                        <el-color-picker v-model="label.color" @change="onChangeLabelColor" />
+                        <el-color-picker v-model="label.color" @change="onLabelsEdited" />
                     </div>
                 </template>
             </el-input>
         </div>
+        <button v-if="isEdit" class="new-label-btn" @click="onAddLabel"> <img src="../assets/icons/add.svg">New
+            label</button>
         <div class="labels-divider"></div>
-        <div class="edit-labels-btn-container flex justify-center align-center" @click="onEditLabels">
-            <img src="../assets/icons/edit-labels.svg">
-            <button class="edit-labels-btn">Edit Labels</button>
+        <div class="edit-labels-btn-container flex justify-center align-center" @click="onToggleEdit">
+            <img v-if="!isEdit" src="../assets/icons/edit-labels.svg">
+            <button class="edit-labels-btn">{{ this.isEdit ? 'Apply' : 'Edit Labels' }}</button>
         </div>
     </div>
 </template>
@@ -37,8 +39,8 @@ export default {
             this.$emit('labelPicked', labelId)
             this.$emit('closePicker')
         },
-        onEditLabels() {
-            this.isEdit = true
+        onToggleEdit() {
+            this.isEdit = !this.isEdit
         },
         onLabelsEdited() {
             this.$emit('labelsEdited', this.labels)
