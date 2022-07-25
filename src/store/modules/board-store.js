@@ -16,15 +16,15 @@ export default {
 		boardsToDisplay({ boards, boardsFilter }) {
 			const { txt } = boardsFilter
 			const regexTxt = new RegExp(txt, 'i')
-			let filteredBoards = boards.filter((board) => regexTxt.test(board.title))
+			let filteredBoards = boards.filter(board => regexTxt.test(board.title))
 			return filteredBoards
 		},
 		currBoard({ currBoard }) {
 			return currBoard
 		},
 		task({ currBoard }, { groupId, taskId }) {
-			const currGroup = currBoard.groups.find((group) => group.id === groupId)
-			return currGroup.tasks.find((task) => task.id === taskId)
+			const currGroup = currBoard.groups.find(group => group.id === groupId)
+			return currGroup.tasks.find(task => task.id === taskId)
 		},
 		status({ currBoard }) {
 			return currBoard.labels.status
@@ -42,30 +42,30 @@ export default {
 			state.currBoard = boards[0]
 		},
 		setBoard(state, { boardId }) {
-			const board = state.boards.find((board) => board._id === boardId)
+			const board = state.boards.find(board => board._id === boardId)
 			state.currBoard = board
 		},
 		setBoardFilter(state, { filter }) {
 			state.boardsFilter = filter
 		},
 		removeTask(state, { groupId, taskId }) {
-			const group = state.currBoard.groups.find(
-				(group) => group.id === groupId
-			)
-			const idx = group.tasks.findIndex((task) => task.id === taskId)
+			const group = state.currBoard.groups.find(group => group.id === groupId)
+			const idx = group.tasks.findIndex(task => task.id === taskId)
 			group.tasks.splice(idx, 1)
 		},
 		updateTask(state, { groupId, newTask }) {
-			const group = state.currBoard.groups.find(
-				(group) => group.id === groupId
-			)
-			let idx = group.tasks.findIndex((task) => task.id === newTask.id)
+			const group = state.currBoard.groups.find(group => group.id === groupId)
+			let idx = group.tasks.findIndex(task => task.id === newTask.id)
 			group.tasks.splice(idx, 1, newTask)
 		},
+		updateStatusLabels(state, { labels }) {
+			state.currBoard.labels.status = labels
+		},
+		updatePriorityLabels(state, { labels }) {
+			state.currBoard.labels.priority = labels
+		},
 		addTask(state, { newTask, groupId, addToEnd }) {
-			const group = state.currBoard.groups.find(
-				(group) => group.id === groupId
-			)
+			const group = state.currBoard.groups.find(group => group.id === groupId)
 			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
 		},
 		addGroup(state, { newGroup, addToEnd }) {
@@ -77,17 +77,25 @@ export default {
 		},
 		deleteGroup(state, { groupId }) {
 			const idx = state.currBoard.groups.findIndex(
-				(group) => group.id === groupId
+				group => group.id === groupId
 			)
 			state.currBoard.groups.splice(idx, 1)
 		},
 		saveBoard(state, { newBoard }) {
-			let board = state.boards.findIndex((board) => board._id === newBoard._id)
+			let board = state.boards.findIndex(board => board._id === newBoard._id)
 			board = newBoard
 			state.currBoard = newBoard
 		},
 	},
 	actions: {
+		async updateStatusLabels({ commit, state }, { labels }) {
+			commit({ type: 'updateStatusLabels', labels })
+			await boardService.save(state.currBoard)
+		},
+		async updatePriorityLabels({ commit, state }, { labels }) {
+			commit({ type: 'updatePriorityLabels', labels })
+			await boardService.save(state.currBoard)
+		},
 		async loadBoards({ commit }) {
 			const boards = await boardService.query()
 			commit({ type: 'setBoards', boards })
