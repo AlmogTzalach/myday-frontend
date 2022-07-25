@@ -22,7 +22,10 @@
 			</div>
 		</el-popover>
 		<div class="task-row grid">
-			<div class="task-name name-cell grid">
+			<div
+				class="task-name name-cell grid"
+				:style="{ 'border-left-color': group.style.color }"
+			>
 				<div class="side-border"></div>
 				<div class="edit-title">
 					<p contenteditable @input="onTitleUpdate" class="task-title">
@@ -58,77 +61,77 @@
 </template>
 
 <script>
-	import statusCmp from './task-attributes/status-cmp.vue'
-	import priorityCmp from './task-attributes/priority-cmp.vue'
-	import peopleCmp from './task-attributes/people-cmp.vue'
-	import dateCmp from './task-attributes/date-cmp.vue'
-	import checkboxCmp from './task-attributes/checkbox-cmp.vue'
-	import linkCmp from './task-attributes/link-cmp.vue'
-	import textCmp from './task-attributes/text-cmp.vue'
-	import taskDetails from '@/components/task-details.vue'
+import statusCmp from './task-attributes/status-cmp.vue'
+import priorityCmp from './task-attributes/priority-cmp.vue'
+import peopleCmp from './task-attributes/people-cmp.vue'
+import dateCmp from './task-attributes/date-cmp.vue'
+import checkboxCmp from './task-attributes/checkbox-cmp.vue'
+import linkCmp from './task-attributes/link-cmp.vue'
+import textCmp from './task-attributes/text-cmp.vue'
+import taskDetails from '@/components/task-details.vue'
 
-	export default {
-		name: 'taskPreview',
+export default {
+	name: 'taskPreview',
 
-		props: {
-			task: Object,
-			groupId: String,
+	props: {
+		task: Object,
+		group: Object,
+	},
+
+	data() {
+		return {
+			currTask: null,
+			isChatShown: false,
+		}
+	},
+
+	computed: {
+		cmpsOrder() {
+			return this.$store.getters.cmpsOrder
 		},
+	},
 
-		data() {
-			return {
-				currTask: null,
-				isChatShown: false,
-			}
+	methods: {
+		onTaskChat() {
+			this.isChatShown = !this.isChatShown
 		},
+		onDelete() {
+			this.$store.dispatch({
+				type: 'removeTask',
+				groupId: this.group.id,
+				taskId: this.task.id,
+			})
+		},
+		onTaskUpdate() {
+			this.$store.dispatch({
+				type: 'updateTask',
+				groupId: this.group.id,
+				newTask: JSON.parse(JSON.stringify(this.currTask)),
+			})
+		},
+		onTitleUpdate(ev) {
+			this.currTask.title = ev.target.innerText
+			this.onTaskUpdate()
+		},
+		updateData(newTask) {
+			this.currTask = newTask
+			this.onTaskUpdate()
+		},
+	},
 
-		computed: {
-			cmpsOrder() {
-				return this.$store.getters.cmpsOrder
-			},
-		},
+	created() {
+		this.currTask = JSON.parse(JSON.stringify(this.task))
+	},
 
-		methods: {
-			onTaskChat() {
-				this.isChatShown = !this.isChatShown
-			},
-			onDelete() {
-				this.$store.dispatch({
-					type: 'removeTask',
-					groupId: this.groupId,
-					taskId: this.task.id,
-				})
-			},
-			onTaskUpdate() {
-				this.$store.dispatch({
-					type: 'updateTask',
-					groupId: this.groupId,
-					newTask: JSON.parse(JSON.stringify(this.currTask)),
-				})
-			},
-			onTitleUpdate(ev) {
-				this.currTask.title = ev.target.innerText
-				this.onTaskUpdate()
-			},
-			updateData(newTask) {
-				this.currTask = newTask
-				this.onTaskUpdate()
-			},
-		},
-
-		created() {
-			this.currTask = JSON.parse(JSON.stringify(this.task))
-		},
-
-		components: {
-			taskDetails,
-			statusCmp,
-			priorityCmp,
-			peopleCmp,
-			dateCmp,
-			checkboxCmp,
-			linkCmp,
-			textCmp,
-		},
-	}
+	components: {
+		taskDetails,
+		statusCmp,
+		priorityCmp,
+		peopleCmp,
+		dateCmp,
+		checkboxCmp,
+		linkCmp,
+		textCmp,
+	},
+}
 </script>
