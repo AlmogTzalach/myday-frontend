@@ -2,6 +2,7 @@
 	<section class="board-group">
 		<div class="group-title-container">
 			<div class="group-title" :style="{ color: group.style.color }">
+				<div class="empty-left"></div>
 				<el-popover
 					placement="bottom-start"
 					:width="264"
@@ -41,22 +42,25 @@
 				</div>
 			</div>
 		</div>
-		<!-- :style="{ 'border-color': group.style.color } -->
 
 		<div class="group-table">
 			<!-- table header -->
 			<div class="group-header-row task-row grid">
-				<div
-					class="task-name task-title"
-					:style="{ 'border-left-color': group.style.color }"
-				>
+				<div class="task-name task-title">
+					<div class="empty-left"></div>
+					<div
+						class="side-border side-border-top"
+						:style="{ 'background-color': group.style.color }"
+					></div>
 					<el-tooltip
 						effect="dark"
 						content="this title cannot be edited"
 						placement="top"
 						class="el-title"
 					>
-						<p>Task</p>
+						<p class="flex justify-center align-center task-main-header">
+							Task
+						</p>
 					</el-tooltip>
 				</div>
 				<div class="task-data grid">
@@ -79,21 +83,24 @@
 
 			<!-- table footer -->
 			<div class="group-footer">
-				<div
-					class="add-task-line grid"
-					:style="{ 'border-left-color': group.style.color }"
-				>
-					<p
-						contenteditable
-						class="add-task-input"
-						@focus="onTaskFocus"
-						@blur="onTaskBlur"
-						@keyup.enter="onAddTask"
-					>
-						+ Add Task
-					</p>
-
-					<div></div>
+				<div class="add-task-line grid">
+					<div class="empty-left"></div>
+					<div
+						class="side-border side-border-bottom"
+						:style="{ 'background-color': group.style.addTaskColor }"
+					></div>
+					<div class="add-task-wrapper flex align-center">
+						<div
+							contenteditable
+							class="add-task-input"
+							@focus="onTaskFocus"
+							@blur="onTaskBlur"
+							@keyup.enter="onAddTask"
+						>
+							+ Add Task
+						</div>
+					</div>
+					<div class="add-task-empty-data"></div>
 				</div>
 			</div>
 		</div>

@@ -37,15 +37,19 @@
 	&:hover {
 		cursor: pointer;
 		background-color: $row-hover-clr;
-		box-shadow: 4px 3px 6px -3px $box-shadow-clr;
+		// box-shadow: 4px 3px 6px -3px $box-shadow-clr;
 
 		.task-menu-btn {
 			opacity: 1;
 		}
+
+		.task-title-wrapper {
+			background-color: $row-hover-clr;
+			// box-shadow: 4px 3px 6px -3px $box-shadow-clr;
+		}
 	}
 
 	.task-name {
-		border-left: 5px solid red;
 		.conversation-img {
 			line-height: 36px;
 			border-inline-start: 1px solid $divider-clr;
@@ -64,8 +68,9 @@
 	.edit-title {
 		flex-grow: 1;
 		margin-inline-end: 5px;
+		margin-inline-start: 30px;
+
 		.task-title {
-			flex-grow: 1;
 			@include inlineInput;
 			padding: 2px 4px;
 			cursor: text;
