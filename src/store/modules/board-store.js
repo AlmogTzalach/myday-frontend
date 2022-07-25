@@ -108,7 +108,7 @@ export default {
 		},
 		async addGroup({ state, commit }, { addToEnd }) {
 			const newGroup = boardService.getEmptyGroup()
-			newGroup.style.color = boardService.getRandomGroupClr()
+			newGroup.style = boardService.getRandomGroupClr()
 			commit({ type: 'addGroup', newGroup, addToEnd })
 			await boardService.save(state.currBoard)
 		},

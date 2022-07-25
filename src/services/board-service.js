@@ -17,6 +17,20 @@ const groupsClrs = [
 	'#ff158a',
 	'#ff642e',
 ]
+const addTaskClrs = [
+	'#80bea4',
+	'#7ee3b9',
+	'#e4da9f',
+	'#ffe47e',
+	'#baa4e7',
+	'#d0aded',
+	'#7ec2df',
+	'#aaccfd',
+	'#b1e5ff',
+	'#dc98a8',
+	'#ff89c4',
+	'#ffb095',
+]
 
 _createBoards()
 
@@ -98,6 +112,9 @@ function _createBoards() {
 
 function getRandomGroupClr() {
 	const num = utilService.getRandomIntInclusive(0, groupsClrs.length - 1)
-	const groupClr = groupsClrs[num]
-	return groupClr
+	const style = {
+		color: groupsClrs[num],
+		addTaskColor: addTaskClrs[num],
+	}
+	return style
 }
