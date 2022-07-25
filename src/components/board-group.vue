@@ -79,7 +79,10 @@
 
 			<!-- table footer -->
 			<div class="group-footer">
-				<div class="add-task-line grid">
+				<div
+					class="add-task-line grid"
+					:style="{ 'border-left-color': group.style.color }"
+				>
 					<p
 						contenteditable
 						class="add-task-input"
