@@ -25,7 +25,6 @@ export default {
 			this.$store.commit({ type: 'setBoardFilter', filter })
 		},
 		saveBoard() {
-			console.log('hh')
 			this.$store.dispatch({ type: 'saveBoard' })
 		},
 	},

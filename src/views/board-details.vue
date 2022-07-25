@@ -74,10 +74,11 @@ export default {
 			},
 		}
 	},
-
 	computed: {
 		currBoard() {
 			const currBoard = this.$store.getters.currBoard
+			if (currBoard === undefined) return null
+			console.log(currBoard)
 			return JSON.parse(JSON.stringify(currBoard))
 		},
 	},
