@@ -1,7 +1,8 @@
 <template>
-    <el-popover :placement="modalPlacement" :width="200" trigger="click" @show="changePlacement">
+    <el-popover :placement="modalPlacement" :width="200" trigger="click">
         <template #reference>
-            <section class="attr-container" :style="{ 'background-color': priority.color }" @click="visible = true">
+            <section class="attr-container" :style="{ 'background-color': priority.color }"
+                @mousedown="changePlacement">
                 <div class="label">
                     <p>{{ priority.title }}</p>
                 </div>
@@ -13,6 +14,7 @@
 
 <script>
 import labelPicker from '../label-picker.vue'
+// import { ref } from 'vue'
 
 export default {
     name: "priorityCmp",
@@ -23,7 +25,8 @@ export default {
 
     data() {
         return {
-            modalPlacement: 'bottom'
+            modalPlacement: 'bottom',
+            // visible: ref(false)
         }
     },
 
@@ -41,12 +44,15 @@ export default {
         },
     },
     methods: {
+        // onClose() {
+        //     console.log('here');
+        //     this.visible = false
+        // },
         changePlacement(ev) {
             const vpH = window.innerHeight
             this.modalPlacement = ev.clientY > (vpH / 2) ? 'top' : 'bottom'
         },
         changePriority(priorityId) {
-            console.log('here');
             const newTask = JSON.parse(JSON.stringify(this.task))
             newTask.priorityId = priorityId
             this.$emit('dataChanged', newTask)
