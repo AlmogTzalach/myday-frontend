@@ -1,5 +1,5 @@
 <template>
-    <el-popover v-model:visible="visible" :placement="modalPlacement" :width="200" trigger="click">
+    <el-popover v-model:visible="visible" :placement="modalPlacement" :width="200" trigger="click" @show="changePlacement"> 
         <template #reference>
             <section class="attr-container" :style="{ 'background-color': status.color }" @click="visible = true" v-click-outside.stop="onClose">
                 <div class="label">
