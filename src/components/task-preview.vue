@@ -23,10 +23,12 @@
 		</el-popover>
 		<div class="task-row grid">
 			<div class="task-name name-cell grid">
-				<!-- :style="{ 'border-left-color': group.style.color }" -->
 				<div class="empty-left"></div>
 				<!-- <div class="left-indicator"></div> -->
-				<div class="side-border"></div>
+				<div
+					class="side-border"
+					:style="{ 'background-color': group.style.color }"
+				></div>
 				<div class="task-title-wrapper flex space-between">
 					<div class="edit-title flex align-center">
 						<p contenteditable @input="onTitleUpdate" class="task-title">

@@ -41,14 +41,16 @@
 				</div>
 			</div>
 		</div>
-		<!-- :style="{ 'border-color': group.style.color } -->
 
 		<div class="group-table">
 			<!-- table header -->
 			<div class="group-header-row task-row grid">
 				<div class="task-name task-title">
 					<div class="empty-left"></div>
-					<div class="side-border side-border-top"></div>
+					<div
+						class="side-border side-border-top"
+						:style="{ 'background-color': group.style.color }"
+					></div>
 					<el-tooltip
 						effect="dark"
 						content="this title cannot be edited"
