@@ -13,7 +13,8 @@
                 </template>
             </el-input>
         </div>
-        <button v-if="isEdit" class="new-label-btn" @click="onAddLabel"> <img src="../assets/icons/add.svg">New
+        <button v-if="isEdit" class="new-label-btn flex justify-center align-center" @click="onAddLabel"> <img
+                src="../assets/icons/add.svg">New
             label</button>
         <div class="labels-divider"></div>
         <div class="edit-labels-btn-container flex justify-center align-center" @click="onToggleEdit">
@@ -44,6 +45,9 @@ export default {
         },
         onLabelsEdited() {
             this.$emit('labelsEdited', this.labels)
+        },
+        onAddLabel() {
+            this.$emit('onAddLabel')
         }
     },
 }

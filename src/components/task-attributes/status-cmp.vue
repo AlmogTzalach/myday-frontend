@@ -8,7 +8,8 @@
                 </div>
             </section>
         </template>
-        <label-picker :labels="this.statusLabels" @labelPicked="changeStatus" @closePicker="visible = false" @labelsEdited="statusLabelsEdited">
+        <label-picker :labels="this.statusLabels" @labelPicked="changeStatus" @closePicker="visible = false"
+            @labelsEdited="statusLabelsEdited" @onAddLabel="addStatusLabel">
         </label-picker>
     </el-popover>
 </template>
@@ -40,8 +41,11 @@ export default {
             newTask.statusId = statusId
             this.$emit('dataChanged', newTask)
         },
-        statusLabelsEdited(labels){
+        statusLabelsEdited(labels) {
             this.$emit('statusLabelsEdited', labels)
+        },
+        addStatusLabel(){
+            this.$emit('addStatusLabel')
         }
     },
 
@@ -55,7 +59,7 @@ export default {
             return statusLabels.find(label => label.id === this.statusId)
         },
         statusLabels() {
-             return JSON.parse(JSON.stringify(this.$store.getters.status))  
+            return JSON.parse(JSON.stringify(this.$store.getters.status))
         }
     },
 

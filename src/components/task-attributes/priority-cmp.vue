@@ -9,7 +9,7 @@
             </section>
         </template>
         <label-picker :labels="this.priorityLabels" @labelPicked="changePriority" @closePicker="visible = false"
-            @labelsEdited="priorityLabelsEdited"></label-picker>
+            @labelsEdited="priorityLabelsEdited" @onAddLabel="addPriorityLabel"></label-picker>
     </el-popover>
 </template>
 
@@ -55,6 +55,9 @@ export default {
         },
         priorityLabelsEdited(labels) {
             this.$emit('priorityLabelsEdited', labels)
+        },
+        addPriorityLabel(){
+            this.$emit('addPriorityLabel')
         }
     },
 
