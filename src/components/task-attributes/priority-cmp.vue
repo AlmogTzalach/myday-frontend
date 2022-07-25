@@ -2,7 +2,7 @@
     <el-popover :placement="modalPlacement" :width="200" trigger="click" v-model:visible="visible">
         <template #reference>
             <section class="attr-container" :style="{ 'background-color': priority.color }" @mousedown="changePlacement"
-                @click="visible = true">
+                @click="visible = !visible">
                 <div class="label">
                     <p>{{ priority.title }}</p>
                 </div>
