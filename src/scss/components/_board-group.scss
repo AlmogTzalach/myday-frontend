@@ -1,8 +1,8 @@
 .board-group {
 	margin-bottom: 2em;
-	margin-inline-start: 5px;
+	// margin-inline-start: 5px;
 	margin-inline-end: 8px;
-	height: 100%;
+	// height: 100%;
 
 	.group-title {
 		display: flex;
@@ -61,10 +61,21 @@
 
 	.group-table {
 		// border-inline-start: 6px solid lightseagreen;
-		border-top-left-radius: 6px;
-		border-bottom-left-radius: 6px;
+		// border-top-left-radius: 6px;
+		// border-bottom-left-radius: 6px;
+		// height: 100%;
 
-		height: 100%;
+		.empty-left {
+			height: 100%;
+			background-color: white;
+			// opacity: 1;
+			// border: 1px solid white;
+		}
+
+		.side-border {
+			height: 100%;
+			background-color: red;
+		}
 	}
 
 	.group-header-row {
@@ -74,17 +85,26 @@
 		// position: sticky;
 		// top: 0;
 		// align-self: flex-start;
+		.task-data {
+			border-top: 1px solid $divider-clr;
+		}
 	}
 
 	.group-header-row,
 	.add-task-line {
-		border-top: 1px solid $divider-clr;
-		height: 37px;
+		// border-top: 1px solid $divider-clr;
+		// height: 37px;
 		color: $text-group-header;
 
-		.task-title {
-			justify-content: center;
-		}
+		// .task-title {
+		// 	justify-content: center;
+		// }
+	}
+
+	.group-header-row,
+	.task-summary-row,
+	.add-task-line {
+		height: 37.98px;
 	}
 
 	.task-row,
@@ -92,7 +112,8 @@
 		grid-template-columns: 360px 1fr;
 		// border-bottom: 1px solid $divider-clr;
 		grid-auto-flow: column;
-		height: 37px;
+		// height: 37px;
+		// height: 100%;
 
 		.task-name,
 		.task-data > * {
@@ -108,20 +129,36 @@
 		}
 
 		.task-name {
-			padding-inline-start: 35px;
+			display: grid;
+			grid-template-columns: 32px 6px 1fr;
+
+			// padding-inline-start: 35px;
 			position: sticky;
 			left: 0;
-			border-inline-start: 6px solid lightseagreen;
+			// border-inline-start: 6px solid lightseagreen;
 			// border-bottom: 1px solid $divider-clr;
-			outline: $divider-clr 1px solid;
-			opacity: 0.9;
-			background-color: rgb(255 255 255 / 88%);
+			// outline: $divider-clr 1px solid;
+			// opacity: 0.9;
+			background-color: white;
 			z-index: 10;
+
+			.task-title-wrapper {
+				border-bottom: 1px solid $divider-clr;
+			}
+
+			.task-main-header {
+				height: 100%;
+				border-block: 1px solid $divider-clr;
+			}
+
+			.side-border-top {
+				border-top-left-radius: 6px;
+			}
 		}
 
 		.task-data {
-			border-bottom: 1px solid $divider-clr;
 			position: relative;
+			border-bottom: 1px solid $divider-clr;
 			// position: sticky;
 			// left: 0;
 
@@ -147,7 +184,7 @@
 		padding-inline-start: em(28px);
 		border-top: none;
 		border-bottom: 1px solid $divider-clr;
-		border-left: 6px solid red;
+		// border-left: 6px solid red;
 
 		display: flex;
 		align-items: center;
