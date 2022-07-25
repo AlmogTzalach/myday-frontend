@@ -79,3 +79,21 @@
 		}
 	}
 }
+
+.edit-label-container {
+	padding-bottom: 8px;
+
+	.color-display {
+		width: 24px;
+		height: 24px;
+		border-radius: 4px;
+
+		&:hover {
+			opacity: 85%;
+		}
+
+		.el-color-picker {
+			opacity: 0;
+		}
+	}
+}

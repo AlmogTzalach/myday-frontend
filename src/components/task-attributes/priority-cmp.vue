@@ -1,20 +1,19 @@
 <template>
-    <el-popover :placement="modalPlacement" :width="200" trigger="click">
+    <el-popover :placement="modalPlacement" :width="200" trigger="click" v-model:visible="visible">
         <template #reference>
-            <section class="attr-container" :style="{ 'background-color': priority.color }"
-                @mousedown="changePlacement">
+            <section class="attr-container" :style="{ 'background-color': priority.color }" @mousedown="changePlacement"
+                @click="visible = true">
                 <div class="label">
                     <p>{{ priority.title }}</p>
                 </div>
             </section>
         </template>
-        <label-picker :labels="this.priorityLabels" @labelPicked="changePriority"></label-picker>
+        <label-picker :labels="this.priorityLabels" @labelPicked="changePriority" @closePicker="visible = false"></label-picker>
     </el-popover>
 </template>
 
 <script>
 import labelPicker from '../label-picker.vue'
-// import { ref } from 'vue'
 
 export default {
     name: "priorityCmp",
@@ -26,7 +25,7 @@ export default {
     data() {
         return {
             modalPlacement: 'bottom',
-            // visible: ref(false)
+            visible: false
         }
     },
 
@@ -40,14 +39,10 @@ export default {
             return priorityLabels.find(label => label.id === this.priorityId)
         },
         priorityLabels() {
-            return this.$store.getters.priorities
+            return JSON.parse(JSON.stringify(this.$store.getters.priorities))  
         },
     },
     methods: {
-        // onClose() {
-        //     console.log('here');
-        //     this.visible = false
-        // },
         changePlacement(ev) {
             const vpH = window.innerHeight
             this.modalPlacement = ev.clientY > (vpH / 2) ? 'top' : 'bottom'
