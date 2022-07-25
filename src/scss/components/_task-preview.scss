@@ -9,7 +9,7 @@
 		width: 46px;
 		height: 36px;
 		position: absolute;
-		transform: translate(-46px, -1px);
+		transform: translate(-10px, -2px);
 
 		img {
 			width: 20px;
@@ -54,14 +54,14 @@
 			line-height: 36px;
 			border-inline-start: 1px solid $divider-clr;
 			position: relative;
-		}
 
-		img {
-			position: relative;
-			top: 0;
-			transform: translateY(30%);
-			width: 1.71428em;
-			margin-inline: 20px;
+			img {
+				position: relative;
+				top: 0;
+				transform: translateY(30%);
+				width: 1.71428em;
+				margin-inline: 20px;
+			}
 		}
 	}
 
