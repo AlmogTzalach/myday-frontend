@@ -68,9 +68,8 @@
 	import boardGroup from '@/components/board-group.vue'
 	import { VueDraggableNext } from 'vue-draggable-next'
 
-<<<<<<< HEAD
 	export default {
-		name: 'board-detais',
+		name: 'board-details',
 		data() {
 			return {
 				groupFilter: {
@@ -83,14 +82,6 @@
 			currBoard() {
 				const currBoard = this.$store.getters.currBoard
 				return JSON.parse(JSON.stringify(currBoard))
-=======
-export default {
-	name: 'board-details',
-	data() {
-		return {
-			groupFilter: {
-				txt: '',
->>>>>>> a5fb8c043f34791a4d2bc58b89cdc21d48de2702
 			},
 		},
 
