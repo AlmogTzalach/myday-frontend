@@ -47,6 +47,7 @@
 
 .labels-container {
 	padding-block: 10px;
+	display: grid;
 
 	.label {
 		cursor: pointer;
@@ -100,6 +101,30 @@
 
 .edit-label-container {
 	padding-bottom: 8px;
+
+	.delete-btn {
+		width: 16px;
+		height: 16px;
+		opacity: 0;
+		cursor: pointer;
+
+		&.is-disabled {
+			filter: $svg-grey;
+		}
+		&.is-active {
+			background-color: $button-hover-clr;
+			border-radius: 4px;
+			margin-inline-start: 2px;
+		}
+	}
+
+	&:hover .delete-btn {
+		opacity: 1;
+	}
+
+	.delete-btn:hover {
+		opacity: 1;
+	}
 
 	.color-display {
 		width: 24px;

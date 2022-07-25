@@ -63,10 +63,17 @@
 						</p>
 					</el-tooltip>
 				</div>
-				<div class="task-data grid">
+
+				<!-- <div class="task-data grid"> -->
+				<draggable
+					:list="cmpsOrder"
+					class="task-data grid"
+					@end="cmpOrderChanged"
+				>
 					<p v-for="title in cmpsOrder" :key="title">{{ title }}</p>
-					<p class="empty-data"></p>
-				</div>
+				</draggable>
+				<!-- </div> -->
+				<!-- <p class="empty-data"></p> -->
 			</div>
 
 			<!-- table content -->
@@ -84,21 +91,22 @@
 			<!-- table footer -->
 			<div class="group-footer">
 				<div class="add-task-line grid">
-					<div class="empty-left"></div>
-					<!-- :style="{ 'background-color': group.style.addTaskColor }" -->
-					<div
-						class="side-border side-border-bottom"
-						:style="indicatorStyle"
-					></div>
-					<div class="add-task-wrapper flex align-center">
+					<div class="add-task-start grid">
+						<div class="empty-left"></div>
 						<div
-							contenteditable
-							class="add-task-input"
-							@focus="onTaskFocus"
-							@blur="onTaskBlur"
-							@keyup.enter="onAddTask"
-						>
-							+ Add Task
+							class="side-border side-border-bottom"
+							:style="indicatorStyle"
+						></div>
+						<div class="add-task-wrapper flex align-center">
+							<div
+								contenteditable
+								class="add-task-input"
+								@focus="onTaskFocus"
+								@blur="onTaskBlur"
+								@keyup.enter="onAddTask"
+							>
+								+ Add Task
+							</div>
 						</div>
 					</div>
 					<div class="add-task-empty-data"></div>
@@ -106,7 +114,10 @@
 			</div>
 		</div>
 		<div class="task-summary-row grid">
-			<div class="empty-cell"></div>
+			<div class="empty-cell grid">
+				<div></div>
+				<div class="scroll-border"></div>
+			</div>
 			<div class="task-data grid">
 				<div v-for="title in cmpsOrder" :key="title" class="summary-data">
 					<component
@@ -147,16 +158,13 @@
 		},
 
 		data() {
-			return {
-				style: {
-					'--addTaksHoverColor': this.group.style.addTaskColor,
-				},
-			}
+			return {}
 		},
 
 		computed: {
 			cmpsOrder() {
-				return this.$store.getters.cmpsOrder
+				const cmpsOrder = this.$store.getters.cmpsOrder
+				return JSON.parse(JSON.stringify(cmpsOrder))
 			},
 			indicatorStyle() {
 				return {
@@ -203,21 +211,10 @@
 			deleteGroup() {
 				this.$emit('deleteGroup', this.group.id)
 			},
+			cmpOrderChanged() {
+				this.$emit('cmpOrderChanged', this.cmpsOrder)
+			},
 		},
-
-		// created() {
-		// 	this.currGroup = JSON.parse(JSON.stringify(this.group))
-		// },
-
-		// watch: {
-		// 	group: {
-		// 		handler() {
-		// 			this.currGroup = JSON.parse(JSON.stringify(this.group))
-		// 		},
-		// 		immediate: true,
-		// 		deep: true,
-		// 	},
-		// },
 
 		components: {
 			taskPreview,
@@ -228,3 +225,16 @@
 		},
 	}
 </script>
+
+<style>
+	.side-border-bottom {
+		background-color: var(--indicator);
+	}
+	.add-task-line:hover .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
+
+	.add-task-input:focus .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
+</style>

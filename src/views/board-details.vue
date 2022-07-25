@@ -27,8 +27,10 @@
 								class="add-group-popover-line"
 								@click="addGroup(false)"
 							>
-								<img src="../assets/icons/group.svg" />
-								<span>New group of Tasks</span>
+								<!-- <img src="../assets/icons/group.svg" /> -->
+								<span class="new-group-upper"
+									>New group of Tasks</span
+								>
 							</div>
 						</div>
 					</el-popover>
@@ -48,6 +50,7 @@
 						@taskMoved="onTaskMoved"
 						@updateGroup="updateGroup"
 						@deleteGroup="deleteGroup"
+						@cmpOrderChanged="cmpOrderChanged"
 					/>
 				</div>
 			</draggable>
@@ -66,7 +69,7 @@ import boardGroup from '@/components/board-group.vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 
 export default {
-	name: 'board-detais',
+	name: 'board-details',
 	data() {
 		return {
 			groupFilter: {
@@ -74,11 +77,11 @@ export default {
 			},
 		}
 	},
+
 	computed: {
 		currBoard() {
 			const currBoard = this.$store.getters.currBoard
-			if (currBoard === undefined) return null
-			console.log(currBoard)
+			if (currBoard === undefined) return
 			return JSON.parse(JSON.stringify(currBoard))
 		},
 	},
@@ -120,6 +123,11 @@ export default {
 		},
 		onGroupMove() {
 			this.$store.dispatch({ type: 'saveBoard', newBoard: this.currBoard })
+		},
+		cmpOrderChanged(cmpsOrder) {
+			const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
+			boardCopy.cmpsOrder = cmpsOrder
+			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
 		},
 	},
 	watch: {

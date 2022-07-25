@@ -1,19 +1,11 @@
 .board-group {
 	margin-bottom: 2em;
-	// margin-inline-start: 5px;
 	margin-inline-end: 8px;
-	// height: 100%;
 
 	.group-title {
 		display: grid;
 		grid-template-columns: 32px 35px 500px 1fr;
-		position: sticky;
-		// top: 0;
-		left: 0;
-		background-color: white;
-		z-index: 50;
 		.el-icon {
-			// display: inline;
 			padding-top: 16px;
 			margin-inline-start: 13px;
 		}
@@ -60,16 +52,9 @@
 	}
 
 	.group-table {
-		// border-inline-start: 6px solid lightseagreen;
-		// border-top-left-radius: 6px;
-		// border-bottom-left-radius: 6px;
-		// height: 100%;
-
 		.empty-left {
 			height: 100%;
 			background-color: white;
-			// opacity: 1;
-			// border: 1px solid white;
 		}
 
 		.side-border {
@@ -79,25 +64,18 @@
 
 	.group-header-row {
 		text-transform: capitalize;
-		// background-color: lightblue;
-
-		// position: sticky;
-		// top: 0;
-		// align-self: flex-start;
 		.task-data {
 			border-top: 1px solid $divider-clr;
+
+			p:last-child {
+				border-inline-end: 1px solid $divider-clr;
+			}
 		}
 	}
 
 	.group-header-row,
 	.add-task-line {
-		// border-top: 1px solid $divider-clr;
-		// height: 37px;
 		color: $text-group-header;
-
-		// .task-title {
-		// 	justify-content: center;
-		// }
 	}
 
 	.group-header-row,
@@ -109,7 +87,6 @@
 	.task-row,
 	.task-summary-row {
 		grid-template-columns: 360px 1fr;
-		// grid-auto-flow: column;
 
 		.task-name,
 		.task-data > * {
@@ -150,9 +127,6 @@
 		.task-data {
 			position: relative;
 			border-bottom: 1px solid $divider-clr;
-			// position: sticky;
-			// left: 0;
-
 			grid-auto-flow: column;
 			grid-auto-columns: 160px;
 
@@ -167,8 +141,14 @@
 	}
 
 	.add-task-line {
-		grid-template-columns: 32px 6px 300px 1fr;
+		grid-template-columns: 338px 1fr;
 		border-top: none;
+
+		.add-task-start {
+			position: sticky;
+			left: 0;
+			grid-template-columns: 32px 6px 300px;
+		}
 
 		.add-task-input {
 			@include inlineInput;
@@ -194,17 +174,23 @@
 		.side-border-bottom {
 			height: 100%;
 			border-bottom-left-radius: 6px;
-
-			background-color: var(--indicator);
-
-			.add-task-line:hover & {
-				background-color: var(--indicatorHover);
-				/* background-color: red; */
-			}
 		}
 	}
 
 	.task-summary-row {
+		.empty-cell {
+			grid-template-columns: 360px 10px;
+			position: sticky;
+			left: 0;
+			z-index: 10;
+			background-color: white;
+
+			.scroll-border {
+				border-bottom: 1px solid $divider-clr;
+				border-inline-start: 1px solid $divider-clr;
+				border-bottom-left-radius: 6px;
+			}
+		}
 		.task-data {
 			border-bottom: 1px solid $divider-clr;
 			border-inline-start: 1px solid $divider-clr;

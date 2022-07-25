@@ -9,7 +9,8 @@
             </section>
         </template>
         <label-picker :labels="this.priorityLabels" @labelPicked="changePriority" @closePicker="visible = false"
-            @labelsEdited="priorityLabelsEdited" @onAddLabel="addPriorityLabel"></label-picker>
+            @labelsEdited="priorityLabelsEdited" @onAddLabel="addPriorityLabel" @removeLabel="removePriorityLabel">
+        </label-picker>
     </el-popover>
 </template>
 
@@ -44,6 +45,9 @@ export default {
         },
     },
     methods: {
+        onClose() {
+            console.log('test');
+        },
         changePlacement(ev) {
             const vpH = window.innerHeight
             this.modalPlacement = ev.clientY > (vpH / 2) ? 'top' : 'bottom'
@@ -56,8 +60,11 @@ export default {
         priorityLabelsEdited(labels) {
             this.$emit('priorityLabelsEdited', labels)
         },
-        addPriorityLabel(){
+        addPriorityLabel() {
             this.$emit('addPriorityLabel')
+        },
+        removePriorityLabel(labelId) {
+            this.$emit('removePriorityLabel', labelId)
         }
     },
 
