@@ -8,7 +8,8 @@
                 </div>
             </section>
         </template>
-        <label-picker :labels="this.priorityLabels" @labelPicked="changePriority" @closePicker="visible = false"></label-picker>
+        <label-picker :labels="this.priorityLabels" @labelPicked="changePriority" @closePicker="visible = false"
+            @labelsEdited="priorityLabelsEdited"></label-picker>
     </el-popover>
 </template>
 
@@ -39,7 +40,7 @@ export default {
             return priorityLabels.find(label => label.id === this.priorityId)
         },
         priorityLabels() {
-            return JSON.parse(JSON.stringify(this.$store.getters.priorities))  
+            return JSON.parse(JSON.stringify(this.$store.getters.priorities))
         },
     },
     methods: {
@@ -51,8 +52,10 @@ export default {
             const newTask = JSON.parse(JSON.stringify(this.task))
             newTask.priorityId = priorityId
             this.$emit('dataChanged', newTask)
+        },
+        priorityLabelsEdited(labels) {
+            this.$emit('priorityLabelsEdited', labels)
         }
-
     },
 
     components: {
