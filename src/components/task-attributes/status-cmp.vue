@@ -9,7 +9,7 @@
             </section>
         </template>
         <label-picker :labels="this.statusLabels" @labelPicked="changeStatus" @closePicker="visible = false"
-            @labelsEdited="statusLabelsEdited" @onAddLabel="addStatusLabel">
+            @labelsEdited="statusLabelsEdited" @onAddLabel="addStatusLabel" @removeLabel="removeStatusLabel"> 
         </label-picker>
     </el-popover>
 </template>
@@ -46,6 +46,9 @@ export default {
         },
         addStatusLabel(){
             this.$emit('addStatusLabel')
+        },
+         removeStatusLabel(labelId) {
+            this.$emit('removeStatusLabel', labelId)
         }
     },
 

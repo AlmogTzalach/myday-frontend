@@ -66,7 +66,7 @@ import boardGroup from '@/components/board-group.vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 
 export default {
-	name: 'board-detais',
+	name: 'board-details',
 	data() {
 		return {
 			groupFilter: {

@@ -35,6 +35,26 @@ export default {
 		cmpsOrder({ currBoard }) {
 			return currBoard.cmpsOrder
 		},
+		statusInUse({ currBoard }) {
+			const statusInUse = []
+			currBoard.groups.forEach(group => {
+				group.tasks.forEach(task => {
+					if (!statusInUse.includes(task.statusId))
+						statusInUse.push(task.statusId)
+				})
+			})
+			return statusInUse
+		},
+		priorityInUse({ currBoard }) {
+			const priorityInUse = []
+			currBoard.groups.forEach(group => {
+				group.tasks.forEach(task => {
+					if (!priorityInUse.includes(task.priorityId))
+						priorityInUse.push(task.priorityId)
+				})
+			})
+			return priorityInUse
+		},
 	},
 	mutations: {
 		setBoards(state, { boards }) {
@@ -70,6 +90,16 @@ export default {
 		addPriorityLabel(state, { emptyLabel }) {
 			state.currBoard.labels.priority.push(emptyLabel)
 		},
+		removeStatusLabel(state, { labelId }) {
+			const labels = state.currBoard.labels.status
+			const idx = labels.findIndex(label => labelId === label.id)
+			labels.splice(idx, 1)
+		},
+		removePriorityLabel(state, { labelId }) {
+			const labels = state.currBoard.labels.priority
+			const idx = labels.findIndex(label => labelId === label.id)
+			labels.splice(idx, 1)
+		},
 		addTask(state, { newTask, groupId, addToEnd }) {
 			const group = state.currBoard.groups.find(group => group.id === groupId)
 			addToEnd ? group.tasks.push(newTask) : group.tasks.unshift(newTask)
@@ -94,6 +124,14 @@ export default {
 		},
 	},
 	actions: {
+		async removeStatusLabel({ commit, state }, { labelId }) {
+			commit({ type: 'removeStatusLabel', labelId })
+			await boardService.save(state.currBoard)
+		},
+		async removePriorityLabel({ commit, state }, { labelId }) {
+			commit({ type: 'removePriorityLabel', labelId })
+			await boardService.save(state.currBoard)
+		},
 		async addStatusLabel({ commit, state }) {
 			const emptyLabel = boardService.getEmptyLabel()
 			commit({ type: 'addStatusLabel', emptyLabel })
