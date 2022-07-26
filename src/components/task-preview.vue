@@ -95,7 +95,7 @@ export default {
 
 	data() {
 		return {
-			// currTask: null,
+			currTask: null,
 			isChatShown: false,
 		}
 	},
@@ -116,23 +116,27 @@ export default {
 				taskId: this.task.id,
 			})
 		},
-		onTaskUpdate() {
+		onTaskUpdate(newTask) {
 			this.$store.dispatch({
 				type: 'updateTask',
 				groupId: this.group.id,
-				newTask: this.task,
+				newTask,
 				// newTask: JSON.parse(JSON.stringify(this.currTask)),
 			})
 		},
 		onTitleUpdate(ev) {
 			// this.currTask.title = ev.target.innerText
-			this.task.title = ev.target.innerText
-			this.onTaskUpdate()
+			const newTask = JSON.parse(JSON.stringify(this.task))
+			// this.task.title = ev.target.innerText
+			newTask.title = ev.target.innerText
+			this.onTaskUpdate(newTask)
 		},
 		updateData(newTask) {
+			// const taskCopy = JSON.parse(JSON.stringify(this.task))
 			// this.currTask = newTask
-			this.task = newTask
-			this.onTaskUpdate()
+			// newTask = JSON.parse(JSON.stringify(this.task))
+			// taskCopy = JSON.parse(JSON.stringify(newTask))
+			this.onTaskUpdate(newTask)
 		},
 		updateStatusLabels(labels) {
 			this.$store.dispatch({ type: 'updateStatusLabels', labels })
@@ -154,10 +158,10 @@ export default {
 		},
 	},
 
-	// created() {
-	// 	// this.currTask = JSON.parse(JSON.stringify(this.task))
-	// 	this.currTask = this.task
-	// },
+	created() {
+		// this.currTask = JSON.parse(JSON.stringify(this.task))
+		this.currTask = this.task
+	},
 
 	components: {
 		taskDetails,
