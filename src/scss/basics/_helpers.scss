@@ -28,6 +28,12 @@
 	text-align: center;
 }
 
+.long-text {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
 // List
 .clean-list {
 	list-style-type: none;
@@ -35,8 +41,4 @@
 	margin: 0;
 }
 
-.long-text {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
+

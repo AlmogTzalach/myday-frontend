@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style>
-.el-date-editor {
+/* .el-date-editor {
     opacity: 0;
     position: absolute;
     z-index: 100;
@@ -51,5 +51,5 @@ export default {
 
 .date-display {
     position: absolute;
-}
+} */
 </style>
