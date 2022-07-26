@@ -32,7 +32,7 @@ const addTaskClrs = [
 	'#ffb095',
 ]
 
-_createBoards()
+// _createBoards()
 
 //BACKEND
 import { httpService } from './http-service'

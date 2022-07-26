@@ -11,6 +11,7 @@
 import mainNav from '@/components/main-nav.vue'
 import boardsNav from '@/components/boards-nav.vue'
 import boardDetails from './board-details.vue'
+import { socketService } from '../services/socket-service'
 
 export default {
 	name: 'board-app',
@@ -18,8 +19,20 @@ export default {
 	data() {
 		return {}
 	},
-
+	created() {
+		// socketService.on('taskAdd', this.addTask)
+		socketService.on('boardUpdate', this.updateBoard)
+	},
 	methods: {
+		updateBoard(board) {
+			console.log(board)
+			this.$store.commit({ type: 'saveBoard', newBoard: board })
+		},
+		// addTask(taskToAdd) {
+		// 	console.log(taskToAdd, 'task')
+		// 	const { newTask, groupId, addToEnd } = taskToAdd
+		// 	this.$store.commit({ type: 'addTask', newTask, groupId, addToEnd })
+		// },
 		setFilter(filter) {
 			filter = JSON.parse(JSON.stringify(filter))
 			this.$store.commit({ type: 'setBoardFilter', filter })
@@ -28,7 +41,6 @@ export default {
 			this.$store.dispatch({ type: 'saveBoard' })
 		},
 	},
-
 	computed: {
 		boards() {
 			return this.$store.getters.boardsToDisplay

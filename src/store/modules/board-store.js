@@ -1,4 +1,5 @@
 import { boardService } from '../../services/board-service'
+import { socketService } from '../../services/socket-service'
 // import { boardService } from '../../services/board-async-service'
 
 export default {
@@ -162,6 +163,7 @@ export default {
 		},
 		async removeTask({ commit, state }, { groupId, taskId }) {
 			commit({ type: 'removeTask', groupId, taskId })
+			socketService.emit('updateBoard', state.currBoard)
 			await boardService.save(state.currBoard)
 		},
 		async updateTask({ commit, state }, { groupId, newTask }) {
@@ -172,13 +174,22 @@ export default {
 			const newTask = boardService.getEmptyTask()
 			newTask.title = name
 			commit({ type: 'addTask', newTask, groupId, addToEnd })
+			//
+			const taskToAdd = {
+				newTask,
+				groupId,
+				addToEnd,
+			}
+			// socketService.emit('taskAdded', taskToAdd)
+
+			socketService.emit('updateBoard', state.currBoard)
 			await boardService.save(state.currBoard)
 		},
 		async addGroup({ state, commit }, { addToEnd }) {
 			const newGroup = boardService.getEmptyGroup()
 			newGroup.style = boardService.getRandomGroupClr()
 			commit({ type: 'addGroup', newGroup, addToEnd })
-			socketService.emit('addGroup', newGroup, addToEnd)
+			// socketService.emit('addGroup', newGroup, addToEnd)
 			await boardService.save(state.currBoard)
 		},
 		async saveBoard({ commit }, { newBoard }) {
