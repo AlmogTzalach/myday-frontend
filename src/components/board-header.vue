@@ -2,13 +2,9 @@
 	<header class="board-header">
 		<div class="board-actions flex">
 			<div class="title-input flex">
-				<el-tooltip
-					effect="dark"
-					content="Click to edit"
-					placement="bottom"
-					class="el-title"
-				>
-					<h1 contenteditable @input="updateBoard">{{ board.title }}</h1>
+				<el-tooltip effect="dark" content="Click to edit" placement="bottom" class="el-title">
+					<h1 contenteditable @keydown.enter="$event.target.blur()" @input="updateBoardTitle">{{ board.title }}
+					</h1>
 				</el-tooltip>
 			</div>
 			<div class="btns flex">
@@ -42,11 +38,13 @@ export default {
 		addMember() {
 			console.log('add memeber')
 		},
-		setTableVue() {
-			console.log('set vue')
+		setTableView() {
+			console.log('set view')
 		},
-		updateBoard(e) {
-			console.log(e.target.innerText)
+		updateBoardTitle(ev) {
+			const newBoard = JSON.parse(JSON.stringify(this.board))
+			newBoard.title = ev.target.innerText
+			this.$emit('updateBoardTitle', newBoard)
 		},
 	},
 }
