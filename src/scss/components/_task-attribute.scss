@@ -2,6 +2,25 @@
 	color: white;
 }
 
+.attr-container {
+	cursor: pointer;
+}
+
+//TEXT CMP
+
+// DATE CMP
+
+.el-date-editor {
+	opacity: 0;
+	position: absolute;
+	z-index: 100;
+}
+
+.date-display {
+	position: absolute;
+	cursor: pointer;
+}
+
 //PEOPLE CMP
 .empty-avatar {
 	width: 35px;
@@ -28,11 +47,53 @@
 }
 
 .avatar-modal-container {
+	.small-avatar-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 5px;
+
+	}
+
+	.avatar-modal-divider {
+		width: 100%;
+		height: 1px;
+		background-color: #676879;
+		margin-bottom: 8px;
+	}
+
 	.avatar {
 		cursor: pointer;
 		border: 2px solid #f5f6f8;
 		@include avatar;
 		margin-inline-end: em(12px);
+	}
+	.small-avatar {
+		@include avatar(22px);
+		transform: translateX(4px);
+	}
+
+	.small-avatar-name {
+		background-color: rgb(231, 244, 255);
+		padding-inline-start: 7px;
+
+		img {
+			width: 13px;
+			height: 13px;
+
+			&:hover {
+				background-color: white;
+				border-radius: 50%;
+			}
+		}
+	}
+
+	.users-to-add {
+		cursor: pointer;
+		border-radius: 4px;
+		&:hover {
+			background-color: $button-hover-clr;
+		}
 	}
 }
 
