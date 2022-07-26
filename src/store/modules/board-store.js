@@ -1,6 +1,6 @@
-import { boardService } from '../../services/board-service'
+// import { boardService } from '../../services/board-service'
 import { socketService } from '../../services/socket-service'
-// import { boardService } from '../../services/board-async-service'
+import { boardService } from '../../services/board-async-service'
 
 export default {
 	state: {
