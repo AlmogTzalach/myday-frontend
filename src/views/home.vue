@@ -5,10 +5,6 @@
 			<h1>Myday</h1>
 		</div>
 		<nav class="homepage-nav">
-			<!-- <router-link to="/board/1000"
-				><button @click="getStarted()" class="get-started-btn flex">
-					Get started <img src="../assets/icons/arrow-right.svg" /></button
-			></router-link> -->
 
 			<button @click="getStarted()" class="get-started-btn flex">
 				Get started <img src="../assets/icons/arrow-right.svg" />
@@ -41,6 +37,15 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="carousel-container">
+		<el-carousel trigger="click" :interval="4000" type="card" height="200px">
+			<el-carousel-item v-for="item in 3" :key="item">
+				<!-- <h3 text="2xl" justify="center">{{ item }}</h3> -->
+				<img src="../assets/myday-app.jpeg">
+			</el-carousel-item>
+		</el-carousel>
+	</div>
 </template>
 
 <script>
@@ -55,4 +60,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style >
+</style>
