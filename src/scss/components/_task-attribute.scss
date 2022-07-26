@@ -6,6 +6,29 @@
 	cursor: pointer;
 }
 
+.label-container {
+	position: relative;
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		right: 0;
+		border-bottom-color: rgba(0, 0, 0, 0.2);
+		border-right-color: #fff;
+		border-style: solid;
+		border-width: 0;
+
+		transition: border-width 0.4s;
+	}
+
+	&:hover {
+		&::before {
+			border-width: 0 10px 10px 0;
+		}
+	}
+}
+
 //TEXT CMP
 
 // DATE CMP
@@ -52,7 +75,6 @@
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 5px;
-
 	}
 
 	.avatar-modal-divider {
@@ -108,12 +130,13 @@
 
 .labels-container {
 	padding-block: 10px;
-	display: grid;
 
 	.label {
 		cursor: pointer;
-		width: 160px;
-		height: 36px;
+		width: 152px;
+		height: 31px;
+		margin-bottom: 9px;
+		border-radius: 2px;
 	}
 	.label:not(:last-child) {
 		margin-bottom: 10px;
@@ -121,7 +144,7 @@
 
 	.new-label-btn {
 		background-color: white;
-		width: 100%;
+		width: 217.2px;
 		border: 1px solid #dcdfe6;
 		border-radius: 4px;
 		padding-block: 6.5px;
@@ -200,4 +223,11 @@
 			opacity: 0;
 		}
 	}
+}
+
+.labels-picker-grid {
+	display: grid;
+	grid-auto-flow: column;
+	grid-template-rows: repeat(6, auto);
+	grid-column-gap: 8px;
 }

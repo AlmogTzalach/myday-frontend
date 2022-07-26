@@ -12,6 +12,7 @@
 		padding: rem(8px) rem(16px);
 		border-radius: 40px;
 		border: none;
+
 		cursor: pointer;
 	}
 }
@@ -53,6 +54,11 @@
 			padding: 1.5em;
 		}
 	}
+}
+
+.carousel-container {
+	padding-inline: 25px;
+	transform: translateY(-30%);
 }
 
 @function generate-random-stars($screen-width, $color, $density) {

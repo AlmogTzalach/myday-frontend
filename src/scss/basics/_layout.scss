@@ -8,5 +8,32 @@
 		}
 	}
 
-}
+	@include for-narrow-layout {
+		grid-template-columns: 1fr;
 
+		grid-template-rows: 66px 1fr;
+
+		.main-nav {
+			flex-direction: row;
+
+			.nav-btns {
+				flex-direction: row;
+
+				> *:not(.logo-svg) {
+					display: none;
+				}
+			}
+		}
+
+		.boards-nav {
+			position: fixed;
+			top: 0;
+			left: 0;
+			transform: translateX(-100%);
+
+			.board-toggle-container {
+				display: none;
+			}
+		}
+	}
+}
