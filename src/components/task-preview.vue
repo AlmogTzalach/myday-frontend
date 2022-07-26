@@ -3,8 +3,14 @@
 	<section class="task-preview">
 		<div class="task-row grid">
 			<div class="task-name name-cell grid">
-				<el-popover placement="bottom-start" :width="264" trigger="click" :show-arrow="false" :hide-after="0"
-					:offset="0">
+				<el-popover
+					placement="bottom-start"
+					:width="264"
+					trigger="click"
+					:show-arrow="false"
+					:hide-after="0"
+					:offset="0"
+				>
 					<template #reference>
 						<div class="task-menu-btn">
 							<img src="../assets/icons/menu.svg" alt="menu" />
@@ -18,27 +24,50 @@
 					</div>
 				</el-popover>
 				<div class="empty-left"></div>
-				<div class="side-border" :style="{ 'background-color': group.style.color }"></div>
+				<div
+					class="side-border"
+					:style="{ 'background-color': group.style.color }"
+				></div>
 				<div class="task-title-wrapper flex space-between">
 					<div class="edit-title flex align-center">
-						<p contenteditable @keydown.enter="$event.target.blur()" @input="onTitleUpdate"
-							class="task-title">
-							{{ currTask.title }}
+						<p
+							contenteditable
+							@keydown.enter="$event.target.blur()"
+							@blur="onTitleUpdate"
+							class="task-title"
+						>
+							{{ task.title }}
 						</p>
 					</div>
 					<div class="conversation-img" @click="onTaskChat">
-						<el-tooltip effect="dark" content="Start conversetion" placement="top" class="el-title">
-							<img src="../assets/icons/add-update.svg" alt="conversation" />
+						<el-tooltip
+							effect="dark"
+							content="Start conversetion"
+							placement="top"
+							class="el-title"
+						>
+							<img
+								src="../assets/icons/add-update.svg"
+								alt="conversation"
+							/>
 						</el-tooltip>
 					</div>
 				</div>
 			</div>
 			<div class="task-data grid">
-				<component v-for="cmp in cmpsOrder" :is="cmp + 'Cmp'" :key="cmp" :task="currTask"
-					@dataChanged="updateData" @statusLabelsEdited="updateStatusLabels"
-					@priorityLabelsEdited="updatePriorityLabels" @addStatusLabel="addStatusLabel"
-					@addPriorityLabel="addPriorityLabel" @removePriorityLabel="removePriorityLabel"
-					@removeStatusLabel="removeStatusLabel">
+				<component
+					v-for="cmp in cmpsOrder"
+					:is="cmp + 'Cmp'"
+					:key="cmp"
+					:task="task"
+					@dataChanged="updateData"
+					@statusLabelsEdited="updateStatusLabels"
+					@priorityLabelsEdited="updatePriorityLabels"
+					@addStatusLabel="addStatusLabel"
+					@addPriorityLabel="addPriorityLabel"
+					@removePriorityLabel="removePriorityLabel"
+					@removeStatusLabel="removeStatusLabel"
+				>
 				</component>
 				<p class="empty-data"></p>
 			</div>
@@ -66,7 +95,7 @@ export default {
 
 	data() {
 		return {
-			currTask: null,
+			// currTask: null,
 			isChatShown: false,
 		}
 	},
@@ -76,7 +105,6 @@ export default {
 			return this.$store.getters.cmpsOrder
 		},
 	},
-
 	methods: {
 		onTaskChat() {
 			this.isChatShown = !this.isChatShown
@@ -92,15 +120,18 @@ export default {
 			this.$store.dispatch({
 				type: 'updateTask',
 				groupId: this.group.id,
-				newTask: JSON.parse(JSON.stringify(this.currTask)),
+				newTask: this.task,
+				// newTask: JSON.parse(JSON.stringify(this.currTask)),
 			})
 		},
 		onTitleUpdate(ev) {
-			this.currTask.title = ev.target.innerText
+			// this.currTask.title = ev.target.innerText
+			this.task.title = ev.target.innerText
 			this.onTaskUpdate()
 		},
 		updateData(newTask) {
-			this.currTask = newTask
+			// this.currTask = newTask
+			this.task = newTask
 			this.onTaskUpdate()
 		},
 		updateStatusLabels(labels) {
@@ -123,9 +154,10 @@ export default {
 		},
 	},
 
-	created() {
-		this.currTask = JSON.parse(JSON.stringify(this.task))
-	},
+	// created() {
+	// 	// this.currTask = JSON.parse(JSON.stringify(this.task))
+	// 	this.currTask = this.task
+	// },
 
 	components: {
 		taskDetails,

@@ -30,21 +30,29 @@
 		flex-direction: column;
 		padding-bottom: rem(16px);
 
-		.btn {
-			// text-align: start;
-			// display: flex;
-			// justify-content: left;
-			// align-items: center;
-		}
-		.search-btn {
-			// @include inlineInput;
+		.el-input__wrapper {
+			background-color: #f6f7fb;
 
-			input {
-				background-color: #f6f7fb;
-				border: none;
-				outline: none;
+			&:focus {
+				background-color: white;
 			}
 		}
+
+		// .btn {
+		// 	// text-align: start;
+		// 	// display: flex;
+		// 	// justify-content: left;
+		// 	// align-items: center;
+		// }
+		// .search-btn {
+		// 	// @include inlineInput;
+
+		// 	input {
+		// 		background-color: #f6f7fb;
+		// 		border: none;
+		// 		outline: none;
+		// 	}
+		// }
 	}
 
 	.boards-list {

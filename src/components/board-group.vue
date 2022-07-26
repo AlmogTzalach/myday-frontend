@@ -3,8 +3,14 @@
 		<div class="group-title-container">
 			<div class="group-title" :style="{ color: group.style.color }">
 				<div class="empty-left"></div>
-				<el-popover placement="bottom-start" :width="264" trigger="click" :show-arrow="false" :hide-after="0"
-					:offset="0">
+				<el-popover
+					placement="bottom-start"
+					:width="264"
+					trigger="click"
+					:show-arrow="false"
+					:hide-after="0"
+					:offset="0"
+				>
 					<template #reference>
 						<div class="group-menu-btn">
 							<img src="../assets/icons/menu.svg" alt="menu" />
@@ -23,8 +29,17 @@
 				</el-icon>
 
 				<div class="header-wrapper">
-					<el-tooltip effect="dark" content="Click to edit" placement="top" class="el-title">
-						<h4 contenteditable @keydown.enter="$event.target.blur()" @input="updateGroupTitle">
+					<el-tooltip
+						effect="dark"
+						content="Click to edit"
+						placement="top"
+						class="el-title"
+					>
+						<h4
+							contenteditable
+							@keydown.enter="$event.target.blur()"
+							@blur="updateGroupTitle"
+						>
 							{{ group.title }}
 						</h4>
 					</el-tooltip>
@@ -37,8 +52,16 @@
 			<div class="group-header-row task-row grid">
 				<div class="task-name task-title">
 					<div class="empty-left"></div>
-					<div class="side-border side-border-top" :style="{ 'background-color': group.style.color }"></div>
-					<el-tooltip effect="dark" content="this title cannot be edited" placement="top" class="el-title">
+					<div
+						class="side-border side-border-top"
+						:style="{ 'background-color': group.style.color }"
+					></div>
+					<el-tooltip
+						effect="dark"
+						content="this title cannot be edited"
+						placement="top"
+						class="el-title"
+					>
 						<p class="flex justify-center align-center task-main-header">
 							Task
 						</p>
@@ -46,7 +69,11 @@
 				</div>
 
 				<!-- <div class="task-data grid"> -->
-				<draggable :list="cmpsOrder" class="task-data grid" @end="cmpOrderChanged">
+				<draggable
+					:list="cmpsOrder"
+					class="task-data grid"
+					@end="cmpOrderChanged"
+				>
 					<p v-for="title in cmpsOrder" :key="title">{{ title }}</p>
 				</draggable>
 				<!-- </div> -->
@@ -54,7 +81,12 @@
 			</div>
 
 			<!-- table content -->
-			<draggable :list="group.tasks" group="tasks" @end="onTaskMoved" :data-groupid="group.id">
+			<draggable
+				:list="group.tasks"
+				group="tasks"
+				@end="onTaskMoved"
+				:data-groupid="group.id"
+			>
 				<div v-for="task in group.tasks" :key="task.id">
 					<task-preview :task="task" :group="group" />
 				</div>
@@ -65,10 +97,18 @@
 				<div class="add-task-line grid">
 					<div class="add-task-start grid">
 						<div class="empty-left"></div>
-						<div class="side-border side-border-bottom" :style="indicatorStyle"></div>
+						<div
+							class="side-border side-border-bottom"
+							:style="indicatorStyle"
+						></div>
 						<div class="add-task-wrapper flex align-center">
-							<div contenteditable class="add-task-input" @focus="onTaskFocus" @blur="onTaskBlur"
-								@keydown.enter="onAddTask">
+							<div
+								contenteditable
+								class="add-task-input"
+								@focus="onTaskFocus"
+								@blur="onTaskBlur"
+								@keydown.enter="onAddTask"
+							>
 								+ Add Task
 							</div>
 						</div>
@@ -84,9 +124,21 @@
 			</div>
 			<div class="task-data grid">
 				<div v-for="title in cmpsOrder" :key="title" class="summary-data">
-					<component v-if="title === 'checkbox'" :is="'checkboxSummary'" :group="group"></component>
-					<component v-else-if="title === 'status'" :is="'statusSummary'" :group="group"></component>
-					<component v-else-if="title === 'priority'" :is="'prioritySummary'" :group="group"></component>
+					<component
+						v-if="title === 'checkbox'"
+						:is="'checkboxSummary'"
+						:group="group"
+					></component>
+					<component
+						v-else-if="title === 'status'"
+						:is="'statusSummary'"
+						:group="group"
+					></component>
+					<component
+						v-else-if="title === 'priority'"
+						:is="'prioritySummary'"
+						:group="group"
+					></component>
 				</div>
 				<div></div>
 			</div>
@@ -156,7 +208,6 @@ export default {
 		},
 		updateGroupTitle(ev) {
 			const title = ev.target.innerText
-			// const group = JSON.parse(JSON.stringify(this.currGroup))
 			this.group.title = title
 			this.$emit('updateGroup', this.group)
 		},

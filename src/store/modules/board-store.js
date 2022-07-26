@@ -1,6 +1,6 @@
-import { boardService } from '../../services/board-service'
+// import { boardService } from '../../services/board-service'
 import { socketService } from '../../services/socket-service'
-// import { boardService } from '../../services/board-async-service'
+import { boardService } from '../../services/board-async-service'
 
 export default {
 	state: {
@@ -129,11 +129,16 @@ export default {
 			board = newBoard
 			state.currBoard = newBoard
 		},
+		addBoard(state, { board }) {
+			state.boards.unshift(board)
+			state.currBoard = board
+		},
 	},
 	actions: {
 		async removeStatusLabel({ commit, state }, { labelId }) {
 			commit({ type: 'removeStatusLabel', labelId })
 			await boardService.save(state.currBoard)
+			// socketService.emit('board-topic', boardId)
 		},
 		async removePriorityLabel({ commit, state }, { labelId }) {
 			commit({ type: 'removePriorityLabel', labelId })
@@ -168,20 +173,13 @@ export default {
 		},
 		async updateTask({ commit, state }, { groupId, newTask }) {
 			commit({ type: 'updateTask', groupId, newTask })
+			socketService.emit('updateBoard', state.currBoard)
 			await boardService.save(state.currBoard)
 		},
 		async addTask({ commit, state }, { groupId, name, addToEnd = false }) {
 			const newTask = boardService.getEmptyTask()
 			newTask.title = name
 			commit({ type: 'addTask', newTask, groupId, addToEnd })
-			//
-			const taskToAdd = {
-				newTask,
-				groupId,
-				addToEnd,
-			}
-			// socketService.emit('taskAdded', taskToAdd)
-
 			socketService.emit('updateBoard', state.currBoard)
 			await boardService.save(state.currBoard)
 		},
@@ -189,14 +187,21 @@ export default {
 			const newGroup = boardService.getEmptyGroup()
 			newGroup.style = boardService.getRandomGroupClr()
 			commit({ type: 'addGroup', newGroup, addToEnd })
-			// socketService.emit('addGroup', newGroup, addToEnd)
+			socketService.emit('updateBoard', state.currBoard)
 			await boardService.save(state.currBoard)
 		},
-		async saveBoard({ commit }, { newBoard }) {
-			// const boardToAdd = !newBoard ? boardService.getEmptyBoard() : newBoard
+		async saveBoard({ state, commit }, { newBoard }) {
+			let board = !newBoard ? boardService.getEmptyBoard() : newBoard
+			// console.log(board, 'board to add')
 
-			commit({ type: 'saveBoard', newBoard })
-			await boardService.save(newBoard)
+			if (board._id) {
+				commit({ type: 'saveBoard', newBoard: board })
+				await boardService.save(board)
+			} else {
+				board = await boardService.save(board)
+				commit({ type: 'addBoard', board })
+			}
+			socketService.emit('updateBoard', state.currBoard)
 		},
 		async deleteGroup({ state, commit }, { groupId }) {
 			commit({ type: 'deleteGroup', groupId })

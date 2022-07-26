@@ -2,7 +2,6 @@
 	<section class="app-container grid">
 		<main-nav />
 		<boards-nav :boards="boards" @setFilter="setFilter" @saveBoard="saveBoard" />
-		<!-- <div></div> -->
 		<board-details />
 	</section>
 </template>
@@ -20,7 +19,6 @@ export default {
 		return {}
 	},
 	created() {
-		// socketService.on('taskAdd', this.addTask)
 		socketService.on('boardUpdate', this.updateBoard)
 	},
 	methods: {
@@ -28,11 +26,6 @@ export default {
 			console.log(board)
 			this.$store.commit({ type: 'saveBoard', newBoard: board })
 		},
-		// addTask(taskToAdd) {
-		// 	console.log(taskToAdd, 'task')
-		// 	const { newTask, groupId, addToEnd } = taskToAdd
-		// 	this.$store.commit({ type: 'addTask', newTask, groupId, addToEnd })
-		// },
 		setFilter(filter) {
 			filter = JSON.parse(JSON.stringify(filter))
 			this.$store.commit({ type: 'setBoardFilter', filter })

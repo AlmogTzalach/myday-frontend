@@ -49,6 +49,7 @@ export default {
 	methods: {
 		getStarted() {
 			const boardId = this.$store.getters.boards[0]._id
+			socketService.emit('board-topic', boardId)
 			this.$router.push(`/board/${boardId}`)
 		},
 	},

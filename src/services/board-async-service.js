@@ -47,6 +47,7 @@ export const boardService = {
 	getEmptyGroup,
 	getRandomGroupClr,
 	getEmptyLabel,
+	getEmptyBoard,
 }
 
 async function query() {
@@ -126,4 +127,269 @@ function getRandomGroupClr() {
 		addTaskColor: addTaskClrs[num],
 	}
 	return style
+}
+
+function getEmptyBoard() {
+	return {
+		title: 'Add title',
+		createdAt: Date.now(),
+		createdBy: {
+			_id: 'u102',
+			fullName: 'bill',
+			imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+		},
+		cmpsOrder: [
+			'people',
+			'status',
+			'priority',
+			'date',
+			'checkbox',
+			'link',
+			'text',
+		],
+		groupsOrder: ['g104', 'g105'],
+		labels: {
+			status: [
+				{
+					id: 'l101',
+					title: '',
+					color: '#c4c4c4',
+				},
+				{
+					id: 'l102',
+					title: 'Done',
+					color: '#00c875',
+				},
+				{
+					id: 'l103',
+					title: 'Stuck',
+					color: '#e2445c',
+				},
+				{
+					id: 'l104',
+					title: 'Working on it',
+					color: '#fdab3d',
+				},
+			],
+			priority: [
+				{
+					id: 'p101',
+					title: '',
+					color: '#c4c4c4',
+				},
+				{
+					id: 'p102',
+					title: 'Critical',
+					color: '#333333',
+				},
+				{
+					id: 'p103',
+					title: 'High',
+					color: '#401694',
+				},
+				{
+					id: 'p104',
+					title: 'Medium',
+					color: '#5559df',
+				},
+				{
+					id: 'p105',
+					title: 'Low',
+					color: '#579bfc',
+				},
+			],
+		},
+		members: [
+			{
+				_id: 'u102',
+				fullName: 'bill',
+				imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+			},
+		],
+		groups: [
+			{
+				id: 'g104',
+				title: 'Group title',
+				style: {
+					color: '#0086c0',
+					addTaskColor: '#7ec2df',
+				},
+				tasks: [
+					{
+						id: utilService._makeId(),
+						title: 'Item 1',
+						statusId: 'l101',
+						priorityId: 'p101',
+						people: [
+							{
+								_id: 'u102',
+								fullName: 'bill',
+								imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+							},
+						],
+						date: Date.now(),
+						checkbox: true,
+						txt: 'Add text',
+						link: 'http://google.com',
+						comments: [
+							{
+								id: 'ZdPnm',
+								txt: 'also, Anton please CR this',
+								createdAt: 1590999817436,
+								byMember: {
+									_id: 'u101',
+									fullName: 'Stan Smith',
+									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+								},
+							},
+						],
+					},
+					{
+						id: utilService._makeId(),
+						title: 'Item 2',
+						statusId: 'l101',
+						priorityId: 'p101',
+						people: [],
+						date: Date.now(),
+						checkbox: false,
+						txt: 'Add text',
+						link: 'http://google.com',
+						comments: [
+							{
+								id: 'ZdPnm',
+								txt: 'also, Anton please CR this',
+								createdAt: 1590999817436,
+								byMember: {
+									_id: 'u101',
+									fullName: 'Stan Smith',
+									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+								},
+							},
+						],
+					},
+					{
+						id: utilService._makeId(),
+						title: 'Item 3',
+						statusId: 'l101',
+						priorityId: 'p101',
+						people: [],
+						date: Date.now(),
+						checkbox: false,
+						txt: 'Add text',
+						link: 'http://google.com',
+						comments: [
+							{
+								id: 'ZdPnm',
+								txt: 'also, Anton please CR this',
+								createdAt: 1590999817436,
+								byMember: {
+									_id: 'u101',
+									fullName: 'Stan Smith',
+									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+								},
+							},
+						],
+					},
+				],
+			},
+			{
+				id: 'g105',
+				style: {
+					color: '#037f4c',
+					addTaskColor: '#80bea4',
+				},
+				title: 'Group Title',
+				tasks: [
+					{
+						id: utilService._makeId(),
+						title: 'Item 4',
+						statusId: 'l103',
+						priorityId: 'p103',
+						people: [],
+						date: Date.now(),
+						checkbox: false,
+						txt: '',
+						link: 'http://airbnb.com',
+						comments: [
+							{
+								id: 'Ty2nd',
+								txt: 'I need some help please',
+								createdAt: 1590999817436,
+								byMember: {
+									_id: 'u102',
+									fullName: 'Roy Boy',
+									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
+								},
+							},
+							{
+								id: '12Dvg',
+								txt: "I'll be with you in a moment",
+								createdAt: 1590999817436.0,
+								byMember: {
+									_id: 'u101',
+									fullName: 'Stan Smith',
+									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+								},
+							},
+						],
+					},
+					{
+						id: utilService._makeId(),
+						title: 'Item 5',
+						statusId: 'l103',
+						priorityId: 'p103',
+						people: [],
+						date: Date.now(),
+						checkbox: false,
+						txt: '',
+						link: 'http://airbnb.com',
+						comments: [
+							{
+								id: 'Ty2nd',
+								txt: 'I need some help please',
+								createdAt: 1590999817436,
+								byMember: {
+									_id: 'u102',
+									fullName: 'Roy Boy',
+									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
+								},
+							},
+							{
+								id: '12Dvg',
+								txt: "I'll be with you in a moment",
+								createdAt: 1590999817436.0,
+								byMember: {
+									_id: 'u101',
+									fullName: 'Stan Smith',
+									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+								},
+							},
+						],
+					},
+				],
+			},
+		],
+		activities: [
+			{
+				change: 'Changed Color',
+				createdAt: 154514,
+				byMember: {
+					_id: 'u101',
+					fullName: 'Stan Smith',
+					imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+				},
+				taskTitle: 'Im in group 2 right?',
+			},
+			{
+				change: 'Changed task status',
+				createdAt: 154514,
+				byMember: {
+					_id: 'u102',
+					fullName: 'Roy Boy',
+					imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
+				},
+				taskTitle: 'Add home page',
+			},
+		],
+	}
 }

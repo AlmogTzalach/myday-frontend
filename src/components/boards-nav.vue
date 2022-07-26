@@ -1,7 +1,7 @@
 <template>
 	<section class="boards-nav">
 		<div class="board-toggle-container" @click="toggleBoardsNav">
-			<img class="toggle-boards-nav" src="../assets/icons/arrow-left.svg">
+			<img class="toggle-boards-nav" src="../assets/icons/arrow-left.svg" />
 		</div>
 		<div class="nav-content">
 			<div class="workspace-details flex">
@@ -15,14 +15,29 @@
 					</el-icon>
 					<span>Add</span>
 				</button>
-				<button class="btn search-btn">
+				<el-input
+					v-model="filter.txt"
+					class="w-50 m-2 search-input"
+					placeholder="Search"
+					@input="setFilter"
+				/>
+				<!-- <button class="btn search-btn">
 					<img src="../assets/icons/search.svg" alt="" />
-					<input type="text" v-model="filter.txt" placeholder="Search" @input="setFilter" />
-				</button>
+					<input
+						type="text"
+						v-model="filter.txt"
+						placeholder="Search"
+						@input="setFilter"
+					/>
+				</button> -->
 			</div>
 			<div class="boards-list flex">
-				<button v-for="board in boards" class="btn" :class="{ active: boardId === board._id }"
-					@click="goToBoard(board._id)">
+				<button
+					v-for="board in boards"
+					class="btn"
+					:class="{ active: boardId === board._id }"
+					@click="goToBoard(board._id)"
+				>
 					<img src="../assets/icons/board.svg" alt="" />
 					<span>{{ board.title }}</span>
 				</button>
@@ -43,29 +58,24 @@ export default {
 				txt: '',
 			},
 			boardId: null,
-			navOpen: false
+			navOpen: false,
 		}
 	},
-
-	computed: {
-
-	},
-
+	computed: {},
 	methods: {
 		toggleBoardsNav() {
 			document.body.classList.toggle('side-bar-open')
 		},
 		goToBoard(boardId) {
+			socketService.emit('board-topic', boardId)
 			this.$router.push(`/board/${boardId}`)
 			this.$store.commit({ type: 'setBoard', boardId })
-			// this.$store.commit({ type: 'setBoard', boardId })
 		},
 		setFilter() {
 			this.$emit('setFilter', this.filter)
 		},
 		addBoard() {
-			console.log('Add board')
-			// this.$emit('saveBoard')
+			this.$emit('saveBoard')
 		},
 	},
 	watch: {

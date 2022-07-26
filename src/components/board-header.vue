@@ -2,16 +2,26 @@
 	<header class="board-header">
 		<div class="board-actions flex">
 			<div class="title-input flex">
-				<el-tooltip effect="dark" content="Click to edit" placement="bottom" class="el-title">
-					<h1 contenteditable @keydown.enter="$event.target.blur()" @input="updateBoardTitle">{{ board.title }}
+				<el-tooltip
+					effect="dark"
+					content="Click to edit"
+					placement="bottom"
+					class="el-title"
+				>
+					<h1
+						contenteditable
+						@keydown.enter="$event.target.blur()"
+						@input="updateBoardTitle"
+					>
+						{{ board.title }}
 					</h1>
 				</el-tooltip>
 			</div>
-			<div class="btns flex">
+			<!-- <div class="btns flex">
 				<button @click="addMember()" class="btn add-member-btn">
 					+ <span>invite / {{ board.members.length }}</span>
 				</button>
-			</div>
+			</div> -->
 		</div>
 
 		<div class="board-vue flex">
