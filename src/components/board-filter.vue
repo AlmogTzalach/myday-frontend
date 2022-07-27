@@ -32,7 +32,7 @@
 			placement="top"
 			class="el-title"
 		>
-			<button>
+			<button class="btn">
 				<div class="btn1 flex">
 					<!-- <el-icon><Filter /></el-icon> -->
 					<img src="../assets/icons/filter.svg" alt="" />

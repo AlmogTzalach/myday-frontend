@@ -53,6 +53,10 @@
 				left: 32px;
 			}
 		}
+
+		@include for-narrow-layout {
+			height: auto;
+		}
 	}
 }
 

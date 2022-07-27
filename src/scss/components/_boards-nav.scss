@@ -6,6 +6,15 @@
 	border-inline-end: 1px solid #d0d4e4;
 	color: $text-black;
 	position: relative;
+	transition: transform 0.6s;
+
+	.close-boards-btn {
+		position: absolute;
+		right: 6px;
+		top: 8px;
+		font-size: 18px;
+		display: none;
+	}
 
 	.workspace-details {
 		flex-direction: column;
@@ -69,8 +78,6 @@
 		}
 	}
 
-	.nav-btns {
-	}
 	img {
 		width: 18px;
 		filter: invert(16%) sepia(6%) saturate(715%) hue-rotate(193deg)

@@ -20,6 +20,10 @@
 	// height: 100%;
 	min-width: 1734px;
 
+	@include for-narrow-layout {
+		min-width: 1200px;
+	}
+
 	.btn {
 		@include mainBtn;
 		border: 1px solid rgb(195 198 212);

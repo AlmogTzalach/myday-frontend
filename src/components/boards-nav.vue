@@ -3,6 +3,9 @@
 		<div class="board-toggle-container" @click="toggleBoardsNav">
 			<img class="toggle-boards-nav" src="../assets/icons/arrow-left.svg" />
 		</div>
+		<div class="close-boards-btn" @click="toggleBoardsNav">
+			<el-icon><Close /></el-icon>
+		</div>
 		<div class="nav-content">
 			<div class="workspace-details flex">
 				<div>Workspace</div>
@@ -47,44 +50,44 @@
 </template>
 
 <script>
-export default {
-	name: 'boards-nav',
-	props: {
-		boards: Array,
-	},
-	data() {
-		return {
-			filter: {
-				txt: '',
+	export default {
+		name: 'boards-nav',
+		props: {
+			boards: Array,
+		},
+		data() {
+			return {
+				filter: {
+					txt: '',
+				},
+				boardId: null,
+				navOpen: false,
+			}
+		},
+		computed: {},
+		methods: {
+			toggleBoardsNav() {
+				document.body.classList.toggle('side-bar-open')
 			},
-			boardId: null,
-			navOpen: false,
-		}
-	},
-	computed: {},
-	methods: {
-		toggleBoardsNav() {
-			document.body.classList.toggle('side-bar-open')
-		},
-		goToBoard(boardId) {
-			socketService.emit('board-topic', boardId)
-			this.$router.push(`/board/${boardId}`)
-			this.$store.commit({ type: 'setBoard', boardId })
-		},
-		setFilter() {
-			this.$emit('setFilter', this.filter)
-		},
-		addBoard() {
-			this.$emit('saveBoard')
-		},
-	},
-	watch: {
-		'$route.params.boardId': {
-			handler(boardId) {
-				this.boardId = boardId
+			goToBoard(boardId) {
+				socketService.emit('board-topic', boardId)
+				this.$router.push(`/board/${boardId}`)
+				this.$store.commit({ type: 'setBoard', boardId })
 			},
-			immediate: true,
+			setFilter() {
+				this.$emit('setFilter', this.filter)
+			},
+			addBoard() {
+				this.$emit('saveBoard')
+			},
 		},
-	},
-}
+		watch: {
+			'$route.params.boardId': {
+				handler(boardId) {
+					this.boardId = boardId
+				},
+				immediate: true,
+			},
+		},
+	}
 </script>
