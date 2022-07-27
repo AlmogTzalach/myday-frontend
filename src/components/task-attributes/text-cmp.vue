@@ -1,8 +1,7 @@
 <template>
     <section class="attr-container">
-        <p :class="isLongText" contenteditable @focus="isEdit = true" @blur="onSaveText" @keydown.enter="onSaveText">{{
-                txt
-        }}</p>
+        <p :class="isLongText" contenteditable @click="isEdit = true" @focus="isEdit = true" @blur="onSaveText"
+            @keydown.enter="onSaveText">{{ txt || 'Add text here' }}</p>
     </section>
 </template>
 
