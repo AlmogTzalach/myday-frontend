@@ -8,8 +8,11 @@
 		</div>
 		<div class="nav-content">
 			<div class="workspace-details flex">
-				<div>Workspace</div>
-				<button>Main workspace</button>
+				<div class="name">Workspace</div>
+				<button class="flex workspace">
+					<div class="workspace-icon">M</div>
+					<div>Main workspace</div>
+				</button>
 			</div>
 			<div class="workspace-add flex">
 				<button class="btn" @click="addBoard()">

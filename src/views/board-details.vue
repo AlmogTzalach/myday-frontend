@@ -92,7 +92,6 @@ export default {
 			return window.matchMedia('(any-hover: none)').matches
 		},
 	},
-
 	methods: {
 		updateBoardTitle(newBoard) {
 			this.$store.dispatch({ type: 'saveBoard', newBoard })
