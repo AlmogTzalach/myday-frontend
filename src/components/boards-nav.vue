@@ -21,6 +21,7 @@
 					placeholder="Search"
 					@input="setFilter"
 				/>
+
 				<!-- <button class="btn search-btn">
 					<img src="../assets/icons/search.svg" alt="" />
 					<input
@@ -38,8 +39,34 @@
 					:class="{ active: boardId === board._id }"
 					@click="goToBoard(board._id)"
 				>
-					<img src="../assets/icons/board.svg" alt="" />
-					<span>{{ board.title }}</span>
+					<div class="flex">
+						<img src="../assets/icons/board.svg" alt="" />
+						<span>{{ board.title }}</span>
+					</div>
+
+					<el-popover
+						placement="bottom-start"
+						:width="264"
+						trigger="click"
+						:show-arrow="false"
+						:hide-after="0"
+						:offset="0"
+					>
+						<template #reference>
+							<div class="board-menu-btn">
+								<img src="../assets/icons/menu.svg" alt="menu" />
+							</div>
+						</template>
+						<div class="task-popover">
+							<div
+								class="task-popover-line"
+								@click="deleteBoard(board._id)"
+							>
+								<img src="../assets/icons/delete.svg" />
+								<span>Delete</span>
+							</div>
+						</div>
+					</el-popover>
 				</button>
 			</div>
 		</div>
@@ -76,6 +103,9 @@ export default {
 		},
 		addBoard() {
 			this.$emit('saveBoard')
+		},
+		deleteBoard(boardId) {
+			this.$emit('deleteBoard', boardId)
 		},
 	},
 	watch: {

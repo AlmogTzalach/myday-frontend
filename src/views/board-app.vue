@@ -1,7 +1,12 @@
 <template>
 	<section class="app-container grid">
 		<main-nav />
-		<boards-nav :boards="boards" @setFilter="setFilter" @saveBoard="saveBoard" />
+		<boards-nav
+			:boards="boards"
+			@setFilter="setFilter"
+			@saveBoard="saveBoard"
+			@deleteBoard="removeBoard"
+		/>
 		<board-details />
 	</section>
 </template>
@@ -23,7 +28,7 @@ export default {
 	},
 	methods: {
 		updateBoard(board) {
-			console.log(board)
+			// console.log(board)
 			this.$store.commit({ type: 'saveBoard', newBoard: board })
 		},
 		setFilter(filter) {
@@ -32,6 +37,9 @@ export default {
 		},
 		saveBoard() {
 			this.$store.dispatch({ type: 'saveBoard' })
+		},
+		removeBoard(boardId) {
+			this.$store.dispatch({ type: 'removeBoard', boardId })
 		},
 	},
 	computed: {

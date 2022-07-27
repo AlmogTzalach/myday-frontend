@@ -11,9 +11,11 @@
 				@input="setFilterBy"
 			/>
 		</button>
+		<!-- <el-icon><Filter /></el-icon> -->
 		<!-- </div> -->
+		<!-- <el-icon><User /></el-icon> -->
 
-		<el-tooltip
+		<!-- <el-tooltip
 			effect="dark"
 			content="Filter by person"
 			placement="top"
@@ -21,7 +23,6 @@
 		>
 			<button class="btn person-btn">
 				<img src="../assets/icons/person-round.svg" alt="" />
-				<!-- <el-icon><User /></el-icon> -->
 				<span>Person</span>
 			</button>
 		</el-tooltip>
@@ -34,7 +35,6 @@
 		>
 			<button>
 				<div class="btn1 flex">
-					<!-- <el-icon><Filter /></el-icon> -->
 					<img src="../assets/icons/filter.svg" alt="" />
 					<span> Filter </span>
 				</div>
@@ -55,24 +55,24 @@
 				<div>&#8645;</div>
 				<span> Sort </span>
 			</button>
-		</el-tooltip>
+		</el-tooltip> -->
 	</section>
 </template>
 
 <script>
-	export default {
-		name: 'boardFilter',
-		data() {
-			return {
-				filter: {
-					txt: '',
-				},
-			}
-		},
-		methods: {
-			setFilterBy() {
-				this.$emit('setFilter', this.filter)
+export default {
+	name: 'boardFilter',
+	data() {
+		return {
+			filter: {
+				txt: '',
 			},
+		}
+	},
+	methods: {
+		setFilterBy() {
+			this.$emit('setFilter', this.filter)
 		},
-	}
+	},
+}
 </script>

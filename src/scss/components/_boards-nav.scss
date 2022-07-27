@@ -59,8 +59,10 @@
 		padding-top: rem(20px);
 		border-top: 1px solid #d0d4e4;
 		flex-direction: column;
+		// justify-content: space-between;
 
 		.btn {
+			justify-content: space-between;
 			&.active {
 				background-color: rgb(204 229 255);
 			}
@@ -69,8 +71,6 @@
 		}
 	}
 
-	.nav-btns {
-	}
 	img {
 		width: 18px;
 		filter: invert(16%) sepia(6%) saturate(715%) hue-rotate(193deg)
@@ -79,11 +79,10 @@
 	.btn {
 		text-align: start;
 		display: flex;
-		justify-content: left;
+		justify-content: flex-start;
 		align-items: center;
 
 		@include mainBtn($bgclr: #f6f7fb);
-		// border: none;
 
 		padding: rem(5px) rem(5px);
 		span {

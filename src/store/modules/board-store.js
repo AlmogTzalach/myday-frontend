@@ -133,6 +133,10 @@ export default {
 			state.boards.unshift(board)
 			state.currBoard = board
 		},
+		removeBoard(state, { boardId }) {
+			const idx = state.boards.findIndex((board) => boardId === board._id)
+			state.boards.splice(idx, 1)
+		},
 	},
 	actions: {
 		async removeStatusLabel({ commit, state }, { labelId }) {
@@ -206,6 +210,10 @@ export default {
 		async deleteGroup({ state, commit }, { groupId }) {
 			commit({ type: 'deleteGroup', groupId })
 			await boardService.save(state.currBoard)
+		},
+		async removeBoard({ commit }, { boardId }) {
+			await boardService.remove(boardId)
+			commit({ type: 'removeBoard', boardId })
 		},
 	},
 }

@@ -11,7 +11,7 @@
 					<h1
 						contenteditable
 						@keydown.enter="$event.target.blur()"
-						@input="updateBoardTitle"
+						@blur="updateBoardTitle"
 					>
 						{{ board.title }}
 					</h1>
