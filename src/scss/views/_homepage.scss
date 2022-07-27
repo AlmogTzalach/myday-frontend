@@ -10,6 +10,19 @@
 	width: 100%;
 	z-index: 100;
 
+	a {
+		text-decoration: none;
+		font-size: em(16px);
+		margin-inline-end: em(12px);
+		border-radius: 4px;
+		padding: em(8px);
+
+		&:hover {
+			color: #5034ff;
+			background-color: #f0f3ff;
+		}
+	}
+
 	.logo-container {
 		img {
 			width: 40px;
@@ -95,7 +108,6 @@
 			margin-bottom: em(15px);
 		}
 	}
-
 }
 
 @function generate-random-stars($screen-width, $color, $density) {

@@ -1,6 +1,6 @@
 <template>
 	<section class="board-group">
-		<div class="group-title-container">
+		<div class="group-title-container" :class="collapseClass">
 			<div class="group-title" :style="{ color: group.style.color }">
 				<div class="empty-left"></div>
 				<el-popover
@@ -64,22 +64,26 @@
 						class="side-border side-border-top"
 						:style="{ 'background-color': group.style.color }"
 					></div>
-					<el-tooltip
+					<!-- <el-tooltip
 						effect="dark"
 						content="this title cannot be edited"
 						placement="top"
 						class="el-title"
+					> -->
+					<p
+						class="flex justify-center align-center task-main-header"
+						:class="collapseClass"
 					>
-						<p class="flex justify-center align-center task-main-header">
-							Task
-						</p>
-					</el-tooltip>
+						Task
+					</p>
+					<!-- </el-tooltip> -->
 				</div>
 
 				<!-- <div class="task-data grid"> -->
 				<draggable
 					:list="cmpsOrder"
 					class="task-data grid"
+					:class="collapseClass"
 					@end="cmpOrderChanged"
 				>
 					<p v-for="title in cmpsOrder" :key="title">{{ title }}</p>
@@ -119,8 +123,8 @@
 								contenteditable
 								class="add-task-input"
 								@focus="onTaskFocus"
-								@blur="onTaskBlur"
-								@keydown.enter="onAddTask"
+								@blur="onAddTask"
+								@keydown.enter="$event.target.blur()"
 							>
 								+ Add Task
 							</div>
@@ -133,7 +137,13 @@
 		<div class="task-summary-row grid">
 			<div class="empty-cell grid" :class="collapseClass">
 				<div></div>
-				<div class="scroll-border"></div>
+				<div
+					class="scroll-border"
+					:style="{
+						'background-color': isCollapsed ? group.style.color : '',
+					}"
+				></div>
+				<div class="collapse-border"></div>
 			</div>
 			<div class="task-data grid">
 				<div v-for="title in cmpsOrder" :key="title" class="summary-data">
@@ -160,115 +170,113 @@
 </template>
 
 <script>
-import taskPreview from './task-preview.vue'
-import { VueDraggableNext } from 'vue-draggable-next'
-import checkboxSummary from './task-summary/checkbox-summary.vue'
-import statusSummary from './task-summary/status-summary.vue'
-import prioritySummary from './task-summary/priority-summary.vue'
+	import taskPreview from './task-preview.vue'
+	import { VueDraggableNext } from 'vue-draggable-next'
+	import checkboxSummary from './task-summary/checkbox-summary.vue'
+	import statusSummary from './task-summary/status-summary.vue'
+	import prioritySummary from './task-summary/priority-summary.vue'
 
-export default {
-	name: 'boardGroup',
+	export default {
+		name: 'boardGroup',
 
-	props: {
-		group: Object,
-		filter: Object,
-	},
-
-	data() {
-		return {
-			isCollapsed: false,
-		}
-	},
-	computed: {
-		taskToDisdplay() {
-			const regexTxt = new RegExp(this.filter.txt, 'i')
-			let filteredTasks = this.group.tasks.filter((task) =>
-				regexTxt.test(task.title)
-			)
-			return filteredTasks
+		props: {
+			group: Object,
+			filter: Object,
 		},
-		cmpsOrder() {
-			const cmpsOrder = this.$store.getters.cmpsOrder
-			return JSON.parse(JSON.stringify(cmpsOrder))
-		},
-		indicatorStyle() {
+
+		data() {
 			return {
-				'--indicatorHover': this.group.style.color,
-				'--indicator': this.group.style.addTaskColor,
+				isCollapsed: false,
 			}
 		},
-		isDraggable() {
-			return window.matchMedia('(any-hover: none)').matches
+		computed: {
+			taskToDisdplay() {
+				const regexTxt = new RegExp(this.filter.txt, 'i')
+				let filteredTasks = this.group.tasks.filter((task) =>
+					regexTxt.test(task.title)
+				)
+				return filteredTasks
+			},
+			cmpsOrder() {
+				const cmpsOrder = this.$store.getters.cmpsOrder
+				return JSON.parse(JSON.stringify(cmpsOrder))
+			},
+			indicatorStyle() {
+				return {
+					'--indicatorHover': this.group.style.color,
+					'--indicator': this.group.style.addTaskColor,
+				}
+			},
+			isDraggable() {
+				return window.matchMedia('(any-hover: none)').matches
+			},
+			collapseClass() {
+				return this.isCollapsed ? 'group-collapsed' : ''
+			},
 		},
-		collapseClass() {
-			return this.isCollapsed ? 'group-collapsed' : ''
-		},
-	},
 
-	methods: {
-		onTaskFocus(ev) {
-			ev.target.placeholder = '+ Add Task'
-			ev.target.innerText = ''
-		},
-		onTaskBlur(ev) {
-			ev.target.innerText = '+ Add Task'
-		},
-		onAddTask(ev) {
-			ev.preventDefault()
-			const name = ev.target.innerText
-			ev.target.blur()
-			if (!name) {
+		methods: {
+			onTaskFocus(ev) {
+				ev.target.innerText = ''
+			},
+			onTaskBlur(ev) {
+				ev.target.innerText = '+ Add Task'
+			},
+			onAddTask(ev) {
+				const name = ev.target.innerText
+				console.log(name)
+				ev.target.blur()
 				this.onTaskBlur(ev)
-				return
-			}
-			this.$store.dispatch({
-				type: 'addTask',
-				name,
-				groupId: this.group.id,
-				addToEnd: true,
-			})
-		},
-		onTaskMoved(ev) {
-			const fromId = ev.from.dataset.groupid
-			const toId = ev.to.dataset.groupid
-			this.$emit('taskMoved', fromId, toId, ev.oldIndex, ev.newIndex)
-		},
-		updateGroupTitle(ev) {
-			const title = ev.target.innerText
-			this.group.title = title
-			this.$emit('updateGroup', this.group)
-		},
-		deleteGroup() {
-			this.$emit('deleteGroup', this.group.id)
-		},
-		cmpOrderChanged() {
-			this.$emit('cmpOrderChanged', this.cmpsOrder)
-		},
-		toggleCollapse() {
-			this.isCollapsed = !this.isCollapsed
-		},
-	},
+				if (!name) return
 
-	components: {
-		taskPreview,
-		draggable: VueDraggableNext,
-		checkboxSummary,
-		statusSummary,
-		prioritySummary,
-	},
-}
+				this.$store.dispatch({
+					type: 'addTask',
+					name,
+					groupId: this.group.id,
+					addToEnd: true,
+				})
+			},
+			onTaskMoved(ev) {
+				const fromId = ev.from.dataset.groupid
+				const toId = ev.to.dataset.groupid
+				this.$emit('taskMoved', fromId, toId, ev.oldIndex, ev.newIndex)
+			},
+			updateGroupTitle(ev) {
+				const title = ev.target.innerText
+				this.group.title = title
+				this.$emit('updateGroup', this.group)
+			},
+			deleteGroup() {
+				this.$emit('deleteGroup', this.group.id)
+			},
+			cmpOrderChanged() {
+				this.$emit('cmpOrderChanged', this.cmpsOrder)
+			},
+			toggleCollapse() {
+				this.isCollapsed = !this.isCollapsed
+			},
+		},
+
+		components: {
+			taskPreview,
+			draggable: VueDraggableNext,
+			checkboxSummary,
+			statusSummary,
+			prioritySummary,
+		},
+	}
 </script>
 
 <style>
-.side-border-bottom {
-	background-color: var(--indicator);
-}
+	.side-border-bottom {
+		background-color: var(--indicator);
+	}
 
-.add-task-line:hover .side-border-bottom {
-	background-color: var(--indicatorHover);
-}
+	.add-task-line:hover .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
 
-.add-task-input:focus .side-border-bottom {
-	background-color: var(--indicatorHover);
-}
+	.add-task-input:focus .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
 </style>

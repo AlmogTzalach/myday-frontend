@@ -82,6 +82,10 @@
 		.task-data {
 			border-top: 1px solid $divider-clr;
 
+			&.group-collapsed {
+				border-bottom: none;
+			}
+
 			p:last-child {
 				border-inline-end: 1px solid $divider-clr;
 			}
@@ -137,6 +141,11 @@
 			.task-main-header {
 				height: 100%;
 				border-block: 1px solid $divider-clr;
+
+				&.group-collapsed {
+					font-size: 0;
+					border-bottom: none;
+				}
 			}
 
 			.side-border-top {
@@ -214,7 +223,18 @@
 			background-color: white;
 
 			&.group-collapsed {
-				// grid-template-columns: ;
+				grid-template-columns: 32px 6px 322px;
+				border-inline-end: 1px solid $divider-clr;
+
+				.collapse-border {
+					display: block;
+					border-bottom: 1px solid $divider-clr;
+				}
+
+				.scroll-border {
+					background-color: red;
+					border: none;
+				}
 			}
 
 			.scroll-border {
@@ -223,14 +243,13 @@
 				border-bottom-left-radius: 6px;
 			}
 
+			.collapse-border {
+				display: none;
+			}
+
 			@include for-narrow-layout {
 				grid-template-columns: 200px 10px;
 			}
-		}
-		.task-data {
-			border-bottom: 1px solid $divider-clr;
-			border-inline-start: 1px solid $divider-clr;
-			border-bottom-left-radius: 6px;
 		}
 	}
 }
