@@ -1,0 +1,22 @@
+.comment-container {
+	border-radius: 8px;
+	border: 1px solid rgb(208, 212, 228);
+    margin-bottom: em(18px);
+    padding: em(18px);
+
+	.comment-avatar {
+        margin-bottom: em(18px);
+		.avatar {
+			@include avatar(40px);
+            margin-inline-end: 10px;
+		}
+
+        .user-name {
+			font-size: em(16px);
+		}
+	}
+
+    .comment-text {
+        margin-bottom: em(18px);
+    }
+}
