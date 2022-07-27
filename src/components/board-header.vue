@@ -7,6 +7,7 @@
 					content="Click to edit"
 					placement="bottom"
 					class="el-title"
+					:trigger-keys="[]"
 				>
 					<h1
 						contenteditable
@@ -39,23 +40,23 @@
 </template>
 
 <script>
-export default {
-	name: 'board-header',
-	props: {
-		board: Object,
-	},
-	methods: {
-		addMember() {
-			console.log('add memeber')
+	export default {
+		name: 'board-header',
+		props: {
+			board: Object,
 		},
-		setTableView() {
-			console.log('set view')
+		methods: {
+			addMember() {
+				console.log('add memeber')
+			},
+			setTableView() {
+				console.log('set view')
+			},
+			updateBoardTitle(ev) {
+				const newBoard = JSON.parse(JSON.stringify(this.board))
+				newBoard.title = ev.target.innerText
+				this.$emit('updateBoardTitle', newBoard)
+			},
 		},
-		updateBoardTitle(ev) {
-			const newBoard = JSON.parse(JSON.stringify(this.board))
-			newBoard.title = ev.target.innerText
-			this.$emit('updateBoardTitle', newBoard)
-		},
-	},
-}
+	}
 </script>
