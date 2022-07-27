@@ -67,96 +67,92 @@
 </template>
 
 <script>
-	import boardHeader from '@/components/board-header.vue'
-	import boardFilter from '@/components/board-filter.vue'
-	import boardGroup from '@/components/board-group.vue'
-	import { VueDraggableNext } from 'vue-draggable-next'
+import boardHeader from '@/components/board-header.vue'
+import boardFilter from '@/components/board-filter.vue'
+import boardGroup from '@/components/board-group.vue'
+import { VueDraggableNext } from 'vue-draggable-next'
 
-	export default {
-		name: 'board-details',
-		data() {
-			return {
-				groupFilter: {
-					txt: '',
-				},
-			}
+export default {
+	name: 'board-details',
+	data() {
+		return {
+			groupFilter: {
+				txt: '',
+			},
+		}
+	},
+
+	computed: {
+		currBoard() {
+			const currBoard = this.$store.getters.currBoard
+			if (currBoard === undefined) return
+			return JSON.parse(JSON.stringify(currBoard))
 		},
-
-		computed: {
-			currBoard() {
-				const currBoard = this.$store.getters.currBoard
-				if (currBoard === undefined) return
-				return JSON.parse(JSON.stringify(currBoard))
-			},
-			isDraggable() {
-				return window.matchMedia('(any-hover: none)').matches
-			},
+		isDraggable() {
+			return window.matchMedia('(any-hover: none)').matches
 		},
+	},
 
-		methods: {
-			updateBoardTitle(newBoard) {
-				this.$store.dispatch({ type: 'saveBoard', newBoard })
-			},
-			addTask() {
-				const firstGroupId = this.currBoard.groups[0].id
-				this.$store.dispatch({
-					type: 'addTask',
-					groupId: firstGroupId,
-					name: 'New Task',
-				})
-			},
-			onTaskMoved(fromId, toId, oldIndex, newIndex) {
-				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-
-				const oldGroup = boardCopy.groups.find(
-					(group) => group.id === fromId
-				)
-				const newGroup = boardCopy.groups.find((group) => group.id === toId)
-				const movedTask = oldGroup.tasks.splice(oldIndex, 1)[0]
-				newGroup.tasks.splice(newIndex, 0, movedTask)
-
-				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
-			},
-			setFilter(filter) {
-				this.groupFilter = filter
-			},
-			addGroup(addToEnd) {
-				this.$store.dispatch({ type: 'addGroup', addToEnd })
-			},
-			updateGroup(newGroup) {
-				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-				let idx = boardCopy.groups.findIndex(
-					(group) => group.id === newGroup.id
-				)
-				boardCopy.groups.splice(idx, 1, newGroup)
-
-				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
-			},
-			deleteGroup(groupId) {
-				this.$store.dispatch({ type: 'deleteGroup', groupId })
-			},
-			onGroupMove() {
-				this.$store.dispatch({ type: 'saveBoard', newBoard: this.currBoard })
-			},
-			cmpOrderChanged(cmpsOrder) {
-				const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
-				boardCopy.cmpsOrder = cmpsOrder
-				this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
-			},
+	methods: {
+		updateBoardTitle(newBoard) {
+			this.$store.dispatch({ type: 'saveBoard', newBoard })
 		},
-		watch: {
-			'$route.params.boardId': {
-				handler(boardId) {
-					this.$store.commit({ type: 'setBoard', boardId })
-				},
-				immediate: true,
+		addTask() {
+			const firstGroupId = this.currBoard.groups[0].id
+			this.$store.dispatch({
+				type: 'addTask',
+				groupId: firstGroupId,
+				name: 'New Task',
+			})
+		},
+		onTaskMoved(fromId, toId, oldIndex, newIndex) {
+			const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
+
+			const oldGroup = boardCopy.groups.find((group) => group.id === fromId)
+			const newGroup = boardCopy.groups.find((group) => group.id === toId)
+			const movedTask = oldGroup.tasks.splice(oldIndex, 1)[0]
+			newGroup.tasks.splice(newIndex, 0, movedTask)
+
+			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+		},
+		setFilter(filter) {
+			this.groupFilter = filter
+		},
+		addGroup(addToEnd) {
+			this.$store.dispatch({ type: 'addGroup', addToEnd })
+		},
+		updateGroup(newGroup) {
+			const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
+			let idx = boardCopy.groups.findIndex((group) => group.id === newGroup.id)
+			boardCopy.groups.splice(idx, 1, newGroup)
+
+			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+		},
+		deleteGroup(groupId) {
+			this.$store.dispatch({ type: 'deleteGroup', groupId })
+		},
+		onGroupMove() {
+			this.$store.dispatch({ type: 'saveBoard', newBoard: this.currBoard })
+		},
+		cmpOrderChanged(cmpsOrder) {
+			const boardCopy = JSON.parse(JSON.stringify(this.currBoard))
+			boardCopy.cmpsOrder = cmpsOrder
+			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
+		},
+	},
+	watch: {
+		'$route.params.boardId': {
+			handler(boardId) {
+				this.$store.commit({ type: 'setBoard', boardId })
 			},
+			immediate: true,
 		},
-		components: {
-			boardHeader,
-			boardFilter,
-			boardGroup,
-			draggable: VueDraggableNext,
-		},
-	}
+	},
+	components: {
+		boardHeader,
+		boardFilter,
+		boardGroup,
+		draggable: VueDraggableNext,
+	},
+}
 </script>

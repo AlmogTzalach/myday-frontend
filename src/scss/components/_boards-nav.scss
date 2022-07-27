@@ -41,8 +41,18 @@
 
 		.el-input__wrapper {
 			background-color: #f6f7fb;
+			box-shadow: none;
+			transition: 0.2s;
+			.el-input__inner::placeholder {
+				color: $text-black;
+			}
 
-			&:focus {
+			&:hover {
+				background-color: #d0d4e4;
+			}
+
+			&.is-focus {
+				box-shadow: 0 0 0 1px #409eff inset;
 				background-color: white;
 			}
 		}

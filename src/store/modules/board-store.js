@@ -136,6 +136,7 @@ export default {
 		removeBoard(state, { boardId }) {
 			const idx = state.boards.findIndex((board) => boardId === board._id)
 			state.boards.splice(idx, 1)
+			state.currBoard = state.boards[0]
 		},
 	},
 	actions: {
@@ -202,7 +203,9 @@ export default {
 				commit({ type: 'saveBoard', newBoard: board })
 				await boardService.save(board)
 			} else {
-				board = await boardService.save(board)
+				const { insertedId } = await boardService.save(board)
+				// console.log(insertedId, 'addboard')
+				board._id = insertedId
 				commit({ type: 'addBoard', board })
 			}
 			socketService.emit('updateBoard', state.currBoard)
