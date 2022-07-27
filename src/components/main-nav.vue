@@ -3,7 +3,7 @@
 		<div class="nav-btns">
 			<el-tooltip effect="dark" content="Home page" placement="right" class="el-title">
 				<!-- <button class="logo-svg" @click="goToHome()">logo</button> -->
-				<img class="logo-svg" src="../assets/myday-logo.svg" @click="goToHome()" />
+				<img class="logo-svg" src="../assets/monday_logo_icon.png" @click="goToHome()" />
 			</el-tooltip>
 			<div class="nav-divider"></div>
 			<!-- <el-tooltip
