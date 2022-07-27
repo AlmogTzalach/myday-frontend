@@ -1,5 +1,5 @@
 <template>
-	<el-drawer v-model="visible" :show-close="true" :size="700">
+	<el-drawer v-model="visible" :show-close="true" :size="700" @close="onCloseChat">
 		  <template #header="{ close, titleId, titleClass }">
 			<h4 :class="titleClass" :titleId="titleId">{{ task.title }}</h4>
 		</template>
@@ -28,6 +28,7 @@ export default {
 		visible: Boolean,
 		task: Object,
 	},
+	emits: ['onCloseChat'],
 	data() {
 		return {
 			commentInput: null
@@ -37,6 +38,13 @@ export default {
 		titleClass(){
 			return 'task-details-title'
 		}
+	},
+	methods: {
+		onCloseChat() {
+			console.log('here');
+			// this.$emit('onCloseChat')
+		}
+
 	},
 	components: {
 		commentPreview
