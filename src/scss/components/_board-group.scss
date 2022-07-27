@@ -1,13 +1,19 @@
 .board-group {
 	margin-bottom: 2em;
 	margin-inline-end: 8px;
+	position: relative;
 
 	.group-title {
 		display: grid;
 		grid-template-columns: 32px 35px 500px 1fr;
+
 		.el-icon {
 			padding-top: 16px;
 			margin-inline-start: 13px;
+		}
+
+		.collapse-group-btn {
+			cursor: pointer;
 		}
 
 		.group-menu-btn {
@@ -159,6 +165,10 @@
 	}
 
 	.add-task-line {
+		&.group-collapsed {
+			display: none;
+		}
+
 		grid-template-columns: 338px 1fr;
 		border-top: none;
 
@@ -202,6 +212,10 @@
 			left: 0;
 			z-index: 10;
 			background-color: white;
+
+			&.group-collapsed {
+				// grid-template-columns: ;
+			}
 
 			.scroll-border {
 				border-bottom: 1px solid $divider-clr;
