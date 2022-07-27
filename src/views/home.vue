@@ -5,7 +5,8 @@
 				<img src="../assets/monday_logo_icon.png">
 				<h1 class="logo-title">myday</h1>
 			</div>
-			<nav class="homepage-nav">
+			<nav class="homepage-nav flex align-center">
+				<router-link to="/login">Log in</router-link>
 				<button @click="getStarted()" class="get-started-btn flex">
 					Get started <img src="../assets/icons/arrow-right.svg" />
 				</button>
