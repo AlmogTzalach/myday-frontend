@@ -80,7 +80,6 @@ export default {
 			this.isChatShown = false
 		},
 		onTaskChat() {
-			console.log('open');
 			this.isChatShown = true
 		},
 		onDelete() {
