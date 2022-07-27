@@ -1,0 +1,32 @@
+.sign-up-header {
+	background-color: #f7f7f7;
+	padding: em(15px) em(14px);
+	margin-bottom: em(50px);
+	border-bottom: 1px solid #e0e0e0;
+
+	.logo-container {
+		.logo-title {
+            color: black;
+			font-weight: 900;
+		}
+		img {
+			width: 40px;
+			margin-inline-end: em(5px);
+		}
+	}
+}
+
+.sign-up-page-container {
+	h2 {
+		margin-bottom: em(20px);
+	}
+
+	.el-input {
+		margin-bottom: em(8px);
+	}
+
+	button {
+        width: 100%;
+		margin-bottom: em(8px);
+	}
+}
