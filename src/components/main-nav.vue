@@ -10,7 +10,7 @@
 				<!-- <button class="logo-svg" @click="goToHome()">logo</button> -->
 				<img
 					class="logo-svg"
-					src="../assets/myday-logo.svg"
+					src="../assets/monday_logo_icon.png"
 					@click="goToHome()"
 				/>
 			</el-tooltip>
