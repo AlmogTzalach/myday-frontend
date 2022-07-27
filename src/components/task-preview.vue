@@ -1,5 +1,5 @@
 <template>
-	<task-details :visible="isChatShown" :task="task"></task-details>
+	<task-details :visible="isChatShown" :task="task" @onCloseChat="closeChat"></task-details>
 	<section class="task-preview">
 		<div class="task-row grid">
 			<div class="task-name name-cell grid">
@@ -76,8 +76,12 @@ export default {
 		},
 	},
 	methods: {
+		closeChat() {
+			this.isChatShown = false
+		},
 		onTaskChat() {
-			this.isChatShown = !this.isChatShown
+			console.log('open');
+			this.isChatShown = true
 		},
 		onDelete() {
 			this.$store.dispatch({
