@@ -33,7 +33,7 @@
 			placement="top"
 			class="el-title"
 		>
-			<button>
+			<button class="btn">
 				<div class="btn1 flex">
 					<img src="../assets/icons/filter.svg" alt="" />
 					<span> Filter </span>

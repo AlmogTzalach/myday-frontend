@@ -86,6 +86,7 @@
 				group="tasks"
 				@end="onTaskMoved"
 				:data-groupid="group.id"
+				:disabled="isDraggable"
 			>
 				<div v-for="task in group.tasks" :key="task.id">
 					<task-preview :task="task" :group="group" />
@@ -147,98 +148,101 @@
 </template>
 
 <script>
-import taskPreview from './task-preview.vue'
-import { VueDraggableNext } from 'vue-draggable-next'
-import checkboxSummary from './task-summary/checkbox-summary.vue'
-import statusSummary from './task-summary/status-summary.vue'
-import prioritySummary from './task-summary/priority-summary.vue'
+	import taskPreview from './task-preview.vue'
+	import { VueDraggableNext } from 'vue-draggable-next'
+	import checkboxSummary from './task-summary/checkbox-summary.vue'
+	import statusSummary from './task-summary/status-summary.vue'
+	import prioritySummary from './task-summary/priority-summary.vue'
 
-export default {
-	name: 'boardGroup',
+	export default {
+		name: 'boardGroup',
 
-	props: {
-		group: Object,
-		filter: Object,
-	},
+		props: {
+			group: Object,
+			filter: Object,
+		},
 
-	data() {
-		return {}
-	},
+		data() {
+			return {}
+		},
 
-	computed: {
-		cmpsOrder() {
-			const cmpsOrder = this.$store.getters.cmpsOrder
-			return JSON.parse(JSON.stringify(cmpsOrder))
+		computed: {
+			cmpsOrder() {
+				const cmpsOrder = this.$store.getters.cmpsOrder
+				return JSON.parse(JSON.stringify(cmpsOrder))
+			},
+			indicatorStyle() {
+				return {
+					'--indicatorHover': this.group.style.color,
+					'--indicator': this.group.style.addTaskColor,
+				}
+			},
+			isDraggable() {
+				return window.matchMedia('(any-hover: none)').matches
+			},
 		},
-		indicatorStyle() {
-			return {
-				'--indicatorHover': this.group.style.color,
-				'--indicator': this.group.style.addTaskColor,
-			}
-		},
-	},
 
-	methods: {
-		onTaskFocus(ev) {
-			ev.target.placeholder = '+ Add Task'
-			ev.target.innerText = ''
+		methods: {
+			onTaskFocus(ev) {
+				ev.target.placeholder = '+ Add Task'
+				ev.target.innerText = ''
+			},
+			onTaskBlur(ev) {
+				ev.target.innerText = '+ Add Task'
+			},
+			onAddTask(ev) {
+				ev.preventDefault()
+				const name = ev.target.innerText
+				ev.target.blur()
+				if (!name) {
+					this.onTaskBlur(ev)
+					return
+				}
+				this.$store.dispatch({
+					type: 'addTask',
+					name,
+					groupId: this.group.id,
+					addToEnd: true,
+				})
+			},
+			onTaskMoved(ev) {
+				const fromId = ev.from.dataset.groupid
+				const toId = ev.to.dataset.groupid
+				this.$emit('taskMoved', fromId, toId, ev.oldIndex, ev.newIndex)
+			},
+			updateGroupTitle(ev) {
+				const title = ev.target.innerText
+				this.group.title = title
+				this.$emit('updateGroup', this.group)
+			},
+			deleteGroup() {
+				this.$emit('deleteGroup', this.group.id)
+			},
+			cmpOrderChanged() {
+				this.$emit('cmpOrderChanged', this.cmpsOrder)
+			},
 		},
-		onTaskBlur(ev) {
-			ev.target.innerText = '+ Add Task'
-		},
-		onAddTask(ev) {
-			ev.preventDefault()
-			const name = ev.target.innerText
-			ev.target.blur()
-			if (!name) {
-				this.onTaskBlur(ev)
-				return
-			}
-			this.$store.dispatch({
-				type: 'addTask',
-				name,
-				groupId: this.group.id,
-				addToEnd: true,
-			})
-		},
-		onTaskMoved(ev) {
-			const fromId = ev.from.dataset.groupid
-			const toId = ev.to.dataset.groupid
-			this.$emit('taskMoved', fromId, toId, ev.oldIndex, ev.newIndex)
-		},
-		updateGroupTitle(ev) {
-			const title = ev.target.innerText
-			this.group.title = title
-			this.$emit('updateGroup', this.group)
-		},
-		deleteGroup() {
-			this.$emit('deleteGroup', this.group.id)
-		},
-		cmpOrderChanged() {
-			this.$emit('cmpOrderChanged', this.cmpsOrder)
-		},
-	},
 
-	components: {
-		taskPreview,
-		draggable: VueDraggableNext,
-		checkboxSummary,
-		statusSummary,
-		prioritySummary,
-	},
-}
+		components: {
+			taskPreview,
+			draggable: VueDraggableNext,
+			checkboxSummary,
+			statusSummary,
+			prioritySummary,
+		},
+	}
 </script>
 
 <style>
-.side-border-bottom {
-	background-color: var(--indicator);
-}
+	.side-border-bottom {
+		background-color: var(--indicator);
+	}
 
-.add-task-line:hover .side-border-bottom {
-	background-color: var(--indicatorHover);
-}
+	.add-task-line:hover .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
 
-.add-task-input:focus .side-border-bottom {
-	background-color: var(--indicatorHover);
-}
+	.add-task-input:focus .side-border-bottom {
+		background-color: var(--indicatorHover);
+	}
 </style>

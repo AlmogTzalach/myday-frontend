@@ -23,6 +23,10 @@
 		&:hover {
 			opacity: 1;
 		}
+
+		@include for-narrow-layout {
+			opacity: 1;
+		}
 	}
 	.conversation-img {
 		img {
@@ -51,16 +55,18 @@
 
 	.task-name {
 		.conversation-img {
-			line-height: 36px;
+			// line-height: 36px;
+			height: 100%;
 			border-inline-start: 1px solid $divider-clr;
 			position: relative;
 
 			img {
-				position: relative;
-				top: 0;
-				transform: translateY(30%);
 				width: 1.71428em;
 				margin-inline: 20px;
+
+				@include for-narrow-layout {
+					margin-inline: 3px;
+				}
 			}
 		}
 	}
@@ -78,6 +84,10 @@
 			&:focus {
 				background-color: white;
 			}
+		}
+
+		@include for-narrow-layout {
+			margin-inline-start: 5px;
 		}
 	}
 }

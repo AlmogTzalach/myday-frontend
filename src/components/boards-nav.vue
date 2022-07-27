@@ -3,6 +3,9 @@
 		<div class="board-toggle-container" @click="toggleBoardsNav">
 			<img class="toggle-boards-nav" src="../assets/icons/arrow-left.svg" />
 		</div>
+		<div class="close-boards-btn" @click="toggleBoardsNav">
+			<el-icon><Close /></el-icon>
+		</div>
 		<div class="nav-content">
 			<div class="workspace-details flex">
 				<div>Workspace</div>
@@ -88,7 +91,6 @@ export default {
 			navOpen: false,
 		}
 	},
-	computed: {},
 	methods: {
 		toggleBoardsNav() {
 			document.body.classList.toggle('side-bar-open')
