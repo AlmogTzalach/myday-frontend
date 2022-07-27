@@ -1,6 +1,10 @@
 .task-preview {
 	position: relative;
 
+	.group-collapsed & {
+		display: none;
+	}
+
 	.task-menu-btn {
 		opacity: 0;
 		display: flex;

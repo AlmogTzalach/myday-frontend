@@ -24,9 +24,16 @@
 					</div>
 				</el-popover>
 
-				<el-icon>
-					<ArrowDownBold />
-				</el-icon>
+				<div
+					v-if="!isCollapsed"
+					class="collapse-group-btn"
+					@click="toggleCollapse"
+				>
+					<el-icon><ArrowDownBold /></el-icon>
+				</div>
+				<div v-else class="collapse-group-btn" @click="toggleCollapse">
+					<el-icon><ArrowRightBold /></el-icon>
+				</div>
 
 				<div class="header-wrapper">
 					<el-tooltip
@@ -34,6 +41,7 @@
 						content="Click to edit"
 						placement="top"
 						class="el-title"
+						:trigger-keys="[]"
 					>
 						<h4
 							contenteditable
@@ -88,14 +96,18 @@
 				:data-groupid="group.id"
 				:disabled="isDraggable"
 			>
-				<div v-for="task in group.tasks" :key="task.id">
+				<div
+					v-for="task in group.tasks"
+					:key="task.id"
+					:class="collapseClass"
+				>
 					<task-preview :task="task" :group="group" />
 				</div>
 			</draggable>
 
 			<!-- table footer -->
 			<div class="group-footer">
-				<div class="add-task-line grid">
+				<div class="add-task-line grid" :class="collapseClass">
 					<div class="add-task-start grid">
 						<div class="empty-left"></div>
 						<div
@@ -119,7 +131,7 @@
 			</div>
 		</div>
 		<div class="task-summary-row grid">
-			<div class="empty-cell grid">
+			<div class="empty-cell grid" :class="collapseClass">
 				<div></div>
 				<div class="scroll-border"></div>
 			</div>
@@ -163,7 +175,9 @@
 		},
 
 		data() {
-			return {}
+			return {
+				isCollapsed: false,
+			}
 		},
 
 		computed: {
@@ -179,6 +193,9 @@
 			},
 			isDraggable() {
 				return window.matchMedia('(any-hover: none)').matches
+			},
+			collapseClass() {
+				return this.isCollapsed ? 'group-collapsed' : ''
 			},
 		},
 
@@ -220,6 +237,9 @@
 			},
 			cmpOrderChanged() {
 				this.$emit('cmpOrderChanged', this.cmpsOrder)
+			},
+			toggleCollapse() {
+				this.isCollapsed = !this.isCollapsed
 			},
 		},
 
