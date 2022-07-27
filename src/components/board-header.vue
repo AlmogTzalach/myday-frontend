@@ -13,6 +13,7 @@
 						contenteditable
 						@keydown.enter="$event.target.blur()"
 						@blur="updateBoardTitle"
+						ref="titleInput"
 					>
 						{{ board.title }}
 					</h1>
@@ -27,7 +28,7 @@
 
 		<div class="board-vue flex">
 			<div class="btn-container">
-				<button @click="setTableVue" class="btn vue-btn flex">
+				<button class="btn vue-btn flex">
 					<img src="../assets/icons/home.svg" alt="" />
 					Main Table
 				</button>
@@ -40,23 +41,23 @@
 </template>
 
 <script>
-	export default {
-		name: 'board-header',
-		props: {
-			board: Object,
+export default {
+	name: 'board-header',
+	props: {
+		board: Object,
+	},
+	mounted() {
+		this.$refs.titleInput.focus()
+	},
+	methods: {
+		addMember() {
+			console.log('add memeber')
 		},
-		methods: {
-			addMember() {
-				console.log('add memeber')
-			},
-			setTableView() {
-				console.log('set view')
-			},
-			updateBoardTitle(ev) {
-				const newBoard = JSON.parse(JSON.stringify(this.board))
-				newBoard.title = ev.target.innerText
-				this.$emit('updateBoardTitle', newBoard)
-			},
+		updateBoardTitle(ev) {
+			const newBoard = JSON.parse(JSON.stringify(this.board))
+			newBoard.title = ev.target.innerText
+			this.$emit('updateBoardTitle', newBoard)
 		},
-	}
+	},
+}
 </script>

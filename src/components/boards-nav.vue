@@ -43,9 +43,8 @@
 					v-for="board in boards"
 					class="btn"
 					:class="{ active: boardId === board._id }"
-					@click="goToBoard(board._id)"
 				>
-					<div class="flex">
+					<div class="flex go-board" @click="goToBoard(board._id)">
 						<img src="../assets/icons/board.svg" alt="" />
 						<span>{{ board.title }}</span>
 					</div>
