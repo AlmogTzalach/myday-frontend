@@ -1,5 +1,5 @@
 <template>
-    <el-popover :placement="modalPlacement" :width="200" trigger="click" v-model:visible="visible">
+    <el-popover :placement="modalPlacement" :width="'Min width 200px'" trigger="click" v-model:visible="visible">
         <template #reference>
             <section class="attr-container label-container" :style="{ 'background-color': priority.color }" @mousedown="changePlacement"
                 @click="visible = !visible">
