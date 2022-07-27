@@ -12,6 +12,13 @@
 	width: 0;
 	left: 0;
 	background-color: white;
+	z-index: 20;
+	transform: translateY(0);
+	transition: 0.2s;
+
+	&.group-collapsed {
+		transform: translateY(38px);
+	}
 }
 
 .groups-container {
