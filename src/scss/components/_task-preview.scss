@@ -64,6 +64,7 @@
 			border-inline-start: 1px solid $divider-clr;
 			position: relative;
 
+
 			img {
 				width: 1.71428em;
 				margin-inline: 20px;
@@ -71,6 +72,18 @@
 				@include for-narrow-layout {
 					margin-inline: 3px;
 				}
+			}
+			.comments-count {
+				color: white;
+				background-color: #bfbfbf;
+				padding: 2px 4px;
+				border-radius: 50%;
+				z-index: 100;
+				font-size: 10px;
+				position: absolute;
+				top: 1.67405em;
+				right: 1.601171em;
+				line-height: 9px;
 			}
 		}
 	}
