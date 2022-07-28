@@ -6,7 +6,7 @@ const boards = [
 		createdBy: {
 			_id: 'u101',
 			fullName: 'Stan Smith',
-			imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+			imgUrl: 'https://scontent.ftlv6-1.fna.fbcdn.net/v/t31.18172-8/10452964_10205352689450331_5845163785291641292_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=c9eVTGO_togAX93i1W4&_nc_ht=scontent.ftlv6-1.fna&oh=00_AT8s8pklNAJd1cjFAu7KZD69XDLQdOS4i_s3wh8xZ0EOoQ&oe=6308D4FC',
 		},
 		cmpsOrder: [
 			'people',
@@ -73,7 +73,7 @@ const boards = [
 			{
 				_id: 'u101',
 				fullName: 'Stan Smith',
-				imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+				imgUrl: 'https://scontent.ftlv6-1.fna.fbcdn.net/v/t31.18172-8/10452964_10205352689450331_5845163785291641292_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=c9eVTGO_togAX93i1W4&_nc_ht=scontent.ftlv6-1.fna&oh=00_AT8s8pklNAJd1cjFAu7KZD69XDLQdOS4i_s3wh8xZ0EOoQ&oe=6308D4FC',
 			},
 			{
 				_id: 'u102',

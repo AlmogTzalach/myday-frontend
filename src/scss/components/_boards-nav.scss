@@ -73,32 +73,24 @@
 				background-color: white;
 			}
 		}
-
-		// .btn {
-		// 	// text-align: start;
-		// 	// display: flex;
-		// 	// justify-content: left;
-		// 	// align-items: center;
-		// }
-		// .search-btn {
-		// 	// @include inlineInput;
-
-		// 	input {
-		// 		background-color: #f6f7fb;
-		// 		border: none;
-		// 		outline: none;
-		// 	}
-		// }
 	}
 
 	.boards-list {
 		padding-top: rem(20px);
 		border-top: 1px solid #d0d4e4;
 		flex-direction: column;
+
+		.go-board {
+			flex-grow: 1;
+		}
 		// justify-content: space-between;
 
 		.btn {
 			justify-content: space-between;
+
+			span {
+				width: 100%;
+			}
 			&.active {
 				background-color: rgb(204 229 255);
 			}
