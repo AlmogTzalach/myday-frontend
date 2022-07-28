@@ -1,4 +1,3 @@
-
 .task-details-title {
 	font-size: em(40px);
 }
@@ -6,5 +5,19 @@
 .task-details-container {
 	.el-input {
 		margin-bottom: em(30px);
+	}
+
+	.no-image-avatar {
+		@include avatar;
+		@include random-bgc;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		text-align: center;
+		margin-inline-end: em(12px);
+		p {
+			text-transform: capitalize;
+		}
 	}
 }

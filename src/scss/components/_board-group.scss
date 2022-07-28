@@ -82,6 +82,11 @@
 		.task-data {
 			border-top: 1px solid $divider-clr;
 
+			> *:hover {
+				cursor: grab;
+				background-color: $row-hover-clr;
+			}
+
 			&.group-collapsed {
 				border-bottom: none;
 			}

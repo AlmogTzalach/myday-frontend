@@ -1,5 +1,5 @@
 <template>
-	<section class="main-nav flex" v-if="currBoard">
+	<section class="main-nav flex">
 		<div class="nav-btns">
 			<el-tooltip
 				effect="dark"
@@ -16,7 +16,9 @@
 			</el-tooltip>
 
 			<div class="nav-menu-btn" @click="toggleBoardsNav">
-				<el-icon><Menu /></el-icon>
+				<el-icon>
+					<Menu />
+				</el-icon>
 			</div>
 
 			<div class="nav-divider"></div>
@@ -95,8 +97,6 @@
 				<img src="../assets/icons/search.svg" alt="" />
 			</el-tooltip>
 
-			<!-- <h1>{{ currBoard.title }}</h1> -->
-
 			<el-tooltip
 				effect="dark"
 				content="Help"
@@ -105,7 +105,14 @@
 			>
 				<img src="../assets/icons/help.svg" alt="" />
 			</el-tooltip>
-			<img class="user-img" :src="currBoard.createdBy.imgUrl" alt="" />
+			<img
+				v-if="loggedUser?.imgUrl"
+				class="user-img"
+				:src="loggedUser.imgUrl"
+			/>
+			<div v-else class="no-image-avatar">
+				<p>{{ loggedUser.fullName.charAt(0) }}</p>
+			</div>
 		</div>
 	</section>
 </template>
@@ -113,9 +120,6 @@
 <script>
 export default {
 	name: 'main-nav',
-	props: {
-		currBoard: Object,
-	},
 	data() {
 		return {}
 	},
@@ -125,6 +129,11 @@ export default {
 		},
 		toggleBoardsNav() {
 			document.body.classList.toggle('side-bar-open')
+		},
+	},
+	computed: {
+		loggedUser() {
+			return this.$store.getters.loggedUser
 		},
 	},
 }

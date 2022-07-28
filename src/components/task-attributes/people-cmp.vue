@@ -4,7 +4,10 @@
             <section class="attr-container">
                 <div class="flex align-center">
                     <div class="avatar-container" v-if="people.length" v-for="person in people" :key="person._id">
-                        <img class="avatar" :src="person.imgUrl" :title="person.fullName">
+                        <img v-if="person.imgUrl" class="avatar" :src="person.imgUrl" :title="person.fullName">
+                        <div v-else class="no-image-avatar">
+                            <p>{{ person.fullName.charAt(0) }}</p>
+                        </div>
                     </div>
                     <div v-else>
                         <img class="empty-avatar" src="../../assets/icons/person-round.svg" />
@@ -21,7 +24,10 @@
             <div v-if="people.length" class="avatar-modal-divider"></div>
             <div v-for="user in usersNotOnTask" :key="user._id" class="users-to-add flex align-center"
                 @click="onAddPerson(user)">
-                <img class="avatar" :src="user.imgUrl" :title="user.fullName">
+                <img v-if="user.imgUrl" class="avatar" :src="user.imgUrl" :title="user.fullName">
+                <div v-else class="no-image-avatar">
+                    <p>{{ user.fullName.charAt(0) }}</p>
+                </div>
                 <span>{{ user.fullName }}</span>
             </div>
         </div>

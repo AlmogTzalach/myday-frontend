@@ -48,6 +48,7 @@ export const boardService = {
 	getRandomGroupClr,
 	getEmptyLabel,
 	getEmptyBoard,
+	getEmptyComment,
 }
 
 async function query() {
@@ -74,6 +75,15 @@ async function save(board) {
 		return await httpService.put(`${ENDPOINT}/${board._id}`, board)
 	} else {
 		return await httpService.post(ENDPOINT, board)
+	}
+}
+
+function getEmptyComment(txt, loggedUser) {
+	return {
+		id: utilService._makeId(),
+		txt,
+		createdAt: Date.now(),
+		byMember: loggedUser,
 	}
 }
 
@@ -107,7 +117,7 @@ function getEmptyLabel() {
 	return {
 		id: utilService._makeId(5),
 		title: '',
-		color: '#676879',
+		color: utilService.generateDarkColor(),
 	}
 }
 
