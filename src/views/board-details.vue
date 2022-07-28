@@ -1,7 +1,11 @@
 <template>
 	<section class="board-container" v-if="currBoard">
 		<div class="board-header-filter">
-			<board-header :board="currBoard" @updateBoardTitle="updateBoardTitle" />
+			<board-header
+				:board="currBoard"
+				@updateBoardTitle="updateBoardTitle"
+				@setView="setView"
+			/>
 
 			<div class="flex main-actions-container">
 				<div class="add-btns">
@@ -40,7 +44,9 @@
 			</div>
 		</div>
 
-		<div class="groups-container">
+		<dashboard :currBoard="currBoard" v-if="boardView === 'chart'" />
+
+		<div class="groups-container" v-if="boardView === 'table'">
 			<draggable
 				:list="currBoard.groups"
 				@end="onGroupMove"
@@ -72,10 +78,13 @@ import boardFilter from '@/components/board-filter.vue'
 import boardGroup from '@/components/board-group.vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 
+import dashboard from '../components/task-summary/dashboard.vue'
+
 export default {
 	name: 'board-details',
 	data() {
 		return {
+			boardView: 'table',
 			groupFilter: {
 				txt: '',
 			},
@@ -138,6 +147,9 @@ export default {
 			boardCopy.cmpsOrder = cmpsOrder
 			this.$store.dispatch({ type: 'saveBoard', newBoard: boardCopy })
 		},
+		setView(view) {
+			this.boardView = view
+		},
 	},
 	watch: {
 		'$route.params.boardId': {
@@ -152,6 +164,7 @@ export default {
 		boardFilter,
 		boardGroup,
 		draggable: VueDraggableNext,
+		dashboard,
 	},
 }
 </script>

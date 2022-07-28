@@ -201,14 +201,12 @@ export default {
 		},
 		async saveBoard({ state, commit }, { newBoard }) {
 			let board = !newBoard ? boardService.getEmptyBoard() : newBoard
-			// console.log(board, 'board to add')
 
 			if (board._id) {
 				commit({ type: 'saveBoard', newBoard: board })
 				await boardService.save(board)
 			} else {
 				const { insertedId } = await boardService.save(board)
-				// console.log(insertedId, 'addboard')
 				board._id = insertedId
 				commit({ type: 'addBoard', board })
 			}

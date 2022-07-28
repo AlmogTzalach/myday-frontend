@@ -60,6 +60,10 @@
 			background-color: #f6f7fb;
 			box-shadow: none;
 			transition: 0.2s;
+			padding: 2px;
+			img {
+				margin-left: 2px;
+			}
 			.el-input__inner::placeholder {
 				color: $text-black;
 			}

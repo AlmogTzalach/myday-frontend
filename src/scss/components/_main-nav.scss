@@ -16,7 +16,7 @@
 	}
 
 	.nav-btns {
-		img:not(.user-img, .logo-svg) {
+		img:not(.user-img, .logo-svg, .work-svg) {
 			width: 40px;
 			margin-bottom: rem(5px);
 			fill: white;
@@ -43,7 +43,19 @@
 		}
 	}
 
-	img:not(.logo-svg, .user-img) {
+	.work-svg {
+		margin: rem(10px) 0;
+		cursor: pointer;
+		width: 40px;
+		transition: $trns;
+		border-radius: rem(7px);
+		padding: 0.5rem;
+		&:hover {
+			background-color: rgba(0, 0, 0, 0.6);
+		}
+	}
+
+	img:not(.logo-svg, .user-img, .work-svg) {
 		filter: $svgWhite;
 	}
 

@@ -21,23 +21,19 @@
 					</el-icon>
 					<span>Add</span>
 				</button>
+
 				<el-input
 					v-model="filter.txt"
 					class="w-50 m-2 search-input"
 					placeholder="Search"
 					@input="setFilter"
-				/>
-
-				<!-- <button class="btn search-btn">
-					<img src="../assets/icons/search.svg" alt="" />
-					<input
-						type="text"
-						v-model="filter.txt"
-						placeholder="Search"
-						@input="setFilter"
-					/>
-				</button> -->
+				>
+					<template #prefix>
+						<img src="../assets/icons/search.svg" alt="" />
+					</template>
+				</el-input>
 			</div>
+
 			<div class="boards-list flex">
 				<button
 					v-for="board in boards"

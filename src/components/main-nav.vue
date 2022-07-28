@@ -1,5 +1,5 @@
 <template>
-	<section class="main-nav flex">
+	<section class="main-nav flex" v-if="currBoard">
 		<div class="nav-btns">
 			<el-tooltip
 				effect="dark"
@@ -21,6 +21,15 @@
 
 			<div class="nav-divider"></div>
 
+			<el-tooltip
+				effect="dark"
+				content="Work management"
+				placement="right"
+				class="el-title"
+			>
+				<!-- <button class="logo-svg" @click="goToHome()">logo</button> -->
+				<img class="work-svg" src="../assets/work.svg" />
+			</el-tooltip>
 			<!-- <el-tooltip
 				effect="dark"
 				content="Work management"
@@ -86,6 +95,8 @@
 				<img src="../assets/icons/search.svg" alt="" />
 			</el-tooltip>
 
+			<!-- <h1>{{ currBoard.title }}</h1> -->
+
 			<el-tooltip
 				effect="dark"
 				content="Help"
@@ -94,28 +105,27 @@
 			>
 				<img src="../assets/icons/help.svg" alt="" />
 			</el-tooltip>
-			<img
-				class="user-img"
-				src="https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png"
-				alt=""
-			/>
+			<img class="user-img" :src="currBoard.createdBy.imgUrl" alt="" />
 		</div>
 	</section>
 </template>
 
 <script>
-	export default {
-		name: 'main-nav',
-		data() {
-			return {}
+export default {
+	name: 'main-nav',
+	props: {
+		currBoard: Object,
+	},
+	data() {
+		return {}
+	},
+	methods: {
+		goToHome() {
+			this.$router.push('/')
 		},
-		methods: {
-			goToHome() {
-				this.$router.push('/')
-			},
-			toggleBoardsNav() {
-				document.body.classList.toggle('side-bar-open')
-			},
+		toggleBoardsNav() {
+			document.body.classList.toggle('side-bar-open')
 		},
-	}
+	},
+}
 </script>

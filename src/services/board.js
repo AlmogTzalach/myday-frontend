@@ -5,8 +5,8 @@ const boards = [
 		createdAt: 1589983468418,
 		createdBy: {
 			_id: 'u101',
-			fullName: 'Stan Smith',
-			imgUrl: 'https://scontent.ftlv6-1.fna.fbcdn.net/v/t31.18172-8/10452964_10205352689450331_5845163785291641292_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=c9eVTGO_togAX93i1W4&_nc_ht=scontent.ftlv6-1.fna&oh=00_AT8s8pklNAJd1cjFAu7KZD69XDLQdOS4i_s3wh8xZ0EOoQ&oe=6308D4FC',
+			fullName: 'Anton Kandyba',
+			imgUrl: 'https://ca.slack-edge.com/T035GULFZRD-U03BURAF5QB-99b3505536a1-512',
 		},
 		cmpsOrder: [
 			'people',
@@ -73,7 +73,7 @@ const boards = [
 			{
 				_id: 'u101',
 				fullName: 'Stan Smith',
-				imgUrl: 'https://scontent.ftlv6-1.fna.fbcdn.net/v/t31.18172-8/10452964_10205352689450331_5845163785291641292_o.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=c9eVTGO_togAX93i1W4&_nc_ht=scontent.ftlv6-1.fna&oh=00_AT8s8pklNAJd1cjFAu7KZD69XDLQdOS4i_s3wh8xZ0EOoQ&oe=6308D4FC',
+				imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
 			},
 			{
 				_id: 'u102',
@@ -652,11 +652,10 @@ const boards = [
 
 const users = [
 	{
-		_id: 'u101',
-		fullName: 'Stan Smith',
-		userName: 'stantheman@jmail.com',
+		fullName: 'Anton Kandyba',
+		userName: 'antonkandyba@gmail.com',
 		password: 'superPassword',
-		imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+		imgUrl: 'https://ca.slack-edge.com/T035GULFZRD-U03BURAF5QB-99b3505536a1-512',
 		tasks: [
 			{
 				boardId: 'm101',
@@ -671,11 +670,23 @@ const users = [
 		],
 	},
 	{
-		_id: 'u102',
-		fullName: 'Roy Boy',
-		userName: 'janedoe@jmail.com',
+		fullName: 'Almog Tzalach',
+		userName: 'Almogtza@gmail.com',
 		password: 'janeIsQueen',
-		imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
+		imgUrl: 'https://ca.slack-edge.com/T035GULFZRD-U036GA3BYU9-a713c54e93a1-512',
+		tasks: [
+			{
+				boardId: 'm101',
+				groupId: 'g102',
+				taskId: 't101',
+			},
+		],
+	},
+	{
+		fullName: 'Lior Abir',
+		userName: 'liorabir909@gmail.com',
+		password: 'janeIsQueen',
+		imgUrl: 'https://ca.slack-edge.com/T035GULFZRD-U03A6LGN596-d32e73f742df-512',
 		tasks: [
 			{
 				boardId: 'm101',

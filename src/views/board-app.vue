@@ -1,6 +1,6 @@
 <template>
 	<section class="app-container grid">
-		<main-nav />
+		<main-nav :currBoard="currBoard" />
 		<boards-nav
 			:boards="boards"
 			@setFilter="setFilter"
@@ -28,7 +28,6 @@ export default {
 	},
 	methods: {
 		updateBoard(board) {
-			// console.log(board)
 			this.$store.commit({ type: 'saveBoard', newBoard: board })
 		},
 		setFilter(filter) {
@@ -43,6 +42,9 @@ export default {
 		},
 	},
 	computed: {
+		currBoard() {
+			return this.$store.getters.currBoard
+		},
 		boards() {
 			return this.$store.getters.boardsToDisplay
 		},

@@ -1,12 +1,23 @@
 <template>
 	<section class="board-filter">
 		<!-- <div class="search-filter-container"> -->
+		<!-- <el-input
+			v-model="filter.txt"
+			class="w-50 m-2 search-input"
+			placeholder="Search"
+			@input="setFilterBy"
+		/> -->
+
 		<el-input
 			v-model="filter.txt"
 			class="w-50 m-2 search-input"
 			placeholder="Search"
 			@input="setFilterBy"
-		/>
+		>
+			<template #prefix>
+				<img src="../assets/icons/search.svg" alt="" />
+			</template>
+		</el-input>
 
 		<!-- <button class="search-btn" contenteditable> -->
 		<!-- <img src="../assets/icons/search.svg" alt="" /> -->

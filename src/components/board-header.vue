@@ -27,7 +27,7 @@
 		</div>
 
 		<div class="board-vue flex">
-			<div class="btn-container">
+			<div class="btn-container" @click="setView('table')">
 				<button class="btn vue-btn flex">
 					<img src="../assets/icons/home.svg" alt="" />
 					Main Table
@@ -35,7 +35,11 @@
 				<div></div>
 			</div>
 			<span>|</span>
-			<button class="btn add-vue-btn">+</button>
+			<div class="btn-container" @click="setView('chart')">
+				<button class="btn vue-btn flex">Chart</button>
+				<div></div>
+			</div>
+			<!-- <button class="btn add-vue-btn">+</button> -->
 		</div>
 	</header>
 </template>
@@ -57,6 +61,9 @@ export default {
 			const newBoard = JSON.parse(JSON.stringify(this.board))
 			newBoard.title = ev.target.innerText
 			this.$emit('updateBoardTitle', newBoard)
+		},
+		setView(view) {
+			this.$emit('setView', view)
 		},
 	},
 }

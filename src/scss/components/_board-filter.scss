@@ -2,14 +2,16 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	// width: 100%;
 
 	.el-input__wrapper {
 		background-color: white;
 		box-shadow: none;
 		transition: 0.2s;
-		width: 110px;
+		width: 98px;
 		cursor: pointer;
+		img {
+			filter: $svg-black;
+		}
 		.el-input__inner::placeholder {
 			color: $text-black;
 		}
@@ -28,94 +30,90 @@
 		}
 	}
 
-	.search-btn {
-		width: rem(80px);
-		// background-color: initial;
-		// &:focus {
-		// 	background-color: aqua;
-		margin-right: rem(5px);
-		padding: 0.4rem 0.3rem;
-		&:focus {
-			background-color: white;
-		}
-		// }
-		input {
-			border: none;
-			outline: none;
-			background-color: inherit;
-			width: 100%;
+	// .search-btn {
+	// 	width: rem(80px);
+	// 	margin-right: rem(5px);
+	// 	padding: 0.4rem 0.3rem;
+	// 	&:focus {
+	// 		background-color: white;
+	// 	}
+	// 	input {
+	// 		border: none;
+	// 		outline: none;
+	// 		background-color: inherit;
+	// 		width: 100%;
 
-			&:focus {
-				background-color: white;
-			}
-		}
-		.el-icon {
-			margin-right: rem(5px);
-		}
-	}
+	// 		&:focus {
+	// 			background-color: white;
+	// 		}
+	// 	}
+	// 	.el-icon {
+	// 		margin-right: rem(5px);
+	// 	}
+	// }
 
-	.btn {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-inline-end: rem(5px);
-		@include mainBtn;
-		padding: 0.4rem 0.3rem;
+	// .btn {
+	// 	display: flex;
+	// 	justify-content: center;
+	// 	align-items: center;
+	// 	margin-inline-end: rem(5px);
+	// 	@include mainBtn;
+	// 	padding: 0.4rem 0.3rem;
 
-		img {
-			width: 20px;
-			margin: 0 rem(5px);
-		}
+	// 	img {
+	// 		width: 20px;
+	// 		margin: 0 rem(5px);
+	// 	}
 
-		span {
-			padding-inline-end: rem(10px);
-		}
-	}
+	// 	span {
+	// 		padding-inline-end: rem(10px);
+	// 	}
+	// }
 
-	button {
-		margin-inline-end: rem(16px);
-		display: flex;
-		align-items: center;
-		@include mainBtn;
-		padding: 0;
+	// button {
+	// 	margin-inline-end: rem(16px);
+	// 	display: flex;
+	// 	align-items: center;
+	// 	@include mainBtn;
+	// 	padding: 0;
 
-		img {
-			width: 20px;
-			margin: 0 rem(5px);
-			filter: invert(54%) sepia(5%) saturate(190%) hue-rotate(188deg)
-				brightness(88%) contrast(86%);
-		}
+	// 	img {
+	// 		width: 20px;
+	// 		margin: 0 rem(5px);
+	// 		filter: invert(54%) sepia(5%) saturate(190%) hue-rotate(188deg)
+	// 			brightness(88%) contrast(86%);
+	// 	}
 
-		.btn1 {
-			padding: 0.4rem 0.3rem;
-			// padding: 4px 8px;
-			border-right: 1px solid white;
+	// 	.btn1 {
+	// 		padding: 0.4rem 0.3rem;
+	// 		// padding: 4px 8px;
+	// 		border-right: 1px solid white;
 
-			span {
-				margin-top: rem(2px);
-				padding-inline-end: rem(1px);
-			}
-		}
+	// 		span {
+	// 			margin-top: rem(2px);
+	// 			padding-inline-end: rem(1px);
+	// 		}
+	// 	}
 
-		.btn2 {
-			img {
-				margin: rem(2px);
-				padding-top: rem(4px);
-			}
+	// 	.btn2 {
+	// 		img {
+	// 			margin: rem(2px);
+	// 			padding-top: rem(4px);
+	// 		}
 
-			&:hover {
-				background-color: #c3c6d4;
-			}
-			// padding: 4px 8px;
-		}
-	}
-	.sort-btn {
-		span {
-			padding-inline-start: rem(4px);
-		}
+	// 		&:hover {
+	// 			background-color: #c3c6d4;
+	// 		}
+	// 		// padding: 4px 8px;
+	// 	}
+	// }
+	// .sort-btn {
+	// 	span {
+	// 		padding-inline-start: rem(4px);
+	// 	}
 
-		div {
-			padding-inline-start: rem(4px);
-		}
-	}
+	// 	div {
+	// 		padding-inline-start: rem(4px);
+	// 	}
+	// }
 }
