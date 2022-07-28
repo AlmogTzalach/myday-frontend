@@ -45,26 +45,26 @@
 </template>
 
 <script>
-export default {
-	name: 'board-header',
-	props: {
-		board: Object,
-	},
-	mounted() {
-		this.$refs.titleInput.focus()
-	},
-	methods: {
-		addMember() {
-			console.log('add memeber')
+	export default {
+		name: 'board-header',
+		props: {
+			board: Object,
 		},
-		updateBoardTitle(ev) {
-			const newBoard = JSON.parse(JSON.stringify(this.board))
-			newBoard.title = ev.target.innerText
-			this.$emit('updateBoardTitle', newBoard)
+		// mounted() {
+		// 	this.$refs.titleInput.focus()
+		// },
+		methods: {
+			addMember() {
+				console.log('add memeber')
+			},
+			updateBoardTitle(ev) {
+				const newBoard = JSON.parse(JSON.stringify(this.board))
+				newBoard.title = ev.target.innerText
+				this.$emit('updateBoardTitle', newBoard)
+			},
+			setView(view) {
+				this.$emit('setView', view)
+			},
 		},
-		setView(view) {
-			this.$emit('setView', view)
-		},
-	},
-}
+	}
 </script>

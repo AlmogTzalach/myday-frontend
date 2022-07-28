@@ -260,13 +260,35 @@
 }
 
 // TIMELINE CMP
+.timeline-wrapper {
+	position: absolute;
+	border-radius: 12px;
+	background-color: black;
+
+	.previous-timeline {
+		height: 100%;
+		grid-column-start: 1;
+		grid-row-start: 1;
+		border-radius: 12px;
+	}
+
+	.future-timeline {
+		height: 100%;
+		grid-row-start: 1;
+	}
+}
 
 .timeline-display {
-	position: absolute;
 	color: white;
 	font-size: 0.9em;
 	text-align: center;
 	padding: 2px 8px;
-	border-radius: 12px;
+	// border-radius: 12px;
 	min-width: 110px;
+	grid-column: 1 / -1;
+	grid-row-start: 1;
+}
+
+.timeline-summary {
+	height: 100%;
 }
