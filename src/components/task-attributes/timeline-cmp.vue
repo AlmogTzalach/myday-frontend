@@ -56,6 +56,7 @@
 				return fromDate + ' - ' + toDate
 			},
 			gridTemplate() {
+				if (!this.timeline) return '0fr 1fr'
 				const currTime = Date.now()
 				let from = new Date(this.timeline[0])
 				let to = new Date(this.timeline[1])
