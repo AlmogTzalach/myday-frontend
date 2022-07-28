@@ -67,6 +67,19 @@
 		@include avatar;
 		cursor: pointer;
 	}
+	.no-image-avatar {
+		@include avatar;
+		@include random-bgc;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		text-align: center;
+		margin-inline-end: em(12px);
+		p {
+			text-transform: capitalize;
+		}
+	}
 }
 
 .avatar-modal-container {
@@ -75,6 +88,20 @@
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 5px;
+	}
+
+	.no-image-avatar {
+		@include avatar;
+		@include random-bgc;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		text-align: center;
+		margin-inline-end: em(12px);
+		p {
+			text-transform: capitalize;
+		}
 	}
 
 	.avatar-modal-divider {

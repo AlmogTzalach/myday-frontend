@@ -7,15 +7,16 @@
             </div>
         </router-link>
     </header>
-    <section class="login-page-container flex column align-center">
+    <section :model="loginForm" class="login-page-container flex column align-center">
         <h2>Log in to your account</h2>
         <el-form class="flex column align-center">
-            <el-input v-model="userName" placeholder="example@company.com" size="large" />
-            <el-input v-model="password" placeholder="Enter your password" size="large" type="password"
+            <el-input v-model="loginForm.username" placeholder="example@company.com" size="large" />
+            <el-input v-model="loginForm.password" placeholder="Enter your password" size="large" type="password"
                 autocomplete="off" />
-            <el-button type="primary" @submit="onLogin">Log in</el-button>
+            <el-button type="primary" @click="onLogin">Log in</el-button>
         </el-form>
-        <p>Don't have an account yet? <router-link to="/signup">Sign up</router-link></p>
+        <p>Don't have an account yet? <router-link to="/signup">Sign up</router-link>
+        </p>
     </section>
 </template>
 
@@ -24,12 +25,21 @@ export default {
     name: 'loginPage',
     data() {
         return {
-            userName: null,
-            password: null
+            loginForm: {
+                username: null,
+                password: null
+            }
         }
     },
     methods: {
-
+        onLogin() {
+            const credentials = {
+                username: this.loginForm.username,
+                password: this.loginForm.password,
+            }
+            this.$store.dispatch({ type: 'logIn', credentials })
+			this.$router.push('/board')
+        }
     },
     computed: {
 
