@@ -78,7 +78,7 @@ import boardFilter from '@/components/board-filter.vue'
 import boardGroup from '@/components/board-group.vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 
-import dashboard from '../components/task-summary/dashboard.vue'
+import dashboard from '../components/dashboard.vue'
 
 export default {
 	name: 'board-details',

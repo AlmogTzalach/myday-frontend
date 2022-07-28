@@ -10,10 +10,14 @@
 		width: 98px;
 		cursor: pointer;
 		img {
+			margin-right: 3px;
 			filter: $svg-black;
 		}
-		.el-input__inner::placeholder {
-			color: $text-black;
+		.el-input__inner {
+			margin-top: 3px;
+			&::placeholder {
+				color: $text-black;
+			}
 		}
 
 		&:hover {
