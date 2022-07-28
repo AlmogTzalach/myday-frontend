@@ -5,7 +5,7 @@
                 <div class="flex align-center">
                     <div class="avatar-container" v-if="people.length" v-for="person in people" :key="person._id">
                         <img v-if="person.imgUrl" class="avatar" :src="person.imgUrl" :title="person.fullName">
-                        <div v-else class="no-image-avatar">
+                        <div v-else class="avatar no-image-avatar">
                             <p>{{ person.fullName.charAt(0) }}</p>
                         </div>
                     </div>
@@ -17,7 +17,10 @@
         </template>
         <div class="avatar-modal-container">
             <div class="small-avatar-container" v-if="people.length" v-for="person in people" :key="person._id">
-                <img class="small-avatar" :src="person.imgUrl" :title="person.fullName">
+                <img v-if="person.imgUrl" class="small-avatar" :src="person.imgUrl" :title="person.fullName">
+                <div v-else class="avatar no-image-avatar">
+                    <p>{{ person.fullName.charAt(0) }}</p>
+                </div>
                 <span class="small-avatar-name flex align-center">{{ person.fullName }}<img
                         src="../../assets/icons/close-small.svg" @click="onRemovePerson(person._id)"></span>
             </div>
@@ -25,7 +28,7 @@
             <div v-for="user in usersNotOnTask" :key="user._id" class="users-to-add flex align-center"
                 @click="onAddPerson(user)">
                 <img v-if="user.imgUrl" class="avatar" :src="user.imgUrl" :title="user.fullName">
-                <div v-else class="no-image-avatar">
+                <div v-else class="avatar no-image-avatar">
                     <p>{{ user.fullName.charAt(0) }}</p>
                 </div>
                 <span>{{ user.fullName }}</span>
