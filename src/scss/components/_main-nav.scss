@@ -35,7 +35,7 @@
 	.logo-svg {
 		margin: rem(10px) 0;
 		cursor: pointer;
-		width: 40px;
+		width: 42px;
 		transition: $trns;
 		border-radius: rem(7px);
 
@@ -45,9 +45,9 @@
 	}
 
 	.work-svg {
-		margin: rem(10px) 0;
+		// margin: rem(10px) 0;
 		cursor: pointer;
-		width: 40px;
+		width: 47px;
 		transition: $trns;
 		border-radius: rem(7px);
 		padding: 0.5rem;
@@ -82,6 +82,10 @@
 	.no-image-avatar {
 		@include avatar(40px);
 		@include random-bgc;
+		margin-bottom: rem(14px);
+		font-weight: 800;
+		font-size: 1.1rem;
+		border: 1px solid white;
 		display: flex;
 		justify-content: center;
 		align-items: center;
