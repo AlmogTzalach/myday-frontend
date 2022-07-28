@@ -24,7 +24,6 @@
 		data() {
 			return {
 				dateInput: null,
-				// taskToEdit: null,
 			}
 		},
 
@@ -38,34 +37,13 @@
 				})
 			},
 		},
-		// computed: {
-		// 	taskToEdit() {
-		// 		return JSON.parse(JSON.stringify(this.task))
-		// 	},
-		// },
 
 		methods: {
 			dateChanged() {
-				// console.log('change', this.taskToEdit)
-				// console.log(this.task.date)
-
-				// this.task.date =
-				// this.task.title = ev.target.innerText
-				// newTask.title = this.task.date
-				// this.onTaskUpdate(newTask)
-
-				// const newTask = JSON.parse(JSON.stringify(this.task))
-				// this.task.date = this.dateInput
 				const newTask = this.task
 				newTask.date = this.dateInput
 				this.$emit('dataChanged', newTask)
 			},
-		},
-
-		created() {
-			// this.taskToEdit = JSON.parse(JSON.stringify(this.task))
-			// const { date } = this.task
-			// this.dateInput = date
 		},
 
 		watch: {

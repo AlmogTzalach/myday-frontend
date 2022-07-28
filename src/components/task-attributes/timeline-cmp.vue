@@ -10,9 +10,19 @@
 			@change="onTimelineChange"
 		/>
 
-		<p class="timeline-display" :style="{ 'background-color': color }">
-			{{ formattedTimeline }}
-		</p>
+		<div
+			class="timeline-wrapper grid"
+			:style="{ 'grid-template-columns': gridTemplate }"
+		>
+			<div
+				class="previous-timeline"
+				:style="{ 'background-color': color }"
+			></div>
+			<!-- <div class="future-timeline"></div> -->
+			<div class="timeline-display">
+				{{ formattedTimeline }}
+			</div>
+		</div>
 	</section>
 </template>
 
@@ -45,18 +55,35 @@
 				})
 				return fromDate + ' - ' + toDate
 			},
+			gridTemplate() {
+				const currTime = Date.now()
+				let from = new Date(this.timeline[0])
+				let to = new Date(this.timeline[1])
+
+				from = from.getTime()
+				to = to.getTime()
+				from = Math.floor((currTime - from) / (1000 * 60 * 60 * 24))
+				to = Math.ceil((to - currTime) / (1000 * 60 * 60 * 24))
+				if (from < 0) from = 0
+				if (to < 0) to = 0
+				// console.log(currTime - from, to - currTime)
+
+				return `${from}fr ${to}fr`
+			},
 		},
 
 		methods: {
-			onTimelineChange(val) {
-				// console.log(val)
+			onTimelineChange() {
+				this.task.timeline[0] = this.timeline[0].getTime()
+				this.task.timeline[1] = this.timeline[1].getTime()
+				this.$emit('dataChanged', this.task)
 			},
 		},
 
 		watch: {
 			task: {
 				handler(task) {
-					// this.timeline = task.timeline
+					this.timeline = task.timeline
 				},
 				immediate: true,
 				deep: true,
