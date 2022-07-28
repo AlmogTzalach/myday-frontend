@@ -3,7 +3,7 @@
 	<DoughnutChart :chartData="membersData" />
 </template>
 
-<script lang="ts">
+<script>
 import { DoughnutChart } from 'vue-chart-3'
 import { Chart, registerables } from 'chart.js'
 
