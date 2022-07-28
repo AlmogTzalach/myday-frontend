@@ -231,3 +231,15 @@
 	grid-template-rows: repeat(6, auto);
 	grid-column-gap: 8px;
 }
+
+// TIMELINE CMP
+
+.timeline-display {
+	position: absolute;
+	color: white;
+	font-size: 0.9em;
+	text-align: center;
+	padding: 2px 8px;
+	border-radius: 12px;
+	min-width: 110px;
+}

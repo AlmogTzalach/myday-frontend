@@ -107,7 +107,7 @@ function getEmptyLabel() {
 	return {
 		id: utilService._makeId(5),
 		title: '',
-		color: '#676879',
+		color: utilService.generateDarkColor(),
 	}
 }
 
