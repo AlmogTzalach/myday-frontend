@@ -67,4 +67,16 @@
 		justify-content: space-between;
 		align-items: center;
 	}
+	.no-image-avatar {
+		@include avatar(40px);
+		@include random-bgc;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		text-align: center;
+		p {
+			text-transform: capitalize;
+		}
+	}
 }

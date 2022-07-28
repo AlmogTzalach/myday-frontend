@@ -3,7 +3,9 @@
 		:visible="isChatShown"
 		:task="task"
 		@onCloseChat="closeChat"
-	></task-details>
+		@onAddComment="addComment"
+	>
+	</task-details>
 	<section class="task-preview">
 		<div class="task-row grid">
 			<div class="task-name name-cell grid">
@@ -115,6 +117,16 @@
 			},
 		},
 		methods: {
+			addComment(txt, taskId) {
+				const loggedUser = this.$store.getters.loggedUser
+				this.$store.dispatch({
+					type: 'addComment',
+					txt,
+					loggedUser,
+					taskId,
+					groupId: this.group.id,
+				})
+			},
 			closeChat() {
 				this.isChatShown = false
 			},

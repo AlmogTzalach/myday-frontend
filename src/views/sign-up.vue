@@ -9,11 +9,12 @@
     </header>
     <section class="sign-up-page-container flex column align-center">
         <h2>Sign up here</h2>
-        <el-form class="flex column align-center">
-            <el-input v-model="userName" placeholder="example@company.com" size="large" />
-            <el-input v-model="password" placeholder="Enter your password" size="large" type="password"
+        <el-form :model="signUpForm" class="flex column align-center">
+            <el-input v-model="signUpForm.fullName" placeholder="Your full name" size="large" />
+            <el-input v-model="signUpForm.username" placeholder="example@company.com" size="large" />
+            <el-input v-model="signUpForm.password" placeholder="Enter your password" size="large" type="password"
                 autocomplete="off" />
-            <el-button type="primary" @submit="onSignUp">Sign up</el-button>
+            <el-button type="primary" @click="onSignUp">Sign up</el-button>
         </el-form>
     </section>
 </template>
@@ -23,12 +24,23 @@ export default {
     name: 'signUpPage',
     data() {
         return {
-            userName: null,
-            password: null
+            signUpForm: {
+                fullName: null,
+                username: null,
+                password: null
+            }
         }
     },
     methods: {
-
+        onSignUp() {
+            const userInfo = {
+                fullName: this.signUpForm.fullName,
+                username: this.signUpForm.username,
+                password: this.signUpForm.password,
+            }
+            this.$store.dispatch({ type: 'signUp', userInfo })
+			this.$router.push('/board')
+        }
     },
     computed: {
 
