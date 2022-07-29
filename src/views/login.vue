@@ -38,11 +38,11 @@ export default {
                 password: this.loginForm.password,
             }
             this.$store.dispatch({ type: 'logIn', credentials })
-			this.$router.push('/board')
+            const defaultBoard = this.$store.getters.boards[0]._id
+			this.$router.push(`/board/${defaultBoard}`)
         }
     },
     computed: {
-
     },
 }
 </script>
