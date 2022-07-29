@@ -19,11 +19,24 @@
 					</h1>
 				</el-tooltip>
 			</div>
-			<!-- <div class="btns flex">
+			<div class="btns flex">
+				<button class="btn last-seen-btn">
+					<div>
+						<span>Last seen</span>
+					</div>
+					<div class="imgs-container">
+						<img
+							v-for="member in board.members"
+							:src="member.imgUrl"
+							alt=""
+							class="member-img"
+						/>
+					</div>
+				</button>
 				<button @click="addMember()" class="btn add-member-btn">
 					+ <span>invite / {{ board.members.length }}</span>
 				</button>
-			</div> -->
+			</div>
 		</div>
 
 		<div class="board-vue flex">
