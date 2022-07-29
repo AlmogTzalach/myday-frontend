@@ -37,7 +37,7 @@
 			<span>|</span>
 			<div class="btn-container" @click="setView('chart')">
 				<button class="btn vue-btn flex">Chart</button>
-				<div></div>
+				<!-- <div></div> -->
 			</div>
 			<!-- <button class="btn add-vue-btn">+</button> -->
 		</div>
@@ -45,26 +45,26 @@
 </template>
 
 <script>
-	export default {
-		name: 'board-header',
-		props: {
-			board: Object,
+export default {
+	name: 'board-header',
+	props: {
+		board: Object,
+	},
+	// mounted() {
+	// 	this.$refs.titleInput.focus()
+	// },
+	methods: {
+		addMember() {
+			console.log('add memeber')
 		},
-		// mounted() {
-		// 	this.$refs.titleInput.focus()
-		// },
-		methods: {
-			addMember() {
-				console.log('add memeber')
-			},
-			updateBoardTitle(ev) {
-				const newBoard = JSON.parse(JSON.stringify(this.board))
-				newBoard.title = ev.target.innerText
-				this.$emit('updateBoardTitle', newBoard)
-			},
-			setView(view) {
-				this.$emit('setView', view)
-			},
+		updateBoardTitle(ev) {
+			const newBoard = JSON.parse(JSON.stringify(this.board))
+			newBoard.title = ev.target.innerText
+			this.$emit('updateBoardTitle', newBoard)
 		},
-	}
+		setView(view) {
+			this.$emit('setView', view)
+		},
+	},
+}
 </script>

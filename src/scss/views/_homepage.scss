@@ -10,6 +10,11 @@
 	width: 100%;
 	z-index: 100;
 
+	.logo-title {
+		font-size: 25px;
+		font-weight: 800;
+	}
+
 	a {
 		text-decoration: none;
 		font-size: em(16px);
@@ -57,9 +62,19 @@
 	// background-image: linear-gradient(to bottom, rgb(27, 31, 60), rgb(42, 48, 94));
 	color: white;
 	height: 100vh;
+	padding: 1.5rem;
+
+	.first {
+		margin-top: 10rem;
+		margin-bottom: 1rem;
+	}
+
+	h1 {
+		font-size: rem(40px);
+	}
 
 	& > * {
-		margin-bottom: 3em;
+		margin-bottom: 1.5rem;
 	}
 
 	&.features-promo {
@@ -68,6 +83,7 @@
 
 	.features-promo-container {
 		flex-wrap: wrap;
+		gap: 1rem;
 
 		& .feature-promo {
 			color: white;
@@ -76,11 +92,16 @@
 			padding: 1.5em;
 		}
 	}
+
+	.get-started-btn {
+		margin: auto;
+		margin-top: 3rem;
+	}
 }
 
 .carousel-container {
 	padding-inline: em(25px);
-	transform: translateY(-30%);
+	margin-bottom: 3rem;
 }
 
 .homepage-side-by-side {

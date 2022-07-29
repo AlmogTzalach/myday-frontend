@@ -81,8 +81,9 @@
 	width: $size;
 	height: $size;
 	border-radius: 50%;
+	border: 1px solid white;
 }
 
-@mixin random-bgc(){
+@mixin random-bgc() {
 	background-color: rgb(random(100), random(100), random(100));
-  }
+}
