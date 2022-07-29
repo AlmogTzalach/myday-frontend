@@ -6,6 +6,10 @@
 		padding: rem(12px) 0;
 		padding-inline-start: rem(32px);
 		margin-bottom: rem(20px);
+
+		@include for-narrow-layout {
+			padding-inline-start: rem(6px);
+		}
 		.add-btns {
 			display: flex;
 			margin-inline-end: rem(16px);

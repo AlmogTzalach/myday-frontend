@@ -4,6 +4,10 @@
 
 	padding: rem(15px) rem(25px) 0 rem(32px);
 
+	@include for-narrow-layout {
+		padding-inline: 12px;
+	}
+
 	.board-actions {
 		justify-content: space-between;
 		align-items: center;

@@ -57,11 +57,15 @@
 	align-items: center;
 }
 
-.avatar-container {
-	&:not(:first-child) {
-		transform: translateX(-30%);
+.person-container {
+	display: inline-flex;
+	flex-direction: row-reverse;
+	.avatar-container:not(:last-child) {
+		margin-left: -60px;
 	}
+}
 
+.avatar-container {
 	.avatar {
 		border: 2px solid #f5f6f8;
 		@include avatar;
@@ -75,7 +79,6 @@
 		align-items: center;
 		color: white;
 		text-align: center;
-		margin-inline-end: em(12px);
 		p {
 			text-transform: capitalize;
 		}
