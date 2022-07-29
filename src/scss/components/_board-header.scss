@@ -18,8 +18,26 @@
 		}
 
 		.btns {
-			.add-member-btn {
+			.btn {
 				@include mainBtn;
+			}
+
+			.last-seen-btn {
+				margin-inline-end: 10px;
+				@include mainBtn;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				.imgs-container {
+					margin-inline-start: 5px;
+				}
+			}
+
+			.member-img {
+				@include avatar;
+				width: 26px;
+				height: 26px;
 			}
 		}
 	}
@@ -32,7 +50,6 @@
 			color: lightgray;
 		}
 		.btn-container {
-			// margin-inline-start: rem(2px);
 			.btn {
 				@include mainBtn;
 				font-family: roboto-bold;
