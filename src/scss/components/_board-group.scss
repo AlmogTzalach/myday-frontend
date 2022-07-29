@@ -7,6 +7,10 @@
 		display: grid;
 		grid-template-columns: 32px 35px 500px 1fr;
 
+		@include for-narrow-layout {
+			grid-template-columns: 8px 35px 500px 1fr;
+		}
+
 		.el-icon {
 			padding-top: 14px;
 			margin-inline-start: 13px;
@@ -41,7 +45,7 @@
 			}
 
 			@include for-narrow-layout {
-				opacity: 1;
+				display: none;
 			}
 		}
 
@@ -134,6 +138,10 @@
 			grid-template-columns: 32px 6px 1fr;
 			background-color: white;
 
+			@include for-narrow-layout {
+				grid-template-columns: 8px 6px 1fr;
+			}
+
 			position: sticky;
 			left: 0;
 			z-index: 10;
@@ -190,6 +198,10 @@
 			position: sticky;
 			left: 0;
 			grid-template-columns: 32px 6px 300px;
+
+			@include for-narrow-layout {
+				grid-template-columns: 8px 6px 324px;
+			}
 		}
 
 		.add-task-input {
@@ -228,7 +240,7 @@
 			background-color: white;
 
 			&.group-collapsed {
-				grid-template-columns: 32px 6px 322px;
+				grid-template-columns: 8px 6px 322px;
 				border-inline-end: 1px solid $divider-clr;
 
 				.collapse-border {
