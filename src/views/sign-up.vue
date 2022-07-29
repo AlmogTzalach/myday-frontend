@@ -39,7 +39,8 @@ export default {
                 password: this.signUpForm.password,
             }
             this.$store.dispatch({ type: 'signUp', userInfo })
-			this.$router.push('/board')
+			const defaultBoard = this.$store.getters.boards[0]._id
+			this.$router.push(`/board/${defaultBoard}`)
         }
     },
     computed: {

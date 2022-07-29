@@ -2,7 +2,7 @@
     <el-popover :placement="modalPlacement" :width="200" trigger="click" @mousedown="changePlacement">
         <template #reference>
             <section class="attr-container">
-                <div class="flex align-center">
+                <div class="person-container">
                     <div class="avatar-container" v-if="people.length" v-for="person in people" :key="person._id">
                         <img v-if="person.imgUrl" class="avatar" :src="person.imgUrl" :title="person.fullName">
                         <div v-else class="avatar no-image-avatar">

@@ -35,7 +35,6 @@ async function logout() {
 
 async function signUp(signupInfo) {
 	const user = await httpService.post(`${ENDPOINT}/signup`, signupInfo)
-	console.log(user)
 	return _saveLocalUser(user)
 }
 
