@@ -244,6 +244,7 @@
 		width: 24px;
 		height: 24px;
 		border-radius: 4px;
+		cursor: pointer;
 
 		&:hover {
 			opacity: 85%;
@@ -294,4 +295,16 @@
 
 .timeline-summary {
 	height: 100%;
+}
+
+.colors-opts {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.color-container {
+	border-radius: 3px;
+	cursor: pointer;
 }
