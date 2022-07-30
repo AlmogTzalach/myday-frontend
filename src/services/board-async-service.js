@@ -212,11 +212,11 @@ function getEmptyBoard() {
 			],
 		},
 		members: [
-			{
-				_id: 'u102',
-				fullName: 'bill',
-				imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-			},
+			// {
+			// 	_id: 'u102',
+			// 	fullName: 'bill',
+			// 	imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
+			// },
 		],
 		groups: [
 			{
@@ -233,29 +233,12 @@ function getEmptyBoard() {
 						statusId: 'l101',
 						priorityId: 'p101',
 						timeline: [Date.now(), Date.now() + 1000 * 60 * 60 * 24],
-						people: [
-							{
-								_id: 'u102',
-								fullName: 'bill',
-								imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-							},
-						],
+						people: [],
 						date: Date.now(),
 						checkbox: true,
-						txt: 'Add text',
-						link: 'http://google.com',
-						comments: [
-							{
-								id: 'ZdPnm',
-								txt: 'also, Anton please CR this',
-								createdAt: 1590999817436,
-								byMember: {
-									_id: 'u101',
-									fullName: 'Stan Smith',
-									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-								},
-							},
-						],
+						txt: '',
+						link: '',
+						comments: [],
 					},
 					{
 						id: utilService._makeId(),
@@ -266,20 +249,9 @@ function getEmptyBoard() {
 						people: [],
 						date: Date.now(),
 						checkbox: false,
-						txt: 'Add text',
-						link: 'http://google.com',
-						comments: [
-							{
-								id: 'ZdPnm',
-								txt: 'also, Anton please CR this',
-								createdAt: 1590999817436,
-								byMember: {
-									_id: 'u101',
-									fullName: 'Stan Smith',
-									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-								},
-							},
-						],
+						txt: '',
+						link: '',
+						comments: [],
 					},
 					{
 						id: utilService._makeId(),
@@ -290,20 +262,9 @@ function getEmptyBoard() {
 						people: [],
 						date: Date.now(),
 						checkbox: false,
-						txt: 'Add text',
-						link: 'http://google.com',
-						comments: [
-							{
-								id: 'ZdPnm',
-								txt: 'also, Anton please CR this',
-								createdAt: 1590999817436,
-								byMember: {
-									_id: 'u101',
-									fullName: 'Stan Smith',
-									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-								},
-							},
-						],
+						txt: '',
+						link: '',
+						comments: [],
 					},
 				],
 			},
@@ -325,29 +286,8 @@ function getEmptyBoard() {
 						date: Date.now(),
 						checkbox: false,
 						txt: '',
-						link: 'http://airbnb.com',
-						comments: [
-							{
-								id: 'Ty2nd',
-								txt: 'I need some help please',
-								createdAt: 1590999817436,
-								byMember: {
-									_id: 'u102',
-									fullName: 'Roy Boy',
-									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
-								},
-							},
-							{
-								id: '12Dvg',
-								txt: "I'll be with you in a moment",
-								createdAt: 1590999817436.0,
-								byMember: {
-									_id: 'u101',
-									fullName: 'Stan Smith',
-									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-								},
-							},
-						],
+						link: '',
+						comments: [],
 					},
 					{
 						id: utilService._makeId(),
@@ -359,54 +299,12 @@ function getEmptyBoard() {
 						date: Date.now(),
 						checkbox: false,
 						txt: '',
-						link: 'http://airbnb.com',
-						comments: [
-							{
-								id: 'Ty2nd',
-								txt: 'I need some help please',
-								createdAt: 1590999817436,
-								byMember: {
-									_id: 'u102',
-									fullName: 'Roy Boy',
-									imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
-								},
-							},
-							{
-								id: '12Dvg',
-								txt: "I'll be with you in a moment",
-								createdAt: 1590999817436.0,
-								byMember: {
-									_id: 'u101',
-									fullName: 'Stan Smith',
-									imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-								},
-							},
-						],
+						link: '',
+						comments: [],
 					},
 				],
 			},
 		],
-		activities: [
-			{
-				change: 'Changed Color',
-				createdAt: 154514,
-				byMember: {
-					_id: 'u101',
-					fullName: 'Stan Smith',
-					imgUrl: 'https://www.investnational.com.au/wp-content/uploads/2016/08/person-stock-2.png',
-				},
-				taskTitle: 'Im in group 2 right?',
-			},
-			{
-				change: 'Changed task status',
-				createdAt: 154514,
-				byMember: {
-					_id: 'u102',
-					fullName: 'Roy Boy',
-					imgUrl: 'https://res.cloudinary.com/crunchbase-production/image/upload/c_thumb,h_170,w_170,f_auto,g_faces,z_0.7,b_white,q_auto:eco,dpr_1/jrgo59ckddna2jol8i5l',
-				},
-				taskTitle: 'Add home page',
-			},
-		],
+		activities: [],
 	}
 }
