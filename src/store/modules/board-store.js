@@ -133,7 +133,7 @@ export default {
 			}
 		},
 		addBoard(state, { board }) {
-			state.boards.unshift(board)
+			state.boards.push(board)
 			state.currBoard = board
 		},
 		removeBoard(state, { boardId }) {
@@ -221,7 +221,8 @@ export default {
 			commit({ type: 'deleteGroup', groupId })
 			await boardService.save(state.currBoard)
 		},
-		async removeBoard({ commit }, { boardId }) {
+		async removeBoard({ state, commit }, { boardId }) {
+			if (state.boards.length === 1) return
 			await boardService.remove(boardId)
 			commit({ type: 'removeBoard', boardId })
 		},

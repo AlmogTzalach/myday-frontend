@@ -6,7 +6,7 @@
                     <div class="avatar-container" v-if="people.length" v-for="person in people" :key="person._id">
                         <img v-if="person.imgUrl" class="avatar" :src="person.imgUrl" :title="person.fullName">
                         <div v-else class="avatar no-image-avatar">
-                            <p>{{ person.fullName.charAt(0) }}</p>
+                            <p>{{ getInitials(person.fullName) }}</p>
                         </div>
                     </div>
                     <div class="empty-avatar-container" v-else>
@@ -19,7 +19,7 @@
             <div class="small-avatar-container" v-if="people.length" v-for="person in people" :key="person._id">
                 <img v-if="person.imgUrl" class="small-avatar" :src="person.imgUrl" :title="person.fullName">
                 <div v-else class="avatar no-image-avatar">
-                    <p>{{ person.fullName.charAt(0) }}</p>
+                    <p>{{ getInitials(person.fullName) }}</p>
                 </div>
                 <span class="small-avatar-name flex align-center">{{ person.fullName }}<img
                         src="../../assets/icons/close-small.svg" @click="onRemovePerson(person._id)"></span>
@@ -29,7 +29,7 @@
                 @click="onAddPerson(user)">
                 <img v-if="user.imgUrl" class="avatar" :src="user.imgUrl" :title="user.fullName">
                 <div v-else class="avatar no-image-avatar">
-                    <p>{{ user.fullName.charAt(0) }}</p>
+                    <p>{{ getInitials(user.fullName) }}</p>
                 </div>
                 <span>{{ user.fullName }}</span>
             </div>
@@ -66,6 +66,13 @@ export default {
             const idx = newTask.people.findIndex(person => person._id === personId)
             newTask.people.splice(idx, 1)
             this.$emit('dataChanged', newTask)
+        },
+        getInitials(fullName) {
+            let initials = fullName.charAt(0)
+            if (fullName.includes(' ')) {
+                initials += fullName.split(' ')[1].charAt(0)
+            }
+            return initials
         }
     },
 
