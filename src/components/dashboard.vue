@@ -79,7 +79,6 @@ export default {
 		if (!this.currBoard) return
 		let labelCount = {}
 		let membersCount = []
-		console.log(this.currBoard)
 
 		this.currBoard.groups.forEach((group) => {
 			group.tasks.forEach((task) => {
