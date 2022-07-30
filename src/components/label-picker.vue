@@ -19,8 +19,8 @@
 			>
 				<el-input v-model="label.title" @input="onLabelsEdited">
 					<template #prefix>
+						<!-- ///// -->
 						<div style="display: flex; align-items: center">
-							<!-- ///// -->
 							<el-popover
 								:placement="modalPlacement"
 								:width="128"
@@ -31,19 +31,15 @@
 										:style="{ 'background-color': label.color }"
 										@mousedown="changePlacement"
 										class="color-display"
-									>
-										<!-- <el-button
-										:style="{ 'background-color': label.color }"
-									></el-button> -->
-									</div>
+									></div>
 								</template>
 								<div class="colors-opts">
 									<div
 										v-for="color in colors"
 										:style="{
 											'background-color': color,
-											width: '20px',
-											height: '20px',
+											width: '24px',
+											height: '24px',
 										}"
 										@click="onLabelsEdited(color, label.id)"
 										class="color-container"
@@ -51,8 +47,8 @@
 								</div>
 							</el-popover>
 						</div>
-
-						<!-- <div
+						<!-- 
+						<div
 							class="color-display"
 							:style="{ 'background-color': label.color }"
 						>
