@@ -81,11 +81,27 @@
 <script>
 export default {
 	name: 'home',
+	data() {
+		return {
+			showSignUpModal: false
+		}
+	},
 	methods: {
 		getStarted() {
 			const boardId = this.$store.getters.boards[0]._id
-			socketService.emit('board-topic', boardId)
-			this.$router.push(`/board/${boardId}`)
+			const loggedUser = this.$store.getters.loggedUser
+			if (loggedUser) this.$router.push(`/board/${boardId}`)
+			else {
+				this.$store.commit({
+					type: 'setLoggedUser',
+					user: {
+						_id: 'abcskjdsmmc',
+						fullName: 'Guest',
+						imgUrl: 'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg'
+					}
+				})
+				this.$router.push(`/board/${boardId}`)
+			}
 		},
 	},
 	computed: {
@@ -97,4 +113,5 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+</style>
