@@ -2,8 +2,9 @@
 	<section class="homepage-container">
 		<header class="homepage-header flex space-between align-center">
 			<div class="logo-container flex align-center">
-				<img src="../assets/monday_logo_icon.png" />
-				<h1 class="logo-title">myday</h1>
+				<!-- <img src="../assets/monday_logo_icon.png" /> -->
+				<img src="../assets/myday-logo.png" />
+				<!-- <h1 class="logo-title">myday</h1> -->
 			</div>
 			<nav class="homepage-nav flex align-center">
 				<router-link to="/login">Log in</router-link>
@@ -24,19 +25,34 @@
 			<h3>All your task management needs met in one app</h3>
 			<div class="features-promo-container flex space-around">
 				<div class="feature-promo">
+					<img
+						src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/icons/design_icon.png">
+					<h4>Creative & design</h4>
+				</div>
+				<div class="feature-promo">
+					<img
+						src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/icons/pmo_icon.png">
 					<h4>Project management</h4>
 				</div>
 				<div class="feature-promo">
-					<h4>Team leading tools</h4>
+					<img
+						src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/icons/dev_icon.png">
+					<h4>Software development</h4>
 				</div>
 				<div class="feature-promo">
-					<h4>Task distribution</h4>
+					<img
+						src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/icons/operations_icon.png">
+					<h4>Operations control</h4>
 				</div>
 				<div class="feature-promo">
-					<h4>Schedule arrangement</h4>
+					<img
+						src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/icons/task_icon.png">
+					<h4>Task management</h4>
 				</div>
 				<div class="feature-promo">
-					<h4>Productivity statistics</h4>
+					<img
+						src="https://dapulse-res.cloudinary.com/image/upload/f_auto,q_auto/Generator_featured%20images/Home%20Page%20-%202022%20Rebrand/first_fold/icons/hr_icon.png">
+					<h4>Human resources</h4>
 				</div>
 			</div>
 			<button @click="getStarted()" class="get-started-btn flex">
@@ -83,7 +99,7 @@ export default {
 	name: 'home',
 	data() {
 		return {
-			showSignUpModal: false
+			showSignUpModal: false,
 		}
 	},
 	methods: {
@@ -97,8 +113,8 @@ export default {
 					user: {
 						_id: 'abcskjdsmmc',
 						fullName: 'Guest',
-						imgUrl: 'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg'
-					}
+						imgUrl: 'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg',
+					},
 				})
 				this.$router.push(`/board/${boardId}`)
 			}
@@ -113,5 +129,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

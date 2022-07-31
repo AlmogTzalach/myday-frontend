@@ -35,9 +35,10 @@
 	.logo-svg {
 		margin: rem(10px) 0;
 		cursor: pointer;
-		width: 42px;
+		width: 40px;
 		transition: $trns;
 		border-radius: rem(7px);
+		padding: 8px;
 
 		&:hover {
 			background-color: rgb(16, 18, 30);

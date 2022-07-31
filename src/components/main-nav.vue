@@ -7,10 +7,9 @@
 				placement="right"
 				class="el-title"
 			>
-				<!-- <button class="logo-svg" @click="goToHome()">logo</button> -->
 				<img
 					class="logo-svg"
-					src="../assets/monday_logo_icon.png"
+					src="../assets/myday-logo2.png"
 					@click="goToHome()"
 				/>
 			</el-tooltip>
@@ -111,7 +110,7 @@
 				:src="loggedUser.imgUrl"
 			/>
 			<div v-else class="no-image-avatar">
-				<p>{{ loggedUser.fullName.charAt(0) }}</p>
+				<p>{{ getInitials(loggedUser.fullName) }}</p>
 			</div>
 		</div>
 	</section>
@@ -129,6 +128,13 @@ export default {
 		},
 		toggleBoardsNav() {
 			document.body.classList.toggle('side-bar-open')
+		},
+		getInitials(fullName) {
+			let initials = fullName.charAt(0)
+			if (fullName.includes(' ')) {
+				initials += fullName.split(' ')[1].charAt(0)
+			}
+			return initials
 		},
 	},
 	computed: {

@@ -30,7 +30,7 @@
 
 	.logo-container {
 		img {
-			width: 40px;
+			width: 140px;
 		}
 	}
 }
@@ -78,19 +78,26 @@
 		margin-bottom: 1.5rem;
 	}
 
-	&.features-promo {
-		width: 100%;
-	}
-
 	.features-promo-container {
 		flex-wrap: wrap;
 		gap: 1rem;
 
 		& .feature-promo {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
 			color: white;
 			border: 1px solid rgba(255, 255, 255, 0.3);
 			border-radius: 8px;
 			padding: 1.5em;
+			width: 128px;
+			height: 126px;
+
+			img {
+				height: 40px;
+				width: 40px;
+				margin-bottom: 15px;
+			}
 		}
 	}
 
