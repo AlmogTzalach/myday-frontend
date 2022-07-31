@@ -2,8 +2,9 @@
 	<section class="homepage-container">
 		<header class="homepage-header flex space-between align-center">
 			<div class="logo-container flex align-center">
-				<img src="../assets/monday_logo_icon.png" />
-				<h1 class="logo-title">myday</h1>
+				<!-- <img src="../assets/monday_logo_icon.png" /> -->
+				<img src="../assets/myday-logo.png" />
+				<!-- <h1 class="logo-title">myday</h1> -->
 			</div>
 			<nav class="homepage-nav flex align-center">
 				<router-link to="/login">Log in</router-link>
@@ -83,7 +84,7 @@ export default {
 	name: 'home',
 	data() {
 		return {
-			showSignUpModal: false
+			showSignUpModal: false,
 		}
 	},
 	methods: {
@@ -97,8 +98,8 @@ export default {
 					user: {
 						_id: 'abcskjdsmmc',
 						fullName: 'Guest',
-						imgUrl: 'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg'
-					}
+						imgUrl: 'https://images.macrumors.com/t/n4CqVR2eujJL-GkUPhv1oao_PmI=/1600x/article-new/2019/04/guest-user-250x250.jpg',
+					},
 				})
 				this.$router.push(`/board/${boardId}`)
 			}
@@ -113,5 +114,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

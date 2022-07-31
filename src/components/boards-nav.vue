@@ -59,13 +59,17 @@
 							</div>
 						</template>
 						<div class="task-popover">
-							<div
+							<button
 								class="task-popover-line"
 								@click="deleteBoard(board._id)"
+								:class="{ disabled: boards.length <= 1 }"
+								:disabled="boards.length <= 1"
 							>
+								<!-- <div -->
 								<img src="../assets/icons/delete.svg" />
 								<span>Delete</span>
-							</div>
+							</button>
+							<!-- </div> -->
 						</div>
 					</el-popover>
 				</button>

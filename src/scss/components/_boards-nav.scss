@@ -166,3 +166,22 @@ body {
 		}
 	}
 }
+
+.task-popover {
+	.task-popover-line {
+		@include mainBtn;
+		width: 100%;
+
+		&.disabled {
+			background-color: white;
+			color: lightgray;
+			&:hover {
+				cursor: not-allowed;
+				background-color: white;
+			}
+			img {
+				filter: $svg-grey;
+			}
+		}
+	}
+}

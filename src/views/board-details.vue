@@ -72,7 +72,7 @@
 	</section>
 
 	<section v-else>
-		<h1>add board</h1>
+		<img src="../assets/Add.png" alt="" class="empty-board-img" />
 	</section>
 </template>
 
