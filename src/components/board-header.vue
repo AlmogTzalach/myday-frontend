@@ -48,10 +48,9 @@
 				<div></div>
 			</div>
 			<span>|</span>
-			<div class="btn-container" @click="setView('chart')">
+			<!-- <div class="btn-container" @click="setView('chart')">
 				<button class="btn vue-btn flex">Chart</button>
-				<!-- <div></div> -->
-			</div>
+			</div> -->
 			<!-- <button class="btn add-vue-btn">+</button> -->
 		</div>
 	</header>
