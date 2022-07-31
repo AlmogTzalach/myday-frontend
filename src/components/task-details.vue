@@ -2,7 +2,7 @@
 	<el-drawer
 		:model-value="visible"
 		:show-close="true"
-		:size="700"
+		:size="drawerSize"
 		@close="onCloseChat"
 	>
 		<template #header="{ close, titleId, titleClass }">
@@ -81,6 +81,10 @@ export default {
 	computed: {
 		titleClass() {
 			return 'task-details-title'
+		},
+		drawerSize() {
+			if (window.screen.width < 700) return window.screen.width
+			return 700
 		},
 	},
 	methods: {
