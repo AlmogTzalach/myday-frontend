@@ -27,70 +27,69 @@
 </template>
 
 <script>
-	export default {
-		name: 'timelineCmp',
+export default {
+	name: 'timelineCmp',
 
-		props: {
-			task: Object,
-			color: String,
+	props: {
+		task: Object,
+		color: String,
+	},
+
+	data() {
+		return {
+			timeline: [0, 0],
+		}
+	},
+
+	computed: {
+		formattedTimeline() {
+			let fromDate = new Date(this.timeline[0])
+			let toDate = new Date(this.timeline[1])
+			fromDate = fromDate.toLocaleString('default', {
+				day: 'numeric',
+				month: 'short',
+			})
+			toDate = toDate.toLocaleString('default', {
+				day: 'numeric',
+				month: 'short',
+			})
+			return fromDate + ' - ' + toDate
 		},
+		gridTemplate() {
+			if (!this.timeline) return '0fr 1fr'
+			const currTime = Date.now()
+			let from = new Date(this.timeline[0])
+			let to = new Date(this.timeline[1])
 
-		data() {
-			return {
-				timeline: [0, 0],
-			}
+			from = from.getTime()
+			to = to.getTime()
+			from = Math.floor((currTime - from) / (1000 * 60 * 60 * 24))
+			to = Math.ceil((to - currTime) / (1000 * 60 * 60 * 24))
+			if (from < 0) from = 0
+			if (to < 0) to = 0
+
+			return `${from}fr ${to}fr`
 		},
+	},
 
-		computed: {
-			formattedTimeline() {
-				let fromDate = new Date(this.timeline[0])
-				let toDate = new Date(this.timeline[1])
-				fromDate = fromDate.toLocaleString('default', {
-					day: 'numeric',
-					month: 'short',
-				})
-				toDate = toDate.toLocaleString('default', {
-					day: 'numeric',
-					month: 'short',
-				})
-				return fromDate + ' - ' + toDate
+	methods: {
+		onTimelineChange() {
+			this.task.timeline[0] = this.timeline[0].getTime()
+			this.task.timeline[1] = this.timeline[1].getTime()
+			this.$emit('dataChanged', this.task)
+		},
+	},
+
+	watch: {
+		task: {
+			handler(task) {
+				this.timeline = task.timeline
 			},
-			gridTemplate() {
-				if (!this.timeline) return '0fr 1fr'
-				const currTime = Date.now()
-				let from = new Date(this.timeline[0])
-				let to = new Date(this.timeline[1])
-
-				from = from.getTime()
-				to = to.getTime()
-				from = Math.floor((currTime - from) / (1000 * 60 * 60 * 24))
-				to = Math.ceil((to - currTime) / (1000 * 60 * 60 * 24))
-				if (from < 0) from = 0
-				if (to < 0) to = 0
-				// console.log(currTime - from, to - currTime)
-
-				return `${from}fr ${to}fr`
-			},
+			immediate: true,
+			deep: true,
 		},
-
-		methods: {
-			onTimelineChange() {
-				this.task.timeline[0] = this.timeline[0].getTime()
-				this.task.timeline[1] = this.timeline[1].getTime()
-				this.$emit('dataChanged', this.task)
-			},
-		},
-
-		watch: {
-			task: {
-				handler(task) {
-					this.timeline = task.timeline
-				},
-				immediate: true,
-				deep: true,
-			},
-		},
-	}
+	},
+}
 </script>
 
 <style></style>

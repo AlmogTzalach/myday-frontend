@@ -33,7 +33,7 @@
 						/>
 					</div>
 				</button>
-				<button @click="addMember()" class="btn add-member-btn">
+				<button class="btn add-member-btn">
 					+ <span>invite / {{ board.members.length }}</span>
 				</button>
 			</div>
@@ -63,13 +63,7 @@ export default {
 	props: {
 		board: Object,
 	},
-	// mounted() {
-	// 	this.$refs.titleInput.focus()
-	// },
 	methods: {
-		addMember() {
-			console.log('add memeber')
-		},
 		updateBoardTitle(ev) {
 			const newBoard = JSON.parse(JSON.stringify(this.board))
 			newBoard.title = ev.target.innerText

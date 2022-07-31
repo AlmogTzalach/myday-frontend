@@ -175,7 +175,6 @@ export default {
 			else return 'is-active'
 		},
 		removeLabel(labelId) {
-			console.log(labelId)
 			if (
 				this.statusInUse.includes(labelId) ||
 				this.priorityInUse.includes(labelId)

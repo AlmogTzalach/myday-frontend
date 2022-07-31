@@ -1,7 +1,11 @@
 <template>
 	<section class="board-container" v-if="currBoard">
 		<div class="board-header-filter">
-			<board-header :board="currBoard" @updateBoardTitle="updateBoardTitle" @setView="setView" />
+			<board-header
+				:board="currBoard"
+				@updateBoardTitle="updateBoardTitle"
+				@setView="setView"
+			/>
 
 			<div class="flex main-actions-container">
 				<div class="add-btns">
@@ -9,17 +13,28 @@
 						New Task
 					</button>
 
-					<el-popover placement="bottom-start" :width="220" trigger="click" :show-arrow="false"
-						:hide-after="0" :offset="0">
+					<el-popover
+						placement="bottom-start"
+						:width="220"
+						trigger="click"
+						:show-arrow="false"
+						:hide-after="0"
+						:offset="0"
+					>
 						<template #reference>
 							<button class="btn2 add-task-btn">
 								<img src="../assets/icons/down.svg" alt="" />
 							</button>
 						</template>
 						<div class="add-group-popover">
-							<div class="add-group-popover-line" @click="addGroup(false)">
+							<div
+								class="add-group-popover-line"
+								@click="addGroup(false)"
+							>
 								<!-- <img src="../assets/icons/group.svg" /> -->
-								<span class="new-group-upper">New group of Tasks</span>
+								<span class="new-group-upper"
+									>New group of Tasks</span
+								>
 							</div>
 						</div>
 					</el-popover>
@@ -32,11 +47,21 @@
 		<dashboard :currBoard="currBoard" v-if="boardView === 'chart'" />
 
 		<div class="groups-container" v-if="boardView === 'table'">
-			<draggable :list="currBoard.groups" @end="onGroupMove" :disabled="isDraggable">
+			<draggable
+				:list="currBoard.groups"
+				@end="onGroupMove"
+				:disabled="isDraggable"
+			>
 				<div v-for="group in currBoard.groups" :key="group.id">
-					<board-group :group="JSON.parse(JSON.stringify(group))" :filter="groupFilter"
-						draggable=".group-title" @taskMoved="onTaskMoved" @updateGroup="updateGroup"
-						@deleteGroup="deleteGroup" @cmpOrderChanged="cmpOrderChanged" />
+					<board-group
+						:group="JSON.parse(JSON.stringify(group))"
+						:filter="groupFilter"
+						draggable=".group-title"
+						@taskMoved="onTaskMoved"
+						@updateGroup="updateGroup"
+						@deleteGroup="deleteGroup"
+						@cmpOrderChanged="cmpOrderChanged"
+					/>
 				</div>
 			</draggable>
 			<button class="btn addBtn flex" @click="addGroup(true)">
@@ -44,6 +69,10 @@
 				<span>Add new group</span>
 			</button>
 		</div>
+	</section>
+
+	<section v-else>
+		<h1>add board</h1>
 	</section>
 </template>
 
