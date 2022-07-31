@@ -13,7 +13,7 @@
 			</div>
 			<div
 				v-else
-				class="edit-label-container flex align-center"
+				class="edit-label-container flex align-center label-width"
 				v-for="label in labels"
 				:key="label.color"
 			>
@@ -88,109 +88,109 @@
 	</div>
 </template>
 <script>
-export default {
-	name: 'labelPicker',
-	data() {
-		return {
-			isEdit: false,
-			modalPlacement: 'bottom',
-			colors: [
-				'#037f4c',
-				'#9cd326',
-				'#cab641',
-				'#cab641',
-				'#ff642e',
-				'#ffadad',
-				'#ff7575',
-				'#bb3354',
-				'#ff158a',
-				'#ff5ac4',
-				'#faa1f1',
-				'#784bd1',
-				'#7e3b8a',
-				'#401694',
-				'#5559df',
-				'#225091',
-				'#579bfc',
-				'#0086c0',
-				'#4eccc6',
-				'#66ccff',
-				'#68a1bd',
-				'#9aadbd',
-				'#808080',
-				'#333333',
-				'#7f5347',
-				'#d974b0',
-				'#ad967a',
-				'#a1e3f6',
-				'#bd816e',
-				'#2b76e5',
-				'#175a63',
-				'#bda8f9',
-				'#a9bee8',
-				'#9d99b9',
-				'#563e3e',
-			],
-		}
-	},
-	props: {
-		labels: Array,
-	},
-	methods: {
-		changePlacement(ev) {
-			const vpH = window.innerHeight
-			this.modalPlacement = ev.clientY > vpH / 2 ? 'top' : 'bottom'
-		},
-		onLabelPicked(labelId) {
-			this.$emit('labelPicked', labelId)
-			this.$emit('closePicker')
-		},
-		onToggleEdit() {
-			this.isEdit = !this.isEdit
-		},
-		onLabelsEdited(clr, labelId) {
-			if (clr && labelId) {
-				let label = this.labels.find((label) => label.id === labelId)
-				label.color = clr
+	export default {
+		name: 'labelPicker',
+		data() {
+			return {
+				isEdit: false,
+				modalPlacement: 'bottom',
+				colors: [
+					'#037f4c',
+					'#9cd326',
+					'#cab641',
+					'#cab641',
+					'#ff642e',
+					'#ffadad',
+					'#ff7575',
+					'#bb3354',
+					'#ff158a',
+					'#ff5ac4',
+					'#faa1f1',
+					'#784bd1',
+					'#7e3b8a',
+					'#401694',
+					'#5559df',
+					'#225091',
+					'#579bfc',
+					'#0086c0',
+					'#4eccc6',
+					'#66ccff',
+					'#68a1bd',
+					'#9aadbd',
+					'#808080',
+					'#333333',
+					'#7f5347',
+					'#d974b0',
+					'#ad967a',
+					'#a1e3f6',
+					'#bd816e',
+					'#2b76e5',
+					'#175a63',
+					'#bda8f9',
+					'#a9bee8',
+					'#9d99b9',
+					'#563e3e',
+				],
 			}
-			this.$emit('labelsEdited', this.labels)
 		},
-		onAddLabel() {
-			this.$emit('onAddLabel')
+		props: {
+			labels: Array,
 		},
-		isRemovableTitle(labelId) {
-			if (
-				this.statusInUse.includes(labelId) ||
-				this.priorityInUse.includes(labelId)
-			)
-				return "You can't delete a label while in use"
-			else return 'Delete'
+		methods: {
+			changePlacement(ev) {
+				const vpH = window.innerHeight
+				this.modalPlacement = ev.clientY > vpH / 2 ? 'top' : 'bottom'
+			},
+			onLabelPicked(labelId) {
+				this.$emit('labelPicked', labelId)
+				this.$emit('closePicker')
+			},
+			onToggleEdit() {
+				this.isEdit = !this.isEdit
+			},
+			onLabelsEdited(clr, labelId) {
+				if (clr && labelId) {
+					let label = this.labels.find((label) => label.id === labelId)
+					label.color = clr
+				}
+				this.$emit('labelsEdited', this.labels)
+			},
+			onAddLabel() {
+				this.$emit('onAddLabel')
+			},
+			isRemovableTitle(labelId) {
+				if (
+					this.statusInUse.includes(labelId) ||
+					this.priorityInUse.includes(labelId)
+				)
+					return "You can't delete a label while in use"
+				else return 'Delete'
+			},
+			isDisabled(labelId) {
+				if (
+					this.statusInUse.includes(labelId) ||
+					this.priorityInUse.includes(labelId)
+				)
+					return 'is-disabled'
+				else return 'is-active'
+			},
+			removeLabel(labelId) {
+				console.log(labelId)
+				if (
+					this.statusInUse.includes(labelId) ||
+					this.priorityInUse.includes(labelId)
+				)
+					return
+				else this.$emit('removeLabel', labelId)
+			},
 		},
-		isDisabled(labelId) {
-			if (
-				this.statusInUse.includes(labelId) ||
-				this.priorityInUse.includes(labelId)
-			)
-				return 'is-disabled'
-			else return 'is-active'
+		computed: {
+			statusInUse() {
+				return this.$store.getters.statusInUse
+			},
+			priorityInUse() {
+				return this.$store.getters.priorityInUse
+			},
 		},
-		removeLabel(labelId) {
-			console.log(labelId)
-			if (
-				this.statusInUse.includes(labelId) ||
-				this.priorityInUse.includes(labelId)
-			)
-				return
-			else this.$emit('removeLabel', labelId)
-		},
-	},
-	computed: {
-		statusInUse() {
-			return this.$store.getters.statusInUse
-		},
-		priorityInUse() {
-			return this.$store.getters.priorityInUse
-		},
-	},
-}
+	}
 </script>
