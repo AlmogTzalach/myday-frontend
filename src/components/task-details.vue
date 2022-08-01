@@ -45,58 +45,67 @@
 					</li>
 				</ul>
 			</div>
-			<div v-else>
-				<h2>No comments</h2>
+			<div v-else class="no-updates-container">
+				<!-- <div class="no-updates-img"> -->
+				<img src="../assets/no-updates.svg" alt="" />
+				<!-- </div> -->
+				<!-- <div class="no-updates-txt"> -->
+				<h2>No updates yet for this item</h2>
+				<p>
+					Be the first one to update about progress, mention someone or
+					upload files to share with your team members
+				</p>
+				<!-- </div> -->
 			</div>
 		</section>
 	</el-drawer>
 </template>
 
 <script>
-	import commentPreview from '../components/comment-preview.vue'
-	import Editor from '@tinymce/tinymce-vue'
+import commentPreview from '../components/comment-preview.vue'
+import Editor from '@tinymce/tinymce-vue'
 
-	export default {
-		name: 'taskDetails',
-		props: {
-			visible: Boolean,
-			task: Object,
+export default {
+	name: 'taskDetails',
+	props: {
+		visible: Boolean,
+		task: Object,
+	},
+	emits: ['onCloseChat', 'onAddComment'],
+	data() {
+		return {
+			isEditUpdate: false,
+			commentInput: null,
+		}
+	},
+	computed: {
+		titleClass() {
+			return 'task-details-title'
 		},
-		emits: ['onCloseChat', 'onAddComment'],
-		data() {
-			return {
-				isEditUpdate: false,
-				commentInput: null,
-			}
+		drawerSize() {
+			if (window.screen.width < 700) return window.screen.width
+			return 700
 		},
-		computed: {
-			titleClass() {
-				return 'task-details-title'
-			},
-			drawerSize() {
-				if (window.screen.width < 700) return window.screen.width
-				return 700
-			},
+	},
+	methods: {
+		// onAddComment(ev) {
+		// 	ev.target.blur()
+		// 	this.$emit('onAddComment', this.commentInput, this.task.id)
+		// 	this.commentInput = null
+		// },
+		onAddComment() {
+			this.$emit('onAddComment', this.commentInput, this.task.id)
+			// this.commentInput = null
+			this.isEditUpdate = false
 		},
-		methods: {
-			// onAddComment(ev) {
-			// 	ev.target.blur()
-			// 	this.$emit('onAddComment', this.commentInput, this.task.id)
-			// 	this.commentInput = null
-			// },
-			onAddComment() {
-				this.$emit('onAddComment', this.commentInput, this.task.id)
-				// this.commentInput = null
-				this.isEditUpdate = false
-			},
-			onCloseChat() {
-				this.$emit('onCloseChat')
-			},
+		onCloseChat() {
+			this.$emit('onCloseChat')
 		},
-		components: {
-			commentPreview,
-			editor: Editor,
-		},
-	}
+	},
+	components: {
+		commentPreview,
+		editor: Editor,
+	},
+}
 </script>
 <style></style>
